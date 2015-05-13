@@ -1,0 +1,21 @@
+<story path="org/jbehave/examples/trader/stories/claims_with_null_calendar.story" title="">
+<scenario keyword="Scenario:" title="">
+<examples keyword="Examples:">
+<step>Given a plan with calendar date of &lt;date&gt;</step>
+<step>Then the claimant should receive an amount of &lt;amount&gt;</step>
+<parameters>
+<names><name>date</name><name>amount</name></names>
+<values><value>none</value><value>0.0</value></values>
+<values><value>01/06/2010</value><value>2.15</value></values>
+</parameters>
+
+<example keyword="Example:">{date=none, amount=0.0}</example>
+<step outcome="successful">Given a plan with calendar date of <parameter><parameter>none</parameter></parameter></step>
+<step outcome="successful">Then the claimant should receive an amount of <parameter><parameter>0.0</parameter></parameter></step>
+
+<example keyword="Example:">{date=01/06/2010, amount=2.15}</example>
+<step outcome="successful">Given a plan with calendar date of <parameter><parameter>01/06/2010</parameter></parameter></step>
+<step outcome="successful">Then the claimant should receive an amount of <parameter><parameter>2.15</parameter></parameter></step>
+</examples>
+</scenario>
+</story>

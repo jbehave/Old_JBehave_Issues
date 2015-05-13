@@ -1,0 +1,30 @@
+From 3b8bfb1ae5380a02a0b2efce1f6466ea948e9396 Mon Sep 17 00:00:00 2001
+From: David Harrigan <davidharrigan@powa.com>
+Date: Wed, 20 Feb 2013 08:51:14 +0000
+Subject: [PATCH] JBEHAVE-886
+
+Use the parametriseStep for reporting in the StepMonitor so that users can see
+the values that have been replaced. This provides for better information
+feedback on the running test.
+
+-=david=-
+---
+ jbehave-core/src/main/java/org/jbehave/core/steps/StepCreator.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/steps/StepCreator.java b/jbehave-core/src/main/java/org/jbehave/core/steps/StepCreator.java
+index eb4061e..0e4bae2 100755
+--- a/jbehave-core/src/main/java/org/jbehave/core/steps/StepCreator.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/steps/StepCreator.java
+@@ -545,7 +545,7 @@ public class StepCreator {
+         public StepResult perform(UUIDExceptionWrapper storyFailureIfItHappened) {
+             try {
+                 parametriseStep();
+-                stepMonitor.performing(stepAsString, dryRun);
++                stepMonitor.performing(parametrisedStep, dryRun);
+                 if (!dryRun) {
+                     method.invoke(stepsInstance(), convertedParameters);
+                 }
+-- 
+1.8.1.1
+

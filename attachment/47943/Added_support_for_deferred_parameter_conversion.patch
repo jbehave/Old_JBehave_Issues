@@ -1,0 +1,216 @@
+Index: core/jbehave-core/src/main/java/org/jbehave/scenario/steps/ParameterConverters.java
+===================================================================
+--- core/jbehave-core/src/main/java/org/jbehave/scenario/steps/ParameterConverters.java	(revision 1447)
++++ core/jbehave-core/src/main/java/org/jbehave/scenario/steps/ParameterConverters.java	Mon Mar 15 20:08:08 GMT 2010
+@@ -63,6 +63,15 @@
+ 		return value.replaceAll(NEWLINES_PATTERN, SYSTEM_NEWLINE);
+ 	}
+ 
++	public boolean isDeferred() {
++		for (ParameterConverter converter: converters) {
++			if (converter instanceof DeferredParameterConverter) {
++				return true;
++			}
++		}
++		return false;
++	}
++
+ 	public static interface ParameterConverter {
+ 
+ 		boolean accept(Type type);
+@@ -71,6 +80,10 @@
+ 
+ 	}
+ 
++	public static interface DeferredParameterConverter extends ParameterConverter {
++		
++	}
++
+ 	@SuppressWarnings("serial")
+ 	public static class InvalidParameterException extends RuntimeException {
+ 
+Index: core/jbehave-core/src/main/java/org/jbehave/scenario/steps/CandidateStep.java
+===================================================================
+--- core/jbehave-core/src/main/java/org/jbehave/scenario/steps/CandidateStep.java	(revision 1579)
++++ core/jbehave-core/src/main/java/org/jbehave/scenario/steps/CandidateStep.java	Mon Mar 15 20:26:27 GMT 2010
+@@ -107,8 +107,12 @@
+     public Step createFrom(Map<String, String> tableRow, final String stepAsString) {
+         Matcher matcher = matcherForStep(stepAsString);
+         matcher.find();
++		if (parameterConverters.isDeferred()) {
++			return new ProxyStep(this, stepAsString, tableRow, matcher, method, stepMonitor, groupNames);
++		} else {
+-        return createStep(stepAsString, tableRow, matcher, method, stepMonitor, groupNames);
+-    }
++        	return createStep(stepAsString, tableRow, matcher, method, stepMonitor, groupNames);
++		}
++    }
+ 
+     private Matcher matcherForStep(final String stepAsString) {
+         String startingWord = findStartingWord(stepAsString);
+@@ -314,6 +318,38 @@
+         };
+     }
+ 
++	protected class ProxyStep implements Step {
++
++		CandidateStep candidateStep;
++		String stepAsString;
++		Map<String, String> tableRow;
++		Matcher matcher;
++		Method method;
++		StepMonitor stepMonitor;
++		String[] groupNames;
++		Step step;
++
++		protected ProxyStep(CandidateStep candidateStep, String stepAsString, Map<String, String> tableRow, Matcher matcher,
++                              Method method, StepMonitor stepMonitor, String[] groupNames) {
++			this.candidateStep = candidateStep;
++			this.stepAsString = stepAsString;
++			this.tableRow = tableRow;
++			this.matcher = matcher;
++			this.method = method;
++			this.stepMonitor = stepMonitor;
++			this.groupNames = groupNames;
++		}
++
++		public StepResult perform() {
++			step = candidateStep.createStep(stepAsString, tableRow, matcher, method, stepMonitor, groupNames);
++			return step.perform();
++		}
++
++		public StepResult doNotPerform() {
++			return step.doNotPerform();
++		}
++	}
++
+     public StepType getStepType() {
+         return stepType;
+     }
+Index: core/jbehave-core/src/behaviour/java/org/jbehave/scenario/steps/ParameterConvertersBehaviour.java
+===================================================================
+--- core/jbehave-core/src/behaviour/java/org/jbehave/scenario/steps/ParameterConvertersBehaviour.java	(revision 1449)
++++ core/jbehave-core/src/behaviour/java/org/jbehave/scenario/steps/ParameterConvertersBehaviour.java	Mon Mar 15 20:37:17 GMT 2010
+@@ -168,5 +168,22 @@
+         ensureThat(row2.get("col1"), equalTo("row21"));
+         ensureThat(row2.get("col2"), equalTo("row22"));
+     }
+-	
++
++	@Test
++	public void shouldReportIfParametersConversionShouldBeDeferred() {
++		ensureThat(new ParameterConverters(new ParameterConverters.DeferredParameterConverter() {
++			public boolean accept(Type type) {
++				return false;
+-}
++			}
++			public Object convertValue(String value, Type type) {
++				return null;
++			}
++		}).isDeferred(), equalTo(true));
++	}
++
++	@Test
++	public void shouldReportIfParameterConvertersShouldNotBeDeferred() {
++		ensureThat(new ParameterConverters().isDeferred(), equalTo(false));
++	}
++	
++}
+Index: core/jbehave-core/src/behaviour/java/org/jbehave/scenario/steps/CandidateStepBehaviour.java
+===================================================================
+--- core/jbehave-core/src/behaviour/java/org/jbehave/scenario/steps/CandidateStepBehaviour.java	(revision 1579)
++++ core/jbehave-core/src/behaviour/java/org/jbehave/scenario/steps/CandidateStepBehaviour.java	Mon Mar 15 20:33:11 GMT 2010
+@@ -16,9 +16,11 @@
+ import java.beans.Introspector;
+ import java.beans.MethodDescriptor;
+ import java.lang.reflect.Method;
++import java.lang.reflect.Type;
+ import java.util.HashMap;
+ import java.util.List;
+ import java.util.Map;
++import java.util.Date;
+ 
+ import org.jbehave.scenario.annotations.Given;
+ import org.jbehave.scenario.annotations.When;
+@@ -27,6 +29,7 @@
+ import org.jbehave.scenario.reporters.ScenarioReporter;
+ import org.jbehave.scenario.steps.CandidateStep.StartingWordNotFound;
+ import org.junit.Test;
++import org.junit.Assert;
+ 
+ import com.thoughtworks.paranamer.BytecodeReadingParanamer;
+ import com.thoughtworks.paranamer.CachingParanamer;
+@@ -165,8 +168,48 @@
+         candidateStep.createFrom(tableRow, "When windows on the 1,2,3 floors").perform();
+         ensureThat(((List<?>) someSteps.args).toString(), equalTo(asList("1", "2", "3").toString()));
+     }
+-    
+-    @Test
++
++	@Test
++	public void shouldConvertArgsOnCreateUsingNormalParameterConverter() throws Exception {
++
++		final Date expectedDate = new Date();
++        SomeSteps someSteps = new SomeSteps();
++		ParameterConverters parameterConverters = new ParameterConverters(new ParameterConverters.DeferredParameterConverter() {
++			public boolean accept(Type type) {
++				return true;
++			}
++
++			public Object convertValue(String value, Type type) {
++				return expectedDate;
++			}
++		});
++        CandidateStep candidateStep = new CandidateStep("I haven't washed the windows since $date",
++        		DEFAULT_PRIORITY, WHEN, SomeSteps.methodFor("aMethodACustomParameter"), someSteps, PATTERN_BUILDER, parameterConverters, startingWords);
++        candidateStep.createFrom(tableRow, "When I haven't washed the windows since 15/07/00");
++
++		ensureThat((Date) someSteps.args, equalTo(expectedDate));
++	}
++
++	@Test
++	public void shouldNotConvertArgsOnCreateUsingDeferredParameterConverter() throws Exception {
++		
++        SomeSteps someSteps = new SomeSteps();                                                                                                   
++		ParameterConverters parameterConverters = new ParameterConverters(new ParameterConverters.DeferredParameterConverter() {
++			public boolean accept(Type type) {
++				return true;
++			}
++
++			public Object convertValue(String value, Type type) {
++				Assert.fail("DeferredParameterConverter was invoked on step creation");
++				return null;
++			}
++		});
++        CandidateStep candidateStep = new CandidateStep("I haven't washed the windows since $date",
++        		DEFAULT_PRIORITY, WHEN, SomeSteps.methodFor("aMethodACustomParameter"), someSteps, PATTERN_BUILDER, parameterConverters, startingWords);
++        candidateStep.createFrom(tableRow, "When I haven't washed the windows since 15/07/00");
++	}
++
++    @Test
+     public void shouldMatchMethodParametersByAnnotatedNamesInNaturalOrder() throws Exception {
+     	AnnotationNamedParameterSteps steps = new AnnotationNamedParameterSteps();
+         CandidateStep candidateStep = new CandidateStep("I live on the $ith floor but some call it the $nth",
+Index: core/jbehave-core/src/behaviour/java/org/jbehave/scenario/steps/SomeSteps.java
+===================================================================
+--- core/jbehave-core/src/behaviour/java/org/jbehave/scenario/steps/SomeSteps.java	(revision 1488)
++++ core/jbehave-core/src/behaviour/java/org/jbehave/scenario/steps/SomeSteps.java	Mon Mar 15 19:54:31 GMT 2010
+@@ -6,6 +6,7 @@
+ import java.beans.MethodDescriptor;
+ import java.lang.reflect.Method;
+ import java.util.List;
++import java.util.Date;
+ 
+ import org.jbehave.scenario.definition.ExamplesTable;
+ 
+@@ -69,6 +70,10 @@
+         this.args = args;
+     }
+ 
++	public void aMethodACustomParameter(Date args) {
++		this.args = args; 
++	}
++
+     public static Method methodFor(String methodName) throws IntrospectionException {
+         BeanInfo beanInfo = Introspector.getBeanInfo(SomeSteps.class);
+         for (MethodDescriptor md : beanInfo.getMethodDescriptors()) {

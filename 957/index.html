@@ -1,0 +1,2082 @@
+<!DOCTYPE html><html class="mozilla"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>[JBEHAVE-957] Support for accented letters in step pattern placeholder names - jira.codehaus.org</title>
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<link rel="shortcut icon" href="index_files/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://jira.codehaus.org/osd.jsp" title="[JBEHAVE-957] Support for accented letters in step pattern placeholder names - jira.codehaus.org">
+
+    
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+<link type="text/css" rel="stylesheet" href="index_files/batch.css" media="all">
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="index_files/batch-1.css" media="all">
+<script type="text/javascript" src="index_files/batch.js"></script><style type="text/css"></style>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="index_files/batch-1.js"></script>
+<script type="text/javascript" src="index_files/jira.webresources_calendar-en.js"></script>
+<script type="text/javascript" src="index_files/com.atlassian.administraticksearch-webresources.js"></script>
+
+<script type="text/javascript" src="index_files/shortcuts.js"></script>
+
+
+    
+    
+    
+    <meta name="decorator" content="atl.general">
+    <meta id="isNavigator" name="isNavigator" content="true">
+    <meta name="ajs-user.search.mode" content="basic">
+    <meta name="ajs-issue-search-help-title" content="Searching for Issues">
+    <meta name="ajs-issue-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Searching+for+Issues">
+    <meta name="ajs-advanced-search-help-title" content="Performing Advanced Searches">
+    <meta name="ajs-advanced-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Advanced+Searching">
+    
+</head>
+<body data-aui-version="5.1.8" id="jira" class="aui-layout aui-theme-default ka ajax-issue-search-and-view page-type-navigator navigator-issue-only" data-version="6.1.6">
+<div id="page">
+    <header id="header" style="display:none" role="banner">
+        
+
+
+
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+
+<fieldset class="parameters hidden dont-default-focus">
+    <input title="tzdetect.pref.tzid" value="America/Chicago" type="hidden">
+    <input title="tzdetect.pref.tzname" value="(GMT-06:00) Chicago" type="hidden">
+    <input title="tzdetect.pref.tzoffset" value="(GMT-06:00)" type="hidden">
+    <input title="tzdetect.pref.tzdst" value="true" type="hidden">
+    <input title="tzdetect.pref.nothanks" value="" type="hidden">
+</fieldset>
+<nav data-aui-responsive="true" class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class="aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-haspopup="true" tabindex="0"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link nav-link-local"><a href="https://jira.codehaus.org/" class="aui-dropdown2-radio interactive checked" title="https://jira.codehaus.org/"><span class="nav-link-label">jira.codehaus.org</span></a></li><li class="nav-link"><a href="http://jira.sonarsource.com/" class="aui-dropdown2-radio interactive" title="http://jira.sonarsource.com/"><span class="nav-link-label">SonarSource</span></a></li><li class="nav-link"><a href="http://docs.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://docs.codehaus.org/"><span class="nav-link-label">Codehaus</span></a></li><li class="nav-link"><a href="http://xircles.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://xircles.codehaus.org"><span class="nav-link-label">Xircles</span></a></li></ul></div></div><script><!--
+/* Script removed by snapshot save */
+--></script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://jira.codehaus.org/secure/MyJiraHome.jspa"><img data-aui-responsive-header-index="0" src="urn:download-error:http://www.codehaus.org/codehaus-small.gif" alt="jira.codehaus.org"></a></h1><ul style="width: auto;" class="aui-nav">
+
+
+
+
+<li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/Dashboard.jspa" id="home_link" accesskey="d" title="View and manage your dashboards" aria-haspopup="true" aria-owns="home_link-content">Dashboards</a><div id="home_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="home_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="/Old_JBehave_Issues/index.html" id="browse_link" accesskey="p" title="View recent projects and browse a list of projects" aria-haspopup="true" aria-owns="browse_link-content">Projects</a><div id="browse_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="browse_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/IssueNavigator.jspa" id="find_link" accesskey="i" title="Search for issues and view recent issues" aria-haspopup="true" aria-owns="find_link-content">Issues</a><div id="find_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="find_link"></div></li>
+<li style="display: none;"><a id="aui-responsive-header-dropdown-trigger-0" class="aui-dropdown2-trigger" aria-owns="aui-responsive-header-dropdown-content-0" aria-haspopup="true" href="#">More<span class="icon aui-icon-dropdown"></span></a><div id="aui-responsive-header-dropdown-content-0" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul id="aui-responsive-header-dropdown-list-0"></ul></div></div></li></ul></div><div class="aui-header-secondary"><ul class="aui-nav"><li>
+    <form action="https://jira.codehaus.org/secure/QuickSearch.jspa" method="post" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" class="search" title="Quick Search ( Type '/' )" placeholder="Quick Search" name="searchString" accesskey="q" type="text">
+        <input class="hidden" value="Search" type="submit">
+    </form>
+</li>
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger" aria-haspopup="true" aria-owns="system-help-menu-content" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank" title="Help"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a id="view_help" class="interactive" title="Goto the online documentation for JIRA" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank">Online Help</a>
+                                </li>
+                                                            <li>
+                                    <a id="keyshortscuthelp" class="interactive" title="Get more information about JIRA's Keyboard Shortcuts ( Type '?' )" href="https://jira.codehaus.org/secure/ViewKeyboardShortcuts%21default.jspa" target="_blank">Keyboard Shortcuts</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_about" class="interactive" title="Get more information about JIRA" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_credits" class="interactive" title="See who did what" href="https://jira.codehaus.org/secure/JiraCreditsPage%21default.jspa" target="_blank">JIRA Credits</a>
+                                </li>
+                                                            <li>
+                                    <a id="whats-new-menu-link" class="interactive" href="https://docs.atlassian.com/jira/docs-061/whatsnew/iframe">What?s New</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a class="aui-nav-link login-link" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-957">Log In</a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <div style="position: absolute; right: 20em; top: -2em">
+  <a href="https://xircles.codehaus.org/signup">Signup</a>
+</div>
+</div>
+
+
+    <section id="content" role="main">
+        
+    
+
+    <div class="issue-container ">
+                                    <div id="issue-content" class="issue-edit-form">
+                    <header id="stalker" class="issue-header js-stalker">
+                        <div class="issue-header-content"><header class="aui-page-header"><div class="aui-page-header-inner"><div class="aui-page-header-image"><span id="10680" class="aui-avatar aui-avatar-large aui-avatar-project"><span class="aui-avatar-inner"><img id="project-avatar" alt="JBehave" src="index_files/projectavatar.png"></span></span></div><!-- .aui-page-header-image --><div class="aui-page-header-main"><ol class="aui-nav aui-nav-breadcrumbs"><li><a id="project-name-val" href="/Old_JBehave_Issues/index.html">JBehave</a></li><li><a class="issue-link" data-issue-key="JBEHAVE-957" href="#" id="key-val" rel="149812">JBEHAVE-957</a></li></ol><h1 id="summary-val">Support for accented letters in step pattern placeholder names</h1></div><!-- .aui-page-header-main --><div class="aui-page-header-actions"><div id="issue-header-pager"></div></div><!-- .aui-page-header-actions --></div><!-- .aui-page-header-inner --></header><!-- .aui-page-header --><div class="command-bar"><div class="ops-cont"><div class="ops-menus aui-toolbar"><div class="toolbar-split toolbar-split-left"><ul id="opsbar-ops-login-lnk_container" class="toolbar-group pluggable-ops"><li class="toolbar-item"><a id="ops-login-lnk" style="display:none" title="Log In" class="toolbar-trigger" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-957"><span class="trigger-label">Log In</span></a></li></ul><ul id="opsbar-opsbar-operations" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-transitions" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-admin" class="toolbar-group pluggable-ops"></ul></div><div class="toolbar-split toolbar-split-right"><ul id="opsbar-jira.issue.tools" style="display:none" class="toolbar-group pluggable-ops"><li class="toolbar-item toolbar-dropdown"><div><a href="#" id="viewissue-export" title="Export this issue in another format" data-hide-on-scroll=".split-view .issue-container" data-contain-to-window="true" class="toolbar-trigger  js-default-dropdown"><span class="icon icon-export viewissue-export"></span> <span class="dropdown-text">Export</span><span class="icon drop-menu"></span></a><div class="aui-list hidden"><ul class="aui-list-section aui-first aui-last"><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-xml/JBEHAVE-957/JBEHAVE-957.xml" class="aui-list-item-link" id="jira.issueviews:issue-xml"><span class="trigger-label">XML</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-word/JBEHAVE-957/JBEHAVE-957.doc" class="aui-list-item-link" id="jira.issueviews:issue-word"><span class="trigger-label">Word</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-html/JBEHAVE-957/JBEHAVE-957.html" class="aui-list-item-link" id="jira.issueviews:issue-html"><span class="trigger-label">Printable</span></a></li></ul></div></div></li></ul></div></div></div></div></div>
+                    </header>
+                    <div class="issue-body-content">
+                        <div class="aui-group issue-body"><div class="aui-item issue-main-column"><div id="details-module" class="module toggle-wrap"><div id="details-module_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Details</h2></div><div class="mod-content">
+
+
+
+
+<ul id="issuedetails" class="property-list two-cols">
+    <li class="item">
+        <div class="wrap">
+            <strong class="name">Type:</strong>
+            <span id="type-val" class="value">
+                                <img alt="Improvement" src="index_files/improvement.png" title="Improvement - An improvement or enhancement to an existing feature or task." height="16" width="16"> Improvement
+            </span>
+        </div>
+    </li>
+    <li class="item item-right">
+        <div class="wrap">
+            <strong class="name">Status:</strong>
+            <span id="status-val" class="value">
+                                
+
+<img src="index_files/resolved.png" alt="Resolved" title="Resolved - A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed." height="16" width="16"> Resolved
+            </span>
+                    </div>
+    </li>
+            <li class="item">
+            <div class="wrap">
+                <strong class="name">Priority:</strong>
+                <span id="priority-val" class="value">
+                                        <img alt="Major" src="index_files/major.png" title="Major - Major loss of function." height="16" width="16"> Major
+                </span>
+            </div>
+        </li>
+                                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Resolution:</strong>
+                <span id="resolution-val" class="value resolved">
+                                     Fixed
+                                </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Affects Version/s:</strong>
+                <span id="versions-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="versions-field">
+                                                            <span title="3.8 ">3.8</span>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Fix Version/s:</strong>
+                <span id="fixfor-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="fixVersions-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/fixforversion/19035" title="3.9 ">3.9</a>,                                                            <a href="/Old_JBehave_Issues/index.html/fixforversion/18652" title="eclipse-1.0 ">eclipse-1.0</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Component/s:</strong>
+                <span id="components-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="components-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/component/11086" title="Core ">Core</a>,                                                            <a href="/Old_JBehave_Issues/index.html/component/15582" title="Eclipse Support ">Eclipse Support</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                    <li class="item full-width">
+            <div class="wrap" id="wrap-labels">
+                <strong class="name">Labels:</strong>
+                    <div class="labels-wrap value">
+            <span class="labels" id="labels-149812-value">None</span>
+                </div>
+            </div>
+        </li>
+                <li class="item full-width">
+            <div class="wrap">
+                <strong class="name">Environment:</strong>
+                <div id="environment-val" class="value">
+                                  Multi language
+      
+                </div>
+            </div>
+        </li>
+    </ul>
+
+<div id="customfieldmodule">
+    <div class="aui-tabs horizontal-tabs" id="customfield-tabs">
+                    <div id="customfield-panel-1" class="tabs-pane active-pane">
+                        <ul class="property-list">
+                                                <li id="rowForcustomfield_10210" class="item">
+                        <div class="wrap">
+                            <strong title="Number of attachments " class="name">Number of attachments :</strong>
+                            <div id="customfield_10210-val" class="value type-attachments" data-fieldtype="attachments" data-fieldtypecompletekey="com.atlassian.jira.toolkit:attachments">
+                                    9
+
+                            </div>
+                        </div>
+                    </li>
+                                        </ul>
+        </div>
+        </div></div>
+</div></div><div id="descriptionmodule" class="module toggle-wrap"><div id="descriptionmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Description</h2></div><div class="mod-content"><div id="description-val" class="field-ignore-highlight">
+    <div class="user-content-block">
+                    <p>As it seems JBehave does not support multilanguage for parameter names.</p>
+
+<p>Unfortunately this Jira is not configured for umlauts, so I cannot paste the text into this ticket. See the first attached screenshot please for how the step looks like with umlauts.</p>
+
+<p>JBehave does not like the parameter names containing umlauts since they contain non-ASCII characters.</p>
+
+<p>This applies both to the Eclipse plugin and the core execution.</p>
+
+<p>Please see the attached screenshots which illustrate the problem.</p>
+
+<p>Can you please fix that so that umlauts are supported in JBehave parameter names?</p>
+            </div>
+</div>
+</div></div><div id="attachmentmodule" class="module toggle-wrap"><div id="attachmentmodule_heading" class="mod-header"><ul class="ops"><li class="drop"><div class="aui-dd-parent"><a href="#" class="icon drop-menu js-default-dropdown" title="Options"><span>Options</span></a><div class="aui-dropdown-content aui-list"><ul id="attachment-sorting-options" class="aui-list-section aui-first"><li class="aui-list-item"><a id="attachment-sort-key-name" href="/Old_JBehave_Issues/957?attachmentSortBy=fileName#attachmentmodule" class="aui-list-checked aui-checked aui-list-item-link" title="viewissue.subtasks.tab.show.all.name"><span>Sort By Name</span></a></li><li class="aui-list-item"><a id="attachment-sort-key-date" href="/Old_JBehave_Issues/957?attachmentSortBy=dateTime#attachmentmodule" class="aui-list-checked aui-list-item-link" title="Sort By Date"><span>Sort By Date</span></a></li></ul><ul id="attachment-sorting-order-options" class="aui-list-section"><li class="aui-list-item"><a id="attachment-sort-direction-asc" href="/Old_JBehave_Issues/957?attachmentOrder=asc#attachmentmodule" class="aui-list-checked aui-checked aui-list-item-link" title="Ascending"><span>Ascending</span></a></li><li class="aui-list-item"><a id="attachment-sort-direction-desc" href="/Old_JBehave_Issues/957?attachmentOrder=desc#attachmentmodule" class="aui-list-checked aui-list-item-link" title="Descending"><span>Descending</span></a></li></ul><ul id="attachment-manage-options" class="aui-list-section aui-last"><li class="aui-list-item"><a id="aszip" href="/Old_JBehave_Issues/attachmentzip/149812.zip" class="aui-list-checked aui-list-item-link" title="Download all attachments as a ZIP file"><span>Download All</span></a></li></ul></div></div></li></ul><h2 class="toggle-title">Attachments</h2></div><div class="mod-content">
+            <ol id="file_attachments" class="item-attachments">
+                            <li class="attachment-content">
+                                            <div class="attachment-thumb">
+                            <a href="/Old_JBehave_Issues/attachment/64390/de_trader_is_alerted_of_status.gesch%FCchte" draggable="true" data-downloadurl="${fileAttachment.mimetype}:de_trader_is_alerted_of_status.geschüchte:/Old_JBehave_Issues/attachment/64390/de_trader_is_alerted_of_status.gesch%FCchte">
+                                    <img src="index_files/file.gif" alt="File" height="16" border="0" width="16">
+                            </a>
+                        </div>
+                        <dl>
+                                <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/64390/de_trader_is_alerted_of_status.gesch%FCchte" title="Latest  07/Nov/13 6:34 AM - Otto Diesel" draggable="true" data-downloadurl="${attachment.mimetype}:de_trader_is_alerted_of_status.geschüchte:/Old_JBehave_Issues/attachment/64390/de_trader_is_alerted_of_status.gesch%FCchte">de_trader_is_alerted_of_status.geschüchte
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2013-11-07T06:34-0600">07/Nov/13 6:34 AM</time></dd>
+    <dd class="attachment-size">1 kB</dd>
+    <dd class="attachment-author">Otto Diesel</dd>
+                        </dl>
+                                    </li>
+                            <li class="attachment-content">
+                                            <div class="attachment-thumb">
+                            <a href="/Old_JBehave_Issues/attachment/64389/DeSteps.java" draggable="true" data-downloadurl="text/plain:DeSteps.java:/Old_JBehave_Issues/attachment/64389/DeSteps.java">
+                                    <img src="index_files/java.gif" alt="Java Source File" height="16" border="0" width="16">
+                            </a>
+                        </div>
+                        <dl>
+                                <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/64389/DeSteps.java" title="Latest  07/Nov/13 6:34 AM - Otto Diesel" draggable="true" data-downloadurl="text/plain:DeSteps.java:/Old_JBehave_Issues/attachment/64389/DeSteps.java">DeSteps.java
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2013-11-07T06:34-0600">07/Nov/13 6:34 AM</time></dd>
+    <dd class="attachment-size">2 kB</dd>
+    <dd class="attachment-author">Otto Diesel</dd>
+                        </dl>
+                                    </li>
+                            <li class="attachment-content">
+                                            <div class="attachment-thumb">
+                            <a href="/Old_JBehave_Issues/attachment/64388/DeStories.java" draggable="true" data-downloadurl="text/plain:DeStories.java:/Old_JBehave_Issues/attachment/64388/DeStories.java">
+                                    <img src="index_files/java.gif" alt="Java Source File" height="16" border="0" width="16">
+                            </a>
+                        </div>
+                        <dl>
+                                <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/64388/DeStories.java" title="Latest  07/Nov/13 6:34 AM - Otto Diesel" draggable="true" data-downloadurl="text/plain:DeStories.java:/Old_JBehave_Issues/attachment/64388/DeStories.java">DeStories.java
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2013-11-07T06:34-0600">07/Nov/13 6:34 AM</time></dd>
+    <dd class="attachment-size">0.6 kB</dd>
+    <dd class="attachment-author">Otto Diesel</dd>
+                        </dl>
+                                    </li>
+                            <li class="attachment-content">
+                                            <div class="attachment-thumb">
+                            <a href="/Old_JBehave_Issues/attachment/64399/JBEHAVE-957.patch" draggable="true" data-downloadurl="${fileAttachment.mimetype}:JBEHAVE-957.patch:/Old_JBehave_Issues/attachment/64399/JBEHAVE-957.patch">
+                                    <img src="index_files/text.gif" alt="Text File" height="16" border="0" width="16">
+                            </a>
+                        </div>
+                        <dl>
+                                <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/64399/JBEHAVE-957.patch" title="Latest  08/Nov/13 3:52 AM - Otto Diesel" draggable="true" data-downloadurl="${attachment.mimetype}:JBEHAVE-957.patch:/Old_JBehave_Issues/attachment/64399/JBEHAVE-957.patch">JBEHAVE-957.patch
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2013-11-08T03:52-0600">08/Nov/13 3:52 AM</time></dd>
+    <dd class="attachment-size">5 kB</dd>
+    <dd class="attachment-author">Otto Diesel</dd>
+                        </dl>
+                                    </li>
+                    </ol>
+                <ol id="attachment_thumbnails" class="item-attachments">
+                            <li class="attachment-content" draggable="true" data-downloadurl="image/png:language-problem-1.png:/Old_JBehave_Issues/attachment/64362/language-problem-1.png">
+                    <div class="attachment-thumb">
+                        <a class="gallery" rel="gallery" href="/Old_JBehave_Issues/attachment/64362/language-problem-1.png" title="language-problem-1.png - Latest 06/Nov/13 10:13 AM - Otto Diesel">
+                            <img src="index_files/_thumb_64362.png" alt="" height="34" width="200">
+                        </a>
+                    </div>
+                    <dl>
+                        <dt>
+                                                            <span class="blender"></span>
+                                                        <a class="attachment-title" href="/Old_JBehave_Issues/attachment/64362/language-problem-1.png" title="language-problem-1.png - Latest 06/Nov/13 10:13 AM - Otto Diesel">language-problem-1.png</a>
+                        </dt>
+                        <dd class="attachment-size">10 kB</dd>
+                        <dd class="attachment-date"><time class="livestamp" datetime="2013-11-06T10:13-0600">06/Nov/13 10:13 AM</time></dd>
+                    </dl>
+                </li>
+                            <li class="attachment-content" draggable="true" data-downloadurl="image/png:language-problem-2.png:/Old_JBehave_Issues/attachment/64363/language-problem-2.png">
+                    <div class="attachment-thumb">
+                        <a class="gallery" rel="gallery" href="/Old_JBehave_Issues/attachment/64363/language-problem-2.png" title="language-problem-2.png - Latest 06/Nov/13 10:13 AM - Otto Diesel">
+                            <img src="index_files/_thumb_64363.png" alt="" height="12" width="200">
+                        </a>
+                    </div>
+                    <dl>
+                        <dt>
+                                                            <span class="blender"></span>
+                                                        <a class="attachment-title" href="/Old_JBehave_Issues/attachment/64363/language-problem-2.png" title="language-problem-2.png - Latest 06/Nov/13 10:13 AM - Otto Diesel">language-problem-2.png</a>
+                        </dt>
+                        <dd class="attachment-size">3 kB</dd>
+                        <dd class="attachment-date"><time class="livestamp" datetime="2013-11-06T10:13-0600">06/Nov/13 10:13 AM</time></dd>
+                    </dl>
+                </li>
+                            <li class="attachment-content" draggable="true" data-downloadurl="image/png:language-problem-3.png:/Old_JBehave_Issues/attachment/64364/language-problem-3.png">
+                    <div class="attachment-thumb">
+                        <a class="gallery" rel="gallery" href="/Old_JBehave_Issues/attachment/64364/language-problem-3.png" title="language-problem-3.png - Latest 06/Nov/13 10:13 AM - Otto Diesel">
+                            <img src="index_files/_thumb_64364.png" alt="" height="3" width="200">
+                        </a>
+                    </div>
+                    <dl>
+                        <dt>
+                                                            <span class="blender"></span>
+                                                        <a class="attachment-title" href="/Old_JBehave_Issues/attachment/64364/language-problem-3.png" title="language-problem-3.png - Latest 06/Nov/13 10:13 AM - Otto Diesel">language-problem-3.png</a>
+                        </dt>
+                        <dd class="attachment-size">2 kB</dd>
+                        <dd class="attachment-date"><time class="livestamp" datetime="2013-11-06T10:13-0600">06/Nov/13 10:13 AM</time></dd>
+                    </dl>
+                </li>
+                            <li class="attachment-content" draggable="true" data-downloadurl="image/png:language-problem-4.png:/Old_JBehave_Issues/attachment/64365/language-problem-4.png">
+                    <div class="attachment-thumb">
+                        <a class="gallery" rel="gallery" href="/Old_JBehave_Issues/attachment/64365/language-problem-4.png" title="language-problem-4.png - Latest 06/Nov/13 10:13 AM - Otto Diesel">
+                            <img src="index_files/_thumb_64365.png" alt="" height="34" width="200">
+                        </a>
+                    </div>
+                    <dl>
+                        <dt>
+                                                            <span class="blender"></span>
+                                                        <a class="attachment-title" href="/Old_JBehave_Issues/attachment/64365/language-problem-4.png" title="language-problem-4.png - Latest 06/Nov/13 10:13 AM - Otto Diesel">language-problem-4.png</a>
+                        </dt>
+                        <dd class="attachment-size">13 kB</dd>
+                        <dd class="attachment-date"><time class="livestamp" datetime="2013-11-06T10:13-0600">06/Nov/13 10:13 AM</time></dd>
+                    </dl>
+                </li>
+                            <li class="attachment-content" draggable="true" data-downloadurl="image/png:language-problem-5.png:/Old_JBehave_Issues/attachment/64366/language-problem-5.png">
+                    <div class="attachment-thumb">
+                        <a class="gallery" rel="gallery" href="/Old_JBehave_Issues/attachment/64366/language-problem-5.png" title="language-problem-5.png - Latest 06/Nov/13 10:13 AM - Otto Diesel">
+                            <img src="index_files/_thumb_64366.png" alt="" height="15" width="200">
+                        </a>
+                    </div>
+                    <dl>
+                        <dt>
+                                                            <span class="blender"></span>
+                                                        <a class="attachment-title" href="/Old_JBehave_Issues/attachment/64366/language-problem-5.png" title="language-problem-5.png - Latest 06/Nov/13 10:13 AM - Otto Diesel">language-problem-5.png</a>
+                        </dt>
+                        <dd class="attachment-size">5 kB</dd>
+                        <dd class="attachment-date"><time class="livestamp" datetime="2013-11-06T10:13-0600">06/Nov/13 10:13 AM</time></dd>
+                    </dl>
+                </li>
+                    </ol>
+    </div></div><div id="activitymodule" class="module toggle-wrap"><div id="activitymodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Activity</h2></div><div class="mod-content">
+
+
+
+
+
+
+
+
+
+
+    <div class="tabwrap tabs2" style="display:none">
+                    <div class="sortwrap">
+                                    <a class="icon icon-sort-down ajax-activity-content" rel="nofollow" href="/Old_JBehave_Issues/957?actionOrder=desc" title="Ascending order - Click to sort in descending order"><span>Ascending order - Click to sort in descending order</span></a>
+                            </div>
+                <ul id="issue-tabs" class="tabs horizontal">
+                                
+            <li class="active" id="all-tabpanel" data-id="all-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel" data-label="All" data-href="/browse/JBEHAVE-957">
+                            <strong>All</strong>
+                        </li>
+                                
+            <li data-id="comment-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel" data-label="Comments" data-href="/browse/JBEHAVE-957">
+                            <a class="ajax-activity-content" id="comment-tabpanel" href="/Old_JBehave_Issues/957"><strong>Comments</strong></a>
+                        </li>
+                                
+            <li data-id="worklog-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:worklog-tabpanel" data-label="Work Log" data-href="/browse/JBEHAVE-957">
+                            <a class="ajax-activity-content" id="worklog-tabpanel" href="/Old_JBehave_Issues/957"><strong>Work Log</strong></a>
+                        </li>
+                                
+            <li data-id="changehistory-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:changehistory-tabpanel" data-label="History" data-href="/browse/JBEHAVE-957">
+                            <a class="ajax-activity-content" id="changehistory-tabpanel" href="/Old_JBehave_Issues/957"><strong>History</strong></a>
+                        </li>
+                                
+            <li data-id="activity-stream-issue-tab" data-key="com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab" data-label="Activity" data-href="/browse/JBEHAVE-957">
+                            <a class="ajax-activity-content" id="activity-stream-issue-tab" href="/Old_JBehave_Issues/957"><strong>Activity</strong></a>
+                        </li>
+                </ul>
+    </div>
+    <div class="issuePanelWrapper">
+        <div class="issuePanelProgress"></div>
+        <div class="issuePanelContainer" id="issue_actions_container">
+                                    
+
+<div class="issue-data-block" id="changehistory-442794">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_442794">
+                                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="changehistoryauthor_442794" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ made changes  - <span class="date" title="06/Nov/13 10:14 AM"><time class="livestamp" datetime="2013-11-06T10:14-0600">06/Nov/13 10:14 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_442794" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <thead>
+                    <tr>
+                        <th width="20%">Field</th>
+                        <th width="40%">Original Value</th>
+                        <th width="40%">New Value</th>
+                    </tr>
+                </thead>
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Description
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                As it seems JBehave does not support multilanguage for parameter names.
+<br>
+
+<br>
+I tried this:
+<br>
+
+<br>
+{code}
+<br>
+    @When("ich $betrag $wÃ¤hrung von Konto $lastkonto zu $gutschriftskonto $ausfÃ¼hrung Ã¼bertrage mit Zahlungsinfo $info")
+<br>
+    public void transfer(@Named("betrag") String amount, 
+<br>
+            @Named("wÃ¤hrung") String currency, 
+<br>
+            @Named("lastkonto") String debitAccount, 
+<br>
+            @Named("gutschriftskonto") String creditAccount, 
+<br>
+            @Named("ausfÃ¼hrung") String execution, 
+<br>
+            @Named("info") String paymentInformation) {
+<br>
+        // TODO
+<br>
+    }
+<br>
+{code}
+<br>
+
+<br>
+JBehave does not like the parameter names "wÃ¤hrung" and "ausfÃ¼hrung" since they contain non-ASCII characters.
+<br>
+
+<br>
+This applies both to the Eclipse plugin and the core execution.
+<br>
+
+<br>
+Please see the attached screenshots which illustrate the problem.
+<br>
+
+<br>
+Can you please fix that so that umlauts are supported in JBehave parameter names?
+                                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               As it seems JBehave does not support multilanguage for parameter names.
+<br>
+
+<br>
+I tried this:
+<br>
+
+<br>
+{code}
+<br>
+    @When("ich $betrag $wÃ¤hrung von Konto $lastkonto zu $gutschriftskonto $ausfÃ¼hrung Ã¼bertrage mit Zahlungsinfo $info")
+<br>
+    public void transfer(@Named("betrag") String amount, 
+<br>
+            @Named("wÃƒÂ¤hrung") String currency, 
+<br>
+            @Named("lastkonto") String debitAccount, 
+<br>
+            @Named("gutschriftskonto") String creditAccount, 
+<br>
+            @Named("ausfÃƒÂ¼hrung") String execution, 
+<br>
+            @Named("info") String paymentInformation) {
+<br>
+        // TODO
+<br>
+    }
+<br>
+{code}
+<br>
+
+<br>
+JBehave does not like the parameter names "wÃƒÂ¤hrung" and "ausfÃƒÂ¼hrung" since they contain non-ASCII characters.
+<br>
+
+<br>
+This applies both to the Eclipse plugin and the core execution.
+<br>
+
+<br>
+Please see the attached screenshots which illustrate the problem.
+<br>
+
+<br>
+Can you please fix that so that umlauts are supported in JBehave parameter names?
+                                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-442795">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_442795">
+                                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="changehistoryauthor_442795" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ made changes  - <span class="date" title="06/Nov/13 10:16 AM"><time class="livestamp" datetime="2013-11-06T10:16-0600">06/Nov/13 10:16 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_442795" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Description
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                As it seems JBehave does not support multilanguage for parameter names.
+<br>
+
+<br>
+I tried this:
+<br>
+
+<br>
+{code}
+<br>
+    @When("ich $betrag $wÃ¤hrung von Konto $lastkonto zu $gutschriftskonto $ausfÃ¼hrung Ã¼bertrage mit Zahlungsinfo $info")
+<br>
+    public void transfer(@Named("betrag") String amount, 
+<br>
+            @Named("wÃƒÂ¤hrung") String currency, 
+<br>
+            @Named("lastkonto") String debitAccount, 
+<br>
+            @Named("gutschriftskonto") String creditAccount, 
+<br>
+            @Named("ausfÃƒÂ¼hrung") String execution, 
+<br>
+            @Named("info") String paymentInformation) {
+<br>
+        // TODO
+<br>
+    }
+<br>
+{code}
+<br>
+
+<br>
+JBehave does not like the parameter names "wÃƒÂ¤hrung" and "ausfÃƒÂ¼hrung" since they contain non-ASCII characters.
+<br>
+
+<br>
+This applies both to the Eclipse plugin and the core execution.
+<br>
+
+<br>
+Please see the attached screenshots which illustrate the problem.
+<br>
+
+<br>
+Can you please fix that so that umlauts are supported in JBehave parameter names?
+                                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               As it seems JBehave does not support multilanguage for parameter names.
+<br>
+
+<br>
+Unfortunately this Jira is not configured for umlauts, so I cannot paste the text into this ticket. See the first attached screenshot please for how the step looks like with umlauts.
+<br>
+
+<br>
+JBehave does not like the parameter names containing umlauts since they contain non-ASCII characters.
+<br>
+
+<br>
+This applies both to the Eclipse plugin and the core execution.
+<br>
+
+<br>
+Please see the attached screenshots which illustrate the problem.
+<br>
+
+<br>
+Can you please fix that so that umlauts are supported in JBehave parameter names?
+                                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335306" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335306&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335306" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335306_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335306_verbose subText"><span class="date user-tz" title="06/Nov/13 1:03 PM"><time class="livestamp" datetime="2013-11-06T13:03-0600">06/Nov/13 1:03 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Otto, </p>
+
+<p>umlauts should be supported like any other unicode character.    What you need to ensure is that the encoding is the same, and set to UTF-8.</p>
+
+<p>See the encoding section of: <a href="http://jbehave.org/reference/stable/stories-in-your-language.html" class="external-link" rel="nofollow">http://jbehave.org/reference/stable/stories-in-your-language.html</a></p>
+
+<p>The i18n example <a href="https://github.com/jbehave/jbehave-core/tree/master/examples/i18n" class="external-link" rel="nofollow">https://github.com/jbehave/jbehave-core/tree/master/examples/i18n</a> shows that non-ASCII chars are supported.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335306_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335306_concise subText"><span class="date user-tz" title="06/Nov/13 1:03 PM"><time class="livestamp" datetime="2013-11-06T13:03-0600">06/Nov/13 1:03 PM</time></span></span>                    Hi Otto,  
+
+ umlauts should be supported like any other unicode character.    What you need to ensure is that the encoding is the same, and set to UTF-8. 
+
+ See the encoding section of:  http://jbehave.org/reference/stable/stories-in-your-language.html  
+
+ The i18n example  https://github.com/jbehave/jbehave-core/tree/master/examples/i18n  shows that non-ASCII chars are supported.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335324" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335324&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335324" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335324_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335324_verbose subText"><span class="date user-tz" title="07/Nov/13 2:00 AM"><time class="livestamp" datetime="2013-11-07T02:00-0600">07/Nov/13 2:00 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>If you want to add a DE example to the ones in the i18n we can prove that DE chars are properly supported. </p>
+
+<p>Feel free to provide a patch that we can pull.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335324_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335324_concise subText"><span class="date user-tz" title="07/Nov/13 2:00 AM"><time class="livestamp" datetime="2013-11-07T02:00-0600">07/Nov/13 2:00 AM</time></span></span>                    If you want to add a DE example to the ones in the i18n we can prove that DE chars are properly supported.  
+
+ Feel free to provide a patch that we can pull.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335330" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335330&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335330" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335330_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335330_verbose subText"><span class="date user-tz" title="07/Nov/13 3:06 AM"><time class="livestamp" datetime="2013-11-07T03:06-0600">07/Nov/13 3:06 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hello Mauro,</p>
+
+<p>the encoding for the story and the Java step is already set to UTF-8.</p>
+
+<p>So it does not seem to be this cause. Besides this, umlauts are supported for step names by JBehave as long as they are not used in parameter names.</p>
+
+<p>In your i18n example which you mention above, umlauts are not used in the parameter names, so it does not prove that umlauts are supported in parameter names.</p>
+
+<p>Ok, I will then add a DE example to reproduce this bug.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335330_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335330_concise subText"><span class="date user-tz" title="07/Nov/13 3:06 AM"><time class="livestamp" datetime="2013-11-07T03:06-0600">07/Nov/13 3:06 AM</time></span></span>                    Hello Mauro, 
+
+ the encoding for the story and the Java step is already set to UTF-8. 
+
+ So it does not seem to be this cause. Besides this, umlauts are supported for step names by JBehave as long as they are not used in parameter names. 
+
+ In your i18n example which you mention above, umlauts are not used in the parameter names, so it does not prove that umlauts are supported in parameter names. 
+
+ Ok, I will then add a DE example to reproduce this bug.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335344" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335344&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335344" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335344_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335344_verbose subText"><span class="date user-tz" title="07/Nov/13 6:34 AM"><time class="livestamp" datetime="2013-11-07T06:34-0600">07/Nov/13 6:34 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I had to contribute the files like this since I could not create a patch and did not know which username and password I need for pushing it into the repository. </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335344_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335344_concise subText"><span class="date user-tz" title="07/Nov/13 6:34 AM"><time class="livestamp" datetime="2013-11-07T06:34-0600">07/Nov/13 6:34 AM</time></span></span>                    I had to contribute the files like this since I could not create a patch and did not know which username and password I need for pushing it into the repository.               </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-442920">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_442920">
+                                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="changehistoryauthor_442920" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ made changes  - <span class="date" title="07/Nov/13 6:34 AM"><time class="livestamp" datetime="2013-11-07T06:34-0600">07/Nov/13 6:34 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_442920" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/64388/DeStories.java">DeStories.java</a>
+                                                                                                                       <span class="hist-value">[    64388
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/64389/DeSteps.java">DeSteps.java</a>
+                                                                                                                       <span class="hist-value">[    64389
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/64390/de_trader_is_alerted_of_status.gesch%C3%BCchte">de_trader_is_alerted_of_status.geschüchte</a>
+                                                                                                                       <span class="hist-value">[    64390
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335345" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335345&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335345" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335345_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335345_verbose subText"><span class="date user-tz" title="07/Nov/13 6:36 AM"><time class="livestamp" datetime="2013-11-07T06:36-0600">07/Nov/13 6:36 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I attaches these files so that you can copy it into "jbehave-core/tree/master/examples/i18n" and can reproduce the issue and hopefully fix the bug:</p>
+
+<ul>
+	<li>DeStories.java</li>
+	<li>de_trader_is_alerted_of_status.geschüchte</li>
+	<li>DeSteps.java</li>
+</ul>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335345_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335345_concise subText"><span class="date user-tz" title="07/Nov/13 6:36 AM"><time class="livestamp" datetime="2013-11-07T06:36-0600">07/Nov/13 6:36 AM</time></span></span>                    I attaches these files so that you can copy it into "jbehave-core/tree/master/examples/i18n" and can reproduce the issue and hopefully fix the bug: 
+
+ 
+	 DeStories.java 
+	 de_trader_is_alerted_of_status.geschüchte 
+	 DeSteps.java 
+ 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335372" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335372&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335372" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335372_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335372_verbose subText"><span class="date user-tz" title="07/Nov/13 6:14 PM"><time class="livestamp" datetime="2013-11-07T18:14-0600">07/Nov/13 6:14 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>The attachments have exactly the same encoding issues.   Please contribute the patch via Git.</p>
+
+<p>To contribute a patch via github, you create your own account and fork the jbehave-core repo. </p>
+
+<p><a href="http://jbehave.org/reference/stable/how-to-contribute.html" class="external-link" rel="nofollow">http://jbehave.org/reference/stable/how-to-contribute.html</a></p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335372_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335372_concise subText"><span class="date user-tz" title="07/Nov/13 6:14 PM"><time class="livestamp" datetime="2013-11-07T18:14-0600">07/Nov/13 6:14 PM</time></span></span>                    The attachments have exactly the same encoding issues.   Please contribute the patch via Git. 
+
+ To contribute a patch via github, you create your own account and fork the jbehave-core repo.  
+
+  http://jbehave.org/reference/stable/how-to-contribute.html  
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335392" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335392&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335392" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335392_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335392_verbose subText"><span class="date user-tz" title="08/Nov/13 3:33 AM"><time class="livestamp" datetime="2013-11-08T03:33-0600">08/Nov/13 3:33 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I think you can easily fix that ecoding issues in a pragmatic way.</p>
+
+<p>But since it is important to me I will have to do it this way you want.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335392_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335392_concise subText"><span class="date user-tz" title="08/Nov/13 3:33 AM"><time class="livestamp" datetime="2013-11-08T03:33-0600">08/Nov/13 3:33 AM</time></span></span>                    I think you can easily fix that ecoding issues in a pragmatic way. 
+
+ But since it is important to me I will have to do it this way you want.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335396" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335396&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335396" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335396_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335396_verbose subText"><span class="date user-tz" title="08/Nov/13 3:52 AM"><time class="livestamp" datetime="2013-11-08T03:52-0600">08/Nov/13 3:52 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I couldn't yet manage to fork it, but I hope the patch file will do the job (see attachment).</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335396_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335396_concise subText"><span class="date user-tz" title="08/Nov/13 3:52 AM"><time class="livestamp" datetime="2013-11-08T03:52-0600">08/Nov/13 3:52 AM</time></span></span>                    I couldn't yet manage to fork it, but I hope the patch file will do the job (see attachment).              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-443011">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_443011">
+                                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="changehistoryauthor_443011" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ made changes  - <span class="date" title="08/Nov/13 3:52 AM"><time class="livestamp" datetime="2013-11-08T03:52-0600">08/Nov/13 3:52 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_443011" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/64399/JBEHAVE-957.patch">JBEHAVE-957.patch</a>
+                                                                                                                       <span class="hist-value">[    64399
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335408" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335408&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335408" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335408_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335408_verbose subText"><span class="date user-tz" title="08/Nov/13 8:32 AM"><time class="livestamp" datetime="2013-11-08T08:32-0600">08/Nov/13 8:32 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I spend a lot of time now doing what you demand from me so that you have it exacly as you want.</p>
+
+<p>The problem is that I cannot push it on the fork. It says: "https://github.com/OttoDiesel/jbehave-core.git: not authorized"</p>
+
+<p>I used my username and password which work when logging into the Github web page. But it did not work from Eclipse when I wanted to push it. I tried a lot of things and have googled a lot to find a solution.</p>
+
+<p>But: no success.</p>
+
+<p>Do you have an idea how I can solve this problem or are you willing to accept the patch I attached to this issue?</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335408_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335408_concise subText"><span class="date user-tz" title="08/Nov/13 8:32 AM"><time class="livestamp" datetime="2013-11-08T08:32-0600">08/Nov/13 8:32 AM</time></span></span>                    I spend a lot of time now doing what you demand from me so that you have it exacly as you want. 
+
+ The problem is that I cannot push it on the fork. It says: "https://github.com/OttoDiesel/jbehave-core.git: not authorized" 
+
+ I used my username and password which work when logging into the Github web page. But it did not work from Eclipse when I wanted to push it. I tried a lot of things and have googled a lot to find a solution. 
+
+ But: no success. 
+
+ Do you have an idea how I can solve this problem or are you willing to accept the patch I attached to this issue?              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335449" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335449&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335449" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335449_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335449_verbose subText"><span class="date user-tz" title="09/Nov/13 2:41 AM"><time class="livestamp" datetime="2013-11-09T02:41-0600">09/Nov/13 2:41 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Otto, </p>
+
+<p>In Github the workflow is:  </p>
+
+<p>1.  Login and clone repo, e.g. <a href="https://github.com/OttoDiesel/jbehave-core.git" class="external-link" rel="nofollow">https://github.com/OttoDiesel/jbehave-core.git</a><br>
+2.  git clone <a href="https://github.com/OttoDiesel/jbehave-core.git" class="external-link" rel="nofollow">https://github.com/OttoDiesel/jbehave-core.git</a><br>
+3.  commit patch to this repo<br>
+4.  git push</p>
+
+<p>Be aware that you cannot push from the repo you cloned from <a href="https://github.com/jbehave/jbehave-core.git" class="external-link" rel="nofollow">https://github.com/jbehave/jbehave-core.git</a>.</p>
+
+<p>That said, the problem is I think elsewhere.   Both the patch and the files do not render the DE chars correctly.  E.g.</p>
+
+<p>Kommentar: Eigentlich mÃ¼sste es "gehandelt" lauten, aber wir mÃ¶chten Umlaute mitÃ¼berprÃ¼fen.</p>
+
+<p>I have no way of knowing what 'Ã¼' is for example.  </p>
+
+<p>What you could do is replace them with Unicode notations \uxxxx and then I translate them back. </p>
+
+<p>A question:  I assume they render correctly for you in your files.   But when you create the patch, are they still rendered correctly?</p>
+
+<p>The reason I wanted to pull from Git is that Git does a much better job at handling encoding.</p>
+
+<p>Thanks </p>
+
+
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335449_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335449_concise subText"><span class="date user-tz" title="09/Nov/13 2:41 AM"><time class="livestamp" datetime="2013-11-09T02:41-0600">09/Nov/13 2:41 AM</time></span></span>                    Hi Otto,  
+
+ In Github the workflow is:   
+
+ 1.  Login and clone repo, e.g.  https://github.com/OttoDiesel/jbehave-core.git  
+2.  git clone  https://github.com/OttoDiesel/jbehave-core.git  
+3.  commit patch to this repo 
+4.  git push 
+
+ Be aware that you cannot push from the repo you cloned from  https://github.com/jbehave/jbehave-core.git . 
+
+ That said, the problem is I think elsewhere.   Both the patch and the files do not render the DE chars correctly.  E.g. 
+
+ Kommentar: Eigentlich mÃ¼sste es "gehandelt" lauten, aber wir mÃ¶chten Umlaute mitÃ¼berprÃ¼fen. 
+
+ I have no way of knowing what 'Ã¼' is for example.   
+
+ What you could do is replace them with Unicode notations \uxxxx and then I translate them back.  
+
+ A question:  I assume they render correctly for you in your files.   But when you create the patch, are they still rendered correctly? 
+
+ The reason I wanted to pull from Git is that Git does a much better job at handling encoding. 
+
+ Thanks  
+
+
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335549" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335549&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335549" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335549_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335549_verbose subText"><span class="date user-tz" title="11/Nov/13 4:22 AM"><time class="livestamp" datetime="2013-11-11T04:22-0600">11/Nov/13 4:22 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hello Mauro,</p>
+
+<p>I had the same problem with my browser concerning these umlauts.</p>
+
+<p>If you change browser encoding to UTF-8 you will see the umlauts correctly. The text files which I have attached are all encoded in UTF-8. Can you please try that?</p>
+
+<p>The files render correctly. Using Unicode notations seems not suitable for reproducing the issue since it cannot be applied in story files I think and because we want to use umlauts and no Unicode notations.</p>
+
+<p>I know the Github workflow now, but the problem is elsewhere. I cannot commit the patch to my repo because it says: "https://github.com/OttoDiesel/jbehave-core.git: not authorized"</p>
+
+<p>I wished you could help me on this. As I said, I tried a lot of things, none worked.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335549_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335549_concise subText"><span class="date user-tz" title="11/Nov/13 4:22 AM"><time class="livestamp" datetime="2013-11-11T04:22-0600">11/Nov/13 4:22 AM</time></span></span>                    Hello Mauro, 
+
+ I had the same problem with my browser concerning these umlauts. 
+
+ If you change browser encoding to UTF-8 you will see the umlauts correctly. The text files which I have attached are all encoded in UTF-8. Can you please try that? 
+
+ The files render correctly. Using Unicode notations seems not suitable for reproducing the issue since it cannot be applied in story files I think and because we want to use umlauts and no Unicode notations. 
+
+ I know the Github workflow now, but the problem is elsewhere. I cannot commit the patch to my repo because it says: "https://github.com/OttoDiesel/jbehave-core.git: not authorized" 
+
+ I wished you could help me on this. As I said, I tried a lot of things, none worked.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335558" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335558&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335558" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="cvgaviao" id="commentauthor_335558_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=cvgaviao"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Cristiano Gavião</a>
+ added a comment  - <span class="commentdate_335558_verbose subText"><span class="date user-tz" title="11/Nov/13 7:12 AM"><time class="livestamp" datetime="2013-11-11T07:12-0600">11/Nov/13 7:12 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Otto, seems that you didn't set the SHH keys. check how to set it here. <a href="https://help.github.com/articles/generating-ssh-keys" class="external-link" rel="nofollow">https://help.github.com/articles/generating-ssh-keys</a></p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="cvgaviao" id="commentauthor_335558_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=cvgaviao"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Cristiano Gavião</a>
+ added a comment  - <span class="commentdate_335558_concise subText"><span class="date user-tz" title="11/Nov/13 7:12 AM"><time class="livestamp" datetime="2013-11-11T07:12-0600">11/Nov/13 7:12 AM</time></span></span>                    Otto, seems that you didn't set the SHH keys. check how to set it here.  https://help.github.com/articles/generating-ssh-keys               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335560" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335560&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335560" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335560_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335560_verbose subText"><span class="date user-tz" title="11/Nov/13 7:47 AM"><time class="livestamp" datetime="2013-11-11T07:47-0600">11/Nov/13 7:47 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I cannot use SSH in our company since they block SSH communication. I also cannot go directly into the internet but have to use a company proxy.</p>
+
+<p>They have a very high security since it is a huge financial company using SVN. It is not so easy to contribute something to Github from my place of work.</p>
+
+<p>I will have to see if I can solve that somehow.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335560_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335560_concise subText"><span class="date user-tz" title="11/Nov/13 7:47 AM"><time class="livestamp" datetime="2013-11-11T07:47-0600">11/Nov/13 7:47 AM</time></span></span>                    I cannot use SSH in our company since they block SSH communication. I also cannot go directly into the internet but have to use a company proxy. 
+
+ They have a very high security since it is a huge financial company using SVN. It is not so easy to contribute something to Github from my place of work. 
+
+ I will have to see if I can solve that somehow.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335562" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335562&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335562" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335562_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335562_verbose subText"><span class="date user-tz" title="11/Nov/13 9:36 AM"><time class="livestamp" datetime="2013-11-11T09:36-0600">11/Nov/13 9:36 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Got the resources forcing UTF-8 encoding in the browser (but best to sort out the commit rights to Github from non-work locations for future contributions). </p>
+
+<p>Added the DE story to i18n example.   It is now working with two provisos: </p>
+
+<p>1. You cannot use non-standard coding chars in the $-prefix patterns.  These are technical internal variables that indicate placeholders and not part of the textual story.   You can use umlauts and other non-standard coding chars in the @Named annotations.  These can be reflected in the textual story.<br>
+2. I've removed the umlaut from the path of the file.   This is something that is outside the scope of JBehave. </p>
+
+<p>Please pull latest and verify it works for you.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335562_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335562_concise subText"><span class="date user-tz" title="11/Nov/13 9:36 AM"><time class="livestamp" datetime="2013-11-11T09:36-0600">11/Nov/13 9:36 AM</time></span></span>                    Got the resources forcing UTF-8 encoding in the browser (but best to sort out the commit rights to Github from non-work locations for future contributions).  
+
+ Added the DE story to i18n example.   It is now working with two provisos:  
+
+ 1. You cannot use non-standard coding chars in the $-prefix patterns.  These are technical internal variables that indicate placeholders and not part of the textual story.   You can use umlauts and other non-standard coding chars in the @Named annotations.  These can be reflected in the textual story. 
+2. I've removed the umlaut from the path of the file.   This is something that is outside the scope of JBehave.  
+
+ Please pull latest and verify it works for you.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-443331">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_443331">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_443331" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="11/Nov/13 9:37 AM"><time class="livestamp" datetime="2013-11-11T09:37-0600">11/Nov/13 9:37 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_443331" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               3.9
+                                                                                               <span class="hist-value">[    19035
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Affects Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                4.0
+                                                                                                <span class="hist-value">[    18486
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335652" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335652&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335652" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335652_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335652_verbose subText"><span class="date user-tz" title="13/Nov/13 4:21 AM"><time class="livestamp" datetime="2013-11-13T04:21-0600">13/Nov/13 4:21 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>It seems not to be working as I requested. My motivation for this issue was not to provide JBheave a new regression test but to reproduce my issue so that it might be fixed. If you had refused to fix that, I would not had bothered providing sources so that it can be reproduced.</p>
+
+<p>I still cannot use umlauts in parameter names, so it is not better than before to me.</p>
+
+<p>You changed the parameter name from "sümbol" (please change browser encoding to UTF-8 if you can't see the char correctly) to "symbol".</p>
+
+<p>But I inteded to use German paramter names. Sometimes German parameter names contain umlauts. I hoped you can make it work to use umlauts.</p>
+
+<p>In your changed German example the story writer will see English ASCII parameter names in a German step name. Is this good to mix two languages in a story file? I thinkt it is not optimal.</p>
+
+<p>Besides that I don't know exactly what you mean with "1. You cannot use non-standard...". Why can't it be used there? Is Java prohibiting it or JBehave? Even if I use @Named("sümbol"), it does not work.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="otto_diesel" id="commentauthor_335652_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=otto_diesel"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Otto Diesel</a>
+ added a comment  - <span class="commentdate_335652_concise subText"><span class="date user-tz" title="13/Nov/13 4:21 AM"><time class="livestamp" datetime="2013-11-13T04:21-0600">13/Nov/13 4:21 AM</time></span></span>                    It seems not to be working as I requested. My motivation for this issue was not to provide JBheave a new regression test but to reproduce my issue so that it might be fixed. If you had refused to fix that, I would not had bothered providing sources so that it can be reproduced. 
+
+ I still cannot use umlauts in parameter names, so it is not better than before to me. 
+
+ You changed the parameter name from "sümbol" (please change browser encoding to UTF-8 if you can't see the char correctly) to "symbol". 
+
+ But I inteded to use German paramter names. Sometimes German parameter names contain umlauts. I hoped you can make it work to use umlauts. 
+
+ In your changed German example the story writer will see English ASCII parameter names in a German step name. Is this good to mix two languages in a story file? I thinkt it is not optimal. 
+
+ Besides that I don't know exactly what you mean with "1. You cannot use non-standard...". Why can't it be used there? Is Java prohibiting it or JBehave? Even if I use @Named("sümbol"), it does not work.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335671" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335671&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335671" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335671_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335671_verbose subText"><span class="date user-tz" title="13/Nov/13 5:13 PM"><time class="livestamp" datetime="2013-11-13T17:13-0600">13/Nov/13 5:13 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>You asked to verify that parameter names could be used with umlauts, and that is done.  </p>
+
+<p>The $-prefixed name used in the patterns are not parameter names, just placeholders, and bear no connection to names (although most people tend to use the same name).   </p>
+
+<p>Currently, the regex-based pattern parser does not recognise the chars with accents as words (regex \w).    Can you provide an example of a regex that matches words with accents in German? </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335671_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335671_concise subText"><span class="date user-tz" title="13/Nov/13 5:13 PM"><time class="livestamp" datetime="2013-11-13T17:13-0600">13/Nov/13 5:13 PM</time></span></span>                    You asked to verify that parameter names could be used with umlauts, and that is done.   
+
+ The $-prefixed name used in the patterns are not parameter names, just placeholders, and bear no connection to names (although most people tend to use the same name).    
+
+ Currently, the regex-based pattern parser does not recognise the chars with accents as words (regex \w).    Can you provide an example of a regex that matches words with accents in German?               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-335700" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/957?focusedCommentId=335700&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-335700" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335700_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335700_verbose subText"><span class="date user-tz" title="14/Nov/13 10:42 AM"><time class="livestamp" datetime="2013-11-14T10:42-0600">14/Nov/13 10:42 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I've found the "Letter" category which can be used to match any ASCII unicode letter (<a href="http://www.regular-expressions.info/unicode.html#category" class="external-link" rel="nofollow">http://www.regular-expressions.info/unicode.html#category</a>). </p>
+
+<p>So the accented chars can be allowed in step patterns placeholder names. </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_335700_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_335700_concise subText"><span class="date user-tz" title="14/Nov/13 10:42 AM"><time class="livestamp" datetime="2013-11-14T10:42-0600">14/Nov/13 10:42 AM</time></span></span>                    I've found the "Letter" category which can be used to match any ASCII unicode letter ( http://www.regular-expressions.info/unicode.html#category ).  
+
+ So the accented chars can be allowed in step patterns placeholder names.               </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-443515">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_443515">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_443515" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="14/Nov/13 10:42 AM"><time class="livestamp" datetime="2013-11-14T10:42-0600">14/Nov/13 10:42 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_443515" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Summary
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                No umlaut support for parameter names
+                                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               No umlaut support for step pattern placeholder names
+                                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Assignee
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Mauro Talevi
+                                                                                               <span class="hist-value">[    maurotalevi
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-443516">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_443516">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_443516" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="14/Nov/13 10:43 AM"><time class="livestamp" datetime="2013-11-14T10:43-0600">14/Nov/13 10:43 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_443516" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Summary
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                No umlaut support for step pattern placeholder names
+                                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Support for accented letters in step pattern placeholder names
+                                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Issue Type
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Bug
+                                                                                                <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Improvement
+                                                                                               <span class="hist-value">[    4
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-443531">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_443531">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_443531" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="14/Nov/13 5:55 PM"><time class="livestamp" datetime="2013-11-14T17:55-0600">14/Nov/13 5:55 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_443531" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Component/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Eclipse Support
+                                                                                                <span class="hist-value">[    15582
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-443532">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_443532">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_443532" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="14/Nov/13 6:00 PM"><time class="livestamp" datetime="2013-11-14T18:00-0600">14/Nov/13 6:00 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_443532" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               eclipse-1.0
+                                                                                               <span class="hist-value">[    18652
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Component/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Eclipse Support
+                                                                                               <span class="hist-value">[    15582
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-443533">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_443533">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_443533" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="14/Nov/13 6:00 PM"><time class="livestamp" datetime="2013-11-14T18:00-0600">14/Nov/13 6:00 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_443533" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Open
+                                                                                                <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Resolved
+                                                                                               <span class="hist-value">[    5
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Resolution
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Fixed
+                                                                                               <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             </div>
+    </div>
+</div></div></div><div id="viewissuesidebar" class="aui-item issue-side-column"><div id="peoplemodule" class="module toggle-wrap"><div id="peoplemodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">People</h2></div><div class="mod-content"><ul class="item-details" id="peopledetails">
+    <li class="people-details">
+                <dl>
+            <dt>Assignee:</dt>
+            <dd>
+                <span id="assignee-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_assignee_maurotalevi" rel="maurotalevi">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-2.png"></span></span>
+            Mauro Talevi
+        </span>
+    </span>
+                            </dd>
+        </dl>
+                        <dl>
+            <dt>Reporter:</dt>
+            <dd>
+                <span id="reporter-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_reporter_otto_diesel" rel="otto_diesel">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-3.png"></span></span>
+            Otto Diesel
+        </span>
+    </span>
+            </dd>
+        </dl>
+                    </li>
+</ul>
+    <ul class="item-details">
+        <li>
+                            <dl>
+                    <dt>Votes:</dt>
+                    <dd>
+                                                                            <span id="vote-data" class="aui-badge vote-state-off">0</span>
+                        
+                                                                                                        <span id="vote-label" title="You have to be logged in to vote for an issue.">Vote for this issue</span>
+                                            </dd>
+                </dl>
+                                        <dl>
+                    <dt>Watchers:</dt>
+                    <dd>
+                                                                        
+                                                                            <span id="watcher-data" class="aui-badge watch-state-off">3</span>
+                        
+                                                                                <span id="watch-label" title="You have to be logged in to watch an issue.">Start watching this issue</span>
+                                            </dd>
+                </dl>
+                    </li>
+    </ul>
+</div></div><div id="datesmodule" class="module toggle-wrap"><div id="datesmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Dates</h2></div><div class="mod-content"><ul class="item-details">
+    <li>
+            <dl class="dates">
+            <dt>Created:</dt>
+            <dd class="date user-tz" title="06/Nov/13 10:13 AM">
+
+                <span data-name="Created" id="create-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2013-11-06T10:13-0600">06/Nov/13 10:13 AM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Updated:</dt>
+            <dd class="date user-tz" title="14/Nov/13 6:00 PM">
+
+                <span data-name="Updated" id="updated-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2013-11-14T18:00-0600">14/Nov/13 6:00 PM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Resolved:</dt>
+            <dd class="date user-tz" title="14/Nov/13 6:00 PM">
+
+                <span data-name="Resolved" id="resolved-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2013-11-14T18:00-0600">14/Nov/13 6:00 PM</time>                                                             </span>
+            </dd>
+        </dl>
+        </li>
+</ul>
+</div></div></div></div>
+                    </div>
+                </div>
+                        </div>
+
+    <fieldset class="hidden parameters">
+        <input title="autocompleteEnabled" value="true" type="hidden">
+    </fieldset>
+    
+    </section>
+    <footer id="footer" role="contentinfo">
+        
+        
+
+
+
+<div class="footer-body">
+    <ul>
+        <li>
+                        <a href="http://www.atlassian.com/software/jira">Atlassian JIRA</a>
+
+                                                    
+                        
+            <span id="footer-build-information">(v6.1.6#6162-<span title="7af547ce7c84dbb7c1e345a65437ed7b85efffa2" data-commit-id="7af547ce7c84dbb7c1e345a65437ed7b85efffa2}">sha1:7af547c</span>)</span>
+        </li>
+        <li>
+            <a id="about-link" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+        </li>
+        <li>
+                                    <a id="footer-report-problem-link" href="https://jira.codehaus.org/secure/CreateIssue%21default.jspa">Report a problem</a>
+        </li>
+    </ul>
+            <ul>
+            <li class="licensemessage">
+                                    Powered by a free Atlassian <a href="http://www.atlassian.com/software/jira">JIRA</a> open source license for Codehaus. Try JIRA - <a href="http://www.atlassian.com/software/jira">bug tracking software</a> for <i>your</i> team.
+
+                            </li>
+        </ul>
+    </div>
+
+<form id="jira_request_timing_info" class="dont-default-focus">
+	<fieldset class="parameters hidden">
+
+
+
+
+		<input title="jira.session.expiry.in.mins" value="299" type="hidden">
+
+	</fieldset>
+</form>
+<!--
+	                 
+	          
+	               
+	                 
+	        CONCURRENT REQUESTS : 3
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input title="loggedInUser" value="" type="hidden">
+    <input title="ajaxTimeout" value="The call to the JIRA server did not complete within the timeout period.  We are unsure of the result of this operation." type="hidden">
+    <input title="JiraVersion" value="6.1.6" type="hidden">
+    <input title="ajaxUnauthorised" value="You are not authorised to perform this operation.  Please log in." type="hidden">
+    <input title="baseURL" value="https://jira.codehaus.org:443" type="hidden">
+    <input title="ajaxCommsError" value="The JIRA server could not be contacted.  This may be a temporary glitch or the server may be down." type="hidden">
+    <input title="ajaxServerError" value="The JIRA server was contacted but has returned an error response. We are unsure of the result of this operation." type="hidden">
+    <input title="ajaxErrorCloseDialog" value="Close this dialog and press refresh in your browser" type="hidden">
+    <input title="ajaxErrorDialogHeading" value="Communications Breakdown" type="hidden">
+
+    <input title="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost." type="hidden">
+    <input title="dirtyDialogMessage" value="You have entered new data in this dialog. If you navigate away from this dialog without first saving your data, the changes will be lost. Click cancel to return to the dialog." type="hidden">
+    <input title="keyType" value="Type" type="hidden">
+    <input title="keyThen" value="then" type="hidden">
+    <input title="dblClickToExpand" value="Double click to expand" type="hidden">
+    <input title="actions" value="Actions" type="hidden">
+    <input title="removeItem" value="Remove" type="hidden">
+    <input title="workflow" value="Workflow" type="hidden">
+    <input title="labelNew" value="New Label" type="hidden">
+    <input title="issueActionsHint" value="Begin typing for available operations or press down to see all" type="hidden">
+    <input title="closelink" value="Close" type="hidden">
+    <input title="dotOperations" value="Operations" type="hidden">
+    <input title="dotLoading" value="Loading..." type="hidden">
+    <input title="frotherSuggestions" value="Suggestions" type="hidden">
+    <input title="frotherNomatches" value="No Matches" type="hidden">
+    <input title="multiselectVersionsError" value="{0} is not a valid version." type="hidden">
+    <input title="multiselectComponentsError" value="{0} is not a valid component." type="hidden">
+    <input title="multiselectGenericError" value="The value {0} is invalid." type="hidden">
+</fieldset>
+
+    </footer>
+</div>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:void(0);" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:void(0);" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div class="navigator-sidebar collapsed ui-popout ui-popout-detached ui-popout-collapsed" id="navigator-sidebar"><a class="toggle-filter-panel" href="#" title="Dock the filters panel ([)"></a></div><div style="display: none;" class="jira-dialog box-shadow" id="edit-issue-dialog"><div class="jira-dialog-content"></div></div><div style="display: none;" class="jira-dialog box-shadow" id="create-subtask-dialog"><div class="jira-dialog-content"></div></div></body></html>

@@ -1,0 +1,18 @@
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/steps/StepCreator.java b/jbehave-core/src/main/java/org/jbehave/core/steps/StepCreator.java
+index dc67853..f4b0c18 100755
+--- a/jbehave-core/src/main/java/org/jbehave/core/steps/StepCreator.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/steps/StepCreator.java
+@@ -147,12 +147,12 @@ public class StepCreator {
+             String[] parameterNames, String[] parameters, Map<String, String> namedParameters) {
+         int annotatedNamePosition = parameterPosition(annotationNames, position);
+         int parameterNamePosition = parameterPosition(parameterNames, position);
++        stepText = replaceParameterValue(stepText, position, types, parameters);
+         if (annotatedNamePosition != -1) {
+             stepText = replaceParameterValue(stepText, namedParameters, annotationNames[position]);
+         } else if (parameterNamePosition != -1) {
+             stepText = replaceParameterValue(stepText, namedParameters, parameterNames[position]);
+         }
+-        stepText = replaceParameterValue(stepText, position, types, parameters);
+         return stepText;
+     }
+ 

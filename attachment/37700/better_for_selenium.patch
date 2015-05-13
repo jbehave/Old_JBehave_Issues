@@ -1,0 +1,140 @@
+Index: jbehave-core/src/java/org/jbehave/scenario/JUnitScenario.java
+===================================================================
+--- jbehave-core/src/java/org/jbehave/scenario/JUnitScenario.java	(revision 983)
++++ jbehave-core/src/java/org/jbehave/scenario/JUnitScenario.java	(working copy)
+@@ -49,6 +49,11 @@
+         this.delegate.runScenario();
+     }
+ 
++
++    public void addSteps(CandidateSteps... steps) {
++        this.delegate.addSteps(steps);
++    }
++
+     /**
+      * A JUnit 3-compatibile runnable method which simply delegates
+      * {@link RunnableScenario#runScenario()}
+Index: jbehave-core/src/java/org/jbehave/scenario/steps/StepMonitor.java
+===================================================================
+--- jbehave-core/src/java/org/jbehave/scenario/steps/StepMonitor.java	(revision 983)
++++ jbehave-core/src/java/org/jbehave/scenario/steps/StepMonitor.java	(working copy)
+@@ -13,4 +13,5 @@
+ 
+     void convertedValueOfType(String value, Type type, Object converted, Class<?> converterClass);
+ 
++    void doingStep(String narrative);
+ }
+Index: jbehave-core/src/java/org/jbehave/scenario/steps/StepsConfiguration.java
+===================================================================
+--- jbehave-core/src/java/org/jbehave/scenario/steps/StepsConfiguration.java	(revision 983)
++++ jbehave-core/src/java/org/jbehave/scenario/steps/StepsConfiguration.java	(working copy)
+@@ -48,6 +48,10 @@
+         return monitor;
+     }
+ 
++    public void setMonitor(StepMonitor monitor) {
++         this.monitor = monitor;
++    }
++
+     public ParameterConverters getParameterConverters() {
+         return parameterConverters;
+     }
+Index: jbehave-core/src/java/org/jbehave/scenario/steps/CandidateStep.java
+===================================================================
+--- jbehave-core/src/java/org/jbehave/scenario/steps/CandidateStep.java	(revision 983)
++++ jbehave-core/src/java/org/jbehave/scenario/steps/CandidateStep.java	(working copy)
+@@ -77,6 +77,7 @@
+         return new Step() {
+             public StepResult perform() {
+                 try {
++                    stepMonitor.doingStep(stepAsString);
+                     method.invoke(steps, args);
+                     return StepResult.success(stepAsString);
+                 } catch (Throwable t) {
+Index: jbehave-core/src/java/org/jbehave/scenario/steps/PrintStreamStepMonitor.java
+===================================================================
+--- jbehave-core/src/java/org/jbehave/scenario/steps/PrintStreamStepMonitor.java	(revision 983)
++++ jbehave-core/src/java/org/jbehave/scenario/steps/PrintStreamStepMonitor.java	(working copy)
+@@ -32,4 +32,6 @@
+         output.println(message);
+     }
+ 
++    public void doingStep(String narrative) {
++    }
+ }
+Index: jbehave-core/src/java/org/jbehave/scenario/AbstractScenario.java
+===================================================================
+--- jbehave-core/src/java/org/jbehave/scenario/AbstractScenario.java	(revision 983)
++++ jbehave-core/src/java/org/jbehave/scenario/AbstractScenario.java	(working copy)
+@@ -5,6 +5,10 @@
+ import org.jbehave.scenario.parser.ScenarioNameResolver;
+ import org.jbehave.scenario.steps.CandidateSteps;
+ 
++import java.util.List;
++import java.util.ArrayList;
++import java.util.Arrays;
++
+ /**
+  * <p>
+  * Abstract implementation of Scenario which is primarily intended as a base
+@@ -40,7 +44,7 @@
+ 
+     private final Configuration configuration;
+     private final ScenarioRunner scenarioRunner;
+-    private final CandidateSteps[] candidateSteps;
++    private final List<CandidateSteps> candidateSteps = new ArrayList<CandidateSteps>();
+     private final Class<? extends RunnableScenario> scenarioClass;
+ 
+     public AbstractScenario(Class<? extends RunnableScenario> scenarioClass, CandidateSteps... candidateSteps) {
+@@ -57,12 +61,17 @@
+         this.scenarioClass = scenarioClass;
+         this.configuration = configuration;
+         this.scenarioRunner = scenarioRunner;
+-        this.candidateSteps = candidateSteps;
++        this.candidateSteps.addAll(Arrays.asList(candidateSteps));
+     }
+ 
+     public void runScenario() throws Throwable {
+         StoryDefinition story = configuration.forDefiningScenarios().loadScenarioDefinitionsFor(scenarioClass);
+-        scenarioRunner.run(story, configuration, candidateSteps);
++        CandidateSteps[] steps = new CandidateSteps[candidateSteps.size()];
++        candidateSteps.toArray(steps);
++        scenarioRunner.run(story, configuration, steps);
+     }
+ 
++    public void addSteps(CandidateSteps... steps) {
++        this.candidateSteps.addAll(Arrays.asList(steps));
++    }
+ }
+Index: jbehave-core/src/java/org/jbehave/scenario/RunnableScenario.java
+===================================================================
+--- jbehave-core/src/java/org/jbehave/scenario/RunnableScenario.java	(revision 983)
++++ jbehave-core/src/java/org/jbehave/scenario/RunnableScenario.java	(working copy)
+@@ -1,5 +1,7 @@
+ package org.jbehave.scenario;
+ 
++import org.jbehave.scenario.steps.CandidateSteps;
++
+ /**
+  * <p>
+  * Scenario represents the main interface to run a scenario.
+@@ -17,4 +19,6 @@
+ 
+     void runScenario() throws Throwable;
+ 
++    void addSteps(CandidateSteps... steps);
++
+ }
+Index: examples/gameoflife/src/scenario/com/lunivore/gameoflife/ICanToggleACell.java
+===================================================================
+--- examples/gameoflife/src/scenario/com/lunivore/gameoflife/ICanToggleACell.java	(revision 983)
++++ examples/gameoflife/src/scenario/com/lunivore/gameoflife/ICanToggleACell.java	(working copy)
+@@ -21,6 +21,7 @@
+                 return new ClasspathScenarioDefiner(new UnderscoredCamelCaseResolver(), new PatternScenarioParser(this),
+                         classLoader);
+             }
+-        }, new GridSteps());
++        });
++        addSteps(new GridSteps());
+     }
+ }

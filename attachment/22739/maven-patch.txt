@@ -1,0 +1,902 @@
+Index: plugins/maven/src/main/java/jbehave/mojo/BehaviourRunnerMojo.java
+===================================================================
+--- plugins/maven/src/main/java/jbehave/mojo/BehaviourRunnerMojo.java	(revision 0)
++++ plugins/maven/src/main/java/jbehave/mojo/BehaviourRunnerMojo.java	(revision 0)
+@@ -0,0 +1,56 @@
++package jbehave.mojo;
++
++import java.net.MalformedURLException;
++import java.util.List;
++
++import jbehave.core.Run;
++import jbehave.core.behaviour.Behaviours;
++
++import org.apache.maven.plugin.AbstractMojo;
++import org.apache.maven.plugin.MojoExecutionException;
++import org.apache.maven.plugin.MojoFailureException;
++
++/**
++ * Mojo to run Behaviours via Main CLI
++ * 
++ * @author Mauro Talevi
++ * @goal run
++ */
++public class BehaviourRunnerMojo  extends AbstractMojo {
++    
++    /**
++     * Compile classpath.
++     *
++     * @parameter expression="${project.compileClasspathElements}"
++     * @required
++     * @readonly
++     */
++    List classpathElements;
++    
++    /**
++     * @parameter
++     * @required true
++     */
++    String behavioursClassName;
++    
++    private Run runner = new Run(System.out);
++    
++    public void execute() throws MojoExecutionException, MojoFailureException {
++        try {
++            getLog().debug("Running behaviours "+ behavioursClassName);
++            Behaviours behaviours = loadBehaviours(behavioursClassName);
++            Class[] classes = behaviours.getBehaviours();
++            for (int i = 0; i < classes.length; i++) {
++                runner.verifyBehaviour(classes[i]);
++            }            
++        } catch (Exception e) {
++            throw new MojoExecutionException("Failed to verify behaviours", e);
++        }
++    }
++
++    private Behaviours loadBehaviours(String name) throws MalformedURLException, InstantiationException, IllegalAccessException {        
++        BehavioursClassLoader cl = new BehavioursClassLoader(classpathElements);
++        return cl.newBehaviours(name);
++    }
++
++}
+Index: plugins/maven/src/main/java/jbehave/mojo/BehavioursClassLoader.java
+===================================================================
+--- plugins/maven/src/main/java/jbehave/mojo/BehavioursClassLoader.java	(revision 0)
++++ plugins/maven/src/main/java/jbehave/mojo/BehavioursClassLoader.java	(revision 0)
+@@ -0,0 +1,68 @@
++package jbehave.mojo;
++
++import java.io.File;
++import java.net.MalformedURLException;
++import java.net.URL;
++import java.net.URLClassLoader;
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.Iterator;
++import java.util.List;
++
++import jbehave.core.behaviour.Behaviours;
++
++/**
++ * Extends URLClassLoader to instantiate Behaviours.
++ * 
++ * @author Mauro Talevi
++ */
++public class BehavioursClassLoader extends URLClassLoader {
++
++    public BehavioursClassLoader(List classpathElements)
++            throws MalformedURLException {
++        super(toClasspathURLs(classpathElements), Behaviours.class
++                .getClassLoader());
++    }
++
++    public BehavioursClassLoader(List classpathElements, ClassLoader parent)
++            throws MalformedURLException {
++        super(toClasspathURLs(classpathElements), parent);
++    }
++
++    /**
++     * Loads and instantiates a Behaviours class
++     * 
++     * @param behavioursName
++     *            the name of the Behaviours
++     * @return A Behaviours instance
++     * @throws IllegalAccessException
++     */
++    public Behaviours newBehaviours(String behavioursName)
++            throws InstantiationException, IllegalAccessException {
++        String behavioursNotFound = "The behaviours " + behavioursName
++                + " was not found in " + Arrays.toString(getURLs());
++        try {
++            return (Behaviours) loadClass(behavioursName).newInstance();
++        } catch (ClassCastException e) {
++            throw new RuntimeException(behavioursName + " is not a "
++                    + Behaviours.class.getName(), e);
++        } catch (ClassNotFoundException e) {
++            throw new RuntimeException(behavioursNotFound, e);
++        } catch (NoClassDefFoundError e) {
++            throw new RuntimeException(behavioursNotFound, e);
++        }
++    }
++
++    protected static URL[] toClasspathURLs(List classpathElements)
++            throws MalformedURLException {
++        List urls = new ArrayList();
++        if (classpathElements != null) {
++            for (Iterator i = classpathElements.iterator(); i.hasNext();) {
++                String classpathElement = (String) i.next();
++                urls.add(new File(classpathElement).toURL());
++            }
++        }
++        return (URL[]) urls.toArray(new URL[urls.size()]);
++    }
++
++}
+Index: plugins/maven/src/it/test1/pom.xml
+===================================================================
+--- plugins/maven/src/it/test1/pom.xml	(revision 0)
++++ plugins/maven/src/it/test1/pom.xml	(revision 0)
+@@ -0,0 +1,42 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++
++	<groupId>org.codehaus.jbehave</groupId>
++	<artifactId>jbehave-maven-plugin-it-test1</artifactId>
++	<version>1.0-SNAPSHOT</version>
++	<packaging>jar</packaging>
++	<name>jBehave Maven Plugin Integration Test 1</name>
++
++	<dependencies>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-core</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++	</dependencies>
++	
++	<build>
++		<sourceDirectory>${basedir}/../src/main</sourceDirectory>
++		<plugins>
++			<plugin>
++				<groupId>org.codehaus.jbehave</groupId>
++				<artifactId>jbehave-maven-plugin</artifactId>
++				<executions>				
++					<execution>
++						<id>run</id>
++						<phase>integration-test</phase>
++						<configuration>
++							<behavioursClassName>jbehave.it.ItBehaviours</behavioursClassName>
++						</configuration>		
++						<goals>
++							<goal>run</goal>
++						</goals>
++					</execution>
++				</executions>
++			</plugin>				
++		</plugins>
++	</build>
++
++</project>
+Index: plugins/maven/src/it/src/main/java/jbehave/it/ItBehaviours.java
+===================================================================
+--- plugins/maven/src/it/src/main/java/jbehave/it/ItBehaviours.java	(revision 0)
++++ plugins/maven/src/it/src/main/java/jbehave/it/ItBehaviours.java	(revision 0)
+@@ -0,0 +1,14 @@
++package jbehave.it;
++
++import jbehave.core.behaviour.Behaviours;
++
++public class ItBehaviours implements Behaviours {
++
++    public Class[] getBehaviours() {
++        return new Class[] {
++                jbehave.it.SampleBehaviour.class
++        };
++    }
++}
++
++
+Index: plugins/maven/src/it/src/main/java/jbehave/it/SampleBehaviour.java
+===================================================================
+--- plugins/maven/src/it/src/main/java/jbehave/it/SampleBehaviour.java	(revision 0)
++++ plugins/maven/src/it/src/main/java/jbehave/it/SampleBehaviour.java	(revision 0)
+@@ -0,0 +1,8 @@
++package jbehave.it;
++
++public class SampleBehaviour {
++
++    public void shouldDoSomething() {
++        System.out.println("Done something");
++    }
++}
+Index: plugins/maven/src/it/pom.xml
+===================================================================
+--- plugins/maven/src/it/pom.xml	(revision 0)
++++ plugins/maven/src/it/pom.xml	(revision 0)
+@@ -0,0 +1,16 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++
++	<groupId>org.codehaus.jbehave</groupId>
++	<artifactId>jbehave-maven-plugin-it</artifactId>
++	<version>1.0-SNAPSHOT</version>
++	<packaging>pom</packaging>
++	<name>jBehave Maven Plugin Integration Test Reactor</name>
++
++	<modules>
++		<module>test1</module>
++	</modules>
++
++</project>
+Index: plugins/maven/pom.xml
+===================================================================
+--- plugins/maven/pom.xml	(revision 0)
++++ plugins/maven/pom.xml	(revision 0)
+@@ -0,0 +1,26 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++	<parent>
++		<groupId>org.codehaus.jbehave</groupId>
++		<artifactId>jbehave-parent</artifactId>
++		<version>1.0-SNAPSHOT</version>
++	</parent>
++	<artifactId>jbehave-maven-plugin</artifactId>
++	<packaging>maven-plugin</packaging>
++	<name>jBehave Maven Plugin</name>
++
++	<dependencies>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-core</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++		<dependency>
++			<groupId>org.apache.maven</groupId>
++			<artifactId>maven-plugin-api</artifactId>
++			<version>2.0</version>
++		</dependency>
++	</dependencies>
++</project>
+Index: .project
+===================================================================
+--- .project	(revision 495)
++++ .project	(working copy)
+@@ -1,17 +1,23 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<projectDescription>
+-	<name>jbehave</name>
+-	<comment></comment>
+-	<projects>
+-	</projects>
+-	<buildSpec>
+-		<buildCommand>
+-			<name>org.eclipse.jdt.core.javabuilder</name>
+-			<arguments>
+-			</arguments>
+-		</buildCommand>
+-	</buildSpec>
+-	<natures>
+-		<nature>org.eclipse.jdt.core.javanature</nature>
+-	</natures>
+-</projectDescription>
++<?xml version="1.0" encoding="UTF-8"?>
++<projectDescription>
++	<name>jbehave</name>
++	<comment></comment>
++	<projects>
++	</projects>
++	<buildSpec>
++		<buildCommand>
++			<name>org.eclipse.jdt.core.javabuilder</name>
++			<arguments>
++			</arguments>
++		</buildCommand>
++		<buildCommand>
++			<name>org.maven.ide.eclipse.maven2Builder</name>
++			<arguments>
++			</arguments>
++		</buildCommand>
++	</buildSpec>
++	<natures>
++		<nature>org.eclipse.jdt.core.javanature</nature>
++		<nature>org.maven.ide.eclipse.maven2Nature</nature>
++	</natures>
++</projectDescription>
+Index: everything/pom.xml
+===================================================================
+--- everything/pom.xml	(revision 0)
++++ everything/pom.xml	(revision 0)
+@@ -0,0 +1,58 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<parent>
++		<artifactId>jbehave-parent</artifactId>
++		<groupId>org.codehaus.jbehave</groupId>
++		<version>1.0-SNAPSHOT</version>
++	</parent>
++	<modelVersion>4.0.0</modelVersion>
++	<artifactId>jbehave-behaviour-tests</artifactId>
++	<name>jBehave Behaviour Tests</name>
++	<version>1.0-SNAPSHOT</version>
++
++	<dependencies>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-core-behaviours</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-ant-behaviours</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-jmock-behaviours</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-junit-behaviours</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++	</dependencies>
++
++	<build>
++		<sourceDirectory>${basedir}/behaviour</sourceDirectory>
++		<plugins>
++			<plugin>
++				<groupId>org.codehaus.jbehave</groupId>
++				<artifactId>jbehave-maven-plugin</artifactId>
++				<configuration>
++					<behavioursClassName>jbehave.AllBehaviours</behavioursClassName>
++				</configuration>
++				<executions>
++					<execution>
++						<phase>integration-test</phase>
++						<goals>
++							<goal>run</goal>
++						</goals>
++					</execution>
++				</executions>
++			</plugin>
++		</plugins>
++	</build>
++</project>
+\ No newline at end of file
+Index: core/behaviours/pom.xml
+===================================================================
+--- core/behaviours/pom.xml	(revision 0)
++++ core/behaviours/pom.xml	(revision 0)
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<parent>
++		<artifactId>jbehave-parent</artifactId>
++		<groupId>org.codehaus.jbehave</groupId>
++		<version>1.0-SNAPSHOT</version>
++	</parent>
++	<modelVersion>4.0.0</modelVersion>
++	<artifactId>jbehave-core-behaviours</artifactId>
++	<name>jBehave Core Behaviours</name>
++	<version>1.0-SNAPSHOT</version>
++
++	<dependencies>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-core</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++	</dependencies>
++
++	<build>
++		<sourceDirectory>${basedir}/../behaviour</sourceDirectory>
++	</build>
++	
++</project>
+\ No newline at end of file
+Index: core/pom.xml
+===================================================================
+--- core/pom.xml	(revision 0)
++++ core/pom.xml	(revision 0)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <parent>
++    <artifactId>jbehave-parent</artifactId>
++    <groupId>org.codehaus.jbehave</groupId>
++    <version>1.0-SNAPSHOT</version>
++  </parent>
++  <modelVersion>4.0.0</modelVersion>
++  <artifactId>jbehave-core</artifactId>
++  <name>jBehave Core</name>
++  <version>1.0-SNAPSHOT</version>
++
++  <dependencies>
++  	<dependency>
++  		<groupId>net.sf.cotta</groupId>
++  		<artifactId>cotta</artifactId>
++  	</dependency>
++  </dependencies>
++
++</project>
+\ No newline at end of file
+Index: pom.xml
+===================================================================
+--- pom.xml	(revision 0)
++++ pom.xml	(revision 0)
+@@ -0,0 +1,195 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++	<groupId>org.codehaus.jbehave</groupId>
++	<artifactId>jbehave-parent</artifactId>
++	<packaging>pom</packaging>
++	<name>jBehave Parent</name>
++	<version>1.0-SNAPSHOT</version>
++	<ciManagement />
++	<modules>
++		<module>core</module>
++		<module>core/behaviours</module>
++		<module>extensions/ant</module>
++		<module>extensions/ant/behaviours</module>
++		<module>extensions/jmock</module>
++		<module>extensions/jmock/behaviours</module>
++		<module>extensions/junit</module>
++		<module>extensions/junit/behaviours</module>
++		<module>plugins/maven</module>
++		<module>everything</module>
++	</modules>
++	<dependencyManagement>
++		<dependencies>
++			<dependency>
++				<groupId>ant</groupId>
++				<artifactId>ant</artifactId>
++				<version>1.6.5</version>
++			</dependency>
++			<dependency>
++				<groupId>net.sf.cotta</groupId>
++				<artifactId>cotta</artifactId>
++				<version>1.0</version>
++			</dependency>
++			<dependency>
++				<groupId>junit</groupId>
++				<artifactId>junit</artifactId>
++				<version>3.8.1</version>
++			</dependency>
++			<dependency>
++				<groupId>jmock</groupId>
++				<artifactId>jmock</artifactId>
++				<version>1.0.1</version>
++			</dependency>
++			<dependency>
++				<groupId>jmock</groupId>
++				<artifactId>jmock-cglib</artifactId>
++				<version>1.0.1</version>
++			</dependency>			
++		</dependencies>
++	</dependencyManagement>
++	<dependencies>
++	</dependencies>
++	<scm>
++		<connection>scm:svn:https://svn.codehaus.org/jbehave/trunk</connection>
++		<developerConnection>scm:svn:https://svn.codehaus.org/jbehave/trunk</developerConnection>
++		<url>https://svn.codehaus.org/jbehave/trunk</url>		
++	</scm>	
++	<distributionManagement>
++		<repository>
++			<id>codehaus-jbehave-repository</id>
++			<name>Codehaus JET Repository</name>
++			<url>dav:https://dav.codehaus.org/repository/jbehave/</url>
++		</repository>
++		<snapshotRepository>
++			<id>codehaus-jbehave-snapshot-repository</id>
++			<name>Codehaus JET Snapshot Repository</name>
++			<url>dav:https://dav.codehaus.org/snapshots.repository/jbehave/	</url>
++		</snapshotRepository>
++		<site>
++			<id>jbehave-site</id>
++			<url>dav:https://dav.codehaus.org/jbehave</url>
++		</site>
++	</distributionManagement>
++	<repositories>
++		<repository>
++			<id>codehaus-repository</id>
++			<name>Codehaus Repository</name>
++			<url>http://repository.codehaus.org</url>
++		</repository>
++		<repository>
++			<id>codehaus-snapshots-repository</id>
++			<name>Codehaus Snapshots Repository</name>
++			<url>http://snapshots.repository.codehaus.org</url>
++		</repository>
++		<repository>
++			<id>codehaus-dist-repository</id>
++			<name>Codehaus Dist Repository</name>
++			<url>http://dist.codehaus.org</url>
++			<layout>legacy</layout>
++			<snapshots>
++				<enabled>false</enabled>
++			</snapshots>
++		</repository>
++		<repository>
++			<id>apache-snapshot-repository</id>
++			<name>Apache Snapshot Repository</name>
++			<url>http://people.apache.org/maven-snapshot-repository/</url>
++		</repository>
++	</repositories>
++	<pluginRepositories>
++		<pluginRepository>
++			<id>codehaus-plugin-snapshot-repository</id>
++			<name>Codehaus Plugin Snapshot Repository</name>
++			<url>http://snapshots.maven.codehaus.org/maven2/</url>
++			<snapshots>
++				<enabled>true</enabled>
++			</snapshots>
++		</pluginRepository>
++	</pluginRepositories>
++	<build>
++		<sourceDirectory>${basedir}/src</sourceDirectory>
++		<plugins>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-compiler-plugin</artifactId>
++				<configuration>
++					<source>1.5</source>
++					<target>1.5</target>
++				</configuration>
++			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-surefire-plugin</artifactId>
++				<version>2.2</version>
++				<configuration>
++					<forkMode>once</forkMode>
++					<printSummary>true</printSummary>
++					<useFile>true</useFile>
++					<systemProperties>
++						<property>
++							<name>test.src.dir</name>
++							<value>${basedir}/src/test</value>
++						</property>
++						<property>
++							<name>java.awt.headless</name>
++							<value>true</value>
++						</property>
++					</systemProperties>
++				</configuration>
++			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-surefire-report-plugin</artifactId>
++				<version>2.0</version>
++			</plugin>
++			<plugin>
++				<groupId>org.codehaus.mojo</groupId>
++				<artifactId>cobertura-maven-plugin</artifactId>
++				<version>2.0</version>
++				<executions>
++					<execution>
++						<goals>
++							<goal>clean</goal>
++						</goals>
++					</execution>
++				</executions>
++			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-release-plugin</artifactId>
++				<configuration>
++					<tagBase>https://svn.codehaus.org/jbehave/tags</tagBase>
++				</configuration>
++			</plugin>
++		</plugins>
++		<extensions>
++			<extension>
++				<groupId>org.apache.maven.wagon</groupId>
++				<artifactId>wagon-webdav</artifactId>
++				<version>1.0-beta-1</version>
++			</extension>
++		</extensions>
++	</build>
++	<reporting>
++		<plugins>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-javadoc-plugin</artifactId>
++			</plugin>
++			<plugin>
++				<groupId>org.apache.maven.plugins</groupId>
++				<artifactId>maven-surefire-report-plugin</artifactId>
++			</plugin>
++			<plugin>
++				<groupId>org.codehaus.mojo</groupId>
++				<artifactId>cobertura-maven-plugin</artifactId>
++			</plugin>
++		</plugins>
++	</reporting>
++	<properties>
++		<jbehave.properties>${user.home}/jbehave.properties</jbehave.properties>
++		<src.dir>${basedir}/src</src.dir>
++		<distribution.src.dir>${basedir}/../../distribution/src	</distribution.src.dir>
++	</properties>
++</project>
+\ No newline at end of file
+Index: extensions/ant/behaviours/pom.xml
+===================================================================
+--- extensions/ant/behaviours/pom.xml	(revision 0)
++++ extensions/ant/behaviours/pom.xml	(revision 0)
+@@ -0,0 +1,28 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<parent>
++		<artifactId>jbehave-parent</artifactId>
++		<groupId>org.codehaus.jbehave</groupId>
++		<version>1.0-SNAPSHOT</version>
++	</parent>
++	<modelVersion>4.0.0</modelVersion>
++	<artifactId>jbehave-ant-behaviours</artifactId>
++	<name>jBehave Ant Behaviours</name>
++	<version>1.0-SNAPSHOT</version>
++	<packaging>jar</packaging>
++	
++	<dependencies>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-ant</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++	</dependencies>
++
++	<build>
++		<sourceDirectory>${basedir}/../behaviour</sourceDirectory>
++	</build>
++	
++</project>
+\ No newline at end of file
+Index: extensions/ant/pom.xml
+===================================================================
+--- extensions/ant/pom.xml	(revision 0)
++++ extensions/ant/pom.xml	(revision 0)
+@@ -0,0 +1,25 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <parent>
++    <artifactId>jbehave-parent</artifactId>
++    <groupId>org.codehaus.jbehave</groupId>
++    <version>1.0-SNAPSHOT</version>
++  </parent>
++  <modelVersion>4.0.0</modelVersion>
++  <artifactId>jbehave-ant</artifactId>
++  <name>jBehave Ant Extension</name>
++  <version>1.0-SNAPSHOT</version>
++
++  <dependencies>
++	<dependency>
++		<groupId>${pom.groupId}</groupId>
++		<artifactId>jbehave-core</artifactId>
++		<version>${pom.version}</version>
++	</dependency> 
++	<dependency>
++		<groupId>ant</groupId>
++		<artifactId>ant</artifactId>
++	</dependency> 
++  </dependencies>
++
++</project>
+\ No newline at end of file
+Index: extensions/jmock/behaviours/pom.xml
+===================================================================
+--- extensions/jmock/behaviours/pom.xml	(revision 0)
++++ extensions/jmock/behaviours/pom.xml	(revision 0)
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<parent>
++		<artifactId>jbehave-parent</artifactId>
++		<groupId>org.codehaus.jbehave</groupId>
++		<version>1.0-SNAPSHOT</version>
++	</parent>
++	<modelVersion>4.0.0</modelVersion>
++	<artifactId>jbehave-jmock-behaviours</artifactId>
++	<name>jBehave jMock Behaviours</name>
++	<version>1.0-SNAPSHOT</version>
++
++	<dependencies>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-jmock</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++	</dependencies>
++
++	<build>
++		<sourceDirectory>${basedir}/../behaviour</sourceDirectory>
++	</build>
++	
++</project>
+\ No newline at end of file
+Index: extensions/jmock/pom.xml
+===================================================================
+--- extensions/jmock/pom.xml	(revision 0)
++++ extensions/jmock/pom.xml	(revision 0)
+@@ -0,0 +1,31 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<parent>
++		<artifactId>jbehave-parent</artifactId>
++		<groupId>org.codehaus.jbehave</groupId>
++		<version>1.0-SNAPSHOT</version>
++	</parent>
++	<modelVersion>4.0.0</modelVersion>
++	<artifactId>jbehave-jmock</artifactId>
++	<name>jBehave jMock Extension</name>
++	<version>1.0-SNAPSHOT</version>
++
++	<dependencies>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-core</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++		<dependency>
++			<groupId>jmock</groupId>
++			<artifactId>jmock</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>jmock</groupId>
++			<artifactId>jmock-cglib</artifactId>
++		</dependency>
++	</dependencies>
++	
++</project>
+\ No newline at end of file
+Index: extensions/junit/behaviours/pom.xml
+===================================================================
+--- extensions/junit/behaviours/pom.xml	(revision 0)
++++ extensions/junit/behaviours/pom.xml	(revision 0)
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++	<parent>
++		<artifactId>jbehave-parent</artifactId>
++		<groupId>org.codehaus.jbehave</groupId>
++		<version>1.0-SNAPSHOT</version>
++	</parent>
++	<modelVersion>4.0.0</modelVersion>
++	<artifactId>jbehave-junit-behaviours</artifactId>
++	<name>jBehave JUnit Behaviours</name>
++	<version>1.0-SNAPSHOT</version>
++
++	<dependencies>
++		<dependency>
++			<groupId>${pom.groupId}</groupId>
++			<artifactId>jbehave-junit</artifactId>
++			<version>${pom.version}</version>
++		</dependency>
++	</dependencies>
++
++	<build>
++		<sourceDirectory>${basedir}/../behaviour</sourceDirectory>
++	</build>
++	
++</project>
+\ No newline at end of file
+Index: extensions/junit/pom.xml
+===================================================================
+--- extensions/junit/pom.xml	(revision 0)
++++ extensions/junit/pom.xml	(revision 0)
+@@ -0,0 +1,25 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
++  <parent>
++    <artifactId>jbehave-parent</artifactId>
++    <groupId>org.codehaus.jbehave</groupId>
++    <version>1.0-SNAPSHOT</version>
++  </parent>
++  <modelVersion>4.0.0</modelVersion>
++  <artifactId>jbehave-junit</artifactId>
++  <name>jBehave JUnit Extension</name>
++  <version>1.0-SNAPSHOT</version>
++
++  <dependencies>
++	<dependency>
++		<groupId>${pom.groupId}</groupId>
++		<artifactId>jbehave-core</artifactId>
++		<version>${pom.version}</version>
++	</dependency> 
++	<dependency>
++		<groupId>junit</groupId>
++		<artifactId>junit</artifactId>
++	</dependency> 
++  </dependencies>
++
++</project>
+\ No newline at end of file
+Index: .classpath
+===================================================================
+--- .classpath	(revision 495)
++++ .classpath	(working copy)
+@@ -1,25 +1,28 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<classpath>
+-	<classpathentry kind="src" path="core/behaviour"/>
+-	<classpathentry kind="src" path="core/src"/>
+-	<classpathentry kind="src" path="extensions/ant/behaviour"/>
+-	<classpathentry kind="src" path="extensions/ant/src"/>
+-	<classpathentry kind="src" path="extensions/jmock/behaviour"/>
+-	<classpathentry kind="src" path="extensions/jmock/src"/>
+-	<classpathentry kind="src" path="extensions/junit/behaviour"/>
+-	<classpathentry kind="src" path="extensions/junit/src"/>
+-	<classpathentry kind="src" path="examples/atm/src"/>
+-	<classpathentry kind="src" path="examples/atm/stories"/>
+-	<classpathentry kind="src" path="examples/currency/behaviour"/>
+-	<classpathentry kind="src" path="examples/currency/src"/>
+-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+-	<classpathentry kind="src" path="everything/behaviour"/>
+-	<classpathentry kind="lib" path="lib/extensions/ant.jar"/>
+-	<classpathentry kind="lib" path="lib/extensions/antlr.jar"/>
+-	<classpathentry kind="lib" path="lib/extensions/cglib-full-2.0.jar"/>
+-	<classpathentry kind="lib" path="lib/extensions/jmock.jar"/>
+-	<classpathentry kind="lib" path="lib/extensions/jmock-cglib.jar"/>
+-	<classpathentry kind="lib" path="lib/extensions/junit.jar"/>
+-	<classpathentry kind="lib" path="lib/extensions/velocity-dep-1.4.jar"/>
+-	<classpathentry kind="output" path="bin"/>
+-</classpath>
++<?xml version="1.0" encoding="UTF-8"?>
++<classpath>
++	<classpathentry kind="src" path="core/behaviour"/>
++	<classpathentry kind="src" path="core/src"/>
++	<classpathentry kind="src" path="extensions/ant/behaviour"/>
++	<classpathentry kind="src" path="extensions/ant/src"/>
++	<classpathentry kind="src" path="extensions/jmock/behaviour"/>
++	<classpathentry kind="src" path="extensions/jmock/src"/>
++	<classpathentry kind="src" path="extensions/junit/behaviour"/>
++	<classpathentry kind="src" path="extensions/junit/src"/>
++	<classpathentry kind="src" path="examples/atm/src"/>
++	<classpathentry kind="src" path="examples/atm/stories"/>
++	<classpathentry kind="src" path="examples/currency/behaviour"/>
++	<classpathentry kind="src" path="examples/currency/src"/>
++	<classpathentry kind="src" path="plugins/maven/src/main/java"/>
++	<classpathentry kind="src" path="plugins/maven/src/it/src/main/java"/>
++	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
++	<classpathentry kind="src" path="everything/behaviour"/>
++	<classpathentry kind="lib" path="lib/extensions/ant.jar"/>
++	<classpathentry kind="lib" path="lib/extensions/antlr.jar"/>
++	<classpathentry kind="lib" path="lib/extensions/cglib-full-2.0.jar"/>
++	<classpathentry kind="lib" path="lib/extensions/jmock.jar"/>
++	<classpathentry kind="lib" path="lib/extensions/jmock-cglib.jar"/>
++	<classpathentry kind="lib" path="lib/extensions/junit.jar"/>
++	<classpathentry kind="lib" path="lib/extensions/velocity-dep-1.4.jar"/>
++	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
++	<classpathentry kind="output" path="bin"/>
++</classpath>
+Index: README.txt
+===================================================================
+--- README.txt	(revision 0)
++++ README.txt	(revision 0)
+@@ -0,0 +1,6 @@
++Maven 2 support:  requires maven 2.0.4 http://maven.apache.org
++
++To install cotta in m2 local repo:
++
++mvn install:install-file -DgroupId=net.sf.cotta -DartifactId=cotta -Dversion=1.0 -Dpackaging=jar -Dfile=lib/cotta/cotta-1.0.jar   
++ 

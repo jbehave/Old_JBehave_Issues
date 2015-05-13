@@ -1,0 +1,18 @@
+<story path="org/jbehave/examples/trader/stories/failure_followed_by_given_stories.story" title="Story: Showing that using given stories in a passing scenario following a scenario where are a failure occurred resets the overall 
+build result of the story">
+<scenario keyword="Scenario:" title="Fail on a step">
+<step outcome="successful">Given I do nothing</step>
+<step outcome="failed" keyword="FAILED">Then I fail<failure>junit.framework.AssertionFailedError: I failed!</failure></step>
+</scenario>
+<scenario keyword="Scenario:" title="Pass after given stories">
+<givenStories keyword="GivenStories:">
+<givenStory parameters="">org/jbehave/examples/trader/stories/do_nothing.story</givenStory>
+</givenStories>
+<story path="org/jbehave/examples/trader/stories/do_nothing.story" title="">
+<scenario keyword="Scenario:" title="">
+<step outcome="ignorable">!-- GivenStories:  ignore_me.story</step>
+<step outcome="successful">Given I do nothing</step>
+<step outcome="ignorable">!-- Examples: 
+|I|am|just|lazy|</step>
+</scenario>
+</story>

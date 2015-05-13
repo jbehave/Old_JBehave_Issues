@@ -1,0 +1,224 @@
+From 8f404db3e5e14f0c263d86b42cad8be6128ec699 Sun, 21 Aug 2011 23:37:44 +0200
+From: bkbdn <bkbdn@bkbdn-HP-EliteBook-8730w>
+Date: Sun, 21 Aug 2011 23:36:13 +0200
+Subject: [PATCH] refactoring for Odf: Use of OdfTextExtractor to convert odt correctly to text + reading story from google docs
+
+diff --git a/.settings/org.eclipse.core.resources.prefs b/.settings/org.eclipse.core.resources.prefs
+index 610aa57..efbfbf7 100755
+--- a/.settings/org.eclipse.core.resources.prefs
++++ b/.settings/org.eclipse.core.resources.prefs
+@@ -1,3 +1,3 @@
+-#Sat Sep 26 10:11:15 BST 2009
++#Sun Aug 21 23:15:07 CEST 2011
+ eclipse.preferences.version=1
+ encoding/<project>=UTF-8
+diff --git a/jbehave-googledocs/pom.xml b/jbehave-googledocs/pom.xml
+new file mode 100644
+index 0000000..d154262
+--- /dev/null
++++ b/jbehave-googledocs/pom.xml
+@@ -0,0 +1,39 @@
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++	<parent>
++		<artifactId>jbehave</artifactId>
++		<groupId>org.jbehave</groupId>
++		<version>3.5-SNAPSHOT</version>
++		<relativePath>..</relativePath>
++	</parent>
++	<artifactId>jbehave-googledocs</artifactId>
++	<name>JBehave Google Docs</name>
++	<description>Extension of JBehave Core that supports Google Docs for stories</description>
++
++	<repositories>
++		<repository>
++			<id>mandubian-mvn</id>
++			<url>http://mandubian-mvn.googlecode.com/svn/trunk/mandubian-mvn/repository</url>
++		</repository>
++	</repositories>
++
++	<dependencies>
++		<dependency>
++			<groupId>com.google.gdata</groupId>
++			<artifactId>gdata-docs-3.0</artifactId>
++			<version>1.41.5</version>
++		</dependency>
++		<dependency>
++			<groupId>javax.mail</groupId>
++			<artifactId>mail</artifactId>
++			<version>1.4.1</version>
++		</dependency>
++		<dependency>
++			<groupId>org.jbehave</groupId>
++			<artifactId>jbehave-odf</artifactId>
++			<version>${project.version}</version>
++		</dependency>
++	</dependencies>
++
++</project>
+\ No newline at end of file
+diff --git a/jbehave-googledocs/src/main/java/org/jbehave/core/io/googledocs/LoadGoogleDocs.java b/jbehave-googledocs/src/main/java/org/jbehave/core/io/googledocs/LoadGoogleDocs.java
+new file mode 100644
+index 0000000..50d05d5
+--- /dev/null
++++ b/jbehave-googledocs/src/main/java/org/jbehave/core/io/googledocs/LoadGoogleDocs.java
+@@ -0,0 +1,62 @@
++package org.jbehave.core.io.googledocs;
++
++import static org.jbehave.core.io.odf.OdfUtils.loadOdt;
++import static org.jbehave.core.io.odf.OdfUtils.parseOdt;
++
++import java.io.IOException;
++import java.io.InputStream;
++import java.net.MalformedURLException;
++import java.net.URL;
++import java.util.List;
++
++import org.jbehave.core.io.InvalidStoryResource;
++import org.jbehave.core.io.StoryLoader;
++
++import com.google.gdata.client.docs.DocsService;
++import com.google.gdata.data.MediaContent;
++import com.google.gdata.data.docs.DocumentListEntry;
++import com.google.gdata.data.docs.DocumentListFeed;
++import com.google.gdata.data.media.MediaSource;
++import com.google.gdata.util.AuthenticationException;
++import com.google.gdata.util.ServiceException;
++
++public class LoadGoogleDocs implements StoryLoader {
++	
++	private DocsService client = new DocsService("jbehave-googledocs");
++
++	public LoadGoogleDocs(String username, String password) {
++		try {
++			client.setUserCredentials(username, password);
++		} catch (AuthenticationException e) {
++			throw new RuntimeException(e);
++		}
++	}
++
++	public String loadStoryAsText(String storyTitle) {
++		try {
++			return parseOdt(loadOdt(resourceAsStream(storyTitle)));
++		} catch (Exception cause) {
++			throw new InvalidStoryResource(storyTitle, cause);
++		}
++	}
++	
++	private InputStream resourceAsStream(String title) throws IOException, MalformedURLException, ServiceException {
++		List<DocumentListEntry> entries = client.getFeed(createFeedUrl(title), DocumentListFeed.class).getEntries();
++		String exportUrl = ((MediaContent) entries.get(0).getContent()).getUri() + "&exportFormat=odt";
++		return downloadFile(exportUrl);
++	}
++
++	private URL createFeedUrl(String title) throws MalformedURLException {
++		return new URL("https://docs.google.com/feeds/default/private/full/-/document?title=" + title);
++	}
++
++	private InputStream downloadFile(String exportUrl) throws IOException, MalformedURLException, ServiceException {
++		System.out.println("Exporting document from: " + exportUrl);
++
++		MediaContent mc = new MediaContent();
++		mc.setUri(exportUrl);
++		MediaSource ms = client.getMedia(mc);
++
++		return ms.getInputStream();
++	}
++}
+diff --git a/jbehave-googledocs/src/test/java/org/jbehave/core/io/googledocs/GoogleDocsLoaderBehaviour.java b/jbehave-googledocs/src/test/java/org/jbehave/core/io/googledocs/GoogleDocsLoaderBehaviour.java
+new file mode 100644
+index 0000000..ea2f678
+--- /dev/null
++++ b/jbehave-googledocs/src/test/java/org/jbehave/core/io/googledocs/GoogleDocsLoaderBehaviour.java
+@@ -0,0 +1,26 @@
++package org.jbehave.core.io.googledocs;
++
++import static org.junit.Assert.assertEquals;
++
++import org.jbehave.core.io.InvalidStoryResource;
++import org.jbehave.core.io.LoadFromClasspath;
++import org.junit.Test;
++
++public class GoogleDocsLoaderBehaviour {
++	
++	private static final String USER = "DUMMY";
++	private static final String PASSWORD = "DUMMY";
++
++	@Test
++	public void shouldLoadGoogleDocsResource() {
++		String resourceFromGoogleDocs = new LoadGoogleDocs(USER, PASSWORD).loadStoryAsText("a_story_with_table");
++		String resourceFromTxt = new LoadFromClasspath(this.getClass()).loadResourceAsText("org/jbehave/core/io/googledocs/stories/a_story.txt");
++		assertEquals(resourceFromGoogleDocs.trim(), resourceFromTxt.trim());
++	}
++
++	@Test(expected = InvalidStoryResource.class)
++	public void shouldNotLoadInexistingResourceFromGoogleDocs() {
++		new LoadGoogleDocs(USER, PASSWORD).loadStoryAsText("an_inexisting_story");
++	}
++
++}
+diff --git a/jbehave-googledocs/src/test/java/org/jbehave/core/io/googledocs/stories/a_story.txt b/jbehave-googledocs/src/test/java/org/jbehave/core/io/googledocs/stories/a_story.txt
+new file mode 100644
+index 0000000..58e8987
+--- /dev/null
++++ b/jbehave-googledocs/src/test/java/org/jbehave/core/io/googledocs/stories/a_story.txt
+@@ -0,0 +1,25 @@
++Narrative:
++In order to communicate better
++As a story writer
++I want to be able to use Google Docs
++Scenario: a plain scenario
++Given a step
++When a step has failed
++Then the scenario is visualized as failed
++
++Scenario: a scenario with a given story
++GivenStories: a_successful_story
++
++Given a step
++And the step is successful
++Then the scenario is visualized as succeeded
++
++Scenario: a scenario with examples
++Given a <step>
++When the <step> is executed
++Then the result is <result>
++
++Examples:
++|step|result|
++|one|1|
++|two|2|
+diff --git a/jbehave-odf/src/main/java/org/jbehave/core/io/odf/OdfUtils.java b/jbehave-odf/src/main/java/org/jbehave/core/io/odf/OdfUtils.java
+index 0e8abaf..039860a 100755
+--- a/jbehave-odf/src/main/java/org/jbehave/core/io/odf/OdfUtils.java
++++ b/jbehave-odf/src/main/java/org/jbehave/core/io/odf/OdfUtils.java
+@@ -1,6 +1,7 @@
+ package org.jbehave.core.io.odf;
+ 
+ import static org.apache.commons.lang.StringUtils.join;
++import static org.odftoolkit.odfdom.incubator.doc.text.OdfTextExtractor.newOdfTextExtractor;
+ 
+ import java.io.InputStream;
+ import java.util.ArrayList;
+@@ -71,7 +72,7 @@
+ 
+     private static String parseTextNode(Node item) {
+         TextParagraphElementBase textItem = (TextParagraphElementBase) item;
+-        return textItem.getTextContent();
++        return newOdfTextExtractor(textItem).getText();
+     }
+ 
+     private static boolean isTextNode(Node item) {
+diff --git a/pom.xml b/pom.xml
+index 266f56d..710afb5 100755
+--- a/pom.xml
++++ b/pom.xml
+@@ -24,6 +24,7 @@
+   <modules>
+     <module>jbehave-core</module>
+     <module>jbehave-odf</module>
++    <module>jbehave-googledocs</module>
+     <module>jbehave-ant</module>
+     <module>jbehave-maven-plugin</module>
+     <module>jbehave-hudson-plugin</module>

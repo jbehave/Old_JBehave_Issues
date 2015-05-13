@@ -1,0 +1,71 @@
+    @Override
+    public void run(RunNotifier notifier) {
+        Embedder embedder = annotationBuilder.buildEmbedder();
+        NotifierEmbedderMonitor notifierEmbedderMonitor = new NotifierEmbedderMonitor(embedder.embedderMonitor(),
+                notifier);
+        embedder.useEmbedderMonitor(notifierEmbedderMonitor);
+        ((JRunnerConfiguration)embedder.configuration()).useJunitNotifier(notifier).setJunitStoryDescription(storyDescription);
+        
+        try {
+            embedder.runStoriesAsPaths(paths);
+        } finally {
+            notifierEmbedderMonitor.storyFinished();
+        }
+    }
+    
+    
+    @Override
+    public Description getDescription() {
+        if (storyDescription != null) {
+            return storyDescription;
+        }
+        storyDescription = Description.createSuiteDescription(testClass());
+        for (String path : paths)
+            storyDescription.addChild(createDescriptionForPath(path));
+        ((AutoConfiguration)annotationBuilder().buildEmbedder().configuration()).setJunitStoryDescription(storyDescription);
+        return storyDescription;
+    }
+
+    private Description createDescriptionForPath(String path) {
+        String name = nameResolver.resolveName(path);
+        Description story = Description.createSuiteDescription(name);
+        createDescriptionForScenarios(story, path);
+        return story;
+    }
+
+    private void createDescriptionForScenarios(Description story, String path) {
+        Story details = annotationBuilder().buildEmbedder().storyManager().storyOfPath(path);
+        List<Scenario> scenarios = details.getScenarios();
+        for (Scenario scenario : scenarios) {
+            if (scenario.getTitle().equals("")){
+                continue;
+            }
+            Description desc = Description.createSuiteDescription(scenario.getTitle());
+            createDescriptionForSteps(desc, scenario);
+            story.addChild(desc);
+        }
+        return;
+    }
+
+    private void createDescriptionForSteps(Description scenarioDesc, Scenario scenario) {
+        List<Map<String, String>> table = scenario.getExamplesTable().getRows();
+        if (table.isEmpty()) {
+            for (String step : scenario.getSteps()) {
+                scenarioDesc.addChild(Description.createSuiteDescription(step));
+            }
+        } else {
+            for (int i = 0; i < table.size(); i++) {
+                Description ex = Description.createSuiteDescription("Example #" + i);
+                Map<String, String> example = table.get(i);
+                for (String step : scenario.getSteps()) {
+                    for (Map.Entry<String, String> entry : example.entrySet()) {
+                        step.replace(entry.getKey(), entry.getValue());
+                    }
+                    Description line = Description.createSuiteDescription(step);
+                    ex.addChild(line);
+                }
+                scenarioDesc.addChild(ex);
+            }
+        }
+    }
+}

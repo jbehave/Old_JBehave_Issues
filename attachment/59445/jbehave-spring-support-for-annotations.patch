@@ -1,0 +1,259 @@
+diff -rupN jbehave-spring//pom.xml jbehave-spring-3x//pom.xml
+--- jbehave-spring//pom.xml	2011-11-28 22:28:46.000000000 +0100
++++ jbehave-spring-3x//pom.xml	2012-03-29 14:45:15.145580000 +0200
+@@ -5,7 +5,7 @@
+     <artifactId>jbehave</artifactId>
+     <version>3.5.4</version>
+   </parent>
+-  <artifactId>jbehave-spring</artifactId>
++  <artifactId>jbehave-spring-3x</artifactId>
+   <name>JBehave Spring</name>
+   <description>Extension of JBehave Core that supports Spring dependency injection</description>
+ 
+@@ -18,12 +18,12 @@
+     <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-context</artifactId>
+-      <version>2.5.6</version>
++      <version>3.1.1.RELEASE</version>
+     </dependency>
+     <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-test</artifactId>
+-      <version>2.5.6</version>
++      <version>3.1.1.RELEASE</version>
+       <exclusions>
+         <exclusion>
+             <groupId>junit</groupId>
+diff -rupN jbehave-spring//src/main/java/org/jbehave/core/annotations/spring/UsingSpring.java jbehave-spring-3x//src/main/java/org/jbehave/core/annotations/spring/UsingSpring.java
+--- jbehave-spring//src/main/java/org/jbehave/core/annotations/spring/UsingSpring.java	2011-11-28 22:28:44.000000000 +0100
++++ jbehave-spring-3x//src/main/java/org/jbehave/core/annotations/spring/UsingSpring.java	2012-03-29 17:46:33.152000000 +0200
+@@ -11,6 +11,8 @@ import java.lang.annotation.Target;
+ @Inherited
+ public @interface UsingSpring {
+ 
++    Class<?>[] configurations() default {};
++
+     String[] resources() default {};
+ 
+     boolean inheritResources() default true;
+diff -rupN jbehave-spring//src/main/java/org/jbehave/core/configuration/spring/SpringAnnotationBuilder.java jbehave-spring-3x//src/main/java/org/jbehave/core/configuration/spring/SpringAnnotationBuilder.java
+--- jbehave-spring//src/main/java/org/jbehave/core/configuration/spring/SpringAnnotationBuilder.java	2011-11-28 22:28:44.000000000 +0100
++++ jbehave-spring-3x//src/main/java/org/jbehave/core/configuration/spring/SpringAnnotationBuilder.java	2012-03-30 16:37:09.892000000 +0200
+@@ -1,15 +1,7 @@
+ package org.jbehave.core.configuration.spring;
+ 
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.Map;
+-
+ import org.jbehave.core.annotations.spring.UsingSpring;
+-import org.jbehave.core.configuration.AnnotationBuilder;
+-import org.jbehave.core.configuration.AnnotationFinder;
+-import org.jbehave.core.configuration.AnnotationMonitor;
+-import org.jbehave.core.configuration.AnnotationRequired;
+-import org.jbehave.core.configuration.Configuration;
++import org.jbehave.core.configuration.*;
+ import org.jbehave.core.steps.CompositeStepsFactory;
+ import org.jbehave.core.steps.InjectableStepsFactory;
+ import org.jbehave.core.steps.ParameterConverters;
+@@ -17,11 +9,16 @@ import org.jbehave.core.steps.ParameterC
+ import org.jbehave.core.steps.spring.SpringApplicationContextFactory;
+ import org.jbehave.core.steps.spring.SpringStepsFactory;
+ import org.springframework.context.ApplicationContext;
++import org.springframework.context.annotation.AnnotationConfigApplicationContext;
++
++import java.util.ArrayList;
++import java.util.List;
++import java.util.Map;
+ 
+ /**
+  * Extends {@link AnnotationBuilder} to provide Spring-based dependency
+  * injection if {@link UsingSpring} annotation is present.
+- * 
++ *
+  * @author Cristiano Gavião
+  * @author Mauro Talevi
+  */
+@@ -30,25 +27,39 @@ public class SpringAnnotationBuilder ext
+     private ApplicationContext context;
+ 
+     public SpringAnnotationBuilder(Class<?> annotatedClass) {
++
+         super(annotatedClass);
+     }
+ 
+     public SpringAnnotationBuilder(Class<?> annotatedClass, AnnotationMonitor annotationMonitor) {
++
+         super(annotatedClass, annotationMonitor);
+     }
+ 
+     @Override
+     public Configuration buildConfiguration() throws AnnotationRequired {
++
+         if (annotationFinder().isAnnotationPresent(UsingSpring.class)) {
+             List<String> resources = annotationFinder()
+                     .getAnnotatedValues(UsingSpring.class, String.class, "resources");
+             if (resources.size() > 0) {
+                 try {
+                     context = createApplicationContext(annotatedClass().getClassLoader(), resources);
+-                } catch ( Exception e ){
++                } catch (Exception e) {
++                    annotationMonitor().elementCreationFailed(ApplicationContext.class, e);
++                }
++            }
++
++            List<Class> configurations = annotationFinder().
++                    getAnnotatedValues(UsingSpring.class, Class.class, "configurations");
++            if (configurations.size() > 0) {
++                try {
++                    context = createAnnotationApplicationContext(annotatedClass().getClassLoader(), configurations);
++                } catch (Exception e) {
+                     annotationMonitor().elementCreationFailed(ApplicationContext.class, e);
+                 }
+             }
++
+         } else {
+             annotationMonitor().annotationNotFound(UsingSpring.class, annotatedClass());
+         }
+@@ -57,6 +68,7 @@ public class SpringAnnotationBuilder ext
+ 
+     @Override
+     public InjectableStepsFactory buildStepsFactory(Configuration configuration) {
++
+         InjectableStepsFactory factoryUsingSteps = super.buildStepsFactory(configuration);
+         if (context != null) {
+             return new CompositeStepsFactory(new SpringStepsFactory(configuration, context), factoryUsingSteps);
+@@ -66,6 +78,7 @@ public class SpringAnnotationBuilder ext
+ 
+     @Override
+     protected ParameterConverters parameterConverters(AnnotationFinder annotationFinder) {
++
+         ParameterConverters converters = super.parameterConverters(annotationFinder);
+         if (context != null) {
+             return converters.addConverters(getBeansOfType(context, ParameterConverter.class));
+@@ -75,6 +88,7 @@ public class SpringAnnotationBuilder ext
+ 
+     @SuppressWarnings("unchecked")
+     private List<ParameterConverter> getBeansOfType(ApplicationContext context, Class<ParameterConverter> type) {
++
+         Map<String, ParameterConverter> beansOfType = context.getBeansOfType(type);
+         List<ParameterConverter> converters = new ArrayList<ParameterConverter>();
+         for (ParameterConverter converter : beansOfType.values()) {
+@@ -86,22 +100,36 @@ public class SpringAnnotationBuilder ext
+     @Override
+     @SuppressWarnings("unchecked")
+     protected <T, V extends T> T instanceOf(Class<T> type, Class<V> ofClass) {
++
+         if (context != null) {
+-            Map<String, Object> beansOfType;
+             if (!type.equals(Object.class)) {
+-                beansOfType = context.getBeansOfType(type);
++                if (context.getBeansOfType(type).size() > 0) {
++                    return context.getBeansOfType(type).values().iterator().next();
++                }
+             } else {
+-                beansOfType = context.getBeansOfType(ofClass);
+-            }
+-            if (beansOfType.size() > 0) {
+-                return (T) beansOfType.values().iterator().next();
++                if (context.getBeansOfType(ofClass).size() > 0) {
++                    return context.getBeansOfType(ofClass).values().iterator().next();
++                }
+             }
+         }
+         return super.instanceOf(type, ofClass);
+     }
+ 
++    private ApplicationContext createAnnotationApplicationContext(ClassLoader classLoader, List<Class> configurations) {
++
++        if (context != null) {
++            return context;
++        }
++
++        AnnotationConfigApplicationContext result =
++                new AnnotationConfigApplicationContext(configurations.toArray(new Class<?>[configurations.size()]));
++        result.setClassLoader(classLoader);
++        return result;
++    }
++
+     protected ApplicationContext createApplicationContext(ClassLoader classLoader, List<String> resources) {
+-        if ( context != null ){
++
++        if (context != null) {
+             return context;
+         }
+         return new SpringApplicationContextFactory(classLoader, resources.toArray(new String[resources.size()]))
+@@ -109,6 +137,7 @@ public class SpringAnnotationBuilder ext
+     }
+ 
+     protected ApplicationContext applicationContext() {
++
+         return context;
+     }
+ 
+diff -rupN jbehave-spring//src/test/java/org/jbehave/core/steps/spring/SpringStepsFactoryBehaviour.java jbehave-spring-3x//src/test/java/org/jbehave/core/steps/spring/SpringStepsFactoryBehaviour.java
+--- jbehave-spring//src/test/java/org/jbehave/core/steps/spring/SpringStepsFactoryBehaviour.java	2011-11-28 22:28:44.000000000 +0100
++++ jbehave-spring-3x//src/test/java/org/jbehave/core/steps/spring/SpringStepsFactoryBehaviour.java	2012-03-29 15:21:36.181337000 +0200
+@@ -1,24 +1,23 @@
+ package org.jbehave.core.steps.spring;
+ 
+-import static org.hamcrest.MatcherAssert.assertThat;
+-import static org.hamcrest.Matchers.equalTo;
+-import static org.hamcrest.Matchers.instanceOf;
+-import static org.junit.Assert.assertEquals;
+-import static org.mockito.Mockito.mock;
+-import static org.mockito.Mockito.never;
+-import static org.mockito.Mockito.verify;
+-import static org.mockito.Mockito.when;
+-
+-import java.util.List;
+-
+ import org.jbehave.core.annotations.Given;
+ import org.jbehave.core.configuration.MostUsefulConfiguration;
+ import org.jbehave.core.steps.CandidateSteps;
+ import org.jbehave.core.steps.Steps;
+ import org.junit.Test;
++import org.mockito.invocation.InvocationOnMock;
++import org.mockito.stubbing.Answer;
+ import org.springframework.beans.factory.BeanDefinitionStoreException;
+ import org.springframework.context.ApplicationContext;
+ 
++import java.util.List;
++
++import static org.hamcrest.MatcherAssert.assertThat;
++import static org.hamcrest.Matchers.equalTo;
++import static org.hamcrest.Matchers.instanceOf;
++import static org.junit.Assert.assertEquals;
++import static org.mockito.Mockito.*;
++
+ public class SpringStepsFactoryBehaviour {
+ 
+     private ApplicationContext createApplicationContext(String... resourceLocations) {
+@@ -74,9 +73,24 @@ public class SpringStepsFactoryBehaviour
+         SpringStepsFactory factory = new SpringStepsFactory(new MostUsefulConfiguration(), context);
+         // When
+         when(context.getBeanDefinitionNames()).thenReturn(new String[] { "fooSteps", "undefined", "blowUp" });
+-        when(context.getType("fooSteps")).thenReturn(FooSteps.class);
++        doAnswer(new Answer<Class<FooSteps>>() {
++
++            public Class<FooSteps> answer(InvocationOnMock invocation) throws Throwable {
++
++                return FooSteps.class;
++            }
++        }).when(context).getType("fooSteps");
++
+         when(context.getType("undefined")).thenReturn(null);
+-        when(context.getType("blowUp")).thenReturn(BlowUp.class);
++
++        doAnswer(new Answer<Class<BlowUp>>() {
++
++            public Class<BlowUp> answer(InvocationOnMock invocation) throws Throwable {
++
++                return BlowUp.class;
++            }
++        }).when(context).getType("blowUp");
++
+         when(context.getBean("fooSteps")).thenReturn(new FooSteps());
+         when(context.getBean("blowUp")).thenThrow(new RuntimeException("Bum!"));
+         List<CandidateSteps> candidateSteps = factory.createCandidateSteps();

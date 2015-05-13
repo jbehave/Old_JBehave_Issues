@@ -1,0 +1,29 @@
+Nicholas Smith
+	
+May 24 (4 days ago)
+		
+to dev
+Hi All
+
+I'm currently using JBehave and getting to the stage where I have quite a few scenarios, subsequently I am starting to notice increasing amounts of repetitive steps.  I had hoped to push the common pre-requisites out to GivenStories and save the repetition. 
+
+The problem is that I'm currently using @AfterScenario to tidy up before the next scenario, which fires at the end of the GivenStory Scenario as well as the Scenario under test; however in the case of a GivenStories I do not want this to happen as I am effectively trying to use them to set up the preconditions.
+
+I'm not sure if I am missing a configuration option or I am either misusing the @AfterScenario or GivenStories.
+
+Any advice?
+
+Thanks
+Nick
+Mauro Talevi 
+	
+May 25 (3 days ago)
+		
+to dev
+GivenStories scenarios are currently treated as normal ones.
+
+We can add enhancement easily, as for parametrised scenarios.
+
+Please raise JIRA issue.
+
+Cheers

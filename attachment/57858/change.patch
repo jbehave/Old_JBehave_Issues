@@ -1,0 +1,65 @@
+From c75b4b7922aad6a9f7ba541f15cd85ed50614dc1 Mon Sep 17 00:00:00 2001
+From: Jörgen Andersson <jorgen.x.andersson@gmail.com>
+Date: Nov 3, 2011 6:56:29 AM
+
+Test and fix for scenarios with long titles, i.e. descriptions written between the Scenario-tag and other reserved words.
+ 
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/parsers/RegexStoryParser.java b/jbehave-core/src/main/java/org/jbehave/core/parsers/RegexStoryParser.java
+index 24ed2b3..156db52 100755
+--- a/jbehave-core/src/main/java/org/jbehave/core/parsers/RegexStoryParser.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/parsers/RegexStoryParser.java
+@@ -147,13 +147,14 @@
+ 
+     private Scenario parseScenario(String scenarioAsText) {
+         String title = findScenarioTitle(scenarioAsText);
+-        Meta meta = findScenarioMeta(scenarioAsText);
+-        ExamplesTable examplesTable = findExamplesTable(scenarioAsText);
+-        GivenStories givenStories = findGivenStories(scenarioAsText);
++        String scenarioWithoutTitle = scenarioAsText.substring(scenarioAsText.indexOf(title) + title.length());
++        Meta meta = findScenarioMeta(scenarioWithoutTitle);
++        ExamplesTable examplesTable = findExamplesTable(scenarioWithoutTitle);
++        GivenStories givenStories = findGivenStories(scenarioWithoutTitle);
+         if (givenStories.requireParameters()) {
+             givenStories.useExamplesTable(examplesTable);
+         }
+-        List<String> steps = findSteps(scenarioAsText);
++        List<String> steps = findSteps(scenarioWithoutTitle);
+         return new Scenario(title, meta, givenStories, examplesTable, steps);
+     }
+ 
+@@ -216,7 +217,7 @@
+ 
+     private Pattern patternToPullScenarioTitleIntoGroupOne() {
+         String startingWords = concatenateWithOr("\\n", "", keywords.startingWords());
+-        return compile(keywords.scenario() + "((.|\\n)*?)\\s*(" + keywords.meta() + "|" + startingWords + ").*", DOTALL);
++        return compile(keywords.scenario() + "((.)*?)\\s*(" + keywords.meta() + "|" + startingWords + ").*", DOTALL);
+     }
+ 
+     private Pattern patternToPullScenarioMetaIntoGroupOne() {
+diff --git a/jbehave-core/src/test/java/org/jbehave/core/parsers/RegexStoryParserBehaviour.java b/jbehave-core/src/test/java/org/jbehave/core/parsers/RegexStoryParserBehaviour.java
+index 7e3d4dc..ae7c2e0 100755
+--- a/jbehave-core/src/test/java/org/jbehave/core/parsers/RegexStoryParserBehaviour.java
++++ b/jbehave-core/src/test/java/org/jbehave/core/parsers/RegexStoryParserBehaviour.java
+@@ -527,4 +527,22 @@
+         )));
+ 
+     }
++    
++    @Test
++    public void shouldParseStoryWithVeryLongTitle() {
++        String scenario = aScenarioWithAVeryLongTitle();
++        ensureThatScenarioCanBeParsed(scenario);
++    }
++
++    private String aScenarioWithAVeryLongTitle() {
++        StringBuilder longScenarioBuilder = new StringBuilder()
++                .append("Scenario: First line of long title." + NL)
++                .append("After that follows a long textual description. " + NL);
++        int numberOfLinesInScenarioDescription = 2000; // Causes StackOverflowError already at 20 rows (about 1200 chars) with implementation in 3.5.1
++        for (int i = 0; i < numberOfLinesInScenarioDescription; i++) {
++            longScenarioBuilder.append("A line from the long description with about 60 characters." + NL);
++        }
++        longScenarioBuilder.append("Given the first step that marks end of title" + NL);
++        return longScenarioBuilder.toString();
++    }
+ }

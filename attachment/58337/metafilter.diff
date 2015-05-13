@@ -1,0 +1,21 @@
+ .../jbehave/core/embedder/MetaFilterBehaviour.java |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+diff --git a/jbehave-core/src/test/java/org/jbehave/core/embedder/MetaFilterBehaviour.java b/jbehave-core/src/test/java/org/jbehave/core/embedder/MetaFilterBehaviour.java
+index d2f1ec1..4d7e758 100755
+--- a/jbehave-core/src/test/java/org/jbehave/core/embedder/MetaFilterBehaviour.java
++++ b/jbehave-core/src/test/java/org/jbehave/core/embedder/MetaFilterBehaviour.java
+@@ -54,6 +54,13 @@ public class MetaFilterBehaviour {
+         assertFilterAllowsProperty("-skip", "skip", false);
+         assertFilterAllowsProperty("+theme smoke testing -theme UI", "theme smoke testing", true);
+         assertFilterAllowsProperty("+theme smoke testing -theme UI", "theme UI", false);
++        assertFilterAllowsProperty("-skip", "skip true", false);
++        assertFilterAllowsProperty("-skip", "skip false", true);
++        assertFilterAllowsProperty("-skip true", "skip true", false);
++        assertFilterAllowsProperty("-skip true", "skip false", true);
++        // doesn't make any sense, but should work nonetheless
++        assertFilterAllowsProperty("-skip false", "skip true", true);
++        assertFilterAllowsProperty("-skip false", "skip false", false);
+     }
+ 
+     @Test

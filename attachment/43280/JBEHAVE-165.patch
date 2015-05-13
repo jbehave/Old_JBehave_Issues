@@ -1,0 +1,142 @@
+Index: core/jbehave-ant/src/main/java/org/jbehave/ant/ScenarioRunnerTask.java
+===================================================================
+--- core/jbehave-ant/src/main/java/org/jbehave/ant/ScenarioRunnerTask.java	(revision 1146)
++++ core/jbehave-ant/src/main/java/org/jbehave/ant/ScenarioRunnerTask.java	(working copy)
+@@ -3,6 +3,9 @@
+ import static org.apache.tools.ant.Project.MSG_INFO;
+ import static org.apache.tools.ant.Project.MSG_WARN;
+ 
++import java.util.HashMap;
++import java.util.Map;
++
+ import org.apache.tools.ant.BuildException;
+ import org.jbehave.scenario.RunnableScenario;
+ 
+@@ -22,11 +25,17 @@
+ 	 */
+ 	private boolean ignoreFailure = false;
+ 
++    /**
++     * The boolean flag to run in failBatch mode
++     */
++    private boolean failBatch = false;
++	
+ 	public void execute() throws BuildException {
+ 		if (skip) {
+ 			log("Skipped running scenarios", MSG_INFO);
+ 			return;
+ 		}
++		Map<String,Throwable> failedScenarios = new HashMap<String, Throwable>();
+ 		for (RunnableScenario scenario : scenarios()) {
+ 			String scenarioName = scenario.getClass().getName();
+ 			try {
+@@ -36,13 +45,34 @@
+ 				String message = "Failed to run scenario " + scenarioName;
+ 				if (ignoreFailure) {
+ 					log(message, e, MSG_WARN);
++                } else if ( failBatch ){
++					failedScenarios.put(scenarioName, e);					
+ 				} else {
+ 					throw new BuildException(message, e);
+ 				}
+ 			}
+ 		}
++		
++		if ( failBatch && failedScenarios.size() > 0 ){
++        	String message = "Failed to run scenarios: "+format(failedScenarios);
++        	log(message, MSG_WARN);
++			throw new BuildException(message);
++        }
++		
+ 	}
+ 
++
++	private String format(Map<String, Throwable> failedScenarios) {
++		StringBuffer sb = new StringBuffer();
++		for (String scenarioName : failedScenarios.keySet() ) {
++			Throwable cause = failedScenarios.get(scenarioName);
++			sb.append("\n");
++			sb.append(scenarioName);
++			sb.append(": ");
++			sb.append(cause.getMessage());
++		}		
++		return sb.toString();
++	}
+ 	// Setters
+ 	public void setSkip(boolean skip) {
+ 		this.skip = skip;
+@@ -52,4 +82,8 @@
+ 		this.ignoreFailure = ignoreFailure;
+ 	}
+ 
++	public void setBatchMode(boolean batchMode) {
++		this.failBatch = batchMode;
++	}	
++
+ }
+Index: core/jbehave-maven-plugin/src/main/java/org/jbehave/mojo/ScenarioRunnerMojo.java
+===================================================================
+--- core/jbehave-maven-plugin/src/main/java/org/jbehave/mojo/ScenarioRunnerMojo.java	(revision 1146)
++++ core/jbehave-maven-plugin/src/main/java/org/jbehave/mojo/ScenarioRunnerMojo.java	(working copy)
+@@ -1,5 +1,8 @@
+ package org.jbehave.mojo;
+ 
++import java.util.HashMap;
++import java.util.Map;
++
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
+ import org.jbehave.scenario.RunnableScenario;
+@@ -25,12 +28,20 @@
+      * @parameter default-value="false"
+      */
+     private boolean ignoreFailure;
++
++    /**
++     * The boolean flag to run in failBatch mode
++     * 
++     * @parameter default-value="false"
++     */
++    private boolean failBatch;
+     
+     public void execute() throws MojoExecutionException, MojoFailureException {
+         if ( skip ){
+             getLog().info("Skipped running scenarios");
+             return;
+         }
++    	Map<String,Throwable> failedScenarios = new HashMap<String, Throwable>();
+         for (RunnableScenario scenario : scenarios()) {
+             String scenarioName = scenario.getClass().getName();
+             try {
+@@ -40,11 +51,31 @@
+                 String message = "Failed to run scenario " + scenarioName;
+                 if ( ignoreFailure ){
+                     getLog().warn(message, e);
++                } else if ( failBatch ){
++					failedScenarios.put(scenarioName, e);
+                 } else {
+                     throw new MojoExecutionException(message, e);
+                 }
+             }
+         }
++        
++        if ( failBatch && failedScenarios.size() > 0 ){
++        	String message = "Failed to run scenarios: "+format(failedScenarios);
++            getLog().warn(message);
++			throw new MojoExecutionException(message);
++        }
+     }
+ 
++	private String format(Map<String, Throwable> failedScenarios) {
++		StringBuffer sb = new StringBuffer();
++		for (String scenarioName : failedScenarios.keySet() ) {
++			Throwable cause = failedScenarios.get(scenarioName);
++			sb.append("\n");
++			sb.append(scenarioName);
++			sb.append(": ");
++			sb.append(cause.getMessage());
++		}		
++		return sb.toString();
++	}
++
+ }

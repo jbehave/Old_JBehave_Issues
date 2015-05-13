@@ -1,0 +1,79 @@
+Index: src/test/java/org/jbehave/core/steps/CompositeStepCandidateBehaviour.java
+===================================================================
+--- src/test/java/org/jbehave/core/steps/CompositeStepCandidateBehaviour.java	(revision a5a553fac309483dbb077045ab8325386732bdab)
++++ src/test/java/org/jbehave/core/steps/CompositeStepCandidateBehaviour.java	(revision )
+@@ -5,6 +5,7 @@
+ import org.jbehave.core.annotations.Given;
+ import org.jbehave.core.annotations.Named;
+ import org.jbehave.core.annotations.When;
++import org.jbehave.core.reporters.StoryReporter;
+ import org.junit.Ignore;
+ import org.junit.Test;
+ 
+@@ -15,6 +16,8 @@
+ import static org.hamcrest.CoreMatchers.equalTo;
+ import static org.hamcrest.MatcherAssert.assertThat;
+ import static org.hamcrest.Matchers.is;
++import static org.mockito.Mockito.mock;
++import static org.mockito.Mockito.verify;
+ 
+ public class CompositeStepCandidateBehaviour {
+ 
+@@ -57,7 +60,37 @@
+ 
+     }
+ 
++    @Test
++    public void shouldNoteThatOneOfTheStepsIsPendingSoThatRemainingStepsAreNotRun(){
++        CompositeStepComposedOfAnImplementedAndAPendingStep steps = new CompositeStepComposedOfAnImplementedAndAPendingStep();
++        List<StepCandidate> candidates = steps.listCandidates();
++        StepCandidate candidate = candidates.get(0);
++        assertThat(candidate.isComposite(), is(true));
++        Map<String, String> noNamedParameters = new HashMap<String, String>();
++        List<Step> composedSteps = candidate.createComposedSteps("Given I have done stuff", noNamedParameters, candidates);
++        assertThat(composedSteps.size(), equalTo(2));
++        StoryReporter storyReporter = mock(StoryReporter.class);
++        for (Step composedStep : composedSteps) {
++            composedStep.perform().describeTo(storyReporter);
++        }
++        verify(storyReporter).successful("Given I did stuff");
++        verify(storyReporter).pending("When I did additional stuff");
++    }
+ 
++
++    static class CompositeStepComposedOfAnImplementedAndAPendingStep extends Steps {
++
++        @Given("I have done stuff")
++        @Composite(steps = { "Given I did stuff",
++                             "When I did additional stuff" })
++        public void aCompositeStep() {
++        }
++
++        @Given("I did stuff")
++        public void didStuff() {
++        }
++    }
++
+     @Test
+     public void shouldMatchCompositeStepsAndCreateComposedStepsUsingNamedParameters() {
+         CompositeStepsUsingNamedParameters steps = new CompositeStepsUsingNamedParameters();
+Index: src/main/java/org/jbehave/core/steps/StepCandidate.java
+===================================================================
+--- src/main/java/org/jbehave/core/steps/StepCandidate.java	(revision a5a553fac309483dbb077045ab8325386732bdab)
++++ src/main/java/org/jbehave/core/steps/StepCandidate.java	(revision )
+@@ -149,6 +149,8 @@
+             StepCandidate candidate = findComposedCandidate(composedStep, allCandidates);
+             if ( candidate != null ){
+                 steps.add(candidate.createMatchedStep(composedStep, matchedParameters));
++            } else {
++                steps.add(StepCreator.createPendingStep(composedStep));
+             }
+         }
+         return steps;
+@@ -217,4 +219,4 @@
+     }
+ 
+ 
+-}
+\ No newline at end of file
++}

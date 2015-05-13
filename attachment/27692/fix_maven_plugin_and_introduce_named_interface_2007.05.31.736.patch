@@ -1,0 +1,281 @@
+Index: core/src/analysis/user withdraws cash.txt
+===================================================================
+--- core/src/analysis/user withdraws cash.txt	(revision 736)
++++ core/src/analysis/user withdraws cash.txt	(working copy)
+@@ -1,29 +1,16 @@
+-Story: User withdraws cash
+-
++Title: User withdraws cash
+ As a Bank card holder
+ I want to be able to withdraw cash from an ATM
+ So that I dont have to visit the bank
+-
+ Scenario: Happy scenario
+-
+ Given Account is in credit
+ When User requests cash
+-Then ATM should dispense cash
+-and ATM should return bank card
+-and account balance should be reduced
+-
++Then ATM should dispense cash and ATM should return bank card and account balance should be reduced
+ Scenario: Happy story with overdraft
+-
+-Given Account has overdraft facility
+-and Account is easily within overdraft limit
++Given Account has overdraft facility and Account is easily within overdraft limit
+ When User requests cash
+-Then ATM should dispense cash
+-and ATM should return bank card
+-and account balance should be reduced
+-
++Then ATM should dispense cash and ATM should return bank card and account balance should be reduced
+ Scenario: In lots of trouble
+-
+ Given Account is over overdraft limit
+ When User requests cash
+-Then Refuse cash
+-and Keep bank card
++Then Refuse cash and Keep bank card
+Index: core/src/java/org/jbehave/core/story/domain/MultiStepScenario.java
+===================================================================
+--- core/src/java/org/jbehave/core/story/domain/MultiStepScenario.java	(revision 736)
++++ core/src/java/org/jbehave/core/story/domain/MultiStepScenario.java	(working copy)
+@@ -57,7 +57,7 @@
+  * @author <a href="mailto:dan.north@thoughtworks.com">Dan North</a>
+  * @author <a href="mailto:liz@thoughtworks.com">Elizabeth Keogh</a>
+  */
+-public abstract class MultiStepScenario implements Scenario {
++public abstract class MultiStepScenario implements Scenario, Named {
+     
+     private static final String UNSPECIFIED = "Unspecified";
+     private static final String SPECIFIED = "Specified";
+@@ -77,6 +77,10 @@
+         state = SPECIFIED;
+     }
+ 
++    public String getName() {
++        return this.getClass().getName();
++    }
++
+     protected abstract void specifySteps();
+ 
+     public void run(World world) {
+Index: core/src/java/org/jbehave/core/story/domain/Named.java
+===================================================================
+--- core/src/java/org/jbehave/core/story/domain/Named.java	(revision 0)
++++ core/src/java/org/jbehave/core/story/domain/Named.java	(revision 0)
+@@ -0,0 +1,8 @@
++package org.jbehave.core.story.domain;
++
++/**
++ * @author Eric Lewin
++ */
++public interface Named {
++    String getName();
++}
+Index: core/src/java/org/jbehave/core/story/domain/ScenarioDrivenStory.java
+===================================================================
+--- core/src/java/org/jbehave/core/story/domain/ScenarioDrivenStory.java	(revision 736)
++++ core/src/java/org/jbehave/core/story/domain/ScenarioDrivenStory.java	(working copy)
+@@ -34,7 +34,7 @@
+  * @author <a href="mailto:dan.north@thoughtworks.com">Dan North</a>
+  * @author <a href="mailto:liz@thoughtworks.com">Elizabeth Keogh</a>
+  */
+-public abstract class ScenarioDrivenStory implements Story {
++public abstract class ScenarioDrivenStory implements Story, Named {
+     private final Narrative narrative;
+     private final List scenarios;
+     private final List listeners;
+@@ -53,7 +53,11 @@
+     public List scenarios() {
+         return scenarios;
+     }
+-    
++
++    public String getName() {
++        return this.getClass().getName();
++    }
++
+     public Narrative narrative() {
+         return narrative;
+     }
+@@ -61,7 +65,7 @@
+     public void run() {
+         for (Iterator i = scenarios.iterator(); i.hasNext();) {
+             Scenario scenario = (Scenario) i.next();
+-            informListeners(runScenario(createWorld(), this.getClass(), scenario));
++            informListeners(runScenario(createWorld(), this, scenario));
+         }
+     }
+ 
+@@ -76,9 +80,9 @@
+         return new HashMapWorld();
+     }
+ 
+-    private ScenarioResult runScenario(World world, Class storyClass, Scenario scenario) {
++    private ScenarioResult runScenario(World world, Story story, Scenario scenario) {
+         ScenarioResult result;
+-        String storyDescription = new CamelCaseConverter(storyClass).toPhrase();
++        String storyDescription = new CamelCaseConverter(story).toPhrase();
+         String description = new CamelCaseConverter(scenario).toPhrase();
+         
+         try {                
+@@ -109,7 +113,7 @@
+         for ( Iterator i = scenarios.iterator(); i.hasNext(); ){
+             ((Scenario) i.next()).narrateTo(renderer);
+         }
+-    }    
++    }
+ 
+     public String toString() {
+         StringBuffer buffer = new StringBuffer();
+Index: core/src/java/org/jbehave/core/story/StoryBuilder.java
+===================================================================
+--- core/src/java/org/jbehave/core/story/StoryBuilder.java	(revision 736)
++++ core/src/java/org/jbehave/core/story/StoryBuilder.java	(working copy)
+@@ -3,7 +3,6 @@
+ import java.text.MessageFormat;
+ import java.util.Iterator;
+ 
+-import org.jbehave.core.story.codegen.domain.BasicDetails;
+ import org.jbehave.core.story.codegen.domain.ScenarioDetails;
+ import org.jbehave.core.story.codegen.domain.StoryDetails;
+ import org.jbehave.core.story.domain.Event;
+@@ -27,7 +26,7 @@
+ 
+     private StoryDetails details;
+     private final String rootPackageName;
+-    private ClassLoader classLoader;
++    private final ClassLoader classLoader;
+     private final ClassBuilder builder = new ClassBuilder();
+ 
+     public StoryBuilder(StoryDetails details, String rootPackageName) {
+@@ -41,23 +40,25 @@
+         }    
+ 
+     public Story story(){
+-        ScenarioDrivenStory story = new ScenarioDrivenStory(new Narrative(details.role, details.feature, details.benefit)) {
++        return new ScenarioDrivenStory(new Narrative(details.role, details.feature, details.benefit)) {
+             public void specify() {
+                 for ( Iterator i = details.scenarios.iterator(); i.hasNext(); ){
+-                    addScenario(scenario((ScenarioDetails)i.next(), details.name));
++                    addScenario(scenario((ScenarioDetails)i.next()));
+                 }
+             }
++
++            public String getName() {
++                return details.name;
++            }
+         };
+-        return story;        
+     }
+ 
+-    private Scenario scenario(final ScenarioDetails details, String storyName) {
++    private Scenario scenario(final ScenarioDetails details) {
+         return new MultiStepScenario() {
+             public void specifySteps() {
+                 // given
+                 for (Iterator i = details.context.givens.iterator(); i.hasNext();) {
+-                    BasicDetails given = (BasicDetails)i.next();
+-                    given((Given)builder.newGiven(given.name));
++                    given((Given)builder.newGiven((String) i.next()));
+                 }
+                 
+                 // when
+@@ -65,10 +66,13 @@
+                 
+                 // then
+                 for (Iterator i = details.outcome.outcomes.iterator(); i.hasNext();) {
+-                    BasicDetails outcome = (BasicDetails)i.next();
+-                    then((Outcome)builder.newOutcome(outcome.name));
++                    then((Outcome)builder.newOutcome((String) i.next()));
+                 }
+             }
++
++            public String getName() {
++                return details.name;
++            }
+         };
+     }
+     
+@@ -95,7 +99,7 @@
+         private Object newInstance(String name, String packageName) {
+             try {
+                 String fullName = buildFullClassName(name, packageName);
+-                return classLoader.loadClass(name).newInstance();
++                return classLoader.loadClass(fullName).newInstance();
+             } catch ( Exception e) {
+                 throw new RuntimeException("Failed to create instance for name "+name, e);
+             }
+Index: core/src/java/org/jbehave/core/story/StoryLoader.java
+===================================================================
+--- core/src/java/org/jbehave/core/story/StoryLoader.java	(revision 736)
++++ core/src/java/org/jbehave/core/story/StoryLoader.java	(working copy)
+@@ -28,7 +28,7 @@
+ 
+     public Story loadStory(String storyPath, String storyPackage) throws MalformedURLException {
+         StoryDetails storyDetails = storyParser.parseStory(getReader(storyPath, classLoader));
+-        return new StoryBuilder(storyDetails, storyPackage).story();
++        return new StoryBuilder(storyDetails, storyPackage, classLoader).story();
+     }
+ 
+     public Story loadStory(String storyClassName) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+Index: core/src/java/org/jbehave/core/story/StoryPrinter.java
+===================================================================
+--- core/src/java/org/jbehave/core/story/StoryPrinter.java	(revision 736)
++++ core/src/java/org/jbehave/core/story/StoryPrinter.java	(working copy)
+@@ -31,6 +31,7 @@
+ 
+     public void print(String storyPath, String storyPackage) throws MalformedURLException {
+         Story story = storyLoader.loadStory(storyPath, storyPackage);
++        story.specify();
+         story.narrateTo(renderer);
+     }
+ 
+Index: core/src/java/org/jbehave/core/util/CamelCaseConverter.java
+===================================================================
+--- core/src/java/org/jbehave/core/util/CamelCaseConverter.java	(revision 736)
++++ core/src/java/org/jbehave/core/util/CamelCaseConverter.java	(working copy)
+@@ -7,7 +7,9 @@
+  */
+ package org.jbehave.core.util;
+ 
++import org.jbehave.core.story.domain.Named;
+ 
++
+ /**
+  * Method object to convert to and from CamelCase
+  * 
+@@ -23,14 +25,16 @@
+         chars = words.toCharArray();
+     }
+ 
++
+     public CamelCaseConverter(Class type) {
+         this(type.getName());
+     }
+ 
+     public CamelCaseConverter(Object obj) {
+-        this(obj.getClass());
++        this(obj instanceof Named ? ((Named) obj).getName() : obj.getClass().getName());
+     }
+     
++
+     public String toCamelCase() {
+         StringBuffer buf = new StringBuffer();
+         while (pos < chars.length) {
+Index: plugins/maven/src/main/java/org/jbehave/mojo/StoryRunnerMojo.java
+===================================================================
+--- plugins/maven/src/main/java/org/jbehave/mojo/StoryRunnerMojo.java	(revision 736)
++++ plugins/maven/src/main/java/org/jbehave/mojo/StoryRunnerMojo.java	(working copy)
+@@ -38,7 +38,8 @@
+         try {
+             getLog().debug("Running story "+ storyPath);
+             StoryLoader loader = new StoryLoader(storyParser, new BehavioursClassLoader(classpathElements));
+-            Story story = loader.loadStory(storyPath, storyPackage);            
++            Story story = loader.loadStory(storyPath, storyPackage);
++			story.specify();
+             storyRunner.run(story);
+         } catch (Exception e) {
+             throw new MojoExecutionException("Failed to run story "+storyPath+" with package "+storyPackage, e);

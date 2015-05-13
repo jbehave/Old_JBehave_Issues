@@ -1,0 +1,92 @@
+<plugin>
+	<artifactId>maven-eclipse-plugin</artifactId>
+	<version>${maven.eclipse.plugin.version}</version>
+	<configuration>
+		<additionalProjectnatures>
+			<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+		</additionalProjectnatures>
+		<additionalBuildcommands>
+			<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+		</additionalBuildcommands>
+		<downloadSources>true</downloadSources>
+		<downloadJavadocs>true</downloadJavadocs>
+	</configuration>
+</plugin>
+<plugin>
+	<artifactId>maven-compiler-plugin</artifactId>
+	<version>${maven.compiler.plugin}</version>
+	<configuration>
+		<source>${jdk.compatibility.version}</source>
+		<target>${jdk.compatibility.version}</target>
+	</configuration>
+</plugin>
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-surefire-plugin</artifactId>
+	<configuration>
+		<!-- Skip the normal tests, we'll run them in the integration-test phase -->
+		<skip>true</skip>
+	</configuration>
+	<executions>
+		<execution>
+			<phase>integration-test</phase>
+			<goals>
+				<goal>test</goal>
+			</goals>
+			<configuration>
+				<skip>true</skip>
+			</configuration>
+		</execution>
+	</executions>
+</plugin>
+<plugin>
+	<groupId>org.jbehave</groupId>
+	<artifactId>jbehave-maven-plugin</artifactId>
+	<version>${jbehave.maven.plugin.version}</version>
+	<!-- configuration moved from execution section to plugin section - see http://jira.codehaus.org/browse/JBEHAVE-207 -->
+	<configuration>
+		<scenarioIncludes>
+			<scenarioInclude>**/*CommonStoriesTest.java</scenarioInclude>
+		</scenarioIncludes>
+		<scenarioExcludes>
+			<scenarioExclude>**/*Steps.java</scenarioExclude>
+		</scenarioExcludes>
+		<includes>
+			<include>**/*all-wcprops</include>
+		</includes>
+		<excludes>
+			<exclude>**/*all-wcprops</exclude>
+		</excludes>
+		<metaFilters>
+			<metaFilter>+author *</metaFilter>
+			<metaFilter>-skip</metaFilter>
+		</metaFilters>
+		<systemProperties>
+			<property>
+				<name>java.awt.headless</name>
+				<value>false</value>
+			</property>
+		</systemProperties>
+		<ignoreFailureInStories>false</ignoreFailureInStories>
+		<ignoreFailureInView>false</ignoreFailureInView>
+		<batch>true</batch>
+	</configuration>
+	<executions>
+		<execution>
+			<id>run-stories-as-embeddables</id>
+			<phase>integration-test</phase>
+			<goals>
+				<goal>run-stories-as-embeddables</goal>
+				<goal>report-stepdocs</goal>
+				<goal>generate-stories-view</goal>
+			</goals>
+		</execution>
+	</executions>
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+	</dependencies>
+</plugin>

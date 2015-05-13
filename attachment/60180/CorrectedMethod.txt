@@ -1,0 +1,19 @@
+    public Map<String, String> matchedParameters(final Method method, final String stepAsString,
+            final String stepWithoutStartingWord, final Map<String, String> namedParameters) {
+    	Map<String, String> matchedParameters = new HashMap<String, String>(); // Return an empty map if we get nothing
+        if (stepMatcher.find(stepWithoutStartingWord)) { // Make sure we find a match before trying to grab it
+	        ParameterName[] parameterNames = parameterNames(method);
+	        Type[] types = method.getGenericParameterTypes();
+	        String[] values = parameterValuesForStep(namedParameters, types, parameterNames);
+	
+	        
+	        for (int i = 0; i < parameterNames.length; i++) {
+	            String name = parameterNames[i].name;
+	            if (name == null) {
+	                name = stepMatcher.parameterNames()[i];
+	            }
+	            matchedParameters.put(name, values[i]);
+	        }
+        }
+        return matchedParameters; // Left outside the if statement so we don't return a null.
+    }

@@ -1,0 +1,1268 @@
+Index: src/main/java/org/jbehave/scenario/errors/ParseException.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/errors/ParseException.java	(revision 0)
++++ src/main/java/org/jbehave/scenario/errors/ParseException.java	(revision 0)
+@@ -0,0 +1,32 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.errors;
++
++/**
++ * Exception class for problems encountered when parsing a scenarion file.
++ * 
++ * @author Doug Satchwell
++ */
++public class ParseException extends RuntimeException {
++  
++  public static final int UNKNOWN_LINE = -1;
++  private int line = UNKNOWN_LINE;
++  
++  public ParseException(String message) {
++    super(message);
++  }
++
++  public ParseException(String message, Throwable e) {
++    super(message, e);
++  }
++
++  public ParseException(String message, int line) {
++    super(message);
++    this.line = line;
++  }
++  
++  public int getLine() {
++    return line;
++  }
++}
+Index: src/main/java/org/jbehave/scenario/i18n/keywords_en.properties
+===================================================================
+--- src/main/java/org/jbehave/scenario/i18n/keywords_en.properties	(revision 1663)
++++ src/main/java/org/jbehave/scenario/i18n/keywords_en.properties	(working copy)
+@@ -1,3 +1,4 @@
++Story=Story:
+ Narrative=Narrative:
+ InOrderTo=In order to
+ AsA=As a
+Index: src/main/java/org/jbehave/scenario/definition/KeyWords.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/definition/KeyWords.java	(revision 1663)
++++ src/main/java/org/jbehave/scenario/definition/KeyWords.java	(working copy)
+@@ -16,6 +16,7 @@
+  */
+ public class KeyWords {
+ 
++    public static final String STORY = "Story";
+     public static final String NARRATIVE = "Narrative";
+     public static final String IN_ORDER_TO = "InOrderTo";
+     public static final String AS_A = "AsA";
+@@ -34,10 +35,11 @@
+     public static final String EXAMPLES_TABLE_ROW = "ExamplesTableRow";
+     public static final String DRY_RUN = "DryRun";
+     
+-    public static final List<String> KEYWORDS = asList(NARRATIVE, IN_ORDER_TO, AS_A, I_WANT_TO, SCENARIO,
++    public static final List<String> KEYWORDS = asList(STORY, NARRATIVE, IN_ORDER_TO, AS_A, I_WANT_TO, SCENARIO,
+             GIVEN_SCENARIOS, EXAMPLES_TABLE, GIVEN, WHEN, THEN, AND, IGNORABLE, PENDING, NOT_PERFORMED, FAILED,
+             EXAMPLES_TABLE_ROW, DRY_RUN);
+ 
++    private final String story;
+     private final String narrative;
+     private final String inOrderTo;
+     private final String asA;
+@@ -60,6 +62,7 @@
+ 
+     public static Map<String, String> defaultKeywords() {
+         Map<String, String> keywords = new HashMap<String, String>();
++        keywords.put(STORY, "Story:");
+         keywords.put(NARRATIVE, "Narrative:");
+         keywords.put(IN_ORDER_TO, "In order to:");
+         keywords.put(AS_A, "As a:");
+@@ -103,6 +106,7 @@
+      * @param encoder the StringEncoder used to encode the values
+      */
+     public KeyWords(Map<String, String> keywords, StringEncoder encoder) {
++        this.story = keyword(STORY, keywords);
+         this.narrative = keyword(NARRATIVE, keywords);
+         this.inOrderTo = keyword(IN_ORDER_TO, keywords);
+         this.asA = keyword(AS_A, keywords);
+@@ -149,6 +153,7 @@
+      */
+     public KeyWords(String scenario, String givenScenarios, String examplesTable, String given, String when,
+             String then, String... others) {
++        this.story = "Story:";
+         this.scenario = scenario;
+         this.givenScenarios = givenScenarios;
+         this.examplesTable = examplesTable;
+@@ -172,6 +177,10 @@
+         this.others = others;
+     }
+ 
++    public String story() {
++      return story;
++  }
++
+     public String narrative() {
+         return narrative;
+     }
+Index: src/main/java/org/jbehave/scenario/definition/ScenarioDefinition.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/definition/ScenarioDefinition.java	(revision 1663)
++++ src/main/java/org/jbehave/scenario/definition/ScenarioDefinition.java	(working copy)
+@@ -7,13 +7,17 @@
+ 
+ public class ScenarioDefinition {
+ 
+-    private final String title;
+-	private final List<String> givenScenarios;
+-    private final List<String> steps;
+-	private final ExamplesTable table;
++    private String title;
++	private List<String> givenScenarios;
++    private List<String> steps;
++	private ExamplesTable table;
++
++  public ScenarioDefinition() {
++    this("");
++  }
+ 
+-    public ScenarioDefinition(String title) {
+-        this("", new ArrayList<String>());
++  public ScenarioDefinition(String title) {
++        this(title, new ArrayList<String>());
+     }
+ 
+ 	public ScenarioDefinition(List<String> steps) {
+@@ -39,17 +43,34 @@
+         this(title, new ArrayList<String>(), table, asList(steps));
+     }
+     
++    public void addGivenScenario(String gs) {
++      givenScenarios.add(gs);
++    }
++    
++    
+     public List<String> getGivenScenarios() {
+ 		return givenScenarios;
+ 	}
+ 
++    public void addStep(String step) {
++      steps.add(step);
++    }
++    
+ 	public List<String> getSteps() {
+         return steps;
+     }
+ 
++	  public void setTitle(String title) {
++      this.title = title;
++    }
++	  
+     public String getTitle() {
+         return title;
+     }
++    
++    public void setTable(ExamplesTable table) {
++      this.table = table;
++    }
+ 
+     public ExamplesTable getTable(){
+     	return table;
+Index: src/main/java/org/jbehave/scenario/definition/ExamplesTable.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/definition/ExamplesTable.java	(revision 1663)
++++ src/main/java/org/jbehave/scenario/definition/ExamplesTable.java	(working copy)
+@@ -1,7 +1,7 @@
+ package org.jbehave.scenario.definition;
+ 
+ import java.util.ArrayList;
+-import java.util.HashMap;
++import java.util.LinkedHashMap;
+ import java.util.List;
+ import java.util.Map;
+ 
+@@ -18,15 +18,21 @@
+ 	private static final String NEWLINE = "\n";
+     private static final String COLUMN_SEPARATOR = "\\|";
+ 	private final List<Map<String, String>> data = new ArrayList<Map<String, String>>();
+-	private final String tableAsString;
+-    private final List<String> headers = new ArrayList<String>();
++	private String tableAsString;
++    private List<String> headers = new ArrayList<String>();
++
++    public ExamplesTable(String tableAsString) {
++      this(tableAsString,true);
++    }
+ 
+-	public ExamplesTable(String tableAsString) {
++	public ExamplesTable(String tableAsString, boolean parse) {
+ 		this.tableAsString = tableAsString;
+-		parse();
++		if (parse) {
++		  parse();
++		}
+ 	}
+-
+-	private void parse() {
++	 
++  private void parse() {
+ 		data.clear();
+ 		String[] rows = tableAsString.trim().split(NEWLINE);
+ 		headers.clear();
+@@ -35,7 +41,7 @@
+ 			if ( row == 0 ) {
+ 				headers.addAll(columns);
+ 			} else {
+-				Map<String, String> map = new HashMap<String, String>();
++			  LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
+ 				for ( int column = 0; column < columns.size(); column++ ){
+ 					map.put(headers.get(column), columns.get(column));
+ 				}
+@@ -55,11 +61,26 @@
+ 		}
+ 		return columns;
+ 	}
++	
++  public void setHeaders(List<String> headers) {
++    assert headers.size() > 0;
++    this.headers = headers;
++  }
+ 
+ 	public List<String> getHeaders(){
+ 	    return headers;
+ 	}
+ 	
++	public void addRow(List<String> row) {
++	  assert headers != null;
++	  assert headers.size() == row.size();
++	  LinkedHashMap<String,String> map = new LinkedHashMap<String,String>();
++	  for (int i=0;i<row.size();i++) {
++      map.put(headers.get(i), row.get(i));
++    }
++	  data.add(map);
++	}
++	
+ 	public Map<String, String> getRow(int row){
+ 		return data.get(row);		
+ 	}
+Index: src/main/java/org/jbehave/scenario/definition/Narrative.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/definition/Narrative.java	(revision 1663)
++++ src/main/java/org/jbehave/scenario/definition/Narrative.java	(working copy)
+@@ -7,30 +7,46 @@
+ 
+     public static final Narrative EMPTY = new Narrative("", "", "");
+ 
+-    private final String inOrderTo;
+-    private final String asA;
+-    private final String iWantTo;
++    private String inOrderTo;
++    private String asA;
++    private String iWantTo;
++
++    public Narrative() {
++      this("","","");
++    }
+ 
+     public Narrative(String inOrderTo, String asA, String iWantTo) {
+         this.inOrderTo = inOrderTo;
+         this.asA = asA;
+         this.iWantTo = iWantTo;
+     }
++    
++    public void setInOrderTo(String inOrderTo) {
++      this.inOrderTo = inOrderTo;
++    }
+ 
+     public String inOrderTo() {
+         return inOrderTo;
+     }
++    
++    public void setAsA(String asA) {
++      this.asA = asA;
++    }
+ 
+     public String asA() {
+         return asA;
+     }
++    
++    public void setiWantTo(String iWantTo) {
++      this.iWantTo = iWantTo;
++    }
+ 
+     public String iWantTo() {
+         return iWantTo;
+     }
+     
+     public boolean isEmpty() {
+-        return EMPTY == this;
++        return "".equals(inOrderTo) && "".equals(asA) && "".equals(iWantTo);
+     }
+ 
+     @Override
+Index: src/main/java/org/jbehave/scenario/parser/PatternScenarioParser.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/parser/PatternScenarioParser.java	(revision 1663)
++++ src/main/java/org/jbehave/scenario/parser/PatternScenarioParser.java	(working copy)
+@@ -16,6 +16,7 @@
+ import org.jbehave.scenario.definition.ScenarioDefinition;
+ import org.jbehave.scenario.definition.StoryDefinition;
+ import org.jbehave.scenario.i18n.I18nKeyWords;
++import org.jbehave.scenario.parser.jface.JFaceScenarioParser;
+ 
+ /**
+  * Pattern-based scenario parser, which uses the keywords provided to find the
+@@ -47,10 +48,7 @@
+     }
+     
+ 	public StoryDefinition defineStoryFrom(String wholeStoryAsText, String storyPath) {
+-		Blurb blurb = parseBlurbFrom(wholeStoryAsText);
+-        Narrative narrative = parseNarrativeFrom(wholeStoryAsText);
+-		List<ScenarioDefinition> scenarioDefinitions = parseScenariosFrom(wholeStoryAsText);
+-        return new StoryDefinition(blurb, narrative, storyPath, scenarioDefinitions);
++	  return JFaceScenarioParser.getInstance(keywords).defineStoryFrom(wholeStoryAsText, storyPath);
+ 	}
+ 
+     private Blurb parseBlurbFrom(String wholeStoryAsString) {
+Index: src/main/java/org/jbehave/scenario/parser/jface/AbstractParser.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/parser/jface/AbstractParser.java	(revision 0)
++++ src/main/java/org/jbehave/scenario/parser/jface/AbstractParser.java	(revision 0)
+@@ -0,0 +1,48 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.parser.jface;
++
++import org.eclipse.jface.text.BadLocationException;
++import org.eclipse.jface.text.IDocument;
++import org.eclipse.jface.text.ITypedRegion;
++import org.eclipse.jface.text.rules.ITokenScanner;
++import org.jbehave.scenario.errors.ParseException;
++
++/**
++ * Abstract base class for parsing a section of a scenario file
++ * 
++ * @author Doug Satchwell
++ */
++public abstract class AbstractParser<T> {
++  
++  protected final ITokenScanner scanner;
++  protected IDocument document;
++  protected JBehaveToken currentSection;
++  protected int startOffset;
++  
++  public AbstractParser(ITokenScanner scanner) {
++    this.scanner = scanner;
++  }
++  
++  public final T parse(IDocument document, ITypedRegion region) {
++    this.document = document;
++    this.currentSection = null;
++    this.startOffset = -1;
++    scanner.setRange(document, region.getOffset(), region.getLength());
++    T value = null;
++    try {
++      value = doParse();
++    } catch (BadLocationException e) {
++      throw new ParseException(e.getMessage(),e);
++    }
++    return value;
++  }
++  
++  protected String getText() throws BadLocationException {
++    String text = document.get(startOffset, (scanner.getTokenOffset()-startOffset));
++    return text.trim();
++  }
++  
++  protected abstract T doParse() throws BadLocationException;
++}
+Index: src/main/java/org/jbehave/scenario/parser/jface/JBehaveMultiLineRule.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/parser/jface/JBehaveMultiLineRule.java	(revision 0)
++++ src/main/java/org/jbehave/scenario/parser/jface/JBehaveMultiLineRule.java	(revision 0)
+@@ -0,0 +1,46 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.parser.jface;
++
++import org.eclipse.jface.text.rules.ICharacterScanner;
++import org.eclipse.jface.text.rules.IToken;
++import org.eclipse.jface.text.rules.MultiLineRule;
++
++/**
++ * Detects the start and end of a partition in a JBehave scenario
++ * 
++ * @author Doug Satchwell
++ */
++public class JBehaveMultiLineRule extends MultiLineRule {
++  
++  public final char[][] chars;
++
++  public JBehaveMultiLineRule(String[] keywords, String startSequence, IToken token) {
++    super(startSequence, "", token, (char)0, true);
++    chars = new char[keywords.length][];
++    for (int i=0;i<keywords.length;i++) {
++      String keyword = keywords[i];
++      chars[i] = ("\n"+keyword).toCharArray();
++    }
++  }
++
++  @Override
++  protected boolean endSequenceDetected(ICharacterScanner scanner) {
++    int c;
++    while ((c = scanner.read()) != ICharacterScanner.EOF) {
++      if (c == '\n') {        
++        for (char[] charray : chars) {
++          if (sequenceDetected(scanner, charray, false)) {
++            // we found another of our partitions, so unread the start sequence and return true
++            for (int i=0; i < charray.length-1; i++) {
++              scanner.unread();
++            }
++            return true;
++          }
++        }
++      }
++    }
++    return true;
++  }  
++}
+Index: src/main/java/org/jbehave/scenario/parser/jface/JBehavePartitionScanner.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/parser/jface/JBehavePartitionScanner.java	(revision 0)
++++ src/main/java/org/jbehave/scenario/parser/jface/JBehavePartitionScanner.java	(revision 0)
+@@ -0,0 +1,45 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.parser.jface;
++
++import org.eclipse.jface.text.rules.IPredicateRule;
++import org.eclipse.jface.text.rules.IToken;
++import org.eclipse.jface.text.rules.RuleBasedPartitionScanner;
++import org.eclipse.jface.text.rules.Token;
++import org.jbehave.scenario.definition.KeyWords;
++
++/**
++ * Scanner for detecting the start and end of a partition in a JBehave scenario file
++ * 
++ * @author Doug Satchwell
++ */
++public class JBehavePartitionScanner extends RuleBasedPartitionScanner {
++	public static final String SCENARIO = "__SCENARIO";
++  public static final String STORY = "__STORY";
++  public static final String NARRATIVE = "__NARRATIVE";
++	public static final String EXAMPLES = "__EXAMPLES";
++
++	public JBehavePartitionScanner(KeyWords keywords) {
++	  
++	  String[] keys = new String[]{
++	      keywords.story(),
++	      keywords.narrative(),
++	      keywords.scenario(),
++	      keywords.examplesTable()
++	  };
++
++    IToken storyToken = new Token(STORY);
++    IToken narrativeToken = new Token(NARRATIVE);
++    IToken scenarioToken = new Token(SCENARIO);
++ 		IToken examplesToken = new Token(EXAMPLES);
++
++		IPredicateRule[] rules = new IPredicateRule[] {
++        new JBehaveMultiLineRule(keys,keywords.story(), storyToken),
++        new JBehaveMultiLineRule(keys,keywords.narrative(), narrativeToken),
++		    new JBehaveMultiLineRule(keys,keywords.scenario(), scenarioToken),
++		    new JBehaveMultiLineRule(keys,keywords.examplesTable(), examplesToken)
++		};
++		setPredicateRules(rules);
++	}
++}
+Index: src/main/java/org/jbehave/scenario/parser/jface/JBehaveToken.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/parser/jface/JBehaveToken.java	(revision 0)
++++ src/main/java/org/jbehave/scenario/parser/jface/JBehaveToken.java	(revision 0)
+@@ -0,0 +1,45 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.parser.jface;
++
++import org.eclipse.jface.text.rules.IToken;
++
++/**
++ * Tokens to be detected in a JBehave scenarion file
++ * 
++ * @author Doug Satchwell
++ */
++public enum JBehaveToken implements IToken {
++  COMMENT,
++  SCENARIO,
++  GIVEN_SCENARIOS,
++  GIVEN,
++  WHEN,
++  THEN,
++  AND,
++  NARRATIVE,
++  IN_ORDER_TO,
++  AS_A,
++  I_WANT_TO;
++  
++  public Object getData() {
++    return null;
++  }
++
++  public boolean isEOF() {
++    return false;
++  }
++
++  public boolean isOther() {
++    return false;
++  }
++
++  public boolean isUndefined() {
++    return false;
++  }
++
++  public boolean isWhitespace() {
++    return false;
++  }
++}
+Index: src/main/java/org/jbehave/scenario/parser/jface/JFaceScenarioParser.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/parser/jface/JFaceScenarioParser.java	(revision 0)
++++ src/main/java/org/jbehave/scenario/parser/jface/JFaceScenarioParser.java	(revision 0)
+@@ -0,0 +1,186 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.parser.jface;
++
++import java.io.BufferedReader;
++import java.io.IOException;
++import java.io.StringReader;
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.List;
++
++import org.eclipse.jface.text.BadLocationException;
++import org.eclipse.jface.text.Document;
++import org.eclipse.jface.text.IDocument;
++import org.eclipse.jface.text.IDocumentPartitioner;
++import org.eclipse.jface.text.ITypedRegion;
++import org.eclipse.jface.text.rules.FastPartitioner;
++import org.jbehave.scenario.definition.Blurb;
++import org.jbehave.scenario.definition.ExamplesTable;
++import org.jbehave.scenario.definition.KeyWords;
++import org.jbehave.scenario.definition.Narrative;
++import org.jbehave.scenario.definition.ScenarioDefinition;
++import org.jbehave.scenario.definition.StoryDefinition;
++import org.jbehave.scenario.errors.ParseException;
++import org.jbehave.scenario.parser.ScenarioParser;
++
++/**
++ * JFace-based scenario parser, which converts a string to a Document so that line numbers can be tracked
++ * when parsing.
++ * 
++ * @author Doug Satchwell
++ */
++public class JFaceScenarioParser implements ScenarioParser {
++
++  private static JFaceScenarioParser instance;
++  
++  private final ScenarioDefinitionParser scenarioDefinitionParser;
++  private final NarrativeParser narrativeParser;
++  private final Document document;
++
++  private String storyPath;
++
++  private JFaceScenarioParser(KeyWords keywords) {
++    this.scenarioDefinitionParser = new ScenarioDefinitionParser(keywords);
++    this.narrativeParser = new NarrativeParser(keywords);
++    JBehavePartitionScanner scanner = new JBehavePartitionScanner(keywords);
++    IDocumentPartitioner partitioner = new FastPartitioner(scanner,new String[] {
++      JBehavePartitionScanner.STORY,
++      JBehavePartitionScanner.NARRATIVE,
++      JBehavePartitionScanner.SCENARIO,
++      JBehavePartitionScanner.EXAMPLES
++    });
++    this.document = new Document();
++    partitioner.connect(document);
++    document.setDocumentPartitioner(partitioner);
++  }
++
++  public StoryDefinition defineStoryFrom(String wholeStoryAsText) {
++    return defineStoryFrom(wholeStoryAsText, null);
++  }
++
++  public StoryDefinition defineStoryFrom(String wholeStoryAsText, String storyPath) {
++    this.storyPath = storyPath;
++    document.set(wholeStoryAsText);
++    Blurb blurb = Blurb.EMPTY;
++    Narrative narrative = Narrative.EMPTY;
++    List<ScenarioDefinition> defs = new ArrayList<ScenarioDefinition>();
++    try {
++      ITypedRegion[] regions = document.computePartitioning(0, document.getLength());
++      ScenarioDefinition current = null;
++      for (ITypedRegion region : regions) {
++        if (JBehavePartitionScanner.STORY.equals(region.getType())) {
++          // test that we have a valid location
++          if (blurb != Blurb.EMPTY || narrative != Narrative.EMPTY || defs.size() > 0) {
++            parseError(document.getLineOfOffset(region.getOffset()), "'Story' not expected at this location");
++          }
++          String text = document.get(region.getOffset(), region.getLength());
++          blurb = new Blurb(text.trim());
++        } else if (JBehavePartitionScanner.NARRATIVE.equals(region.getType())) {
++          narrative = narrativeParser.parse(document, region);
++        } else if (JBehavePartitionScanner.EXAMPLES.equals(region.getType())) {
++          if (current == null) {
++            parseError(document.getLineOfOffset(region.getOffset()), "'Examples' not expected at this location");
++          }
++          ExamplesTable table = parseExamples(document,region);
++          if (table != null) {
++            current.setTable(table);
++          }
++          current = null;
++        }else {
++          // scenario or default partition
++          current = scenarioDefinitionParser.parse(document,region);
++          defs.add(current);
++        }
++      }
++    } catch (BadLocationException e) {
++      throw new ParseException(e.getMessage(), e);
++    }
++    document.set("");
++    return new StoryDefinition(blurb, narrative, storyPath, defs);
++  }
++  
++  private void parseError(int line, String message) {
++    ++line; // JFace uses 0-based line numbers, so add 1 to convert to actual line number
++    String msg = "Error at line "+line;
++    if (storyPath != null) {
++      msg += " of file "+storyPath;
++    }
++    throw new ParseException(msg+": "+message,line);
++  }
++  
++  private ExamplesTable parseExamples(IDocument document, ITypedRegion region) throws BadLocationException {
++    // all we have to do is skip the first line and use the existing ExamplesTable
++    if (document.getNumberOfLines(region.getOffset(), region.getLength()) > 1) {
++      int lineNumber = document.getLineOfOffset(region.getOffset());
++      int nextLineOffset = document.getLineOffset(lineNumber+1);
++      String text = document.get(nextLineOffset, region.getLength()-(nextLineOffset-region.getOffset()));
++      ExamplesTable table = new ExamplesTable(text,false);
++      BufferedReader reader = new BufferedReader(new StringReader(text));      
++      try {
++        while(reader.ready()) {
++          lineNumber++;
++          String line = reader.readLine();
++          if (line == null) {
++            break;
++          }
++          line = line.trim();
++          if ("".equals(line)) {
++            // ignore blank lines
++            continue;
++          }
++          generateExample(lineNumber,line,table);
++        }
++        reader.close();
++      } catch (IOException e) {
++        // never going to happen
++      }
++      return table;
++    }
++    return null;
++  }
++  
++  private void generateExample(int lineNumber, String line, ExamplesTable table) throws BadLocationException {
++    if (!line.startsWith("|")) {
++      parseError(lineNumber,"example must begin with |");
++    }
++    String[] parts = line.split("\\|",-1);
++    // trim all the columns - do we really want to do this though? Means white space is not a viable table value!
++    for (int i = 0; i < parts.length; i++) {
++      parts[i] = parts[i].trim();
++    }
++    if (parts.length <= 1) {
++      parseError(lineNumber,"no variables defined");
++    } else {
++      // remove the empty string before the first pipe
++      String[] temp = new String[parts.length-1];
++      System.arraycopy(parts, 1, temp, 0, parts.length-1);
++      parts = temp;
++    }
++    if (table.getHeaders().size() == 0) {
++      table.setHeaders(Arrays.asList(parts));
++      for (int i=0;i<parts.length;i++) {
++        String column = parts[i];
++        if ("".equals(column)) {
++          parseError(lineNumber,"All columns must be given a heading");
++        }
++      }
++      
++    } else {
++      if (table.getHeaders().size() > parts.length) {
++        parseError(lineNumber,"example has too few columns, was "+parts.length+" but should be "+table.getHeaders().size());
++      } else if (table.getHeaders().size() < parts.length)  {         
++        parseError(lineNumber,"example has too many columns, was "+parts.length+" but should be "+table.getHeaders().size());
++      }
++      table.addRow(Arrays.asList(parts));
++    }    
++  }
++
++  public static JFaceScenarioParser getInstance(KeyWords keywords) {
++    if (instance == null) {
++      instance = new JFaceScenarioParser(keywords);
++    }
++    return instance;
++  }
++}
+Index: src/main/java/org/jbehave/scenario/parser/jface/NarrativeParser.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/parser/jface/NarrativeParser.java	(revision 0)
++++ src/main/java/org/jbehave/scenario/parser/jface/NarrativeParser.java	(revision 0)
+@@ -0,0 +1,67 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.parser.jface;
++
++import org.eclipse.jface.text.BadLocationException;
++import org.eclipse.jface.text.rules.IToken;
++import org.eclipse.jface.text.rules.Token;
++import org.jbehave.scenario.definition.KeyWords;
++import org.jbehave.scenario.definition.Narrative;
++
++/**
++ * Parses the narrative section of a scenario file
++ * 
++ * @author Doug Satchwell
++ */
++public class NarrativeParser extends AbstractParser<Narrative>{
++
++  private KeyWords keywords;
++
++  public NarrativeParser(KeyWords keywords) {
++    super(new NarrativeScanner(keywords));
++    this.keywords = keywords;
++  }
++
++  protected Narrative doParse() throws BadLocationException {
++    Narrative n = new Narrative();
++    IToken token;
++    while ((token = scanner.nextToken()) != Token.EOF){
++      if (token instanceof JBehaveToken) {
++        JBehaveToken stoken = (JBehaveToken)token;
++        switch(stoken) {
++          case AS_A:
++          case I_WANT_TO:
++          case IN_ORDER_TO:
++            fillValue(n);
++            break;
++          case NARRATIVE:
++            break;
++        }
++        startOffset = scanner.getTokenOffset();
++        currentSection = stoken;
++      }
++    }    
++    fillValue(n);
++    return n;
++  }
++  
++  private void fillValue(Narrative n) throws BadLocationException {
++    String text = getText();
++    switch(currentSection) {
++      case AS_A:
++        text = text.substring(keywords.asA().length()).trim();
++        n.setAsA(text);
++        break;
++      case I_WANT_TO:
++        text = text.substring(keywords.iWantTo().length()).trim();
++        n.setiWantTo(text);
++        break;
++      case IN_ORDER_TO:
++        text = text.substring(keywords.inOrderTo().length()).trim();
++        n.setInOrderTo(text);
++        break;
++    }
++  }
++  
++}
+Index: src/main/java/org/jbehave/scenario/parser/jface/NarrativeScanner.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/parser/jface/NarrativeScanner.java	(revision 0)
++++ src/main/java/org/jbehave/scenario/parser/jface/NarrativeScanner.java	(revision 0)
+@@ -0,0 +1,33 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.parser.jface;
++
++import org.eclipse.jface.text.rules.IRule;
++import org.eclipse.jface.text.rules.RuleBasedScanner;
++import org.eclipse.jface.text.rules.SingleLineRule;
++import org.jbehave.scenario.definition.KeyWords;
++
++/**
++ * Scanner for the narrative section of a scenario file
++ * 
++ * @author Doug Satchwell
++ */
++public class NarrativeScanner extends RuleBasedScanner {
++
++	public NarrativeScanner(KeyWords keywords) {
++		IRule[] rules = new IRule[] {
++		    createRule(keywords.asA(), JBehaveToken.AS_A),
++		    createRule(keywords.iWantTo(), JBehaveToken.I_WANT_TO),
++		    createRule(keywords.inOrderTo(), JBehaveToken.IN_ORDER_TO),
++		    createRule(keywords.narrative(), JBehaveToken.NARRATIVE)
++    };
++		setRules(rules);
++	}
++	
++	private SingleLineRule createRule(String word, JBehaveToken token) {
++	  SingleLineRule rule = new SingleLineRule(word, " ", token);
++	  rule.setColumnConstraint(0);
++	  return rule;
++	}
++}
+Index: src/main/java/org/jbehave/scenario/parser/jface/ScenarioDefinitionParser.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/parser/jface/ScenarioDefinitionParser.java	(revision 0)
++++ src/main/java/org/jbehave/scenario/parser/jface/ScenarioDefinitionParser.java	(revision 0)
+@@ -0,0 +1,76 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.parser.jface;
++
++import org.eclipse.jface.text.BadLocationException;
++import org.eclipse.jface.text.rules.IToken;
++import org.eclipse.jface.text.rules.Token;
++import org.jbehave.scenario.definition.KeyWords;
++import org.jbehave.scenario.definition.ScenarioDefinition;
++
++/**
++ * Parser for the scenario sections of a scenario file
++ * 
++ * @author Doug Satchwell
++ */
++public class ScenarioDefinitionParser extends AbstractParser<ScenarioDefinition>{
++  
++  private KeyWords keywords;
++
++  public ScenarioDefinitionParser(KeyWords keywords) {
++    super(new ScenarioDefinitionScanner(keywords));
++    this.keywords = keywords;
++  }
++
++  protected ScenarioDefinition doParse() throws BadLocationException{
++    ScenarioDefinition def = new ScenarioDefinition();
++    IToken token;
++    while ((token = scanner.nextToken()) != Token.EOF){
++      if (token instanceof JBehaveToken) {
++        JBehaveToken stoken = (JBehaveToken)token;
++        switch(stoken) {
++          case COMMENT:
++          case GIVEN_SCENARIOS:
++          case GIVEN:
++          case WHEN:
++          case THEN:
++          case AND:
++            if (startOffset != -1) {
++              createStep(def);
++            }
++            break;
++          case SCENARIO:
++            break;
++        }
++        startOffset = scanner.getTokenOffset();
++        currentSection = stoken;
++      }
++    }
++    
++    if (startOffset != -1) {
++      createStep(def);
++    }
++
++    return def;
++  }
++  
++  private void createStep(ScenarioDefinition def) throws BadLocationException{
++    if (currentSection == JBehaveToken.SCENARIO) {
++      int offset = startOffset+keywords.scenario().length();
++      String text = document.get(offset, (scanner.getTokenOffset()-offset));
++      text = text.trim();
++      def.setTitle(text);
++    } else if (currentSection == JBehaveToken.GIVEN_SCENARIOS) {
++      int offset = startOffset+keywords.givenScenarios().length();
++      String text = document.get(offset, (scanner.getTokenOffset()-offset));
++      String[] paths = text.split(",");
++      for (String path : paths) {
++        def.addGivenScenario(path.trim());
++      }
++    } else if (currentSection != null) {
++      String text = getText();
++      def.addStep(text);
++    }
++  }
++}
+Index: src/main/java/org/jbehave/scenario/parser/jface/ScenarioDefinitionScanner.java
+===================================================================
+--- src/main/java/org/jbehave/scenario/parser/jface/ScenarioDefinitionScanner.java	(revision 0)
++++ src/main/java/org/jbehave/scenario/parser/jface/ScenarioDefinitionScanner.java	(revision 0)
+@@ -0,0 +1,45 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.parser.jface;
++
++import org.eclipse.jface.text.rules.EndOfLineRule;
++import org.eclipse.jface.text.rules.IRule;
++import org.eclipse.jface.text.rules.IWordDetector;
++import org.eclipse.jface.text.rules.RuleBasedScanner;
++import org.eclipse.jface.text.rules.WordRule;
++import org.jbehave.scenario.definition.KeyWords;
++
++/**
++ * Scanner for the scenario sections of a scenario file
++ * 
++ * @author Doug Satchwell
++ */
++public class ScenarioDefinitionScanner extends RuleBasedScanner {
++
++	public ScenarioDefinitionScanner(KeyWords keywords) {
++	  WordRule wr = new WordRule(new IWordDetector() {
++	    
++      public boolean isWordStart(char c) {
++        return !Character.isWhitespace(c);
++      }
++      
++      public boolean isWordPart(char c) {
++        return !Character.isWhitespace(c);
++      }
++    });
++	  wr.setColumnConstraint(0);
++	  wr.addWord(keywords.scenario(), JBehaveToken.SCENARIO);
++	  wr.addWord(keywords.givenScenarios(), JBehaveToken.GIVEN_SCENARIOS);
++	  wr.addWord(keywords.given(), JBehaveToken.GIVEN);
++	  wr.addWord(keywords.when(), JBehaveToken.WHEN);
++	  wr.addWord(keywords.then(), JBehaveToken.THEN);
++	  wr.addWord(keywords.and(), JBehaveToken.AND);
++	  
++		IRule[] rules = new IRule[] {
++        new EndOfLineRule("!--",JBehaveToken.COMMENT),
++        wr
++    };		
++		setRules(rules);
++	}
++}
+Index: src/behaviour/java/org/jbehave/scenario/i18n/keywords_it.properties
+===================================================================
+--- src/behaviour/java/org/jbehave/scenario/i18n/keywords_it.properties	(revision 1663)
++++ src/behaviour/java/org/jbehave/scenario/i18n/keywords_it.properties	(working copy)
+@@ -1,3 +1,4 @@
++Story=Storia:
+ Narrative=Narrativa:
+ InOrderTo=Per ottenere
+ AsA=Come
+Index: src/behaviour/java/org/jbehave/scenario/parser/invalid_heading1_scenario
+===================================================================
+--- src/behaviour/java/org/jbehave/scenario/parser/invalid_heading1_scenario	(revision 0)
++++ src/behaviour/java/org/jbehave/scenario/parser/invalid_heading1_scenario	(revision 0)
+@@ -0,0 +1,10 @@
++Given <these> <are> <my> <headings>
++When I run this test
++Then it should fail
++
++Examples:
++
++these|are|my|headings|
++|this|is||row1|
++|this||is|row2|
++|this||is|row3|
+Index: src/behaviour/java/org/jbehave/scenario/parser/invalid_example1_scenario
+===================================================================
+--- src/behaviour/java/org/jbehave/scenario/parser/invalid_example1_scenario	(revision 0)
++++ src/behaviour/java/org/jbehave/scenario/parser/invalid_example1_scenario	(revision 0)
+@@ -0,0 +1,12 @@
++Given <these> <are> <my> <headings>
++When I run this test
++Then it should fail
++
++
++Examples:
++
++|these|are|my|headings|
++|this|is||row1|
++|this||is|row2|
++|this||is|row3|
++this||is|row4|
+\ No newline at end of file
+Index: src/behaviour/java/org/jbehave/scenario/parser/ScenarioParserBehaviour.java
+===================================================================
+--- src/behaviour/java/org/jbehave/scenario/parser/ScenarioParserBehaviour.java	(revision 0)
++++ src/behaviour/java/org/jbehave/scenario/parser/ScenarioParserBehaviour.java	(revision 0)
+@@ -0,0 +1,84 @@
++/*
++ * Copyright (c) 2010 Yell Group Ltd. All Rights Reserved.
++ */
++package org.jbehave.scenario.parser;
++
++import static org.junit.Assert.*;
++
++import org.jbehave.scenario.JUnitScenario;
++import org.jbehave.scenario.errors.ParseException;
++import org.jbehave.scenario.steps.StepsFactory;
++import org.junit.Test;
++
++/**
++ * Tests for the default configuration's ScenarioParser
++ * 
++ * @author Doug Satchwell
++ */
++public class ScenarioParserBehaviour {
++  
++  @Test
++  public void validExampleScenario() throws Throwable {
++    new ValidExampleScenario().runScenario();
++  }
++  
++  private static class ValidExampleScenario extends JUnitScenario {
++    public ValidExampleScenario() {
++      addSteps(new StepsFactory().createCandidateSteps(this));
++    }
++  }
++  
++  @Test
++  public void invalidHeading1Scenario() throws Throwable {
++    int line = 7;
++    try {
++      new InvalidHeading1Scenario().runScenario();
++    } catch (ParseException e) {
++      assertEquals(line, e.getLine());
++      return;
++    }
++    fail("Should fail at line "+line);
++  }
++  
++  private static class InvalidHeading1Scenario extends JUnitScenario {
++    public InvalidHeading1Scenario() {
++      addSteps(new StepsFactory().createCandidateSteps(this));
++    }
++  }
++  
++  @Test
++  public void invalidExample1Scenario() throws Throwable {
++    int line = 12;
++    try {
++      new InvalidExample1Scenario().runScenario();
++    } catch (ParseException e) {
++      assertEquals(line, e.getLine());
++      return;
++    }
++    fail("Should fail at line "+line);
++  }
++  
++  private static class InvalidExample1Scenario extends JUnitScenario {
++    public InvalidExample1Scenario() {
++      addSteps(new StepsFactory().createCandidateSteps(this));
++    }
++  }
++  
++  @Test
++  public void invalidExample2Scenario() throws Throwable {
++    int line = 11;
++    try {
++      new InvalidExample2Scenario().runScenario();
++    } catch (ParseException e) {
++      assertEquals(line, e.getLine());
++      return;
++    }
++    fail("Should fail at line "+line);
++  }
++  
++  private static class InvalidExample2Scenario extends JUnitScenario {
++    public InvalidExample2Scenario() {
++      addSteps(new StepsFactory().createCandidateSteps(this));
++    }
++  }
++}
+Index: src/behaviour/java/org/jbehave/scenario/parser/invalid_example2_scenario
+===================================================================
+--- src/behaviour/java/org/jbehave/scenario/parser/invalid_example2_scenario	(revision 0)
++++ src/behaviour/java/org/jbehave/scenario/parser/invalid_example2_scenario	(revision 0)
+@@ -0,0 +1,12 @@
++Given <these> <are> <my> <headings>
++When I run this test
++Then it should fail
++
++
++Examples:
++
++|these|are|my|headings|
++|this|is||row1|
++|this||is|row2|
++this||is|row3|
++|this||is|row4|
+\ No newline at end of file
+Index: src/behaviour/java/org/jbehave/scenario/parser/valid_example_scenario
+===================================================================
+--- src/behaviour/java/org/jbehave/scenario/parser/valid_example_scenario	(revision 0)
++++ src/behaviour/java/org/jbehave/scenario/parser/valid_example_scenario	(revision 0)
+@@ -0,0 +1,11 @@
++Given <these> <are> <my> <headings>
++When I run this test
++Then it should fail
++
++Examples:
++
++|these|are|my|headings|
++|this|is||row1|
++|this||is|row2|
++|this||is|row3|
++|this||is|row4|
+\ No newline at end of file
+Index: src/behaviour/java/org/jbehave/scenario/reporters/StepFailureScenarioReporterDecoratorBehaviour.java
+===================================================================
+--- src/behaviour/java/org/jbehave/scenario/reporters/StepFailureScenarioReporterDecoratorBehaviour.java	(revision 1663)
++++ src/behaviour/java/org/jbehave/scenario/reporters/StepFailureScenarioReporterDecoratorBehaviour.java	(working copy)
+@@ -97,8 +97,7 @@
+ 
+ 			@Override
+ 			public boolean matchesSafely(Throwable t) {
+-				equalTo = equalTo(string);
+-				return equalTo.matches(t.getMessage());
++				return t.getMessage().equals(string);
+ 			}
+ 
+ 			public void describeTo(Description description) {
+Index: src/behaviour/java/org/jbehave/scenario/reporters/PrintStreamScenarioReporterBehaviour.java
+===================================================================
+--- src/behaviour/java/org/jbehave/scenario/reporters/PrintStreamScenarioReporterBehaviour.java	(revision 1663)
++++ src/behaviour/java/org/jbehave/scenario/reporters/PrintStreamScenarioReporterBehaviour.java	(working copy)
+@@ -65,8 +65,8 @@
+                 + "\n"
+                 + "|money|to|\n" + "|$30|Mauro|\n"
+                 + "|$50|Paul|\n" + "\n\n" // Examples table
+-                + "\nExample: {to=Mauro, money=$30}\n" 
+-                + "\nExample: {to=Paul, money=$50}\n" 
++                + "\nExample: {money=$30, to=Mauro}\n" 
++                + "\nExample: {money=$50, to=Paul}\n" 
+                 + "\n" // end of examples
+                 + "\n\n"; // end of scenario and story
+         ensureThatOutputIs(out, expected);
+@@ -110,8 +110,8 @@
+                 + "<table>\n" + "<thead>\n"
+                 + "<tr>\n<th>money</th><th>to</th></tr>\n" + "</thead>\n" + "<tbody>\n"
+                 + "<tr>\n<td>$30</td><td>Mauro</td></tr>\n" + "<tr>\n<td>$50</td><td>Paul</td></tr>\n" + "</tbody>\n"
+-                + "</table>\n" + "\n<h3 class=\"example\">Example: {to=Mauro, money=$30}</h3>\n"
+-                + "\n<h3 class=\"example\">Example: {to=Paul, money=$50}</h3>\n" + "</div>\n" + // end
++                + "</table>\n" + "\n<h3 class=\"example\">Example: {money=$30, to=Mauro}</h3>\n"
++                + "\n<h3 class=\"example\">Example: {money=$50, to=Paul}</h3>\n" + "</div>\n" + // end
+                 // of
+                 // examples
+                 "</div>\n</div>\n"; // end of scenario and story
+@@ -160,8 +160,8 @@
+                 + "<table>\n" + "<thead>\n"
+                 + "<tr>\n<th>money</th><th>to</th></tr>\n" + "</thead>\n" + "<tbody>\n"
+                 + "<tr>\n<td>$30</td><td>Mauro</td></tr>\n" + "<tr>\n<td>$50</td><td>Paul</td></tr>\n" + "</tbody>\n"
+-                + "</table>\n" + "\n<h3 class=\"example\">Example: {to=Mauro, money=$30}</h3>\n"
+-                + "\n<h3 class=\"example\">Example: {to=Paul, money=$50}</h3>\n" + "</div><!-- after examples -->\n"
++                + "</table>\n" + "\n<h3 class=\"example\">Example: {money=$30, to=Mauro}</h3>\n"
++                + "\n<h3 class=\"example\">Example: {money=$50, to=Paul}</h3>\n" + "</div><!-- after examples -->\n"
+                 + "</div><!-- after scenario -->\n" + "</div><!-- after story -->\n";
+         ensureThatOutputIs(out, expected);
+     }
+@@ -205,8 +205,8 @@
+                 + "<names><name>money</name><name>to</name></names>\n"
+                 + "<values><value>$30</value><value>Mauro</value></values>\n"
+                 + "<values><value>$50</value><value>Paul</value></values>\n" + "</parameters>\n"
+-                + "\n<example keyword=\"Example:\">{to=Mauro, money=$30}</example>\n"
+-                + "\n<example keyword=\"Example:\">{to=Paul, money=$50}</example>\n" + "</examples>\n"
++                + "\n<example keyword=\"Example:\">{money=$30, to=Mauro}</example>\n"
++                + "\n<example keyword=\"Example:\">{money=$50, to=Paul}</example>\n" + "</examples>\n"
+                 + "</scenario>\n" + "</story>\n";
+         ensureThatOutputIs(out, expected);
+     }
+Index: src/behaviour/java/org/jbehave/scenario/steps/CandidateStepBehaviour.java
+===================================================================
+--- src/behaviour/java/org/jbehave/scenario/steps/CandidateStepBehaviour.java	(revision 1663)
++++ src/behaviour/java/org/jbehave/scenario/steps/CandidateStepBehaviour.java	(working copy)
+@@ -18,10 +18,12 @@
+ import java.beans.MethodDescriptor;
+ import java.lang.reflect.Method;
+ import java.util.HashMap;
++import java.util.LinkedHashMap;
+ import java.util.List;
+ import java.util.Map;
+ 
+ import org.jbehave.scenario.annotations.Given;
++import org.jbehave.scenario.annotations.Then;
+ import org.jbehave.scenario.annotations.When;
+ import org.jbehave.scenario.parser.PrefixCapturingPatternBuilder;
+ import org.jbehave.scenario.parser.StepPatternBuilder;
+@@ -288,7 +290,31 @@
+         ensureThat(steps.whenName, equalTo("Bar"));
+         ensureThat(steps.whenTimes, equalTo(2));
+     }
+-
++    
++    @Test
++    public void shouldUseArgumentPosition() {
++      PositionSteps steps = new PositionSteps();
++      CandidateStep[] candidateSteps = steps.getSteps();
++      ensureThat(candidateSteps.length, equalTo(3));    
++      LinkedHashMap<String,String> vars = new LinkedHashMap<String,String>();
++      vars.put("var", "value");
++      vars.put("var2", "value2");
++      vars.put("var3", "value3");
++      
++      CandidateStep whenCandidateStep = null;
++      for (CandidateStep candidateStep : candidateSteps) {
++        if (candidateStep.matches("When a <var> <var2> <var3>")) {
++          whenCandidateStep = candidateStep;
++          break;
++        }
++      }
++      Step whenStep = whenCandidateStep.createFrom(vars, "When a <var> <var2> <var3>");
++      whenStep.perform();
++      ensureThat(steps.var, equalTo(vars.get("var")));
++      ensureThat(steps.var2, equalTo(vars.get("var2")));
++      ensureThat(steps.var3, equalTo(vars.get("var3")));
++    }
++    
+     @Test
+     public void shouldPerformStepsInDryRunMode() {
+     	StepsConfiguration configuration = new StepsConfiguration();
+@@ -317,6 +343,28 @@
+         candidateSteps[0].createFrom(tableRow, "Then foo named xyz").perform();
+     }
+ 	
++	static class PositionSteps extends Steps {
++	  
++	  String var;
++    String var2;
++    String var3;
++	  
++	  @Given("given")
++    public void given(){
++    }
++
++	  @When("a <var> <var2> <var3>")
++    public void when(String var, String var2, String var3){
++	    this.var = var;
++      this.var2 = var2;
++      this.var3 = var3;
++	  }
++	  
++	  @Then("then")
++    public void then(){
++    }
++	}
++	
+     static class NamedTypeSteps extends Steps {
+         String givenName;
+         String whenName;

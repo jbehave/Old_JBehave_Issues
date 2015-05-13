@@ -1,0 +1,168 @@
+From c57602524eb07132584dd9e9ea75afa04ed5a36a Mon Sep 17 00:00:00 2001
+From: Brian Repko <brian.repko@learnthinkcode.com>
+Date: Tue, 27 Jul 2010 13:44:59 -0500
+Subject: [PATCH 3/3] add support for inherited annotation values
+
+---
+ .../configuration/AnnotationBuilderBehaviour.java  |   26 ++++++++++++++++++
+ .../org/jbehave/core/annotations/UsingSteps.java   |    2 +
+ .../core/configuration/AnnotationFinder.java       |   28 +++++++++++++++-----
+ .../jbehave/core/annotations/guice/UsingGuice.java |    1 +
+ .../jbehave/core/annotations/pico/UsingPico.java   |    2 +
+ .../core/annotations/spring/UsingSpring.java       |    1 +
+ 6 files changed, 53 insertions(+), 7 deletions(-)
+
+diff --git a/jbehave-core/src/behaviour/java/org/jbehave/core/configuration/AnnotationBuilderBehaviour.java b/jbehave-core/src/behaviour/java/org/jbehave/core/configuration/AnnotationBuilderBehaviour.java
+index 07e2fe8..5cd1880 100644
+--- a/jbehave-core/src/behaviour/java/org/jbehave/core/configuration/AnnotationBuilderBehaviour.java
++++ b/jbehave-core/src/behaviour/java/org/jbehave/core/configuration/AnnotationBuilderBehaviour.java
+@@ -34,11 +34,33 @@ public class AnnotationBuilderBehaviour {
+ 		}
+ 	}
+ 
++	@Test
++	public void shouldInheritInstances() {
++		AnnotationBuilder builderAnnotated = new AnnotationBuilder(AnnotatedInheritingSubclass.class);
++		assertThatStepsInstancesAre(builderAnnotated.buildCandidateSteps(), MyOtherOtherSteps.class, MySteps.class, MyOtherSteps.class);
++	}
++
++	@Test
++	public void shouldNotInheritInstances() {
++		AnnotationBuilder builderAnnotated = new AnnotationBuilder(AnnotatedNonInheritingSubclass.class);
++		assertThatStepsInstancesAre(builderAnnotated.buildCandidateSteps(), MyOtherOtherSteps.class);
++	}
++
+ 	@UsingSteps(instances = { MySteps.class, MyOtherSteps.class })
+ 	private static class Annotated {
+ 
+ 	}
+ 
++	@UsingSteps(instances = { MyOtherOtherSteps.class })
++	private static class AnnotatedInheritingSubclass extends Annotated {
++
++	}
++
++	@UsingSteps(instances = { MyOtherOtherSteps.class }, inheritInstances = false)
++	private static class AnnotatedNonInheritingSubclass extends Annotated {
++
++	}
++
+ 	@UsingSteps()
+ 	private static class AnnotatedWithoutSteps {
+ 
+@@ -55,4 +77,8 @@ public class AnnotationBuilderBehaviour {
+ 	static class MyOtherSteps {
+ 
+ 	}
++
++	static class MyOtherOtherSteps {
++
++	}
+ }
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/annotations/UsingSteps.java b/jbehave-core/src/main/java/org/jbehave/core/annotations/UsingSteps.java
+index ebb4f3f..62f5a1b 100644
+--- a/jbehave-core/src/main/java/org/jbehave/core/annotations/UsingSteps.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/annotations/UsingSteps.java
+@@ -13,4 +13,6 @@ public @interface UsingSteps {
+ 
+     Class<?>[] instances() default {};
+     
++    boolean inheritInstances() default true;
++    
+ }
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/configuration/AnnotationFinder.java b/jbehave-core/src/main/java/org/jbehave/core/configuration/AnnotationFinder.java
+index fd1a98d..031207e 100644
+--- a/jbehave-core/src/main/java/org/jbehave/core/configuration/AnnotationFinder.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/configuration/AnnotationFinder.java
+@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
++import org.apache.commons.lang.StringUtils;
++
+ public class AnnotationFinder {
+ 
+ 	private final Class<?> annotatedClass;
+@@ -41,23 +43,31 @@ public class AnnotationFinder {
+ 		for (Object value : values) {
+ 			list.add((T) value);
+ 		}
++		boolean inheritValues = true;
++		try {
++			inheritValues = getAnnotatedValue(annotationClass, boolean.class, getInheritMemberName(memberName));
++		} catch (AnnotationRequired e) {
++			// no inherited* annotation property - assume false
++			inheritValues = false;
++		}
++		if (inheritValues) {
++			Class<?> superClass = annotatedClass.getSuperclass();
++			if (superClass != null && superClass != Object.class) {
++				list.addAll(new AnnotationFinder(superClass).getAnnotatedValues(annotationClass, type, memberName));
++			}
++		}
+ 		return list;
+ 	}
+ 
+ 	@SuppressWarnings("unchecked")
+ 	public <T, A extends Annotation> List<Class<T>> getAnnotatedClasses(Class<A> annotationClass, Class<T> type, String memberName) {
+-		List<Class<T>> list = new ArrayList<Class<T>>();
+-		Object[] values = getAnnotatedValue(annotationClass, Object[].class, memberName);
+-		for (Object value : values) {
+-			list.add((Class<T>) value);
+-		}
+-		return list;
++		return (List<Class<T>>) getAnnotatedValues(annotationClass, type.getClass(), memberName);
+ 	}
+ 
+ 	protected <A extends Annotation> Annotation getAnnotation(Class<A> annotationClass) {
+ 		return annotatedClass.getAnnotation(annotationClass);
+ 	}
+-	
++
+ 	protected Object getAnnotationValue(Annotation annotation, String attributeName) {
+ 		try {
+ 			Method method = annotation.annotationType().getDeclaredMethod(attributeName, new Class[0]);
+@@ -66,4 +76,8 @@ public class AnnotationFinder {
+ 			return null;
+ 		}
+ 	}
++
++	protected String getInheritMemberName(String memberName) {
++		return "inherit" + StringUtils.capitalize(memberName);
++	}
+ }
+diff --git a/jbehave-guice/src/main/java/org/jbehave/core/annotations/guice/UsingGuice.java b/jbehave-guice/src/main/java/org/jbehave/core/annotations/guice/UsingGuice.java
+index 57fe0a8..6949e9d 100644
+--- a/jbehave-guice/src/main/java/org/jbehave/core/annotations/guice/UsingGuice.java
++++ b/jbehave-guice/src/main/java/org/jbehave/core/annotations/guice/UsingGuice.java
+@@ -15,4 +15,5 @@ public @interface UsingGuice {
+ 	
+ 	Class<? extends Module>[] modules() default {};
+ 
++	boolean inheritModules() default true;
+ }
+diff --git a/jbehave-pico/src/main/java/org/jbehave/core/annotations/pico/UsingPico.java b/jbehave-pico/src/main/java/org/jbehave/core/annotations/pico/UsingPico.java
+index d6d5fad..85169db 100644
+--- a/jbehave-pico/src/main/java/org/jbehave/core/annotations/pico/UsingPico.java
++++ b/jbehave-pico/src/main/java/org/jbehave/core/annotations/pico/UsingPico.java
+@@ -18,5 +18,7 @@ public @interface UsingPico {
+     Class<? extends PicoContainer> container() default DefaultPicoContainer.class;
+     
+ 	Class<? extends PicoModule>[] modules() default {};
++	
++	boolean inheritModules() default true;
+ 
+ }
+diff --git a/jbehave-spring/src/main/java/org/jbehave/core/annotations/spring/UsingSpring.java b/jbehave-spring/src/main/java/org/jbehave/core/annotations/spring/UsingSpring.java
+index 5341a16..3b67a89 100644
+--- a/jbehave-spring/src/main/java/org/jbehave/core/annotations/spring/UsingSpring.java
++++ b/jbehave-spring/src/main/java/org/jbehave/core/annotations/spring/UsingSpring.java
+@@ -13,4 +13,5 @@ public @interface UsingSpring {
+ 
+     String[] resources() default {};
+     
++    boolean inheritResources() default true;
+ }
+-- 
+1.7.1.GIT
+

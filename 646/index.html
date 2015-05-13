@@ -1,0 +1,1291 @@
+<!DOCTYPE html><html class="mozilla"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>[JBEHAVE-646] @Named not respecting parameter order - jira.codehaus.org</title>
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<link rel="shortcut icon" href="index_files/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://jira.codehaus.org/osd.jsp" title="[JBEHAVE-646] @Named not respecting parameter order - jira.codehaus.org">
+
+    
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+<link type="text/css" rel="stylesheet" href="index_files/batch.css" media="all">
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="index_files/batch-1.css" media="all">
+<script type="text/javascript" src="index_files/batch.js"></script><style type="text/css"></style>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="index_files/batch-1.js"></script>
+<script type="text/javascript" src="index_files/jira.webresources_calendar-en.js"></script>
+<script type="text/javascript" src="index_files/com.atlassian.administraticksearch-webresources.js"></script>
+
+<script type="text/javascript" src="index_files/shortcuts.js"></script>
+
+
+    
+    
+    
+    <meta name="decorator" content="atl.general">
+    <meta id="isNavigator" name="isNavigator" content="true">
+    <meta name="ajs-user.search.mode" content="basic">
+    <meta name="ajs-issue-search-help-title" content="Searching for Issues">
+    <meta name="ajs-issue-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Searching+for+Issues">
+    <meta name="ajs-advanced-search-help-title" content="Performing Advanced Searches">
+    <meta name="ajs-advanced-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Advanced+Searching">
+    
+</head>
+<body data-aui-version="5.1.8" id="jira" class="aui-layout aui-theme-default ka ajax-issue-search-and-view page-type-navigator navigator-issue-only" data-version="6.1.6">
+<div id="page">
+    <header id="header" style="display:none" role="banner">
+        
+
+
+
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+
+<fieldset class="parameters hidden dont-default-focus">
+    <input title="tzdetect.pref.tzid" value="America/Chicago" type="hidden">
+    <input title="tzdetect.pref.tzname" value="(GMT-06:00) Chicago" type="hidden">
+    <input title="tzdetect.pref.tzoffset" value="(GMT-06:00)" type="hidden">
+    <input title="tzdetect.pref.tzdst" value="true" type="hidden">
+    <input title="tzdetect.pref.nothanks" value="" type="hidden">
+</fieldset>
+<nav data-aui-responsive="true" class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class="aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-haspopup="true" tabindex="0"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link nav-link-local"><a href="https://jira.codehaus.org/" class="aui-dropdown2-radio interactive checked" title="https://jira.codehaus.org/"><span class="nav-link-label">jira.codehaus.org</span></a></li><li class="nav-link"><a href="http://jira.sonarsource.com/" class="aui-dropdown2-radio interactive" title="http://jira.sonarsource.com/"><span class="nav-link-label">SonarSource</span></a></li><li class="nav-link"><a href="http://docs.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://docs.codehaus.org/"><span class="nav-link-label">Codehaus</span></a></li><li class="nav-link"><a href="http://xircles.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://xircles.codehaus.org"><span class="nav-link-label">Xircles</span></a></li></ul></div></div><script><!--
+/* Script removed by snapshot save */
+--></script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://jira.codehaus.org/secure/MyJiraHome.jspa"><img data-aui-responsive-header-index="0" src="urn:download-error:http://www.codehaus.org/codehaus-small.gif" alt="jira.codehaus.org"></a></h1><ul style="width: auto;" class="aui-nav">
+
+
+
+
+<li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/Dashboard.jspa" id="home_link" accesskey="d" title="View and manage your dashboards" aria-haspopup="true" aria-owns="home_link-content">Dashboards</a><div id="home_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="home_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="/Old_JBehave_Issues/index.html" id="browse_link" accesskey="p" title="View recent projects and browse a list of projects" aria-haspopup="true" aria-owns="browse_link-content">Projects</a><div id="browse_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="browse_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/IssueNavigator.jspa" id="find_link" accesskey="i" title="Search for issues and view recent issues" aria-haspopup="true" aria-owns="find_link-content">Issues</a><div id="find_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="find_link"></div></li>
+<li style="display: none;"><a id="aui-responsive-header-dropdown-trigger-0" class="aui-dropdown2-trigger" aria-owns="aui-responsive-header-dropdown-content-0" aria-haspopup="true" href="#">More<span class="icon aui-icon-dropdown"></span></a><div id="aui-responsive-header-dropdown-content-0" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul id="aui-responsive-header-dropdown-list-0"></ul></div></div></li></ul></div><div class="aui-header-secondary"><ul class="aui-nav"><li>
+    <form action="https://jira.codehaus.org/secure/QuickSearch.jspa" method="post" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" class="search" title="Quick Search ( Type '/' )" placeholder="Quick Search" name="searchString" accesskey="q" type="text">
+        <input class="hidden" value="Search" type="submit">
+    </form>
+</li>
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger" aria-haspopup="true" aria-owns="system-help-menu-content" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank" title="Help"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a id="view_help" class="interactive" title="Goto the online documentation for JIRA" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank">Online Help</a>
+                                </li>
+                                                            <li>
+                                    <a id="keyshortscuthelp" class="interactive" title="Get more information about JIRA's Keyboard Shortcuts ( Type '?' )" href="https://jira.codehaus.org/secure/ViewKeyboardShortcuts%21default.jspa" target="_blank">Keyboard Shortcuts</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_about" class="interactive" title="Get more information about JIRA" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_credits" class="interactive" title="See who did what" href="https://jira.codehaus.org/secure/JiraCreditsPage%21default.jspa" target="_blank">JIRA Credits</a>
+                                </li>
+                                                            <li>
+                                    <a id="whats-new-menu-link" class="interactive" href="https://docs.atlassian.com/jira/docs-061/whatsnew/iframe">What?s New</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a class="aui-nav-link login-link" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-646">Log In</a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <div style="position: absolute; right: 20em; top: -2em">
+  <a href="https://xircles.codehaus.org/signup">Signup</a>
+</div>
+</div>
+
+
+    <section id="content" role="main">
+        
+    
+
+    <div class="issue-container ">
+                                    <div id="issue-content" class="issue-edit-form">
+                    <header id="stalker" class="issue-header js-stalker">
+                        <div class="issue-header-content"><header class="aui-page-header"><div class="aui-page-header-inner"><div class="aui-page-header-image"><span id="10680" class="aui-avatar aui-avatar-large aui-avatar-project"><span class="aui-avatar-inner"><img id="project-avatar" alt="JBehave" src="index_files/projectavatar.png"></span></span></div><!-- .aui-page-header-image --><div class="aui-page-header-main"><ol class="aui-nav aui-nav-breadcrumbs"><li><a id="project-name-val" href="/Old_JBehave_Issues/index.html">JBehave</a></li><li><a class="issue-link" data-issue-key="JBEHAVE-646" href="#" id="key-val" rel="131799">JBEHAVE-646</a></li></ol><h1 id="summary-val">@Named not respecting parameter order</h1></div><!-- .aui-page-header-main --><div class="aui-page-header-actions"><div id="issue-header-pager"></div></div><!-- .aui-page-header-actions --></div><!-- .aui-page-header-inner --></header><!-- .aui-page-header --><div class="command-bar"><div class="ops-cont"><div class="ops-menus aui-toolbar"><div class="toolbar-split toolbar-split-left"><ul id="opsbar-ops-login-lnk_container" class="toolbar-group pluggable-ops"><li class="toolbar-item"><a id="ops-login-lnk" style="display:none" title="Log In" class="toolbar-trigger" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-646"><span class="trigger-label">Log In</span></a></li></ul><ul id="opsbar-opsbar-operations" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-transitions" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-admin" class="toolbar-group pluggable-ops"></ul></div><div class="toolbar-split toolbar-split-right"><ul id="opsbar-jira.issue.tools" style="display:none" class="toolbar-group pluggable-ops"><li class="toolbar-item toolbar-dropdown"><div><a href="#" id="viewissue-export" title="Export this issue in another format" data-hide-on-scroll=".split-view .issue-container" data-contain-to-window="true" class="toolbar-trigger  js-default-dropdown"><span class="icon icon-export viewissue-export"></span> <span class="dropdown-text">Export</span><span class="icon drop-menu"></span></a><div class="aui-list hidden"><ul class="aui-list-section aui-first aui-last"><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-xml/JBEHAVE-646/JBEHAVE-646.xml" class="aui-list-item-link" id="jira.issueviews:issue-xml"><span class="trigger-label">XML</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-word/JBEHAVE-646/JBEHAVE-646.doc" class="aui-list-item-link" id="jira.issueviews:issue-word"><span class="trigger-label">Word</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-html/JBEHAVE-646/JBEHAVE-646.html" class="aui-list-item-link" id="jira.issueviews:issue-html"><span class="trigger-label">Printable</span></a></li></ul></div></div></li></ul></div></div></div></div></div>
+                    </header>
+                    <div class="issue-body-content">
+                        <div class="aui-group issue-body"><div class="aui-item issue-main-column"><div id="details-module" class="module toggle-wrap"><div id="details-module_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Details</h2></div><div class="mod-content">
+
+
+
+
+<ul id="issuedetails" class="property-list two-cols">
+    <li class="item">
+        <div class="wrap">
+            <strong class="name">Type:</strong>
+            <span id="type-val" class="value">
+                                <img alt="Bug" src="index_files/bug.png" title="Bug - A problem which impairs or prevents the functions of the product." height="16" width="16"> Bug
+            </span>
+        </div>
+    </li>
+    <li class="item item-right">
+        <div class="wrap">
+            <strong class="name">Status:</strong>
+            <span id="status-val" class="value">
+                                
+
+<img src="index_files/resolved.png" alt="Resolved" title="Resolved - A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed." height="16" width="16"> Resolved
+            </span>
+                    </div>
+    </li>
+            <li class="item">
+            <div class="wrap">
+                <strong class="name">Priority:</strong>
+                <span id="priority-val" class="value">
+                                        <img alt="Major" src="index_files/major.png" title="Major - Major loss of function." height="16" width="16"> Major
+                </span>
+            </div>
+        </li>
+                                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Resolution:</strong>
+                <span id="resolution-val" class="value resolved">
+                                     Fixed
+                                </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Affects Version/s:</strong>
+                <span id="versions-val" class="value">
+                                            None
+                                    </span>
+            </div>
+        </li>
+                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Fix Version/s:</strong>
+                <span id="fixfor-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="fixVersions-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/fixforversion/17721" title="3.6 ">3.6</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Component/s:</strong>
+                <span id="components-val" class="value">
+                                            None
+                                    </span>
+            </div>
+        </li>
+                    <li class="item full-width">
+            <div class="wrap" id="wrap-labels">
+                <strong class="name">Labels:</strong>
+                    <div class="labels-wrap value">
+            <span class="labels" id="labels-131799-value">None</span>
+                </div>
+            </div>
+        </li>
+        </ul>
+
+<div id="customfieldmodule">
+    <div class="aui-tabs horizontal-tabs" id="customfield-tabs">
+                    <div id="customfield-panel-1" class="tabs-pane active-pane">
+                        <ul class="property-list">
+                                                <li id="rowForcustomfield_10210" class="item">
+                        <div class="wrap">
+                            <strong title="Number of attachments " class="name">Number of attachments :</strong>
+                            <div id="customfield_10210-val" class="value type-attachments" data-fieldtype="attachments" data-fieldtypecompletekey="com.atlassian.jira.toolkit:attachments">
+                                    0
+
+                            </div>
+                        </div>
+                    </li>
+                                        </ul>
+        </div>
+        </div></div>
+</div></div><div id="descriptionmodule" class="module toggle-wrap"><div id="descriptionmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Description</h2></div><div class="mod-content"><div id="description-val" class="field-ignore-highlight">
+    <div class="user-content-block">
+                    <p>@Named doesn't seem to do its job, and parameter ordering in the method declaration seems to confuse the assignment code.  For instance:</p>
+
+<p>"Given a $var1 with $var2 and $var3"</p>
+
+<p>void testVars(@Named("var3") String var3, @Named("var1") String var1, @Named("var2") String var2)</p>
+
+<p>When executing testVars, it assigns var3=$var3, var1=$var1, but var2=$var3</p>
+
+<p>Clearly, the correct assignment is var2=$var2</p>
+            </div>
+</div>
+</div></div><div id="activitymodule" class="module toggle-wrap"><div id="activitymodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Activity</h2></div><div class="mod-content">
+
+
+
+
+
+
+
+
+
+
+    <div class="tabwrap tabs2" style="display:none">
+                    <div class="sortwrap">
+                                    <a class="icon icon-sort-down ajax-activity-content" rel="nofollow" href="/Old_JBehave_Issues/646?actionOrder=desc" title="Ascending order - Click to sort in descending order"><span>Ascending order - Click to sort in descending order</span></a>
+                            </div>
+                <ul id="issue-tabs" class="tabs horizontal">
+                                
+            <li class="active" id="all-tabpanel" data-id="all-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel" data-label="All" data-href="/browse/JBEHAVE-646">
+                            <strong>All</strong>
+                        </li>
+                                
+            <li data-id="comment-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel" data-label="Comments" data-href="/browse/JBEHAVE-646">
+                            <a class="ajax-activity-content" id="comment-tabpanel" href="/Old_JBehave_Issues/646"><strong>Comments</strong></a>
+                        </li>
+                                
+            <li data-id="worklog-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:worklog-tabpanel" data-label="Work Log" data-href="/browse/JBEHAVE-646">
+                            <a class="ajax-activity-content" id="worklog-tabpanel" href="/Old_JBehave_Issues/646"><strong>Work Log</strong></a>
+                        </li>
+                                
+            <li data-id="changehistory-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:changehistory-tabpanel" data-label="History" data-href="/browse/JBEHAVE-646">
+                            <a class="ajax-activity-content" id="changehistory-tabpanel" href="/Old_JBehave_Issues/646"><strong>History</strong></a>
+                        </li>
+                                
+            <li data-id="activity-stream-issue-tab" data-key="com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab" data-label="Activity" data-href="/browse/JBEHAVE-646">
+                            <a class="ajax-activity-content" id="activity-stream-issue-tab" href="/Old_JBehave_Issues/646"><strong>Activity</strong></a>
+                        </li>
+                </ul>
+    </div>
+    <div class="issuePanelWrapper">
+        <div class="issuePanelProgress"></div>
+        <div class="issuePanelContainer" id="issue_actions_container">
+                                    
+
+
+<div id="comment-284080" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/646?focusedCommentId=284080&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-284080" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_284080_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_284080_verbose subText"><span class="date user-tz" title="23/Nov/11 2:21 PM"><time class="livestamp" datetime="2011-11-23T14:21-0600">23/Nov/11 2:21 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>The @Named annotation is intended for use with parameterised scenarios (<a href="http://jbehave.org/reference/stable/parametrised-scenarios.html" class="external-link" rel="nofollow">http://jbehave.org/reference/stable/parametrised-scenarios.html</a>).</p>
+
+<p>Hence, you cannot use it in conjunction with the normal parameter matching, which uses natural ordering. </p>
+
+<p>Have a look at the trader example module for uses of the @Named annotation.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_284080_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_284080_concise subText"><span class="date user-tz" title="23/Nov/11 2:21 PM"><time class="livestamp" datetime="2011-11-23T14:21-0600">23/Nov/11 2:21 PM</time></span></span>                    The @Named annotation is intended for use with parameterised scenarios ( http://jbehave.org/reference/stable/parametrised-scenarios.html ). 
+
+ Hence, you cannot use it in conjunction with the normal parameter matching, which uses natural ordering.  
+
+ Have a look at the trader example module for uses of the @Named annotation.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-284099" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/646?focusedCommentId=284099&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-284099" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="diego.rivera.cr@gmail.com" id="commentauthor_284099_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=diego.rivera.cr%40gmail.com"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Diego Rivera</a>
+ added a comment  - <span class="commentdate_284099_verbose subText"><span class="date user-tz" title="23/Nov/11 5:03 PM"><time class="livestamp" datetime="2011-11-23T17:03-0600">23/Nov/11 5:03 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Understood - I guess this was a simple case of RTFM <img class="emoticon" src="index_files/smile.gif" alt="" height="16" align="absmiddle" border="0" width="16"></p>
+
+<p>However, would this behavior be desirable? I.e. using "named" to supersede/supplant the ordering?  It seems natural that if one chooses for parameters to be named, and uses @Named() to enforce it, that JBehave would respect that even in a non-parameterized scenario.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="diego.rivera.cr@gmail.com" id="commentauthor_284099_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=diego.rivera.cr%40gmail.com"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Diego Rivera</a>
+ added a comment  - <span class="commentdate_284099_concise subText"><span class="date user-tz" title="23/Nov/11 5:03 PM"><time class="livestamp" datetime="2011-11-23T17:03-0600">23/Nov/11 5:03 PM</time></span></span>                    Understood - I guess this was a simple case of RTFM   
+
+ However, would this behavior be desirable? I.e. using "named" to supersede/supplant the ordering?  It seems natural that if one chooses for parameters to be named, and uses @Named() to enforce it, that JBehave would respect that even in a non-parameterized scenario.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-284192" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/646?focusedCommentId=284192&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-284192" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_284192_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_284192_verbose subText"><span class="date user-tz" title="24/Nov/11 12:23 PM"><time class="livestamp" datetime="2011-11-24T12:23-0600">24/Nov/11 12:23 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>It actually turns out to be already possible - there was a unit test verifying this behaviour:</p>
+
+<p>StepCandidateBehaviour.shouldMatchMethodParametersByAnnotatedNamesInverseOrder.</p>
+
+<p>I create an example story out of it in trader example:  named_parameters.story</p>
+
+<p>Have a look and let us know if this examples satisfies your requirement.   If not, feel free to modify it and send us a patch demostrating what it should be doing.</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_284192_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_284192_concise subText"><span class="date user-tz" title="24/Nov/11 12:23 PM"><time class="livestamp" datetime="2011-11-24T12:23-0600">24/Nov/11 12:23 PM</time></span></span>                    It actually turns out to be already possible - there was a unit test verifying this behaviour: 
+
+ StepCandidateBehaviour.shouldMatchMethodParametersByAnnotatedNamesInverseOrder. 
+
+ I create an example story out of it in trader example:  named_parameters.story 
+
+ Have a look and let us know if this examples satisfies your requirement.   If not, feel free to modify it and send us a patch demostrating what it should be doing. 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-294953" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/646?focusedCommentId=294953&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-294953" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="avbentem" id="commentauthor_294953_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=avbentem"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Arjan van Bentem</a>
+ added a comment  - <span class="commentdate_294953_verbose subText"><span class="date user-tz" title="23/Mar/12 8:16 AM"><time class="livestamp" datetime="2012-03-23T08:16-0500">23/Mar/12 8:16 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>If the following is true:</p>
+
+<blockquote><p>Hence, you cannot use it in conjunction with the normal parameter matching, which uses natural ordering.</p></blockquote>
+
+<p>...then isn't the documentation at <a href="http://jbehave.org/reference/stable/parameter-injection.html" class="external-link" rel="nofollow">http://jbehave.org/reference/stable/parameter-injection.html</a> wrong? It states:</p>
+
+<blockquote><p>One reason to use named parameters is that then we can have method parameter appearing in any order:</p></blockquote>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@Given(<span class="code-quote">"a stock of symbol $symbol and a threshold of $threshold"</span>)
+<span class="code-keyword">public</span> void aStock(@Named(<span class="code-quote">"threshold"</span>) <span class="code-object">double</span> aThreshold, @Named(<span class="code-quote">"symbol"</span>) <span class="code-object">String</span> aSymbol) {
+    <span class="code-comment">// ...
+</span>}
+</pre>
+</div></div>
+
+<p>I'm seeing the same issue when using slightly complicated regexs, such as a regex in which the parameters are not surrounded with whitespace.</p>
+
+<p>For example, no issues, even though not all parameters are surrounded by whitespace:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-comment">// Ordered parameters, with whitespace
+</span>@Given(<span class="code-quote">"I have $a and $b"</span>)
+<span class="code-keyword">public</span> void givenAAndB(<span class="code-object">String</span> myA, <span class="code-object">String</span> myB) {
+    LOG.info(<span class="code-quote">"given A={}, B={}"</span>, myA, myB);
+    assertThat(myA).isEqualTo(<span class="code-quote">"1st"</span>);
+    assertThat(myB).isEqualTo(<span class="code-quote">"2nd"</span>);
+}
+
+<span class="code-comment">// Named parameters, in natural order, WITHOUT whitespace after $a
+</span>@When(<span class="code-quote">"doing $a, and $b"</span>)
+<span class="code-keyword">public</span> void whenAAndB(@Named(<span class="code-quote">"a"</span>) <span class="code-object">String</span> myA, @Named(<span class="code-quote">"b"</span>) <span class="code-object">String</span> myB) {
+    LOG.info(<span class="code-quote">"when A={}, B={}"</span>, myA, myB);
+    assertThat(myA).isEqualTo(<span class="code-quote">"<span class="code-keyword">this</span>"</span>);
+    assertThat(myB).isEqualTo(<span class="code-quote">"that"</span>);
+}
+
+<span class="code-comment">// Named parameters, reversed order, with whitespace
+</span>@Then(<span class="code-quote">"we have $a or $b"</span>)
+<span class="code-keyword">public</span> void thenAOrdB(@Named(<span class="code-quote">"b"</span>) <span class="code-object">String</span> myB, @Named(<span class="code-quote">"a"</span>) <span class="code-object">String</span> myA) {
+    LOG.info(<span class="code-quote">"then A={}, B={}"</span>, myA, myB);
+    assertThat(myA).isEqualTo(<span class="code-quote">"success"</span>);
+    assertThat(myB).isEqualTo(<span class="code-quote">"failure"</span>);
+}
+</pre>
+</div></div>
+
+<p>...but, troublesome when named parameters are not in the natural order, and not all parameters are fully surrounded with whitespace:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-comment">// Named parameters, reversed order, WITHOUT whitespace after $a
+</span>@Then(<span class="code-quote">"we have $a, $b"</span>)
+<span class="code-comment">// Same with comma and quotes: @Then(<span class="code-quote">"we have '$a', '$b'"</span>)
+</span><span class="code-comment">// Same without comma, with quotes: @Then(<span class="code-quote">"we have '$a' '$b'"</span>)
+</span><span class="code-comment">// No problem <span class="code-keyword">for</span>: @Then(<span class="code-quote">"we have $a <span class="code-keyword">for</span> you, $b"</span>)
+</span><span class="code-keyword">public</span> void thenACommaB(@Named(<span class="code-quote">"b"</span>) <span class="code-object">String</span> myB, @Named(<span class="code-quote">"a"</span>) <span class="code-object">String</span> myA) {
+    <span class="code-comment">// Will fail; parameters have been assigned in their natural order
+</span>    assertThat(myA).isEqualTo(<span class="code-quote">"a problem"</span>);
+    assertThat(myB).isEqualTo(<span class="code-quote">"Houston"</span>);
+}</pre>
+</div></div>
+
+<p>...with</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">Given I have 1st and 2nd
+When doing <span class="code-keyword">this</span>, and that
+Then we have success or failure
+And we have a problem, Houston
+</pre>
+</div></div>
+
+<p>...I get:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">Failed to run story login.story
+org.junit.ComparisonFailure: expected:&lt;'[a problem]'&gt; but was:&lt;'[Houston]'&gt;
+</pre>
+</div></div>
+
+<p>So it seems that parameters always need to be surrounded by whitespace?</p>
+
+<p>(It's not so much an issue that a test would fail with PENDING, but silently falling back to the natural order doesn't seem to nice to me.)</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="avbentem" id="commentauthor_294953_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=avbentem"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Arjan van Bentem</a>
+ added a comment  - <span class="commentdate_294953_concise subText"><span class="date user-tz" title="23/Mar/12 8:16 AM"><time class="livestamp" datetime="2012-03-23T08:16-0500">23/Mar/12 8:16 AM</time></span></span>                    If the following is true: 
+
+  Hence, you cannot use it in conjunction with the normal parameter matching, which uses natural ordering.  
+
+ ...then isn't the documentation at  http://jbehave.org/reference/stable/parameter-injection.html  wrong? It states: 
+
+  One reason to use named parameters is that then we can have method parameter appearing in any order:  
+
+  
+ 
+@Given( "a stock of symbol $symbol and a threshold of $threshold" )
+ public  void aStock(@Named( "threshold" )  double  aThreshold, @Named( "symbol" )  String  aSymbol) {
+     // ...
+ }
+ 
+  
+
+ I'm seeing the same issue when using slightly complicated regexs, such as a regex in which the parameters are not surrounded with whitespace. 
+
+ For example, no issues, even though not all parameters are surrounded by whitespace: 
+
+  
+ 
+ // Ordered parameters, with whitespace
+ @Given( "I have $a and $b" )
+ public  void givenAAndB( String  myA,  String  myB) {
+    LOG.info( "given A={}, B={}" , myA, myB);
+    assertThat(myA).isEqualTo( "1st" );
+    assertThat(myB).isEqualTo( "2nd" );
+}
+
+ // Named parameters, in natural order, WITHOUT whitespace after $a
+ @When( "doing $a, and $b" )
+ public  void whenAAndB(@Named( "a" )  String  myA, @Named( "b" )  String  myB) {
+    LOG.info( "when A={}, B={}" , myA, myB);
+    assertThat(myA).isEqualTo( " this " );
+    assertThat(myB).isEqualTo( "that" );
+}
+
+ // Named parameters, reversed order, with whitespace
+ @Then( "we have $a or $b" )
+ public  void thenAOrdB(@Named( "b" )  String  myB, @Named( "a" )  String  myA) {
+    LOG.info( "then A={}, B={}" , myA, myB);
+    assertThat(myA).isEqualTo( "success" );
+    assertThat(myB).isEqualTo( "failure" );
+}
+ 
+  
+
+ ...but, troublesome when named parameters are not in the natural order, and not all parameters are fully surrounded with whitespace: 
+
+  
+ 
+ // Named parameters, reversed order, WITHOUT whitespace after $a
+ @Then( "we have $a, $b" )
+ // Same with comma and quotes: @Then( "we have '$a', '$b'" )
+  // Same without comma, with quotes: @Then( "we have '$a' '$b'" )
+  // No problem  for : @Then( "we have $a  for  you, $b" )
+  public  void thenACommaB(@Named( "b" )  String  myB, @Named( "a" )  String  myA) {
+     // Will fail; parameters have been assigned in their natural order
+     assertThat(myA).isEqualTo( "a problem" );
+    assertThat(myB).isEqualTo( "Houston" );
+} 
+  
+
+ ...with 
+
+  
+ 
+Given I have 1st and 2nd
+When doing  this , and that
+Then we have success or failure
+And we have a problem, Houston
+ 
+  
+
+ ...I get: 
+
+  
+ 
+Failed to run story login.story
+org.junit.ComparisonFailure: expected:&lt;'[a problem]'&gt; but was:&lt;'[Houston]'&gt;
+ 
+  
+
+ So it seems that parameters always need to be surrounded by whitespace? 
+
+ (It's not so much an issue that a test would fail with PENDING, but silently falling back to the natural order doesn't seem to nice to me.)              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-294987" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/646?focusedCommentId=294987&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-294987" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_294987_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_294987_verbose subText"><span class="date user-tz" title="23/Mar/12 12:48 PM"><time class="livestamp" datetime="2012-03-23T12:48-0500">23/Mar/12 12:48 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi, </p>
+
+<p>I've tried adding quotes and commas to <br>
+StepCandidateBehaviour.shouldMatchMethodParametersByAnnotatedNamesInverseOrder but could not reproduce the behaviour you're finding.</p>
+
+<p>Could you please try to reproduce it in the StepCandidateBehaviour or provide a patch with either the unit test or an story that reproduces it? </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_294987_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_294987_concise subText"><span class="date user-tz" title="23/Mar/12 12:48 PM"><time class="livestamp" datetime="2012-03-23T12:48-0500">23/Mar/12 12:48 PM</time></span></span>                    Hi,  
+
+ I've tried adding quotes and commas to  
+StepCandidateBehaviour.shouldMatchMethodParametersByAnnotatedNamesInverseOrder but could not reproduce the behaviour you're finding. 
+
+ Could you please try to reproduce it in the StepCandidateBehaviour or provide a patch with either the unit test or an story that reproduces it?               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-294996" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/646?focusedCommentId=294996&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-294996" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="avbentem" id="commentauthor_294996_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=avbentem"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Arjan van Bentem</a>
+ added a comment  - <span class="commentdate_294996_verbose subText"><span class="date user-tz" title="23/Mar/12 2:52 PM"><time class="livestamp" datetime="2012-03-23T14:52-0500">23/Mar/12 2:52 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Mauro,</p>
+
+<p>when using</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-quote">"I live on the $ith, but some call it the $nth"</span>;
+</pre>
+</div></div>
+
+<p>along with </p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-quote">"When I live on the first, but some call it the ground"</span>
+</pre>
+</div></div>
+
+<p>then things fail in 3.5.4.</p>
+
+<p>So:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@Test
+<span class="code-keyword">public</span> void shouldMatchMethodParametersByAnnotatedNamesInverseOrderWithLessWhitespace() <span class="code-keyword">throws</span> Exception {
+    AnnotationNamedParameterSteps steps = <span class="code-keyword">new</span> AnnotationNamedParameterSteps();
+    <span class="code-object">String</span> patternAsString = <span class="code-quote">"I live on the $ith, but some call it the $nth"</span>;
+    Method method = stepMethodFor(<span class="code-quote">"methodWithNamedParametersInInverseOrder"</span>, AnnotationNamedParameterSteps.class);
+    StepCandidate candidate = candidateWith(patternAsString, WHEN, method, steps);
+    candidate.createMatchedStep(<span class="code-quote">"When I live on the first, but some call it the ground"</span>, namedParameters)
+            .perform(<span class="code-keyword">null</span>);
+    <span class="code-comment">// Will fail:
+</span>    <span class="code-comment">// java.lang.AssertionError: Expected: <span class="code-quote">"first"</span> got: <span class="code-quote">"ground"</span>
+</span>    assertThat(steps.ith, equalTo(<span class="code-quote">"first"</span>));
+    assertThat(steps.nth, equalTo(<span class="code-quote">"ground"</span>));
+}
+</pre>
+</div></div>
+
+<p>As an aside: I'm seeing a related problem in <a href="/Old_JBehave_Issues/748" class="external-link" rel="nofollow">/Old_JBehave_Issues/748</a> where <tt>@Named</tt> parameters in their natural order in some situations get a value from an <tt>Examples</tt> table (if used in the same scenario), but only if not fully surrounded with whitespace.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="avbentem" id="commentauthor_294996_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=avbentem"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Arjan van Bentem</a>
+ added a comment  - <span class="commentdate_294996_concise subText"><span class="date user-tz" title="23/Mar/12 2:52 PM"><time class="livestamp" datetime="2012-03-23T14:52-0500">23/Mar/12 2:52 PM</time></span></span>                    Hi Mauro, 
+
+ when using 
+
+  
+ 
+ "I live on the $ith, but some call it the $nth" ;
+ 
+  
+
+ along with  
+
+  
+ 
+ "When I live on the first, but some call it the ground" 
+ 
+  
+
+ then things fail in 3.5.4. 
+
+ So: 
+
+  
+ 
+@Test
+ public  void shouldMatchMethodParametersByAnnotatedNamesInverseOrderWithLessWhitespace()  throws  Exception {
+    AnnotationNamedParameterSteps steps =  new  AnnotationNamedParameterSteps();
+     String  patternAsString =  "I live on the $ith, but some call it the $nth" ;
+    Method method = stepMethodFor( "methodWithNamedParametersInInverseOrder" , AnnotationNamedParameterSteps.class);
+    StepCandidate candidate = candidateWith(patternAsString, WHEN, method, steps);
+    candidate.createMatchedStep( "When I live on the first, but some call it the ground" , namedParameters)
+            .perform( null );
+     // Will fail:
+      // java.lang.AssertionError: Expected:  "first"  got:  "ground" 
+     assertThat(steps.ith, equalTo( "first" ));
+    assertThat(steps.nth, equalTo( "ground" ));
+}
+ 
+  
+
+ As an aside: I'm seeing a related problem in  /Old_JBehave_Issues/748  where  @Named  parameters in their natural order in some situations get a value from an  Examples  table (if used in the same scenario), but only if not fully surrounded with whitespace.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-294999" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/646?focusedCommentId=294999&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-294999" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="avbentem" id="commentauthor_294999_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=avbentem"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Arjan van Bentem</a>
+ added a comment  - <span class="commentdate_294999_verbose subText"><span class="date user-tz" title="23/Mar/12 3:52 PM"><time class="livestamp" datetime="2012-03-23T15:52-0500">23/Mar/12 3:52 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I noticed that <a href="http://jbehave.org/reference/stable/parameter-converters.html" class="external-link" rel="nofollow">http://jbehave.org/reference/stable/parameter-converters.html</a> explains that the comma could be used for automatic conversion into a List:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">Given a stock of symbols STK1,STK2 and thresholds of 10.0,20.0
+</pre>
+</div></div>
+
+<p>However, that would not explain why quotes have the same erroneous result. Also, every other non-word character I tried has the same effect, so I doubt it's related to automatic conversion.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="avbentem" id="commentauthor_294999_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=avbentem"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Arjan van Bentem</a>
+ added a comment  - <span class="commentdate_294999_concise subText"><span class="date user-tz" title="23/Mar/12 3:52 PM"><time class="livestamp" datetime="2012-03-23T15:52-0500">23/Mar/12 3:52 PM</time></span></span>                    I noticed that  http://jbehave.org/reference/stable/parameter-converters.html  explains that the comma could be used for automatic conversion into a List: 
+
+  
+ 
+Given a stock of symbols STK1,STK2 and thresholds of 10.0,20.0
+ 
+  
+
+ However, that would not explain why quotes have the same erroneous result. Also, every other non-word character I tried has the same effect, so I doubt it's related to automatic conversion.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-295000" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/646?focusedCommentId=295000&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-295000" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_295000_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_295000_verbose subText"><span class="date user-tz" title="23/Mar/12 4:20 PM"><time class="livestamp" datetime="2012-03-23T16:20-0500">23/Mar/12 4:20 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>The commas have nothing to do with it.  </p>
+
+<p>Have you tried the latest snapshot?  As I said above, I cannot reproduce your issue with it. </p>
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_295000_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_295000_concise subText"><span class="date user-tz" title="23/Mar/12 4:20 PM"><time class="livestamp" datetime="2012-03-23T16:20-0500">23/Mar/12 4:20 PM</time></span></span>                    The commas have nothing to do with it.   
+
+ Have you tried the latest snapshot?  As I said above, I cannot reproduce your issue with it.  
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-295001" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/646?focusedCommentId=295001&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-295001" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="avbentem" id="commentauthor_295001_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=avbentem"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Arjan van Bentem</a>
+ added a comment  - <span class="commentdate_295001_verbose subText"><span class="date user-tz" title="23/Mar/12 4:25 PM"><time class="livestamp" datetime="2012-03-23T16:25-0500">23/Mar/12 4:25 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Nope, I tried against 3.5.4, no the snapshot, but will do.</p>
+
+<p>Some more:</p>
+
+<p><tt>org.jbehave.core.parsers.RegexPrefixCapturingPatternParser#findParametersToReplace</tt> finds <tt>ith,</tt> (including the comma) and <tt>nth</tt> as the parameter names. There the comma (or any non-word character, non whitespace in other tests) seems to be excessive to me.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="avbentem" id="commentauthor_295001_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=avbentem"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Arjan van Bentem</a>
+ added a comment  - <span class="commentdate_295001_concise subText"><span class="date user-tz" title="23/Mar/12 4:25 PM"><time class="livestamp" datetime="2012-03-23T16:25-0500">23/Mar/12 4:25 PM</time></span></span>                    Nope, I tried against 3.5.4, no the snapshot, but will do. 
+
+ Some more: 
+
+  org.jbehave.core.parsers.RegexPrefixCapturingPatternParser#findParametersToReplace  finds  ith,  (including the comma) and  nth  as the parameter names. There the comma (or any non-word character, non whitespace in other tests) seems to be excessive to me.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-295003" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/646?focusedCommentId=295003&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-295003" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="avbentem" id="commentauthor_295003_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=avbentem"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Arjan van Bentem</a>
+ added a comment  - <span class="commentdate_295003_verbose subText"><span class="date user-tz" title="23/Mar/12 5:03 PM"><time class="livestamp" datetime="2012-03-23T17:03-0500">23/Mar/12 5:03 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>The above test works fine in 3.6-SNAPSHOT. Nice!</p>
+
+<p>(<tt>org.jbehave.core.parsers.RegexPrefixCapturingPatternParser.Parameter</tt> has changed, I guess that fixed it. As an aside: things for <a href="/Old_JBehave_Issues/748" class="external-link" rel="nofollow">/Old_JBehave_Issues/748</a> have changed too, and are no longer dependent on any whitespace either. That made things slightly worse for that issue, but that's another matter. Thanks, @Mauro.)</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="avbentem" id="commentauthor_295003_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=avbentem"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Arjan van Bentem</a>
+ added a comment  - <span class="commentdate_295003_concise subText"><span class="date user-tz" title="23/Mar/12 5:03 PM"><time class="livestamp" datetime="2012-03-23T17:03-0500">23/Mar/12 5:03 PM</time></span></span>                    The above test works fine in 3.6-SNAPSHOT. Nice! 
+
+ ( org.jbehave.core.parsers.RegexPrefixCapturingPatternParser.Parameter  has changed, I guess that fixed it. As an aside: things for  /Old_JBehave_Issues/748  have changed too, and are no longer dependent on any whitespace either. That made things slightly worse for that issue, but that's another matter. Thanks, @Mauro.)              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-385612">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_385612">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_385612" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="26/Mar/12 8:21 AM"><time class="livestamp" datetime="2012-03-26T08:21-0500">26/Mar/12 8:21 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_385612" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <thead>
+                    <tr>
+                        <th width="20%">Field</th>
+                        <th width="40%">Original Value</th>
+                        <th width="40%">New Value</th>
+                    </tr>
+                </thead>
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Open
+                                                                                                <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Resolved
+                                                                                               <span class="hist-value">[    5
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               3.6
+                                                                                               <span class="hist-value">[    17721
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Resolution
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Fixed
+                                                                                               <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             </div>
+    </div>
+</div></div></div><div id="viewissuesidebar" class="aui-item issue-side-column"><div id="peoplemodule" class="module toggle-wrap"><div id="peoplemodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">People</h2></div><div class="mod-content"><ul class="item-details" id="peopledetails">
+    <li class="people-details">
+                <dl>
+            <dt>Assignee:</dt>
+            <dd>
+                <span id="assignee-val" class="view-issue-field">
+
+    <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span>
+    Unassigned
+</span>
+                            </dd>
+        </dl>
+                        <dl>
+            <dt>Reporter:</dt>
+            <dd>
+                <span id="reporter-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_reporter_diego.rivera.cr@gmail.com" rel="diego.rivera.cr@gmail.com">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-2.png"></span></span>
+            Diego Rivera
+        </span>
+    </span>
+            </dd>
+        </dl>
+                    </li>
+</ul>
+    <ul class="item-details">
+        <li>
+                            <dl>
+                    <dt>Votes:</dt>
+                    <dd>
+                                                                            <span id="vote-data" class="aui-badge vote-state-off">0</span>
+                        
+                                                                                                        <span id="vote-label" title="You have to be logged in to vote for an issue.">Vote for this issue</span>
+                                            </dd>
+                </dl>
+                                        <dl>
+                    <dt>Watchers:</dt>
+                    <dd>
+                                                                        
+                                                                            <span id="watcher-data" class="aui-badge watch-state-off">1</span>
+                        
+                                                                                <span id="watch-label" title="You have to be logged in to watch an issue.">Start watching this issue</span>
+                                            </dd>
+                </dl>
+                    </li>
+    </ul>
+</div></div><div id="datesmodule" class="module toggle-wrap"><div id="datesmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Dates</h2></div><div class="mod-content"><ul class="item-details">
+    <li>
+            <dl class="dates">
+            <dt>Created:</dt>
+            <dd class="date user-tz" title="22/Nov/11 5:40 PM">
+
+                <span data-name="Created" id="create-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2011-11-22T17:40-0600">22/Nov/11 5:40 PM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Updated:</dt>
+            <dd class="date user-tz" title="26/Mar/12 8:21 AM">
+
+                <span data-name="Updated" id="updated-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-03-26T08:21-0500">26/Mar/12 8:21 AM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Resolved:</dt>
+            <dd class="date user-tz" title="26/Mar/12 8:21 AM">
+
+                <span data-name="Resolved" id="resolved-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-03-26T08:21-0500">26/Mar/12 8:21 AM</time>                                                             </span>
+            </dd>
+        </dl>
+        </li>
+</ul>
+</div></div></div></div>
+                    </div>
+                </div>
+                        </div>
+
+    <fieldset class="hidden parameters">
+        <input title="autocompleteEnabled" value="true" type="hidden">
+    </fieldset>
+    
+    </section>
+    <footer id="footer" role="contentinfo">
+        
+        
+
+
+
+<div class="footer-body">
+    <ul>
+        <li>
+                        <a href="http://www.atlassian.com/software/jira">Atlassian JIRA</a>
+
+                                                    
+                        
+            <span id="footer-build-information">(v6.1.6#6162-<span title="7af547ce7c84dbb7c1e345a65437ed7b85efffa2" data-commit-id="7af547ce7c84dbb7c1e345a65437ed7b85efffa2}">sha1:7af547c</span>)</span>
+        </li>
+        <li>
+            <a id="about-link" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+        </li>
+        <li>
+                                    <a id="footer-report-problem-link" href="https://jira.codehaus.org/secure/CreateIssue%21default.jspa">Report a problem</a>
+        </li>
+    </ul>
+            <ul>
+            <li class="licensemessage">
+                                    Powered by a free Atlassian <a href="http://www.atlassian.com/software/jira">JIRA</a> open source license for Codehaus. Try JIRA - <a href="http://www.atlassian.com/software/jira">bug tracking software</a> for <i>your</i> team.
+
+                            </li>
+        </ul>
+    </div>
+
+<form id="jira_request_timing_info" class="dont-default-focus">
+	<fieldset class="parameters hidden">
+
+
+
+
+		<input title="jira.session.expiry.in.mins" value="299" type="hidden">
+
+	</fieldset>
+</form>
+<!--
+	                 
+	          
+	               
+	                 
+	        CONCURRENT REQUESTS : 6
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input title="loggedInUser" value="" type="hidden">
+    <input title="ajaxTimeout" value="The call to the JIRA server did not complete within the timeout period.  We are unsure of the result of this operation." type="hidden">
+    <input title="JiraVersion" value="6.1.6" type="hidden">
+    <input title="ajaxUnauthorised" value="You are not authorised to perform this operation.  Please log in." type="hidden">
+    <input title="baseURL" value="https://jira.codehaus.org:443" type="hidden">
+    <input title="ajaxCommsError" value="The JIRA server could not be contacted.  This may be a temporary glitch or the server may be down." type="hidden">
+    <input title="ajaxServerError" value="The JIRA server was contacted but has returned an error response. We are unsure of the result of this operation." type="hidden">
+    <input title="ajaxErrorCloseDialog" value="Close this dialog and press refresh in your browser" type="hidden">
+    <input title="ajaxErrorDialogHeading" value="Communications Breakdown" type="hidden">
+
+    <input title="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost." type="hidden">
+    <input title="dirtyDialogMessage" value="You have entered new data in this dialog. If you navigate away from this dialog without first saving your data, the changes will be lost. Click cancel to return to the dialog." type="hidden">
+    <input title="keyType" value="Type" type="hidden">
+    <input title="keyThen" value="then" type="hidden">
+    <input title="dblClickToExpand" value="Double click to expand" type="hidden">
+    <input title="actions" value="Actions" type="hidden">
+    <input title="removeItem" value="Remove" type="hidden">
+    <input title="workflow" value="Workflow" type="hidden">
+    <input title="labelNew" value="New Label" type="hidden">
+    <input title="issueActionsHint" value="Begin typing for available operations or press down to see all" type="hidden">
+    <input title="closelink" value="Close" type="hidden">
+    <input title="dotOperations" value="Operations" type="hidden">
+    <input title="dotLoading" value="Loading..." type="hidden">
+    <input title="frotherSuggestions" value="Suggestions" type="hidden">
+    <input title="frotherNomatches" value="No Matches" type="hidden">
+    <input title="multiselectVersionsError" value="{0} is not a valid version." type="hidden">
+    <input title="multiselectComponentsError" value="{0} is not a valid component." type="hidden">
+    <input title="multiselectGenericError" value="The value {0} is invalid." type="hidden">
+</fieldset>
+
+    </footer>
+</div>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:void(0);" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:void(0);" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div class="navigator-sidebar collapsed ui-popout ui-popout-detached ui-popout-collapsed" id="navigator-sidebar"><a class="toggle-filter-panel" href="#" title="Dock the filters panel ([)"></a></div><div style="display: none;" class="jira-dialog box-shadow" id="edit-issue-dialog"><div class="jira-dialog-content"></div></div><div style="display: none;" class="jira-dialog box-shadow" id="create-subtask-dialog"><div class="jira-dialog-content"></div></div></body></html>

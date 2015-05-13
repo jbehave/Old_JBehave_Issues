@@ -1,0 +1,1872 @@
+<!DOCTYPE html><html class="mozilla"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>[JBEHAVE-833] Provide a configurable timeout value for each story running time - jira.codehaus.org</title>
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<link rel="shortcut icon" href="index_files/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://jira.codehaus.org/osd.jsp" title="[JBEHAVE-833] Provide a configurable timeout value for each story running time - jira.codehaus.org">
+
+    
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+<link type="text/css" rel="stylesheet" href="index_files/batch.css" media="all">
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="index_files/batch-1.css" media="all">
+<script type="text/javascript" src="index_files/batch.js"></script><style type="text/css"></style>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="index_files/batch-1.js"></script>
+<script type="text/javascript" src="index_files/jira.webresources_calendar-en.js"></script>
+<script type="text/javascript" src="index_files/com.atlassian.administraticksearch-webresources.js"></script>
+
+<script type="text/javascript" src="index_files/shortcuts.js"></script>
+
+
+    
+    
+    
+    <meta name="decorator" content="atl.general">
+    <meta id="isNavigator" name="isNavigator" content="true">
+    <meta name="ajs-user.search.mode" content="basic">
+    <meta name="ajs-issue-search-help-title" content="Searching for Issues">
+    <meta name="ajs-issue-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Searching+for+Issues">
+    <meta name="ajs-advanced-search-help-title" content="Performing Advanced Searches">
+    <meta name="ajs-advanced-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Advanced+Searching">
+    
+</head>
+<body data-aui-version="5.1.8" id="jira" class="aui-layout aui-theme-default ka ajax-issue-search-and-view page-type-navigator navigator-issue-only" data-version="6.1.6">
+<div id="page">
+    <header id="header" style="display:none" role="banner">
+        
+
+
+
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+
+<fieldset class="parameters hidden dont-default-focus">
+    <input title="tzdetect.pref.tzid" value="America/Chicago" type="hidden">
+    <input title="tzdetect.pref.tzname" value="(GMT-06:00) Chicago" type="hidden">
+    <input title="tzdetect.pref.tzoffset" value="(GMT-06:00)" type="hidden">
+    <input title="tzdetect.pref.tzdst" value="true" type="hidden">
+    <input title="tzdetect.pref.nothanks" value="" type="hidden">
+</fieldset>
+<nav data-aui-responsive="true" class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class="aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-haspopup="true" tabindex="0"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link nav-link-local"><a href="https://jira.codehaus.org/" class="aui-dropdown2-radio interactive checked" title="https://jira.codehaus.org/"><span class="nav-link-label">jira.codehaus.org</span></a></li><li class="nav-link"><a href="http://jira.sonarsource.com/" class="aui-dropdown2-radio interactive" title="http://jira.sonarsource.com/"><span class="nav-link-label">SonarSource</span></a></li><li class="nav-link"><a href="http://docs.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://docs.codehaus.org/"><span class="nav-link-label">Codehaus</span></a></li><li class="nav-link"><a href="http://xircles.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://xircles.codehaus.org"><span class="nav-link-label">Xircles</span></a></li></ul></div></div><script><!--
+/* Script removed by snapshot save */
+--></script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://jira.codehaus.org/secure/MyJiraHome.jspa"><img data-aui-responsive-header-index="0" src="urn:download-error:http://www.codehaus.org/codehaus-small.gif" alt="jira.codehaus.org"></a></h1><ul style="width: auto;" class="aui-nav">
+
+
+
+
+<li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/Dashboard.jspa" id="home_link" accesskey="d" title="View and manage your dashboards" aria-haspopup="true" aria-owns="home_link-content">Dashboards</a><div id="home_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="home_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="/Old_JBehave_Issues/index.html" id="browse_link" accesskey="p" title="View recent projects and browse a list of projects" aria-haspopup="true" aria-owns="browse_link-content">Projects</a><div id="browse_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="browse_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/IssueNavigator.jspa" id="find_link" accesskey="i" title="Search for issues and view recent issues" aria-haspopup="true" aria-owns="find_link-content">Issues</a><div id="find_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="find_link"></div></li>
+<li style="display: none;"><a id="aui-responsive-header-dropdown-trigger-0" class="aui-dropdown2-trigger" aria-owns="aui-responsive-header-dropdown-content-0" aria-haspopup="true" href="#">More<span class="icon aui-icon-dropdown"></span></a><div id="aui-responsive-header-dropdown-content-0" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul id="aui-responsive-header-dropdown-list-0"></ul></div></div></li></ul></div><div class="aui-header-secondary"><ul class="aui-nav"><li>
+    <form action="https://jira.codehaus.org/secure/QuickSearch.jspa" method="post" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" class="search" title="Quick Search ( Type '/' )" placeholder="Quick Search" name="searchString" accesskey="q" type="text">
+        <input class="hidden" value="Search" type="submit">
+    </form>
+</li>
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger" aria-haspopup="true" aria-owns="system-help-menu-content" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank" title="Help"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a id="view_help" class="interactive" title="Goto the online documentation for JIRA" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank">Online Help</a>
+                                </li>
+                                                            <li>
+                                    <a id="keyshortscuthelp" class="interactive" title="Get more information about JIRA's Keyboard Shortcuts ( Type '?' )" href="https://jira.codehaus.org/secure/ViewKeyboardShortcuts%21default.jspa" target="_blank">Keyboard Shortcuts</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_about" class="interactive" title="Get more information about JIRA" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_credits" class="interactive" title="See who did what" href="https://jira.codehaus.org/secure/JiraCreditsPage%21default.jspa" target="_blank">JIRA Credits</a>
+                                </li>
+                                                            <li>
+                                    <a id="whats-new-menu-link" class="interactive" href="https://docs.atlassian.com/jira/docs-061/whatsnew/iframe">What?s New</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a class="aui-nav-link login-link" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-833">Log In</a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <div style="position: absolute; right: 20em; top: -2em">
+  <a href="https://xircles.codehaus.org/signup">Signup</a>
+</div>
+</div>
+
+
+    <section id="content" role="main">
+        
+    
+
+    <div class="issue-container ">
+                                    <div id="issue-content" class="issue-edit-form">
+                    <header id="stalker" class="issue-header js-stalker">
+                        <div class="issue-header-content"><header class="aui-page-header"><div class="aui-page-header-inner"><div class="aui-page-header-image"><span id="10680" class="aui-avatar aui-avatar-large aui-avatar-project"><span class="aui-avatar-inner"><img id="project-avatar" alt="JBehave" src="index_files/projectavatar.png"></span></span></div><!-- .aui-page-header-image --><div class="aui-page-header-main"><ol class="aui-nav aui-nav-breadcrumbs"><li><a id="project-name-val" href="/Old_JBehave_Issues/index.html">JBehave</a></li><li><a class="issue-link" data-issue-key="JBEHAVE-833" href="#" id="key-val" rel="140345">JBEHAVE-833</a></li></ol><h1 id="summary-val">Provide a configurable timeout value for each story running time</h1></div><!-- .aui-page-header-main --><div class="aui-page-header-actions"><div id="issue-header-pager"></div></div><!-- .aui-page-header-actions --></div><!-- .aui-page-header-inner --></header><!-- .aui-page-header --><div class="command-bar"><div class="ops-cont"><div class="ops-menus aui-toolbar"><div class="toolbar-split toolbar-split-left"><ul id="opsbar-ops-login-lnk_container" class="toolbar-group pluggable-ops"><li class="toolbar-item"><a id="ops-login-lnk" style="display:none" title="Log In" class="toolbar-trigger" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-833"><span class="trigger-label">Log In</span></a></li></ul><ul id="opsbar-opsbar-operations" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-transitions" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-admin" class="toolbar-group pluggable-ops"></ul></div><div class="toolbar-split toolbar-split-right"><ul id="opsbar-jira.issue.tools" style="display:none" class="toolbar-group pluggable-ops"><li class="toolbar-item toolbar-dropdown"><div><a href="#" id="viewissue-export" title="Export this issue in another format" data-hide-on-scroll=".split-view .issue-container" data-contain-to-window="true" class="toolbar-trigger  js-default-dropdown"><span class="icon icon-export viewissue-export"></span> <span class="dropdown-text">Export</span><span class="icon drop-menu"></span></a><div class="aui-list hidden"><ul class="aui-list-section aui-first aui-last"><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-xml/JBEHAVE-833/JBEHAVE-833.xml" class="aui-list-item-link" id="jira.issueviews:issue-xml"><span class="trigger-label">XML</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-word/JBEHAVE-833/JBEHAVE-833.doc" class="aui-list-item-link" id="jira.issueviews:issue-word"><span class="trigger-label">Word</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-html/JBEHAVE-833/JBEHAVE-833.html" class="aui-list-item-link" id="jira.issueviews:issue-html"><span class="trigger-label">Printable</span></a></li></ul></div></div></li></ul></div></div></div></div></div>
+                    </header>
+                    <div class="issue-body-content">
+                        <div class="aui-group issue-body"><div class="aui-item issue-main-column"><div id="details-module" class="module toggle-wrap"><div id="details-module_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Details</h2></div><div class="mod-content">
+
+
+
+
+<ul id="issuedetails" class="property-list two-cols">
+    <li class="item">
+        <div class="wrap">
+            <strong class="name">Type:</strong>
+            <span id="type-val" class="value">
+                                <img alt="Improvement" src="index_files/improvement.png" title="Improvement - An improvement or enhancement to an existing feature or task." height="16" width="16"> Improvement
+            </span>
+        </div>
+    </li>
+    <li class="item item-right">
+        <div class="wrap">
+            <strong class="name">Status:</strong>
+            <span id="status-val" class="value">
+                                
+
+<img src="index_files/open.png" alt="Open" title="Open - The issue is open and ready for the assignee to start work on it." height="16" width="16"> Open
+            </span>
+                    </div>
+    </li>
+            <li class="item">
+            <div class="wrap">
+                <strong class="name">Priority:</strong>
+                <span id="priority-val" class="value">
+                                        <img alt="Major" src="index_files/major.png" title="Major - Major loss of function." height="16" width="16"> Major
+                </span>
+            </div>
+        </li>
+                                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Resolution:</strong>
+                <span id="resolution-val" class="value unresolved">
+                                    Unresolved
+                                </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Affects Version/s:</strong>
+                <span id="versions-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="versions-field">
+                                                            <span title="4.x The backlog of issues for 4.x">4.x</span>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Fix Version/s:</strong>
+                <span id="fixfor-val" class="value">
+                                            None
+                                    </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Component/s:</strong>
+                <span id="components-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="components-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/component/11086" title="Core ">Core</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                    <li class="item full-width">
+            <div class="wrap" id="wrap-labels">
+                <strong class="name">Labels:</strong>
+                    <div class="labels-wrap value">
+            <span class="labels" id="labels-140345-value">None</span>
+                </div>
+            </div>
+        </li>
+        </ul>
+
+<div id="customfieldmodule">
+    <div class="aui-tabs horizontal-tabs" id="customfield-tabs">
+                    <div id="customfield-panel-1" class="tabs-pane active-pane">
+                        <ul class="property-list">
+                                                <li id="rowForcustomfield_10210" class="item">
+                        <div class="wrap">
+                            <strong title="Number of attachments " class="name">Number of attachments :</strong>
+                            <div id="customfield_10210-val" class="value type-attachments" data-fieldtype="attachments" data-fieldtypecompletekey="com.atlassian.jira.toolkit:attachments">
+                                    3
+
+                            </div>
+                        </div>
+                    </li>
+                                        </ul>
+        </div>
+        </div></div>
+</div></div><div id="descriptionmodule" class="module toggle-wrap"><div id="descriptionmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Description</h2></div><div class="mod-content"><div id="description-val" class="field-ignore-highlight">
+    <div class="user-content-block">
+                    <p>When running stories that may take a bit longer, e.g. web tests, a timeout value for each story would be useful as opposed to a timeout for all stories together.</p>
+
+            </div>
+</div>
+</div></div><div id="attachmentmodule" class="module toggle-wrap"><div id="attachmentmodule_heading" class="mod-header"><ul class="ops"><li class="drop"><div class="aui-dd-parent"><a href="#" class="icon drop-menu js-default-dropdown" title="Options"><span>Options</span></a><div class="aui-dropdown-content aui-list"><ul id="attachment-sorting-options" class="aui-list-section aui-first"><li class="aui-list-item"><a id="attachment-sort-key-name" href="/Old_JBehave_Issues/833?attachmentSortBy=fileName#attachmentmodule" class="aui-list-checked aui-checked aui-list-item-link" title="viewissue.subtasks.tab.show.all.name"><span>Sort By Name</span></a></li><li class="aui-list-item"><a id="attachment-sort-key-date" href="/Old_JBehave_Issues/833?attachmentSortBy=dateTime#attachmentmodule" class="aui-list-checked aui-list-item-link" title="Sort By Date"><span>Sort By Date</span></a></li></ul><ul id="attachment-sorting-order-options" class="aui-list-section"><li class="aui-list-item"><a id="attachment-sort-direction-asc" href="/Old_JBehave_Issues/833?attachmentOrder=asc#attachmentmodule" class="aui-list-checked aui-checked aui-list-item-link" title="Ascending"><span>Ascending</span></a></li><li class="aui-list-item"><a id="attachment-sort-direction-desc" href="/Old_JBehave_Issues/833?attachmentOrder=desc#attachmentmodule" class="aui-list-checked aui-list-item-link" title="Descending"><span>Descending</span></a></li></ul><ul id="attachment-manage-options" class="aui-list-section aui-last"><li class="aui-list-item"><a id="aszip" href="/Old_JBehave_Issues/attachmentzip/140345.zip" class="aui-list-checked aui-list-item-link" title="Download all attachments as a ZIP file"><span>Download All</span></a></li></ul></div></div></li></ul><h2 class="toggle-title">Attachments</h2></div><div class="mod-content">
+            <ol id="file_attachments" class="item-attachments">
+                            <li class="attachment-content">
+                                            <div class="attachment-thumb">
+                            <a href="/Old_JBehave_Issues/attachment/67521/JBEHAVE-833_Explanation.docx" draggable="true" data-downloadurl="${fileAttachment.mimetype}:JBEHAVE-833_Explanation.docx:/Old_JBehave_Issues/attachment/67521/JBEHAVE-833_Explanation.docx">
+                                    <img src="index_files/word.gif" alt="Microsoft Word" height="16" border="0" width="16">
+                            </a>
+                        </div>
+                        <dl>
+                                <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/67521/JBEHAVE-833_Explanation.docx" title="Latest  06/Apr/15 3:19 PM - Christopher Aguirre" draggable="true" data-downloadurl="${attachment.mimetype}:JBEHAVE-833_Explanation.docx:/Old_JBehave_Issues/attachment/67521/JBEHAVE-833_Explanation.docx">JBEHAVE-833_Explanation.docx
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2015-04-06T15:19-0500">06/Apr/15 3:19 PM</time></dd>
+    <dd class="attachment-size">14 kB</dd>
+    <dd class="attachment-author">Christopher Aguirre</dd>
+                        </dl>
+                                    </li>
+                            <li class="attachment-content">
+                                            <div class="attachment-thumb">
+                            <a href="/Old_JBehave_Issues/attachment/67545/JBEHAVE-833_TestFindings.docx" draggable="true" data-downloadurl="${fileAttachment.mimetype}:JBEHAVE-833_TestFindings.docx:/Old_JBehave_Issues/attachment/67545/JBEHAVE-833_TestFindings.docx">
+                                    <img src="index_files/word.gif" alt="Microsoft Word" height="16" border="0" width="16">
+                            </a>
+                        </div>
+                        <dl>
+                                <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/67545/JBEHAVE-833_TestFindings.docx" title="Latest  24/Apr/15 1:12 PM - Christopher Aguirre" draggable="true" data-downloadurl="${attachment.mimetype}:JBEHAVE-833_TestFindings.docx:/Old_JBehave_Issues/attachment/67545/JBEHAVE-833_TestFindings.docx">JBEHAVE-833_TestFindings.docx
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2015-04-24T13:12-0500">24/Apr/15 1:12 PM</time></dd>
+    <dd class="attachment-size">15 kB</dd>
+    <dd class="attachment-author">Christopher Aguirre</dd>
+                        </dl>
+                                    </li>
+                    </ol>
+                <ol id="attachment_thumbnails" class="item-attachments">
+                            <li class="attachment-content" draggable="true" data-downloadurl="${imageAttachment.mimetype}:storyTimeoutInSecsByPath_inAction.JPG:/Old_JBehave_Issues/attachment/67537/storyTimeoutInSecsByPath_inAction.JPG">
+                    <div class="attachment-thumb">
+                        <a class="gallery" rel="gallery" href="/Old_JBehave_Issues/attachment/67537/storyTimeoutInSecsByPath_inAction.JPG" title="storyTimeoutInSecsByPath_inAction.JPG - Latest 16/Apr/15 12:18 PM - Christopher Aguirre">
+                            <img src="index_files/_thumb_67537.png" alt="" height="79" width="200">
+                        </a>
+                    </div>
+                    <dl>
+                        <dt>
+                                                            <span class="blender"></span>
+                                                        <a class="attachment-title" href="/Old_JBehave_Issues/attachment/67537/storyTimeoutInSecsByPath_inAction.JPG" title="storyTimeoutInSecsByPath_inAction.JPG - Latest 16/Apr/15 12:18 PM - Christopher Aguirre">storyTimeoutInSecsByPath_inAction.JPG</a>
+                        </dt>
+                        <dd class="attachment-size">107 kB</dd>
+                        <dd class="attachment-date"><time class="livestamp" datetime="2015-04-16T12:18-0500">16/Apr/15 12:18 PM</time></dd>
+                    </dl>
+                </li>
+                    </ol>
+    </div></div><div id="activitymodule" class="module toggle-wrap"><div id="activitymodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Activity</h2></div><div class="mod-content">
+
+
+
+
+
+
+
+
+
+
+    <div class="tabwrap tabs2" style="display:none">
+                    <div class="sortwrap">
+                                    <a class="icon icon-sort-down ajax-activity-content" rel="nofollow" href="/Old_JBehave_Issues/833?actionOrder=desc" title="Ascending order - Click to sort in descending order"><span>Ascending order - Click to sort in descending order</span></a>
+                            </div>
+                <ul id="issue-tabs" class="tabs horizontal">
+                                
+            <li class="active" id="all-tabpanel" data-id="all-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel" data-label="All" data-href="/browse/JBEHAVE-833">
+                            <strong>All</strong>
+                        </li>
+                                
+            <li data-id="comment-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel" data-label="Comments" data-href="/browse/JBEHAVE-833">
+                            <a class="ajax-activity-content" id="comment-tabpanel" href="/Old_JBehave_Issues/833"><strong>Comments</strong></a>
+                        </li>
+                                
+            <li data-id="worklog-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:worklog-tabpanel" data-label="Work Log" data-href="/browse/JBEHAVE-833">
+                            <a class="ajax-activity-content" id="worklog-tabpanel" href="/Old_JBehave_Issues/833"><strong>Work Log</strong></a>
+                        </li>
+                                
+            <li data-id="changehistory-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:changehistory-tabpanel" data-label="History" data-href="/browse/JBEHAVE-833">
+                            <a class="ajax-activity-content" id="changehistory-tabpanel" href="/Old_JBehave_Issues/833"><strong>History</strong></a>
+                        </li>
+                                
+            <li data-id="activity-stream-issue-tab" data-key="com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab" data-label="Activity" data-href="/browse/JBEHAVE-833">
+                            <a class="ajax-activity-content" id="activity-stream-issue-tab" href="/Old_JBehave_Issues/833"><strong>Activity</strong></a>
+                        </li>
+                </ul>
+    </div>
+    <div class="issuePanelWrapper">
+        <div class="issuePanelProgress"></div>
+        <div class="issuePanelContainer" id="issue_actions_container">
+                                    
+
+
+<div id="comment-358798" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=358798&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-358798" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_358798_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_358798_verbose subText"><span class="date user-tz" title="08/Dec/14 11:55 AM"><time class="livestamp" datetime="2014-12-08T11:55-0600">08/Dec/14 11:55 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Has this been resolved with <a href="/Old_JBehave_Issues/1037" title="Story duration timeout occurs for not started story" class="issue-link" data-issue-key="JBEHAVE-1037"><del>JBEHAVE-1037</del></a> ?</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_358798_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_358798_concise subText"><span class="date user-tz" title="08/Dec/14 11:55 AM"><time class="livestamp" datetime="2014-12-08T11:55-0600">08/Dec/14 11:55 AM</time></span></span>                    Has this been resolved with   JBEHAVE-1037   ?              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-358803" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=358803&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-358803" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_358803_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_358803_verbose subText"><span class="date user-tz" title="08/Dec/14 1:58 PM"><time class="livestamp" datetime="2014-12-08T13:58-0600">08/Dec/14 1:58 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>No, there is currently only one configured timeout value.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_358803_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_358803_concise subText"><span class="date user-tz" title="08/Dec/14 1:58 PM"><time class="livestamp" datetime="2014-12-08T13:58-0600">08/Dec/14 1:58 PM</time></span></span>                    No, there is currently only one configured timeout value.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-358845" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=358845&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-358845" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_358845_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_358845_verbose subText"><span class="date user-tz" title="09/Dec/14 2:33 PM"><time class="livestamp" datetime="2014-12-09T14:33-0600">09/Dec/14 2:33 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>How about if I implement this using a new Ant task such as: specificStoryTimeoutInSecs="*<b>/Class1.java-500,</b><b>/Class2.java-700,</b>*/Class3.java-10000". </p>
+
+<p>Format: specificStoryTimeoutInSecs=CSV of "className-timeInSec"</p>
+
+<p>Thoughts about this design? I cannot subscribe to the mailing lists so had to discuss here. I also thought about adding this somehow to the Config/Runner class for a specific story, but it would be easier to configure via a build.xml or pom. </p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_358845_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_358845_concise subText"><span class="date user-tz" title="09/Dec/14 2:33 PM"><time class="livestamp" datetime="2014-12-09T14:33-0600">09/Dec/14 2:33 PM</time></span></span>                    How about if I implement this using a new Ant task such as: specificStoryTimeoutInSecs="* /Class1.java-500,  /Class2.java-700, */Class3.java-10000".  
+
+ Format: specificStoryTimeoutInSecs=CSV of "className-timeInSec" 
+
+ Thoughts about this design? I cannot subscribe to the mailing lists so had to discuss here. I also thought about adding this somehow to the Config/Runner class for a specific story, but it would be easier to configure via a build.xml or pom.  
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-358858" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=358858&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-358858" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_358858_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_358858_verbose subText"><span class="date user-tz" title="10/Dec/14 1:45 AM"><time class="livestamp" datetime="2014-12-10T01:45-0600">10/Dec/14 1:45 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>This features requires two main elements:</p>
+
+<ul class="alternate" type="square">
+	<li>configuration:  add a configuration element similar to storyTimeoutInSecs, which we may call storyTimeoutInSecsByPath, which will override the default value in storyTimeoutInSecs, and can be expressed as a CSV of regex expressions matching story paths.  E.g. "*<b>/long/</b>.story:5000,*<b>/short/</b>.story:200".  Note that there are several places where the storyTimeoutInSecs is configured and an equivalent element needs to be added for storyTimeoutInSecsByPath (using the type String in place of long).</li>
+	<li>implementation of logic: in StoryManager the story timeouts by paths need to be parsed and matched according to the story path being executed</li>
+</ul>
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_358858_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_358858_concise subText"><span class="date user-tz" title="10/Dec/14 1:45 AM"><time class="livestamp" datetime="2014-12-10T01:45-0600">10/Dec/14 1:45 AM</time></span></span>                    This features requires two main elements: 
+
+ 
+	 configuration:  add a configuration element similar to storyTimeoutInSecs, which we may call storyTimeoutInSecsByPath, which will override the default value in storyTimeoutInSecs, and can be expressed as a CSV of regex expressions matching story paths.  E.g. "* /long/ .story:5000,* /short/ .story:200".  Note that there are several places where the storyTimeoutInSecs is configured and an equivalent element needs to be added for storyTimeoutInSecsByPath (using the type String in place of long). 
+	 implementation of logic: in StoryManager the story timeouts by paths need to be parsed and matched according to the story path being executed 
+ 
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-358859" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=358859&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-358859" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_358859_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_358859_verbose subText"><span class="date user-tz" title="10/Dec/14 1:47 AM"><time class="livestamp" datetime="2014-12-10T01:47-0600">10/Dec/14 1:47 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>To subscribe to the mailing lists you need to create a Codehaus account and then subscribe via the project site: </p>
+
+<p><a href="http://xircles.codehaus.org/projects/jbehave" class="external-link" rel="nofollow">http://xircles.codehaus.org/projects/jbehave</a></p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_358859_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_358859_concise subText"><span class="date user-tz" title="10/Dec/14 1:47 AM"><time class="livestamp" datetime="2014-12-10T01:47-0600">10/Dec/14 1:47 AM</time></span></span>                    To subscribe to the mailing lists you need to create a Codehaus account and then subscribe via the project site:  
+
+  http://xircles.codehaus.org/projects/jbehave               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-361706" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=361706&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-361706" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_361706_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_361706_verbose subText"><span class="date user-tz" title="23/Jan/15 9:40 AM"><time class="livestamp" datetime="2015-01-23T09:40-0600">23/Jan/15 9:40 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>FYI: I have been working on this for some time and am close to completion/submitting a pull request.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_361706_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_361706_concise subText"><span class="date user-tz" title="23/Jan/15 9:40 AM"><time class="livestamp" datetime="2015-01-23T09:40-0600">23/Jan/15 9:40 AM</time></span></span>                    FYI: I have been working on this for some time and am close to completion/submitting a pull request.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-363024" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=363024&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-363024" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_363024_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_363024_verbose subText"><span class="date user-tz" title="10/Feb/15 2:02 PM"><time class="livestamp" datetime="2015-02-10T14:02-0600">10/Feb/15 2:02 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Pull Request Sent for this!: <br>
+<a href="https://github.com/jbehave/jbehave-core/pull/74" class="external-link" rel="nofollow">https://github.com/jbehave/jbehave-core/pull/74</a></p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_363024_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_363024_concise subText"><span class="date user-tz" title="10/Feb/15 2:02 PM"><time class="livestamp" datetime="2015-02-10T14:02-0600">10/Feb/15 2:02 PM</time></span></span>                    Pull Request Sent for this!:  
+ https://github.com/jbehave/jbehave-core/pull/74               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-364091" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=364091&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-364091" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_364091_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_364091_verbose subText"><span class="date user-tz" title="24/Feb/15 11:25 AM"><time class="livestamp" datetime="2015-02-24T11:25-0600">24/Feb/15 11:25 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Mauro , just want to ensure you are aware of this Pull Request. No rush though - our team will eventually use this but it won't be right away.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_364091_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_364091_concise subText"><span class="date user-tz" title="24/Feb/15 11:25 AM"><time class="livestamp" datetime="2015-02-24T11:25-0600">24/Feb/15 11:25 AM</time></span></span>                    Mauro , just want to ensure you are aware of this Pull Request. No rush though - our team will eventually use this but it won't be right away.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-364124" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=364124&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-364124" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_364124_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_364124_verbose subText"><span class="date user-tz" title="25/Feb/15 10:26 AM"><time class="livestamp" datetime="2015-02-25T10:26-0600">25/Feb/15 10:26 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Christopher, </p>
+
+<p>yes, I've seen it thanks.  I'll get to it by the end of this week. </p>
+
+<p>Cheers</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_364124_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_364124_concise subText"><span class="date user-tz" title="25/Feb/15 10:26 AM"><time class="livestamp" datetime="2015-02-25T10:26-0600">25/Feb/15 10:26 AM</time></span></span>                    Hi Christopher,  
+
+ yes, I've seen it thanks.  I'll get to it by the end of this week.  
+
+ Cheers              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-364128" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=364128&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-364128" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_364128_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_364128_verbose subText"><span class="date user-tz" title="25/Feb/15 10:44 AM"><time class="livestamp" datetime="2015-02-25T10:44-0600">25/Feb/15 10:44 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>no problem - no rush. thanks for confirming.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_364128_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_364128_concise subText"><span class="date user-tz" title="25/Feb/15 10:44 AM"><time class="livestamp" datetime="2015-02-25T10:44-0600">25/Feb/15 10:44 AM</time></span></span>                    no problem - no rush. thanks for confirming.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-364658" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=364658&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-364658" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_364658_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_364658_verbose subText"><span class="date user-tz" title="08/Mar/15 5:38 PM"><time class="livestamp" datetime="2015-03-08T17:38-0500">08/Mar/15 5:38 PM</time></span></span>   - <span class="redText subText" title="Mauro Talevi - 08/Mar/15 5:40 PM">edited</span> </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Christopher,</p>
+
+<p>finally got around to the patch.   Can you please explain why you need to introduce the method</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-keyword">public</span> <span class="code-object">String</span> getSearchDirectory() 
+</pre>
+</div></div>
+
+<p>in the EmbedderMonitor?</p>
+
+<p>If you need to configure anything, it should not be in the monitor class.  </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_364658_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_364658_concise subText"><span class="date user-tz" title="08/Mar/15 5:38 PM"><time class="livestamp" datetime="2015-03-08T17:38-0500">08/Mar/15 5:38 PM</time></span></span>   - <span class="redText subText" title="Mauro Talevi - 08/Mar/15 5:40 PM">edited</span>                   Hi Christopher, 
+
+ finally got around to the patch.   Can you please explain why you need to introduce the method 
+
+  
+ 
+ public   String  getSearchDirectory() 
+ 
+  
+
+ in the EmbedderMonitor? 
+
+ If you need to configure anything, it should not be in the monitor class.                </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-364754" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=364754&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-364754" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_364754_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_364754_verbose subText"><span class="date user-tz" title="10/Mar/15 9:51 AM"><time class="livestamp" datetime="2015-03-10T09:51-0500">10/Mar/15 9:51 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>After parsing the new Ant Task property "useStoryTimeoutInSecsByPath", I want to ensure that each story path specified is a valid path. </p>
+
+<p>For example, suppose useStoryTimeoutInSecsByPath="*<b>/test1.story:15,</b>*/test2.story:77"<br>
+and in this case "test2.story" is not a valid path (that story doesn't exist). </p>
+
+<p>To do this check, I used StoryFinder.findPaths(String searchIn, String include, String exclude) on line 325 of StoryManager.java.  </p>
+
+<p>In order to use this method, I had to pass in the correct path to "searchIn", which was already being conveniently determined in AbstractEmbedderTask.searchDirectory(), line 180. </p>
+
+<p>So in summary, I introduced this method in order to take advantage of AbstractEmbedderTask.searchDirectory(), which is accessible via the "embedderMonitor" field in StoryManager.java.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_364754_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_364754_concise subText"><span class="date user-tz" title="10/Mar/15 9:51 AM"><time class="livestamp" datetime="2015-03-10T09:51-0500">10/Mar/15 9:51 AM</time></span></span>                    After parsing the new Ant Task property "useStoryTimeoutInSecsByPath", I want to ensure that each story path specified is a valid path.  
+
+ For example, suppose useStoryTimeoutInSecsByPath="* /test1.story:15, */test2.story:77" 
+and in this case "test2.story" is not a valid path (that story doesn't exist).  
+
+ To do this check, I used StoryFinder.findPaths(String searchIn, String include, String exclude) on line 325 of StoryManager.java.   
+
+ In order to use this method, I had to pass in the correct path to "searchIn", which was already being conveniently determined in AbstractEmbedderTask.searchDirectory(), line 180.  
+
+ So in summary, I introduced this method in order to take advantage of AbstractEmbedderTask.searchDirectory(), which is accessible via the "embedderMonitor" field in StoryManager.java.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-364911" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=364911&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-364911" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_364911_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_364911_verbose subText"><span class="date user-tz" title="12/Mar/15 5:46 PM"><time class="livestamp" datetime="2015-03-12T17:46-0500">12/Mar/15 5:46 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>You're mixing two very different concerns here, configuration and monitoring. </p>
+
+<p>What matters is whether the path of the story we're running matches the regex patterns provided in the CSV of story timeouts. </p>
+
+<p>I'm looking into simplify your solution. </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_364911_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_364911_concise subText"><span class="date user-tz" title="12/Mar/15 5:46 PM"><time class="livestamp" datetime="2015-03-12T17:46-0500">12/Mar/15 5:46 PM</time></span></span>                    You're mixing two very different concerns here, configuration and monitoring.  
+
+ What matters is whether the path of the story we're running matches the regex patterns provided in the CSV of story timeouts.  
+
+ I'm looking into simplify your solution.               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-364934" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=364934&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-364934" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_364934_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_364934_verbose subText"><span class="date user-tz" title="13/Mar/15 6:04 AM"><time class="livestamp" datetime="2015-03-13T06:04-0500">13/Mar/15 6:04 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Chris,</p>
+
+<p>I've pushed a refactored version.  It passes all the tests that you had written (well done, by the way, for the excellent testing coverage of your patch!). </p>
+
+<p>The new version simply checks the story path matches the regex pattern provided (well, almost ... replacing ** -&gt; .*).</p>
+
+<p>Also gone is the timeValuesUsed map which was a rather ugly hack, only there for testing purposes.   Again, the monitor pattern has been used to verify behaviour in an IOC-friendly way.</p>
+
+<p>Could you please pull latest and test it works for you? </p>
+
+<p>Cheers</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_364934_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_364934_concise subText"><span class="date user-tz" title="13/Mar/15 6:04 AM"><time class="livestamp" datetime="2015-03-13T06:04-0500">13/Mar/15 6:04 AM</time></span></span>                    Hi Chris, 
+
+ I've pushed a refactored version.  It passes all the tests that you had written (well done, by the way, for the excellent testing coverage of your patch!).  
+
+ The new version simply checks the story path matches the regex pattern provided (well, almost ... replacing ** -&gt; .*). 
+
+ Also gone is the timeValuesUsed map which was a rather ugly hack, only there for testing purposes.   Again, the monitor pattern has been used to verify behaviour in an IOC-friendly way. 
+
+ Could you please pull latest and test it works for you?  
+
+ Cheers              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-365112" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=365112&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-365112" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_365112_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_365112_verbose subText"><span class="date user-tz" title="16/Mar/15 2:23 PM"><time class="livestamp" datetime="2015-03-16T14:23-0500">16/Mar/15 2:23 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Thank you very much for the additions and feedback. I am in the process of testing and will revert back soon.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_365112_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_365112_concise subText"><span class="date user-tz" title="16/Mar/15 2:23 PM"><time class="livestamp" datetime="2015-03-16T14:23-0500">16/Mar/15 2:23 PM</time></span></span>                    Thank you very much for the additions and feedback. I am in the process of testing and will revert back soon.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-365968" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=365968&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-365968" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_365968_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_365968_verbose subText"><span class="date user-tz" title="01/Apr/15 12:46 PM"><time class="livestamp" datetime="2015-04-01T12:46-0500">01/Apr/15 12:46 PM</time></span></span>   - <span class="redText subText" title="Christopher Aguirre - 01/Apr/15 1:05 PM">edited</span> </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Mauro, </p>
+
+<p>Its working very well - I tested thoroughly and don't see any additional issues. Given your simplified regex pattern solution, I think it would be best to update all places in code where I give examples of how to use this new "storyTimeoutInSecsByPath". </p>
+
+<p>In my first commit, all of my examples/comments/unit tests used this format: E.g. "*/long/*.story:5000,*/short/*.story:200"</p>
+
+<p>At the time, I was thinking of a scenario where someone might want to assign a specific timeout to a whole suite of tests under a package such as "long" or "short".</p>
+
+<p>But after reviewing your changes, I think it would be clearer to use this format for the examples: E.g. ".*Long.*.story:5000,.*Short.*.story:200"</p>
+
+<p>This new example would show that its fairly easy to assign a timeout to any tests with "Long" or "Short" in their names.</p>
+
+<p>Essentially keeping the example as simple as possible and showing users that they can simply use ".*" for matching with story path.</p>
+
+<p>Thoughts?</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_365968_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_365968_concise subText"><span class="date user-tz" title="01/Apr/15 12:46 PM"><time class="livestamp" datetime="2015-04-01T12:46-0500">01/Apr/15 12:46 PM</time></span></span>   - <span class="redText subText" title="Christopher Aguirre - 01/Apr/15 1:05 PM">edited</span>                   Hi Mauro,  
+
+ Its working very well - I tested thoroughly and don't see any additional issues. Given your simplified regex pattern solution, I think it would be best to update all places in code where I give examples of how to use this new "storyTimeoutInSecsByPath".  
+
+ In my first commit, all of my examples/comments/unit tests used this format: E.g. "*/long/*.story:5000,*/short/*.story:200" 
+
+ At the time, I was thinking of a scenario where someone might want to assign a specific timeout to a whole suite of tests under a package such as "long" or "short". 
+
+ But after reviewing your changes, I think it would be clearer to use this format for the examples: E.g. ".*Long.*.story:5000,.*Short.*.story:200" 
+
+ This new example would show that its fairly easy to assign a timeout to any tests with "Long" or "Short" in their names. 
+
+ Essentially keeping the example as simple as possible and showing users that they can simply use ".*" for matching with story path. 
+
+ Thoughts?              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-366038" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=366038&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-366038" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_366038_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_366038_verbose subText"><span class="date user-tz" title="02/Apr/15 5:09 PM"><time class="livestamp" datetime="2015-04-02T17:09-0500">02/Apr/15 5:09 PM</time></span></span>   - <span class="redText subText" title="Mauro Talevi - 02/Apr/15 5:12 PM">edited</span> </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Christopher,</p>
+
+<p>happy to hear that it works well for you.   Not sure I understand your comment, though.</p>
+
+<p>The current path format allows use of asterisks <span class="error">[*]</span>, which will be converted to regex characters <span class="error">[.*]</span></p>
+
+<p>Can you clarify what you mean?</p>
+
+<p>Cheers</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_366038_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_366038_concise subText"><span class="date user-tz" title="02/Apr/15 5:09 PM"><time class="livestamp" datetime="2015-04-02T17:09-0500">02/Apr/15 5:09 PM</time></span></span>   - <span class="redText subText" title="Mauro Talevi - 02/Apr/15 5:12 PM">edited</span>                   Hi Christopher, 
+
+ happy to hear that it works well for you.   Not sure I understand your comment, though. 
+
+ The current path format allows use of asterisks  [*] , which will be converted to regex characters  [.*]  
+
+ Can you clarify what you mean? 
+
+ Cheers              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-366094" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=366094&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-366094" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_366094_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_366094_verbose subText"><span class="date user-tz" title="06/Apr/15 3:19 PM"><time class="livestamp" datetime="2015-04-06T15:19-0500">06/Apr/15 3:19 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Post Implementation Discussion Between Mauro and Chris Aguirre</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_366094_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_366094_concise subText"><span class="date user-tz" title="06/Apr/15 3:19 PM"><time class="livestamp" datetime="2015-04-06T15:19-0500">06/Apr/15 3:19 PM</time></span></span>                    Post Implementation Discussion Between Mauro and Chris Aguirre              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-505729">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_505729">
+                                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="changehistoryauthor_505729" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ made changes  - <span class="date" title="06/Apr/15 3:19 PM"><time class="livestamp" datetime="2015-04-06T15:19-0500">06/Apr/15 3:19 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_505729" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <thead>
+                    <tr>
+                        <th width="20%">Field</th>
+                        <th width="40%">Original Value</th>
+                        <th width="40%">New Value</th>
+                    </tr>
+                </thead>
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/67521/JBEHAVE-833_Explanation.docx">JBEHAVE-833_Explanation.docx</a>
+                                                                                                                       <span class="hist-value">[    67521
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-366095" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=366095&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-366095" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_366095_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_366095_verbose subText"><span class="date user-tz" title="06/Apr/15 3:19 PM"><time class="livestamp" datetime="2015-04-06T15:19-0500">06/Apr/15 3:19 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Mauro, </p>
+
+<p>I have uploaded a Word Doc named "<a href="#" title="Provide a configurable timeout value for each story running time" class="issue-link" data-issue-key="JBEHAVE-833">JBEHAVE-833</a>_Explanation.docx" to this issue in order to avoid formatting mistakes here in JIRA. Please let me know if you have issues opening the doc and I can send in another format or via another means.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_366095_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_366095_concise subText"><span class="date user-tz" title="06/Apr/15 3:19 PM"><time class="livestamp" datetime="2015-04-06T15:19-0500">06/Apr/15 3:19 PM</time></span></span>                    Mauro,  
+
+ I have uploaded a Word Doc named " JBEHAVE-833 _Explanation.docx" to this issue in order to avoid formatting mistakes here in JIRA. Please let me know if you have issues opening the doc and I can send in another format or via another means.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-366117" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=366117&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-366117" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_366117_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_366117_verbose subText"><span class="date user-tz" title="07/Apr/15 9:40 AM"><time class="livestamp" datetime="2015-04-07T09:40-0500">07/Apr/15 9:40 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I think it'd be much easier to modifiy the examples' CoreStories configuration to reproduce the behaviour in the doc.</p>
+
+<p>Can you provide such pull request please?    I'd be interested in understanding what works and what does not  for you. </p>
+
+<p>Thanks</p>
+
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_366117_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_366117_concise subText"><span class="date user-tz" title="07/Apr/15 9:40 AM"><time class="livestamp" datetime="2015-04-07T09:40-0500">07/Apr/15 9:40 AM</time></span></span>                    I think it'd be much easier to modifiy the examples' CoreStories configuration to reproduce the behaviour in the doc. 
+
+ Can you provide such pull request please?    I'd be interested in understanding what works and what does not  for you.  
+
+ Thanks 
+
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-366256" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=366256&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-366256" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_366256_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_366256_verbose subText"><span class="date user-tz" title="13/Apr/15 9:18 AM"><time class="livestamp" datetime="2015-04-13T09:18-0500">13/Apr/15 9:18 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Mauro, </p>
+
+<p>As I work on this pull request, I want to confirm that I am making the changes in the correct place. </p>
+
+<p>I am adding the example usage for "storyTimeoutInSecsByPath" in jbehave-examples/core/pom.xml - is this what you are expecting?</p>
+
+<p>I want to confirm because I tried updating CoreStories.java but its inherently using UnmodifiableEmbedderControls which doesn't allow me to set my own timeout values. </p>
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_366256_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_366256_concise subText"><span class="date user-tz" title="13/Apr/15 9:18 AM"><time class="livestamp" datetime="2015-04-13T09:18-0500">13/Apr/15 9:18 AM</time></span></span>                    Mauro,  
+
+ As I work on this pull request, I want to confirm that I am making the changes in the correct place.  
+
+ I am adding the example usage for "storyTimeoutInSecsByPath" in jbehave-examples/core/pom.xml - is this what you are expecting? 
+
+ I want to confirm because I tried updating CoreStories.java but its inherently using UnmodifiableEmbedderControls which doesn't allow me to set my own timeout values.  
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-366260" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=366260&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-366260" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_366260_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_366260_verbose subText"><span class="date user-tz" title="13/Apr/15 4:10 PM"><time class="livestamp" datetime="2015-04-13T16:10-0500">13/Apr/15 4:10 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Christopher, </p>
+
+<p>you can set it either in CoreStories or in the pom.xml but be aware that the pom.xml overrides what is set in the embedded Java configuration. </p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_366260_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_366260_concise subText"><span class="date user-tz" title="13/Apr/15 4:10 PM"><time class="livestamp" datetime="2015-04-13T16:10-0500">13/Apr/15 4:10 PM</time></span></span>                    Hi Christopher,  
+
+ you can set it either in CoreStories or in the pom.xml but be aware that the pom.xml overrides what is set in the embedded Java configuration.  
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-366366" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=366366&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-366366" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_366366_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_366366_verbose subText"><span class="date user-tz" title="16/Apr/15 12:18 PM"><time class="livestamp" datetime="2015-04-16T12:18-0500">16/Apr/15 12:18 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Mauro, </p>
+
+<p>I've updated the pom.xml and added the changes to this pull request: <a href="https://github.com/jbehave/jbehave-core/pull/74" class="external-link" rel="nofollow">https://github.com/jbehave/jbehave-core/pull/74</a></p>
+
+<p>It actually works pretty well in the examples' CoreStories context - as I originally expected and described in # 1 of my Word Doc. I did have to use "dot stars" though which you can see in the pom.xml. </p>
+
+<p>The example in the pom.xml is sufficient to give a user an idea of how to use "storyTimeoutInSecsByPath". I have also included a screen shot (storyTimeoutInSecsByPath_inAction.JPG) of the console statements which show what timeouts each story run were using based on the pom.xml. </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_366366_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_366366_concise subText"><span class="date user-tz" title="16/Apr/15 12:18 PM"><time class="livestamp" datetime="2015-04-16T12:18-0500">16/Apr/15 12:18 PM</time></span></span>                    Mauro,  
+
+ I've updated the pom.xml and added the changes to this pull request:  https://github.com/jbehave/jbehave-core/pull/74  
+
+ It actually works pretty well in the examples' CoreStories context - as I originally expected and described in # 1 of my Word Doc. I did have to use "dot stars" though which you can see in the pom.xml.  
+
+ The example in the pom.xml is sufficient to give a user an idea of how to use "storyTimeoutInSecsByPath". I have also included a screen shot (storyTimeoutInSecsByPath_inAction.JPG) of the console statements which show what timeouts each story run were using based on the pom.xml.               </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-506899">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_506899">
+                                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="changehistoryauthor_506899" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ made changes  - <span class="date" title="16/Apr/15 12:18 PM"><time class="livestamp" datetime="2015-04-16T12:18-0500">16/Apr/15 12:18 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_506899" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/67537/storyTimeoutInSecsByPath_inAction.JPG">storyTimeoutInSecsByPath_inAction.JPG</a>
+                                                                                                                       <span class="hist-value">[    67537
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-366403" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=366403&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-366403" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_366403_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_366403_verbose subText"><span class="date user-tz" title="18/Apr/15 3:00 AM"><time class="livestamp" datetime="2015-04-18T03:00-0500">18/Apr/15 3:00 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Christopher, </p>
+
+<p>I've committed a fix to support both ant-style patterns (a la StoryFinder) and regex patterns.  </p>
+
+<p>I've also updated the core examples pom.xml with story timeouts.</p>
+
+<p>Can you please give it a whirl and let me know if we can resolve this issue? </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_366403_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_366403_concise subText"><span class="date user-tz" title="18/Apr/15 3:00 AM"><time class="livestamp" datetime="2015-04-18T03:00-0500">18/Apr/15 3:00 AM</time></span></span>                    Hi Christopher,  
+
+ I've committed a fix to support both ant-style patterns (a la StoryFinder) and regex patterns.   
+
+ I've also updated the core examples pom.xml with story timeouts. 
+
+ Can you please give it a whirl and let me know if we can resolve this issue?               </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-508072">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_508072">
+                                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="changehistoryauthor_508072" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ made changes  - <span class="date" title="24/Apr/15 1:12 PM"><time class="livestamp" datetime="2015-04-24T13:12-0500">24/Apr/15 1:12 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_508072" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/67545/JBEHAVE-833_TestFindings.docx">JBEHAVE-833_TestFindings.docx</a>
+                                                                                                                       <span class="hist-value">[    67545
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-366583" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=366583&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-366583" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_366583_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_366583_verbose subText"><span class="date user-tz" title="24/Apr/15 1:22 PM"><time class="livestamp" datetime="2015-04-24T13:22-0500">24/Apr/15 1:22 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Mauro, </p>
+
+<p>Overall its working very well when directories are not involved in "storyTimeoutInSecsByPath". When directories are involved, running from the pom.xml works well, but running from ant like we do in our company does not. I've attached a new Word Doc (<a href="#" title="Provide a configurable timeout value for each story running time" class="issue-link" data-issue-key="JBEHAVE-833">JBEHAVE-833</a>_TestFindings.docx) with specific examples of what worked/didn't work for me. </p>
+
+<p>In my opinion, we should leave this as is now. When I originally started this patch, I didn't realize the "storyTimeoutInSecsByPath" would be matched against the story path name only i.e. "and_step.story". Personally, I would be fine with not putting directories in "storyTimeoutInSecsByPath" as a user. We would just need to update all the examples/documentation to not include directory names so users aren't confused as to what works/what doesn't. On the plus side, the users still have the flexibility to use "stars only" or "dot stars" which is nice. </p>
+
+<p>Let me know what you think. If you do agree to stick with what we currently have, then I can submit a patch to update the examples/comments/unit tests with ones that reflect what works well. </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="chrisaguirre" id="commentauthor_366583_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=chrisaguirre"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Christopher Aguirre</a>
+ added a comment  - <span class="commentdate_366583_concise subText"><span class="date user-tz" title="24/Apr/15 1:22 PM"><time class="livestamp" datetime="2015-04-24T13:22-0500">24/Apr/15 1:22 PM</time></span></span>                    Mauro,  
+
+ Overall its working very well when directories are not involved in "storyTimeoutInSecsByPath". When directories are involved, running from the pom.xml works well, but running from ant like we do in our company does not. I've attached a new Word Doc ( JBEHAVE-833 _TestFindings.docx) with specific examples of what worked/didn't work for me.  
+
+ In my opinion, we should leave this as is now. When I originally started this patch, I didn't realize the "storyTimeoutInSecsByPath" would be matched against the story path name only i.e. "and_step.story". Personally, I would be fine with not putting directories in "storyTimeoutInSecsByPath" as a user. We would just need to update all the examples/documentation to not include directory names so users aren't confused as to what works/what doesn't. On the plus side, the users still have the flexibility to use "stars only" or "dot stars" which is nice.  
+
+ Let me know what you think. If you do agree to stick with what we currently have, then I can submit a patch to update the examples/comments/unit tests with ones that reflect what works well.               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-366584" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/833?focusedCommentId=366584&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-366584" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_366584_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_366584_verbose subText"><span class="date user-tz" title="25/Apr/15 3:05 AM"><time class="livestamp" datetime="2015-04-25T03:05-0500">25/Apr/15 3:05 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Christopher,</p>
+
+<p>thanks for the update.  I'm quite puzzled by the difference between Maven and Ant.  The logic of the timeout matching is entirely external to either, being in the StoryManager.   Can you offer more information or a reproduceable example?</p>
+
+<p>As for the behaviour in presence of slashes, could you please see if you can reproduce at unit level in the  StoryManagerBehaviour? </p>
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_366584_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_366584_concise subText"><span class="date user-tz" title="25/Apr/15 3:05 AM"><time class="livestamp" datetime="2015-04-25T03:05-0500">25/Apr/15 3:05 AM</time></span></span>                    Hi Christopher, 
+
+ thanks for the update.  I'm quite puzzled by the difference between Maven and Ant.  The logic of the timeout matching is entirely external to either, being in the StoryManager.   Can you offer more information or a reproduceable example? 
+
+ As for the behaviour in presence of slashes, could you please see if you can reproduce at unit level in the  StoryManagerBehaviour?  
+
+             </div>
+        </div>
+    </div>
+</div>
+                             </div>
+    </div>
+</div></div></div><div id="viewissuesidebar" class="aui-item issue-side-column"><div id="peoplemodule" class="module toggle-wrap"><div id="peoplemodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">People</h2></div><div class="mod-content"><ul class="item-details" id="peopledetails">
+    <li class="people-details">
+                <dl>
+            <dt>Assignee:</dt>
+            <dd>
+                <span id="assignee-val" class="view-issue-field">
+
+    <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-2.png"></span></span>
+    Unassigned
+</span>
+                            </dd>
+        </dl>
+                        <dl>
+            <dt>Reporter:</dt>
+            <dd>
+                <span id="reporter-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_reporter_alexlehm" rel="alexlehm">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-3.png"></span></span>
+            Alexander Lehmann
+        </span>
+    </span>
+            </dd>
+        </dl>
+                    </li>
+</ul>
+    <ul class="item-details">
+        <li>
+                            <dl>
+                    <dt>Votes:</dt>
+                    <dd>
+                                                                            <span id="vote-data" class="aui-badge vote-state-off">0</span>
+                        
+                                                                                                        <span id="vote-label" title="You have to be logged in to vote for an issue.">Vote for this issue</span>
+                                            </dd>
+                </dl>
+                                        <dl>
+                    <dt>Watchers:</dt>
+                    <dd>
+                                                                        
+                                                                            <span id="watcher-data" class="aui-badge watch-state-off">3</span>
+                        
+                                                                                <span id="watch-label" title="You have to be logged in to watch an issue.">Start watching this issue</span>
+                                            </dd>
+                </dl>
+                    </li>
+    </ul>
+</div></div><div id="datesmodule" class="module toggle-wrap"><div id="datesmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Dates</h2></div><div class="mod-content"><ul class="item-details">
+    <li>
+            <dl class="dates">
+            <dt>Created:</dt>
+            <dd class="date user-tz" title="10/Sep/12 6:16 PM">
+
+                <span data-name="Created" id="create-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-09-10T18:16-0500">10/Sep/12 6:16 PM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Updated:</dt>
+            <dd class="date user-tz" title="25/Apr/15 3:05 AM">
+
+                <span data-name="Updated" id="updated-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2015-04-25T03:05-0500">25/Apr/15 3:05 AM</time>                                                             </span>
+            </dd>
+        </dl>
+        </li>
+</ul>
+</div></div></div></div>
+                    </div>
+                </div>
+                        </div>
+
+    <fieldset class="hidden parameters">
+        <input title="autocompleteEnabled" value="true" type="hidden">
+    </fieldset>
+    
+    </section>
+    <footer id="footer" role="contentinfo">
+        
+        
+
+
+
+<div class="footer-body">
+    <ul>
+        <li>
+                        <a href="http://www.atlassian.com/software/jira">Atlassian JIRA</a>
+
+                                                    
+                        
+            <span id="footer-build-information">(v6.1.6#6162-<span title="7af547ce7c84dbb7c1e345a65437ed7b85efffa2" data-commit-id="7af547ce7c84dbb7c1e345a65437ed7b85efffa2}">sha1:7af547c</span>)</span>
+        </li>
+        <li>
+            <a id="about-link" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+        </li>
+        <li>
+                                    <a id="footer-report-problem-link" href="https://jira.codehaus.org/secure/CreateIssue%21default.jspa">Report a problem</a>
+        </li>
+    </ul>
+            <ul>
+            <li class="licensemessage">
+                                    Powered by a free Atlassian <a href="http://www.atlassian.com/software/jira">JIRA</a> open source license for Codehaus. Try JIRA - <a href="http://www.atlassian.com/software/jira">bug tracking software</a> for <i>your</i> team.
+
+                            </li>
+        </ul>
+    </div>
+
+<form id="jira_request_timing_info" class="dont-default-focus">
+	<fieldset class="parameters hidden">
+
+
+
+
+		<input title="jira.session.expiry.in.mins" value="299" type="hidden">
+
+	</fieldset>
+</form>
+<!--
+	                 
+	          
+	               
+	                 
+	        CONCURRENT REQUESTS : 2
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input title="loggedInUser" value="" type="hidden">
+    <input title="ajaxTimeout" value="The call to the JIRA server did not complete within the timeout period.  We are unsure of the result of this operation." type="hidden">
+    <input title="JiraVersion" value="6.1.6" type="hidden">
+    <input title="ajaxUnauthorised" value="You are not authorised to perform this operation.  Please log in." type="hidden">
+    <input title="baseURL" value="https://jira.codehaus.org:443" type="hidden">
+    <input title="ajaxCommsError" value="The JIRA server could not be contacted.  This may be a temporary glitch or the server may be down." type="hidden">
+    <input title="ajaxServerError" value="The JIRA server was contacted but has returned an error response. We are unsure of the result of this operation." type="hidden">
+    <input title="ajaxErrorCloseDialog" value="Close this dialog and press refresh in your browser" type="hidden">
+    <input title="ajaxErrorDialogHeading" value="Communications Breakdown" type="hidden">
+
+    <input title="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost." type="hidden">
+    <input title="dirtyDialogMessage" value="You have entered new data in this dialog. If you navigate away from this dialog without first saving your data, the changes will be lost. Click cancel to return to the dialog." type="hidden">
+    <input title="keyType" value="Type" type="hidden">
+    <input title="keyThen" value="then" type="hidden">
+    <input title="dblClickToExpand" value="Double click to expand" type="hidden">
+    <input title="actions" value="Actions" type="hidden">
+    <input title="removeItem" value="Remove" type="hidden">
+    <input title="workflow" value="Workflow" type="hidden">
+    <input title="labelNew" value="New Label" type="hidden">
+    <input title="issueActionsHint" value="Begin typing for available operations or press down to see all" type="hidden">
+    <input title="closelink" value="Close" type="hidden">
+    <input title="dotOperations" value="Operations" type="hidden">
+    <input title="dotLoading" value="Loading..." type="hidden">
+    <input title="frotherSuggestions" value="Suggestions" type="hidden">
+    <input title="frotherNomatches" value="No Matches" type="hidden">
+    <input title="multiselectVersionsError" value="{0} is not a valid version." type="hidden">
+    <input title="multiselectComponentsError" value="{0} is not a valid component." type="hidden">
+    <input title="multiselectGenericError" value="The value {0} is invalid." type="hidden">
+</fieldset>
+
+    </footer>
+</div>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:void(0);" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:void(0);" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div class="navigator-sidebar collapsed ui-popout ui-popout-detached ui-popout-collapsed" id="navigator-sidebar"><a class="toggle-filter-panel" href="#" title="Dock the filters panel ([)"></a></div><div style="display: none;" class="jira-dialog box-shadow" id="edit-issue-dialog"><div class="jira-dialog-content"></div></div><div style="display: none;" class="jira-dialog box-shadow" id="create-subtask-dialog"><div class="jira-dialog-content"></div></div></body></html>

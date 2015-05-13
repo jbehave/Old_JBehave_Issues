@@ -1,0 +1,130 @@
+diff --git a/examples/i18n/src/main/java/org/jbehave/examples/trader/i18n/DeStories.java b/examples/i18n/src/main/java/org/jbehave/examples/trader/i18n/DeStories.java
+new file mode 100644
+index 0000000..dbaabad
+--- /dev/null
++++ b/examples/i18n/src/main/java/org/jbehave/examples/trader/i18n/DeStories.java
+@@ -0,0 +1,26 @@
++package org.jbehave.examples.trader.i18n;
++
++import java.util.Locale;
++
++import org.jbehave.examples.trader.i18n.steps.DeSteps;
++
++public class DeStories extends LocalizedStories {
++    
++    @Override
++    protected Locale locale() {
++        return new Locale("de");
++    }
++
++    @Override
++    protected String storyPattern() {
++        // Acutally it would be "**/*.geschichte", but
++        // we want to verify that umlauts work even here.
++        return "**/*.geschüchte";
++    }
++
++    @Override
++    protected Object localizedSteps() {
++        return new DeSteps();
++    }
++
++}
+diff --git a/examples/i18n/src/main/java/org/jbehave/examples/trader/i18n/steps/DeSteps.java b/examples/i18n/src/main/java/org/jbehave/examples/trader/i18n/steps/DeSteps.java
+new file mode 100644
+index 0000000..66237a8
+--- /dev/null
++++ b/examples/i18n/src/main/java/org/jbehave/examples/trader/i18n/steps/DeSteps.java
+@@ -0,0 +1,55 @@
++package org.jbehave.examples.trader.i18n.steps;
++
++import static org.hamcrest.MatcherAssert.assertThat;
++import static org.hamcrest.Matchers.equalTo;
++
++import java.util.Map;
++
++import org.jbehave.core.annotations.Given;
++import org.jbehave.core.annotations.Named;
++import org.jbehave.core.annotations.Then;
++import org.jbehave.core.annotations.When;
++import org.jbehave.core.model.ExamplesTable;
++import org.jbehave.examples.core.model.Stock;
++
++public class DeSteps {
++
++    private Stock stock;
++    private ExamplesTable table;
++
++    // Actually it would be spelled "symbol" in German, but
++    // we want to verify that umlauts work for parameter names.
++    @Given("ich habe eine Aktion mit dem Symbol $sümbol und eine Schwelle von $threshold")
++    public void aStock(@Named("sümbol") String symbol, @Named("threshold") double threshold) {
++        stock = new Stock(symbol, threshold);
++    }
++
++    // Actually it would be spelled "gehandelt" in German, but
++    // we want to verify that umlauts work for step names.
++    @When("die Aktie zum Preis $price gehändelt wird")
++    public void stockIsTraded(@Named("price") double price) {
++        stock.tradeAt(price);
++    }
++
++    @Then("ist der Status der Meldung $status")
++    public void alertStatusIs(@Named("status") String status) {
++        assertThat(stock.getStatus().name(), equalTo(status));
++    }
++
++    @Given("ich habe die Tabelle $table")
++    public void aTable(ExamplesTable table) {
++        this.table = table;
++    }
++
++    @Then("hat die Tabelle $rows Zeilen")
++    public void hasRows(int rows){
++        assertThat(table.getRowCount(), equalTo(rows));
++    }
++
++    @Then("in Zeile $row und Spalte $column ist: $value")
++    public void theRowValuesAre(int row, String column, String value){
++        Map<String,String> rowValues = table.getRow(row-1);      
++        assertThat(rowValues.get(column), equalTo(value));
++    }
++
++}
+diff --git "a/examples/i18n/src/main/java/org/jbehave/examples/trader/i18n/stories/de_trader_is_alerted_of_status.gesch\303\274chte" "b/examples/i18n/src/main/java/org/jbehave/examples/trader/i18n/stories/de_trader_is_alerted_of_status.gesch\303\274chte"
+new file mode 100644
+index 0000000..667cdde
+--- /dev/null
++++ "b/examples/i18n/src/main/java/org/jbehave/examples/trader/i18n/stories/de_trader_is_alerted_of_status.gesch\303\274chte"
+@@ -0,0 +1,31 @@
++Erzählung:
++Um für eine schnelle Antwort zu sorgen
++Als Händler, der Deutsch spricht
++Möchte ich Aktienkurse überprüfen
++
++Szenario: 
++
++Gegeben ich habe eine Aktion mit dem Symbol STK1 und eine Schwelle von 15,0
++|-- Kommentar: Eigentlich müsste es "gehandelt" lauten, aber wir möchten Umlaute mitüberprüfen. --|
++Wenn die Aktie zum Preis 5,0 gehändelt wird
++Dann ist der Status der Meldung OFF
++Wenn die Aktie zum Preis 11,0 gehändelt wird
++Dann ist der Status der Meldung OFF
++Wenn die Aktie zum Preis 16,0 gehändelt wird
++Dann ist der Status der Meldung ON
++Wenn die Aktie zum Preiiiiiiiis 20,0 gehandelt wird
++Dann ist der Status der Meldung ON
++
++Szenario:
++
++Gegeben ich habe die Tabelle
++|eins|zwäi|
++|-- Kommentar: Eigentlich müsste es "zwei" lauten, aber wir möchten hier Umlaute mitüberprüfen. --|
++|11|12|
++|-- Noch ein Kommentar. --|
++|21|22|
++Dann hat die Tabelle 2 Zeilen
++Und in Zeile 1 und Spalte eins ist: 11
++Und in Zeile 1 und Spalte zwäi ist: 12
++Und in Zeile 2 und Spalte eins ist: 21
++Und in Zeile 2 und Spalte zwäi ist: 22

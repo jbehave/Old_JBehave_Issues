@@ -1,0 +1,1199 @@
+<!DOCTYPE html><html class="mozilla"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>[JBEHAVE-454] Can't run-stories-as-embeddables from test directory using Maven plugin - jira.codehaus.org</title>
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<link rel="shortcut icon" href="index_files/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://jira.codehaus.org/osd.jsp" title="[JBEHAVE-454] Can't run-stories-as-embeddables from test directory using Maven plugin - jira.codehaus.org">
+
+    
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+<link type="text/css" rel="stylesheet" href="index_files/batch.css" media="all">
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="index_files/batch-1.css" media="all">
+<script type="text/javascript" src="index_files/batch.js"></script><style type="text/css"></style>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="index_files/batch-1.js"></script>
+<script type="text/javascript" src="index_files/jira.webresources_calendar-en.js"></script>
+<script type="text/javascript" src="index_files/com.atlassian.administraticksearch-webresources.js"></script>
+
+<script type="text/javascript" src="index_files/shortcuts.js"></script>
+
+
+    
+    
+    
+    <meta name="decorator" content="atl.general">
+    <meta id="isNavigator" name="isNavigator" content="true">
+    <meta name="ajs-user.search.mode" content="basic">
+    <meta name="ajs-issue-search-help-title" content="Searching for Issues">
+    <meta name="ajs-issue-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Searching+for+Issues">
+    <meta name="ajs-advanced-search-help-title" content="Performing Advanced Searches">
+    <meta name="ajs-advanced-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Advanced+Searching">
+    
+</head>
+<body data-aui-version="5.1.8" id="jira" class="aui-layout aui-theme-default ka ajax-issue-search-and-view page-type-navigator navigator-issue-only" data-version="6.1.6">
+<div id="page">
+    <header id="header" style="display:none" role="banner">
+        
+
+
+
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+
+<fieldset class="parameters hidden dont-default-focus">
+    <input title="tzdetect.pref.tzid" value="America/Chicago" type="hidden">
+    <input title="tzdetect.pref.tzname" value="(GMT-06:00) Chicago" type="hidden">
+    <input title="tzdetect.pref.tzoffset" value="(GMT-06:00)" type="hidden">
+    <input title="tzdetect.pref.tzdst" value="true" type="hidden">
+    <input title="tzdetect.pref.nothanks" value="" type="hidden">
+</fieldset>
+<nav data-aui-responsive="true" class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class="aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-haspopup="true" tabindex="0"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link nav-link-local"><a href="https://jira.codehaus.org/" class="aui-dropdown2-radio interactive checked" title="https://jira.codehaus.org/"><span class="nav-link-label">jira.codehaus.org</span></a></li><li class="nav-link"><a href="http://jira.sonarsource.com/" class="aui-dropdown2-radio interactive" title="http://jira.sonarsource.com/"><span class="nav-link-label">SonarSource</span></a></li><li class="nav-link"><a href="http://docs.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://docs.codehaus.org/"><span class="nav-link-label">Codehaus</span></a></li><li class="nav-link"><a href="http://xircles.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://xircles.codehaus.org"><span class="nav-link-label">Xircles</span></a></li></ul></div></div><script><!--
+/* Script removed by snapshot save */
+--></script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://jira.codehaus.org/secure/MyJiraHome.jspa"><img data-aui-responsive-header-index="0" src="urn:download-error:http://www.codehaus.org/codehaus-small.gif" alt="jira.codehaus.org"></a></h1><ul style="width: auto;" class="aui-nav">
+
+
+
+
+<li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/Dashboard.jspa" id="home_link" accesskey="d" title="View and manage your dashboards" aria-haspopup="true" aria-owns="home_link-content">Dashboards</a><div id="home_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="home_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="/Old_JBehave_Issues/index.html" id="browse_link" accesskey="p" title="View recent projects and browse a list of projects" aria-haspopup="true" aria-owns="browse_link-content">Projects</a><div id="browse_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="browse_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/IssueNavigator.jspa" id="find_link" accesskey="i" title="Search for issues and view recent issues" aria-haspopup="true" aria-owns="find_link-content">Issues</a><div id="find_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="find_link"></div></li>
+<li style="display: none;"><a id="aui-responsive-header-dropdown-trigger-0" class="aui-dropdown2-trigger" aria-owns="aui-responsive-header-dropdown-content-0" aria-haspopup="true" href="#">More<span class="icon aui-icon-dropdown"></span></a><div id="aui-responsive-header-dropdown-content-0" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul id="aui-responsive-header-dropdown-list-0"></ul></div></div></li></ul></div><div class="aui-header-secondary"><ul class="aui-nav"><li>
+    <form action="https://jira.codehaus.org/secure/QuickSearch.jspa" method="post" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" class="search" title="Quick Search ( Type '/' )" placeholder="Quick Search" name="searchString" accesskey="q" type="text">
+        <input class="hidden" value="Search" type="submit">
+    </form>
+</li>
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger" aria-haspopup="true" aria-owns="system-help-menu-content" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank" title="Help"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a id="view_help" class="interactive" title="Goto the online documentation for JIRA" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank">Online Help</a>
+                                </li>
+                                                            <li>
+                                    <a id="keyshortscuthelp" class="interactive" title="Get more information about JIRA's Keyboard Shortcuts ( Type '?' )" href="https://jira.codehaus.org/secure/ViewKeyboardShortcuts%21default.jspa" target="_blank">Keyboard Shortcuts</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_about" class="interactive" title="Get more information about JIRA" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_credits" class="interactive" title="See who did what" href="https://jira.codehaus.org/secure/JiraCreditsPage%21default.jspa" target="_blank">JIRA Credits</a>
+                                </li>
+                                                            <li>
+                                    <a id="whats-new-menu-link" class="interactive" href="https://docs.atlassian.com/jira/docs-061/whatsnew/iframe">What?s New</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a class="aui-nav-link login-link" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-454">Log In</a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <div style="position: absolute; right: 20em; top: -2em">
+  <a href="https://xircles.codehaus.org/signup">Signup</a>
+</div>
+</div>
+
+
+    <section id="content" role="main">
+        
+    
+
+    <div class="issue-container ">
+                                    <div id="issue-content" class="issue-edit-form">
+                    <header id="stalker" class="issue-header js-stalker">
+                        <div class="issue-header-content"><header class="aui-page-header"><div class="aui-page-header-inner"><div class="aui-page-header-image"><span id="10680" class="aui-avatar aui-avatar-large aui-avatar-project"><span class="aui-avatar-inner"><img id="project-avatar" alt="JBehave" src="index_files/projectavatar.png"></span></span></div><!-- .aui-page-header-image --><div class="aui-page-header-main"><ol class="aui-nav aui-nav-breadcrumbs"><li><a id="project-name-val" href="/Old_JBehave_Issues/index.html">JBehave</a></li><li><a class="issue-link" data-issue-key="JBEHAVE-454" href="#" id="key-val" rel="123697">JBEHAVE-454</a></li></ol><h1 id="summary-val">Can't run-stories-as-embeddables from test directory using Maven plugin</h1></div><!-- .aui-page-header-main --><div class="aui-page-header-actions"><div id="issue-header-pager"></div></div><!-- .aui-page-header-actions --></div><!-- .aui-page-header-inner --></header><!-- .aui-page-header --><div class="command-bar"><div class="ops-cont"><div class="ops-menus aui-toolbar"><div class="toolbar-split toolbar-split-left"><ul id="opsbar-ops-login-lnk_container" class="toolbar-group pluggable-ops"><li class="toolbar-item"><a id="ops-login-lnk" style="display:none" title="Log In" class="toolbar-trigger" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-454"><span class="trigger-label">Log In</span></a></li></ul><ul id="opsbar-opsbar-operations" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-transitions" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-admin" class="toolbar-group pluggable-ops"></ul></div><div class="toolbar-split toolbar-split-right"><ul id="opsbar-jira.issue.tools" style="display:none" class="toolbar-group pluggable-ops"><li class="toolbar-item toolbar-dropdown"><div><a href="#" id="viewissue-export" title="Export this issue in another format" data-hide-on-scroll=".split-view .issue-container" data-contain-to-window="true" class="toolbar-trigger  js-default-dropdown"><span class="icon icon-export viewissue-export"></span> <span class="dropdown-text">Export</span><span class="icon drop-menu"></span></a><div class="aui-list hidden"><ul class="aui-list-section aui-first aui-last"><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-xml/JBEHAVE-454/JBEHAVE-454.xml" class="aui-list-item-link" id="jira.issueviews:issue-xml"><span class="trigger-label">XML</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-word/JBEHAVE-454/JBEHAVE-454.doc" class="aui-list-item-link" id="jira.issueviews:issue-word"><span class="trigger-label">Word</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-html/JBEHAVE-454/JBEHAVE-454.html" class="aui-list-item-link" id="jira.issueviews:issue-html"><span class="trigger-label">Printable</span></a></li></ul></div></div></li></ul></div></div></div></div></div>
+                    </header>
+                    <div class="issue-body-content">
+                        <div class="aui-group issue-body"><div class="aui-item issue-main-column"><div id="details-module" class="module toggle-wrap"><div id="details-module_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Details</h2></div><div class="mod-content">
+
+
+
+
+<ul id="issuedetails" class="property-list two-cols">
+    <li class="item">
+        <div class="wrap">
+            <strong class="name">Type:</strong>
+            <span id="type-val" class="value">
+                                <img alt="Bug" src="index_files/bug.png" title="Bug - A problem which impairs or prevents the functions of the product." height="16" width="16"> Bug
+            </span>
+        </div>
+    </li>
+    <li class="item item-right">
+        <div class="wrap">
+            <strong class="name">Status:</strong>
+            <span id="status-val" class="value">
+                                
+
+<img src="index_files/open.png" alt="Open" title="Open - The issue is open and ready for the assignee to start work on it." height="16" width="16"> Open
+            </span>
+                    </div>
+    </li>
+            <li class="item">
+            <div class="wrap">
+                <strong class="name">Priority:</strong>
+                <span id="priority-val" class="value">
+                                        <img alt="Major" src="index_files/major.png" title="Major - Major loss of function." height="16" width="16"> Major
+                </span>
+            </div>
+        </li>
+                                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Resolution:</strong>
+                <span id="resolution-val" class="value unresolved">
+                                    Unresolved
+                                </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Affects Version/s:</strong>
+                <span id="versions-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="versions-field">
+                                                            <span title="3.1.2 ">3.1.2</span>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Fix Version/s:</strong>
+                <span id="fixfor-val" class="value">
+                                            None
+                                    </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Component/s:</strong>
+                <span id="components-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="components-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/component/12482" title="Maven Plugin ">Maven Plugin</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                    <li class="item full-width">
+            <div class="wrap" id="wrap-labels">
+                <strong class="name">Labels:</strong>
+                    <div class="labels-wrap value">
+            <span class="labels" id="labels-123697-value">None</span>
+                </div>
+            </div>
+        </li>
+        </ul>
+
+<div id="customfieldmodule">
+    <div class="aui-tabs horizontal-tabs" id="customfield-tabs">
+                    <div id="customfield-panel-1" class="tabs-pane active-pane">
+                        <ul class="property-list">
+                                                <li id="rowForcustomfield_10210" class="item">
+                        <div class="wrap">
+                            <strong title="Number of attachments " class="name">Number of attachments :</strong>
+                            <div id="customfield_10210-val" class="value type-attachments" data-fieldtype="attachments" data-fieldtypecompletekey="com.atlassian.jira.toolkit:attachments">
+                                    0
+
+                            </div>
+                        </div>
+                    </li>
+                                        </ul>
+        </div>
+        </div></div>
+</div></div><div id="descriptionmodule" class="module toggle-wrap"><div id="descriptionmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Description</h2></div><div class="mod-content"><div id="description-val" class="field-ignore-highlight">
+    <div class="user-content-block">
+                    <p>When I tried to use it, the plugin couldn't find my .java file.  <br>
+I suspect that this is because the classloader obtained under Maven with a story that uses <br>
+          new LoadFromClasspath(this.getClass().getClassLoader())<br>
+as a StoryLoader doesn't include the test class directory - even though the running class is IN the test class directory. The same code works correctly under the Eclipse debugger (including the test class directory in the classpath).  Everything else works correctly in Maven - unit tests, etc.<br>
+The configuration:</p>
+
+<p>                        &lt;configuration&gt;<br>
+                            &lt;sourceDirectory&gt;$</p>
+{project.build.sourceDirectory}
+<p>&lt;/sourceDirectory&gt;<br>
+                            &lt;testSourceDirectory&gt;$</p>
+{project.build.testSourceDirectory}
+<p>&lt;/testSourceDirectory&gt;<br>
+                            &lt;includes&gt;<br>
+                                &lt;include&gt;**/ProcessorTestStory.java&lt;/include&gt;<br>
+                            &lt;/includes&gt;<br>
+                            &lt;metaFilters&gt;<br>
+                                &lt;metaFilter&gt;+author *&lt;/metaFilter&gt;<br>
+                                &lt;metaFilter&gt;-skip&lt;/metaFilter&gt;<br>
+                            &lt;/metaFilters&gt;<br>
+                            &lt;systemProperties&gt;<br>
+                                &lt;property&gt;<br>
+                                    &lt;name&gt;java.awt.headless&lt;/name&gt;<br>
+                                    &lt;value&gt;true&lt;/value&gt;<br>
+                                &lt;/property&gt;<br>
+                            &lt;/systemProperties&gt;<br>
+                            &lt;ignoreFailureInStories&gt;true&lt;/ignoreFailureInStories&gt;<br>
+                            &lt;ignoreFailureInView&gt;false&lt;/ignoreFailureInView&gt;<br>
+                        &lt;/configuration&gt;<br>
+-Ed</p>
+            </div>
+</div>
+</div></div><div id="view-subtasks" class="module toggle-wrap"><div id="view-subtasks_heading" class="mod-header"><ul class="ops"><li class="drop"><div class="aui-dd-parent"><a href="#" class="icon drop-menu js-default-dropdown" title="Options"><span>Options</span></a><div class="aui-dropdown-content aui-list"><ul id="subtask-view-options" class="aui-list-section aui-first aui-last"><li class="aui-list-item"><a id="subtasks-show-all" href="/Old_JBehave_Issues/454?subTaskView=all#issuetable" class="aui-list-checked aui-checked aui-list-item-link" title="Show All"><span>Show All</span></a></li><li class="aui-list-item"><a id="subtasks-show-open" href="/Old_JBehave_Issues/454?subTaskView=unresolved#issuetable" class="aui-list-checked aui-list-item-link" title="Show Open"><span>Show Open</span></a></li></ul></div></div></li></ul><h2 class="toggle-title">Sub-Tasks</h2></div><div class="mod-content"><div class="mod-content intform subtask-table-container">
+                
+
+
+                                        <table id="issuetable">
+            
+
+                <tbody><tr id="issuerow142529" rel="142529" data-issuekey="JBEHAVE-866" class="issuerow focused">
+                                            <td class="nav stsequence"><div style="padding: 0 18px 0 0; background-image: url( urn:not-loaded:https://jira.codehaus.org/browse/%27../images/icons/accept.png%27 ); background-repeat: no-repeat; background-position: 100% 50%;">1.</div></td>
+                                            <td class="nav stsummary"><a class="issue-link" data-issue-key="JBEHAVE-866" href="/Old_JBehave_Issues/866">Jbehave Maven Integration Exceptions</a></td>
+                                            <td class="nav issuetype">    <a class="issue-link" data-issue-key="JBEHAVE-866" href="/Old_JBehave_Issues/866"> <img src="index_files/subtask_alternate.png" alt="Sub-task" title="Sub-task - The sub-task of the issue" height="16" align="absmiddle" border="0" width="16"></a></td>
+                                            <td class="nav status">
+                
+
+<img src="index_files/resolved.png" alt="Resolved" title="Resolved - A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed." height="16" width="16"> Resolved
+    </td>
+                                            <td class="nav assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="nav streorder"><div class="subtask-reorder"> </div></td>
+                    </tr>
+                </tbody>
+    </table>
+    <div class="end-of-stable-message"></div>
+            
+    </div>
+</div></div><div id="activitymodule" class="module toggle-wrap"><div id="activitymodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Activity</h2></div><div class="mod-content">
+
+
+
+
+
+
+
+
+
+
+    <div class="tabwrap tabs2" style="display:none">
+                    <div class="sortwrap">
+                                    <a class="icon icon-sort-down ajax-activity-content" rel="nofollow" href="/Old_JBehave_Issues/454?actionOrder=desc" title="Ascending order - Click to sort in descending order"><span>Ascending order - Click to sort in descending order</span></a>
+                            </div>
+                <ul id="issue-tabs" class="tabs horizontal">
+                                
+            <li class="active" id="all-tabpanel" data-id="all-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel" data-label="All" data-href="/browse/JBEHAVE-454">
+                            <strong>All</strong>
+                        </li>
+                                
+            <li data-id="comment-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel" data-label="Comments" data-href="/browse/JBEHAVE-454">
+                            <a class="ajax-activity-content" id="comment-tabpanel" href="/Old_JBehave_Issues/454"><strong>Comments</strong></a>
+                        </li>
+                                
+            <li data-id="worklog-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:worklog-tabpanel" data-label="Work Log" data-href="/browse/JBEHAVE-454">
+                            <a class="ajax-activity-content" id="worklog-tabpanel" href="/Old_JBehave_Issues/454"><strong>Work Log</strong></a>
+                        </li>
+                                
+            <li data-id="changehistory-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:changehistory-tabpanel" data-label="History" data-href="/browse/JBEHAVE-454">
+                            <a class="ajax-activity-content" id="changehistory-tabpanel" href="/Old_JBehave_Issues/454"><strong>History</strong></a>
+                        </li>
+                                
+            <li data-id="activity-stream-issue-tab" data-key="com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab" data-label="Activity" data-href="/browse/JBEHAVE-454">
+                            <a class="ajax-activity-content" id="activity-stream-issue-tab" href="/Old_JBehave_Issues/454"><strong>Activity</strong></a>
+                        </li>
+                </ul>
+    </div>
+    <div class="issuePanelWrapper">
+        <div class="issuePanelProgress"></div>
+        <div class="issuePanelContainer" id="issue_actions_container">
+                                    
+
+
+<div id="comment-261539" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/454?focusedCommentId=261539&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-261539" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="cvgaviao" id="commentauthor_261539_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=cvgaviao"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Cristiano Gavião</a>
+ added a comment  - <span class="commentdate_261539_verbose subText"><span class="date user-tz" title="25/Mar/11 7:22 PM"><time class="livestamp" datetime="2011-03-25T19:22-0500">25/Mar/11 7:22 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Edward, I don't believe that with this configuration snipped would someone figure out what is going wrong with your project. Do you ?</p>
+
+<p>Why don't you create a little project that reproduce your problem and attach it here ??  </p>
+
+
+<p>regards</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="cvgaviao" id="commentauthor_261539_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=cvgaviao"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Cristiano Gavião</a>
+ added a comment  - <span class="commentdate_261539_concise subText"><span class="date user-tz" title="25/Mar/11 7:22 PM"><time class="livestamp" datetime="2011-03-25T19:22-0500">25/Mar/11 7:22 PM</time></span></span>                    Hi Edward, I don't believe that with this configuration snipped would someone figure out what is going wrong with your project. Do you ? 
+
+ Why don't you create a little project that reproduce your problem and attach it here ??   
+
+
+ regards              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-261548" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/454?focusedCommentId=261548&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-261548" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="estaub" id="commentauthor_261548_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=estaub"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Edward Staub</a>
+ added a comment  - <span class="commentdate_261548_verbose subText"><span class="date user-tz" title="25/Mar/11 8:00 PM"><time class="livestamp" datetime="2011-03-25T20:00-0500">25/Mar/11 8:00 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Sorry.<br>
+Do you know that it works when configured correctly (however that is)?<br>
+Try this, it fails on my rig at least:</p>
+
+<p>In the jbehave distribution directory<br>
+   examples/gameoflife</p>
+
+<p>{{</p>
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre># WORKS FINE
+mvn integration-test
+           
+mvn clean                      
+
+# move the stories to the test directory
+mv src\main\java\com\lunivore\gameoflife\stories src\test\java\com\lunivore\gameoflife
+
+# FAILS
+mvn integration-test
+</pre>
+</div></div>
+<p>}}<br>
+---------</p>
+
+<p>Here's the relevant part of the console output.  Note the classpath "urls=" on the third line, which doesn't include the test directory, and the final line, where it shows all the stories it found (none).</p>
+
+<p>{{</p>
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre> [INFO] Running stories using embedder Embedder[configuration=org.jbehave.core.configuration.MostUsefulConfiguration@bc9673,
+candidateSteps=[],classLoader=EmbedderClassLoader[
+urls=[/C:/v/jbehave/jbehave-distribution-3.2-src/jbehave-3.2/examples/gameoflife/target/classes/, 
+jbehave-core-3.2-SNAPSHOT.jar, commons-collections-3.2.1.jar, commons-io-1.4.jar, 
+commons-lang-2.5.jar, plexus-utils-2.0.5.jar, freemarker-2.3.16.jar, jbehave-ant-3.2-SNAPSHOT.jar, ant-1.7.1.jar, ant-launcher-1.7.1.jar, xstream-1.3.1.jar, xpp3_min-1.1.4c.jar, 
+junit-dep-4.8.2.jar, hamcrest-all-1.1.jar],parent=ClassRealm[plugin&gt;org.jbehave:jbehave-maven-plugin:3.2-SNAPSHOT, parent: sun.misc.Launcher$AppClassLoader@11b86e7]],embedderControls=UnmodifiableEmbedderControls[EmbedderControls[batch=false,skip=false,generateViewAfterStories=true,ignoreFailureInStories=true,ignoreFailureInView=true]],metaFilters=[null],systemProperties=},storyMapper=StoryMapper,storyRunner=StoryRunner,embedderMonitor=MavenEmbedderMonitor]
+[INFO] Found class names: []</pre>
+</div></div>
+<p>}}</p>
+
+<p>-Ed</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="estaub" id="commentauthor_261548_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=estaub"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Edward Staub</a>
+ added a comment  - <span class="commentdate_261548_concise subText"><span class="date user-tz" title="25/Mar/11 8:00 PM"><time class="livestamp" datetime="2011-03-25T20:00-0500">25/Mar/11 8:00 PM</time></span></span>                    Sorry. 
+Do you know that it works when configured correctly (however that is)? 
+Try this, it fails on my rig at least: 
+
+ In the jbehave distribution directory 
+   examples/gameoflife 
+
+ {{ 
+  
+ # WORKS FINE
+mvn integration-test
+           
+mvn clean                      
+
+# move the stories to the test directory
+mv src\main\java\com\lunivore\gameoflife\stories src\test\java\com\lunivore\gameoflife
+
+# FAILS
+mvn integration-test
+ 
+  
+ }} 
+--------- 
+
+ Here's the relevant part of the console output.  Note the classpath "urls=" on the third line, which doesn't include the test directory, and the final line, where it shows all the stories it found (none). 
+
+ {{ 
+  
+  [INFO] Running stories using embedder Embedder[configuration=org.jbehave.core.configuration.MostUsefulConfiguration@bc9673,
+candidateSteps=[],classLoader=EmbedderClassLoader[
+urls=[/C:/v/jbehave/jbehave-distribution-3.2-src/jbehave-3.2/examples/gameoflife/target/classes/, 
+jbehave-core-3.2-SNAPSHOT.jar, commons-collections-3.2.1.jar, commons-io-1.4.jar, 
+commons-lang-2.5.jar, plexus-utils-2.0.5.jar, freemarker-2.3.16.jar, jbehave-ant-3.2-SNAPSHOT.jar, ant-1.7.1.jar, ant-launcher-1.7.1.jar, xstream-1.3.1.jar, xpp3_min-1.1.4c.jar, 
+junit-dep-4.8.2.jar, hamcrest-all-1.1.jar],parent=ClassRealm[plugin&gt;org.jbehave:jbehave-maven-plugin:3.2-SNAPSHOT, parent: sun.misc.Launcher$AppClassLoader@11b86e7]],embedderControls=UnmodifiableEmbedderControls[EmbedderControls[batch=false,skip=false,generateViewAfterStories=true,ignoreFailureInStories=true,ignoreFailureInView=true]],metaFilters=[null],systemProperties=},storyMapper=StoryMapper,storyRunner=StoryRunner,embedderMonitor=MavenEmbedderMonitor]
+[INFO] Found class names: [] 
+  
+ }} 
+
+ -Ed              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-261558" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/454?focusedCommentId=261558&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-261558" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="cvgaviao" id="commentauthor_261558_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=cvgaviao"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Cristiano Gavião</a>
+ added a comment  - <span class="commentdate_261558_verbose subText"><span class="date user-tz" title="25/Mar/11 9:58 PM"><time class="livestamp" datetime="2011-03-25T21:58-0500">25/Mar/11 9:58 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Edward, </p>
+
+<p>Don't take me bad, but it is always a good practice to send an email to the user list before open issues like this, mostly without a good reproducible example. Always will be someone to help you there.<br>
+You should think that people that is 'given' this amazing tool to the community (as Mauro and Paul) is not receiving nothing for this and they have to work to pay bills too. ok? <img class="emoticon" src="index_files/wink.gif" alt="" height="16" align="absmiddle" border="0" width="16"></p>
+
+<p>So, for your example you just don't put the &lt;scope&gt;test&lt;/scope&gt; in your POM, as stated here: <a href="http://jbehave.org/reference/latest/maven-goals.html" class="external-link" rel="nofollow">http://jbehave.org/reference/latest/maven-goals.html</a></p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">          &lt;execution&gt;
+            &lt;id&gt;run-stories&lt;/id&gt;
+            &lt;phase&gt;integration-test&lt;/phase&gt;
+            &lt;configuration&gt;
+            -&lt;scope&gt;test&lt;/scope&gt;-
+              &lt;includes&gt;
+                &lt;include&gt;**/stories/*.java&lt;/include&gt;
+              &lt;/includes&gt;
+            &lt;/configuration&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;run-stories-as-embeddables&lt;/goal&gt;
+            &lt;/goals&gt;
+          &lt;/execution&gt;
+
+</pre>
+</div></div>
+
+<p>I did what you suggested. See the result:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">Mob4biz:gameoflife cvgaviao$ mvn integration-test
+[INFO] Scanning <span class="code-keyword">for</span> projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JBehave Game of Life Example 3.3-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4:resources (<span class="code-keyword">default</span>-resources) @ jbehave-gameoflife-example ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- jbehave-maven-plugin:3.3-SNAPSHOT:unpack-view-resources (unpack-view-resources) @ jbehave-gameoflife-example ---
+[INFO] Unpacked /Users/cvgaviao/.m2/repository/org/jbehave/site/jbehave-site-resources/3.1.1/jbehave-site-resources-3.1.1.zip to /Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/jbehave/view
+[INFO] Unpacked /Users/cvgaviao/.m2/repository/org/jbehave/jbehave-core/3.3-SNAPSHOT/jbehave-core-3.3-SNAPSHOT-resources.zip to /Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/jbehave/view
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.1:compile (<span class="code-keyword">default</span>-compile) @ jbehave-gameoflife-example ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4:testResources (<span class="code-keyword">default</span>-testResources) @ jbehave-gameoflife-example ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/src/test/resources
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.1:testCompile (<span class="code-keyword">default</span>-testCompile) @ jbehave-gameoflife-example ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.5:test (<span class="code-keyword">default</span>-test) @ jbehave-gameoflife-example ---
+[INFO] Surefire report directory: /Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.lunivore.gameoflife.domain.CellBehaviour
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 sec
+Running com.lunivore.gameoflife.view.string.StringRendererBehaviour
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.21 sec
+Running com.lunivore.gameoflife.domain.GameBehaviour
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 sec
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.1:jar (<span class="code-keyword">default</span>-jar) @ jbehave-gameoflife-example ---
+[INFO] 
+[INFO] --- jbehave-maven-plugin:3.3-SNAPSHOT:run-stories-as-embeddables (embeddable-stories) @ jbehave-gameoflife-example ---
+[INFO] Running stories using embedder Embedder[configuration=org.jbehave.core.configuration.MostUsefulConfiguration@552297d7,candidateSteps=[],classLoader=EmbedderClassLoader[urls=[/Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/classes/, jbehave-core-3.3-SNAPSHOT.jar, commons-collections-3.2.1.jar, commons-io-1.4.jar, commons-lang-2.5.jar, plexus-utils-2.0.5.jar, freemarker-2.3.16.jar, paranamer-2.3.jar, jbehave-ant-3.3-SNAPSHOT.jar, ant-1.7.1.jar, ant-launcher-1.7.1.jar, xstream-1.3.1.jar, xpp3_min-1.1.4c.jar, junit-dep-4.8.2.jar, hamcrest-all-1.1.jar, maven-<span class="code-keyword">default</span>-skin-1.0.jar],parent=ClassRealm[plugin&gt;org.jbehave:jbehave-maven-plugin:3.3-SNAPSHOT, parent: sun.misc.Launcher$AppClassLoader@535ff48b]],embedderControls=UnmodifiableEmbedderControls[EmbedderControls[batch=<span class="code-keyword">false</span>,skip=<span class="code-keyword">false</span>,generateViewAfterStories=<span class="code-keyword">true</span>,ignoreFailureInStories=<span class="code-keyword">true</span>,ignoreFailureInView=<span class="code-keyword">true</span>,threads=2]],metaFilters=[<span class="code-keyword">null</span>],systemProperties={},storyMapper=StoryMapper,storyRunner=StoryRunner,embedderMonitor=MavenEmbedderMonitor,executorService=org.jbehave.core.embedder.Embedder$NonThreadingExecutorService@a9db0e2]
+[INFO] Found class names: []
+[INFO] 
+[INFO] --- jbehave-maven-plugin:3.3-SNAPSHOT:run-stories-as-embeddables (run-stories) @ jbehave-gameoflife-example ---
+[INFO] Running stories using embedder Embedder[configuration=org.jbehave.core.configuration.MostUsefulConfiguration@7371b4ca,candidateSteps=[],classLoader=EmbedderClassLoader[urls=[/Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/test-classes/, /Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/classes/, jbehave-core-3.3-SNAPSHOT.jar, commons-collections-3.2.1.jar, commons-io-1.4.jar, commons-lang-2.5.jar, plexus-utils-2.0.5.jar, freemarker-2.3.16.jar, paranamer-2.3.jar, jbehave-ant-3.3-SNAPSHOT.jar, ant-1.7.1.jar, ant-launcher-1.7.1.jar, xstream-1.3.1.jar, xpp3_min-1.1.4c.jar, junit-dep-4.8.2.jar, hamcrest-all-1.1.jar, maven-<span class="code-keyword">default</span>-skin-1.0.jar],parent=ClassRealm[plugin&gt;org.jbehave:jbehave-maven-plugin:3.3-SNAPSHOT, parent: sun.misc.Launcher$AppClassLoader@535ff48b]],embedderControls=UnmodifiableEmbedderControls[EmbedderControls[batch=<span class="code-keyword">false</span>,skip=<span class="code-keyword">false</span>,generateViewAfterStories=<span class="code-keyword">true</span>,ignoreFailureInStories=<span class="code-keyword">false</span>,ignoreFailureInView=<span class="code-keyword">false</span>,threads=1]],metaFilters=[],systemProperties={},storyMapper=StoryMapper,storyRunner=StoryRunner,embedderMonitor=MavenEmbedderMonitor,executorService=org.jbehave.core.embedder.Embedder$NonThreadingExecutorService@72cc5002]
+[INFO] Found class names: [com.lunivore.gameoflife.stories.ICanToggleACell, com.lunivore.gameoflife.stories.TheGridStartsEmpty]
+[INFO] Running embeddable com.lunivore.gameoflife.stories.ICanToggleACell
+[INFO] Processing system properties {}
+[INFO] Running story com/lunivore/gameoflife/stories/i_can_toggle_a_cell.story
+
+(com/lunivore/gameoflife/stories/i_can_toggle_a_cell.story)
+Scenario: 
+Given a 5 by 5 game
+When I toggle the cell at (2, 3)
+Then the grid should look like
+.....
+.....
+.....
+..X..
+.....
+When I toggle the cell at (2, 4)
+Then the grid should look like
+.....
+.....
+.....
+..X..
+..X..
+When I toggle the cell at (2, 3)
+Then the grid should look like
+.....
+.....
+.....
+.....
+..X..
+
+
+[INFO] Generating reports view to '/Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/jbehave' using formats '[stats, console, txt]' and view properties '{defaultFormats=stats, decorateNonHtml=<span class="code-keyword">true</span>, viewDirectory=view, decorated=ftl/jbehave-report-decorated.ftl, reports=ftl/jbehave-reports-with-totals.ftl, maps=ftl/jbehave-maps.ftl, navigator=ftl/jbehave-navigator.ftl, views=ftl/jbehave-views.ftl, nonDecorated=ftl/jbehave-report-non-decorated.ftl}'
+[INFO] Reports view generated with 1 stories containing 1 scenarios (of which  0 failed)
+[INFO] Running embeddable com.lunivore.gameoflife.stories.TheGridStartsEmpty
+[INFO] Processing system properties {}
+[INFO] Running story com/lunivore/gameoflife/stories/the_grid_starts_empty.story
+
+(com/lunivore/gameoflife/stories/the_grid_starts_empty.story)
+Scenario: 
+Given a <span class="code-keyword">new</span> game: 5 by 5
+Then the grid should be
+.....
+.....
+.....
+.....
+.....
+
+
+[INFO] Generating reports view to '/Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/jbehave' using formats '[stats, console, txt]' and view properties '{defaultFormats=stats, decorateNonHtml=<span class="code-keyword">true</span>, viewDirectory=view, decorated=ftl/jbehave-report-decorated.ftl, reports=ftl/jbehave-reports-with-totals.ftl, maps=ftl/jbehave-maps.ftl, navigator=ftl/jbehave-navigator.ftl, views=ftl/jbehave-views.ftl, nonDecorated=ftl/jbehave-report-non-decorated.ftl}'
+[INFO] Reports view generated with 2 stories containing 2 scenarios (of which  0 failed)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.384s
+[INFO] Finished at: Fri Mar 25 23:34:22 BRT 2011
+[INFO] Final Memory: 6M/265M
+[INFO] ------------------------------------------------------------------------
+
+</pre>
+</div></div>
+
+<p>regards</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="cvgaviao" id="commentauthor_261558_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=cvgaviao"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Cristiano Gavião</a>
+ added a comment  - <span class="commentdate_261558_concise subText"><span class="date user-tz" title="25/Mar/11 9:58 PM"><time class="livestamp" datetime="2011-03-25T21:58-0500">25/Mar/11 9:58 PM</time></span></span>                    Edward,  
+
+ Don't take me bad, but it is always a good practice to send an email to the user list before open issues like this, mostly without a good reproducible example. Always will be someone to help you there. 
+You should think that people that is 'given' this amazing tool to the community (as Mauro and Paul) is not receiving nothing for this and they have to work to pay bills too. ok?   
+
+ So, for your example you just don't put the &lt;scope&gt;test&lt;/scope&gt; in your POM, as stated here:  http://jbehave.org/reference/latest/maven-goals.html  
+  
+ 
+          &lt;execution&gt;
+            &lt;id&gt;run-stories&lt;/id&gt;
+            &lt;phase&gt;integration-test&lt;/phase&gt;
+            &lt;configuration&gt;
+            -&lt;scope&gt;test&lt;/scope&gt;-
+              &lt;includes&gt;
+                &lt;include&gt;**/stories/*.java&lt;/include&gt;
+              &lt;/includes&gt;
+            &lt;/configuration&gt;
+            &lt;goals&gt;
+              &lt;goal&gt;run-stories-as-embeddables&lt;/goal&gt;
+            &lt;/goals&gt;
+          &lt;/execution&gt;
+
+ 
+  
+
+ I did what you suggested. See the result: 
+
+  
+ 
+Mob4biz:gameoflife cvgaviao$ mvn integration-test
+[INFO] Scanning  for  projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JBehave Game of Life Example 3.3-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4:resources ( default -resources) @ jbehave-gameoflife-example ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 0 resource
+[INFO] 
+[INFO] --- jbehave-maven-plugin:3.3-SNAPSHOT:unpack-view-resources (unpack-view-resources) @ jbehave-gameoflife-example ---
+[INFO] Unpacked /Users/cvgaviao/.m2/repository/org/jbehave/site/jbehave-site-resources/3.1.1/jbehave-site-resources-3.1.1.zip to /Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/jbehave/view
+[INFO] Unpacked /Users/cvgaviao/.m2/repository/org/jbehave/jbehave-core/3.3-SNAPSHOT/jbehave-core-3.3-SNAPSHOT-resources.zip to /Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/jbehave/view
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.1:compile ( default -compile) @ jbehave-gameoflife-example ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4:testResources ( default -testResources) @ jbehave-gameoflife-example ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/src/test/resources
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.1:testCompile ( default -testCompile) @ jbehave-gameoflife-example ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.5:test ( default -test) @ jbehave-gameoflife-example ---
+[INFO] Surefire report directory: /Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.lunivore.gameoflife.domain.CellBehaviour
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 sec
+Running com.lunivore.gameoflife.view.string.StringRendererBehaviour
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.21 sec
+Running com.lunivore.gameoflife.domain.GameBehaviour
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 sec
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.3.1:jar ( default -jar) @ jbehave-gameoflife-example ---
+[INFO] 
+[INFO] --- jbehave-maven-plugin:3.3-SNAPSHOT:run-stories-as-embeddables (embeddable-stories) @ jbehave-gameoflife-example ---
+[INFO] Running stories using embedder Embedder[configuration=org.jbehave.core.configuration.MostUsefulConfiguration@552297d7,candidateSteps=[],classLoader=EmbedderClassLoader[urls=[/Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/classes/, jbehave-core-3.3-SNAPSHOT.jar, commons-collections-3.2.1.jar, commons-io-1.4.jar, commons-lang-2.5.jar, plexus-utils-2.0.5.jar, freemarker-2.3.16.jar, paranamer-2.3.jar, jbehave-ant-3.3-SNAPSHOT.jar, ant-1.7.1.jar, ant-launcher-1.7.1.jar, xstream-1.3.1.jar, xpp3_min-1.1.4c.jar, junit-dep-4.8.2.jar, hamcrest-all-1.1.jar, maven- default -skin-1.0.jar],parent=ClassRealm[plugin&gt;org.jbehave:jbehave-maven-plugin:3.3-SNAPSHOT, parent: sun.misc.Launcher$AppClassLoader@535ff48b]],embedderControls=UnmodifiableEmbedderControls[EmbedderControls[batch= false ,skip= false ,generateViewAfterStories= true ,ignoreFailureInStories= true ,ignoreFailureInView= true ,threads=2]],metaFilters=[ null ],systemProperties={},storyMapper=StoryMapper,storyRunner=StoryRunner,embedderMonitor=MavenEmbedderMonitor,executorService=org.jbehave.core.embedder.Embedder$NonThreadingExecutorService@a9db0e2]
+[INFO] Found class names: []
+[INFO] 
+[INFO] --- jbehave-maven-plugin:3.3-SNAPSHOT:run-stories-as-embeddables (run-stories) @ jbehave-gameoflife-example ---
+[INFO] Running stories using embedder Embedder[configuration=org.jbehave.core.configuration.MostUsefulConfiguration@7371b4ca,candidateSteps=[],classLoader=EmbedderClassLoader[urls=[/Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/test-classes/, /Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/classes/, jbehave-core-3.3-SNAPSHOT.jar, commons-collections-3.2.1.jar, commons-io-1.4.jar, commons-lang-2.5.jar, plexus-utils-2.0.5.jar, freemarker-2.3.16.jar, paranamer-2.3.jar, jbehave-ant-3.3-SNAPSHOT.jar, ant-1.7.1.jar, ant-launcher-1.7.1.jar, xstream-1.3.1.jar, xpp3_min-1.1.4c.jar, junit-dep-4.8.2.jar, hamcrest-all-1.1.jar, maven- default -skin-1.0.jar],parent=ClassRealm[plugin&gt;org.jbehave:jbehave-maven-plugin:3.3-SNAPSHOT, parent: sun.misc.Launcher$AppClassLoader@535ff48b]],embedderControls=UnmodifiableEmbedderControls[EmbedderControls[batch= false ,skip= false ,generateViewAfterStories= true ,ignoreFailureInStories= false ,ignoreFailureInView= false ,threads=1]],metaFilters=[],systemProperties={},storyMapper=StoryMapper,storyRunner=StoryRunner,embedderMonitor=MavenEmbedderMonitor,executorService=org.jbehave.core.embedder.Embedder$NonThreadingExecutorService@72cc5002]
+[INFO] Found class names: [com.lunivore.gameoflife.stories.ICanToggleACell, com.lunivore.gameoflife.stories.TheGridStartsEmpty]
+[INFO] Running embeddable com.lunivore.gameoflife.stories.ICanToggleACell
+[INFO] Processing system properties {}
+[INFO] Running story com/lunivore/gameoflife/stories/i_can_toggle_a_cell.story
+
+(com/lunivore/gameoflife/stories/i_can_toggle_a_cell.story)
+Scenario: 
+Given a 5 by 5 game
+When I toggle the cell at (2, 3)
+Then the grid should look like
+.....
+.....
+.....
+..X..
+.....
+When I toggle the cell at (2, 4)
+Then the grid should look like
+.....
+.....
+.....
+..X..
+..X..
+When I toggle the cell at (2, 3)
+Then the grid should look like
+.....
+.....
+.....
+.....
+..X..
+
+
+[INFO] Generating reports view to '/Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/jbehave' using formats '[stats, console, txt]' and view properties '{defaultFormats=stats, decorateNonHtml= true , viewDirectory=view, decorated=ftl/jbehave-report-decorated.ftl, reports=ftl/jbehave-reports-with-totals.ftl, maps=ftl/jbehave-maps.ftl, navigator=ftl/jbehave-navigator.ftl, views=ftl/jbehave-views.ftl, nonDecorated=ftl/jbehave-report-non-decorated.ftl}'
+[INFO] Reports view generated with 1 stories containing 1 scenarios (of which  0 failed)
+[INFO] Running embeddable com.lunivore.gameoflife.stories.TheGridStartsEmpty
+[INFO] Processing system properties {}
+[INFO] Running story com/lunivore/gameoflife/stories/the_grid_starts_empty.story
+
+(com/lunivore/gameoflife/stories/the_grid_starts_empty.story)
+Scenario: 
+Given a  new  game: 5 by 5
+Then the grid should be
+.....
+.....
+.....
+.....
+.....
+
+
+[INFO] Generating reports view to '/Users/cvgaviao/Development/Development_Projects/jbehave-fork/jbehave-core/examples/gameoflife/target/jbehave' using formats '[stats, console, txt]' and view properties '{defaultFormats=stats, decorateNonHtml= true , viewDirectory=view, decorated=ftl/jbehave-report-decorated.ftl, reports=ftl/jbehave-reports-with-totals.ftl, maps=ftl/jbehave-maps.ftl, navigator=ftl/jbehave-navigator.ftl, views=ftl/jbehave-views.ftl, nonDecorated=ftl/jbehave-report-non-decorated.ftl}'
+[INFO] Reports view generated with 2 stories containing 2 scenarios (of which  0 failed)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.384s
+[INFO] Finished at: Fri Mar 25 23:34:22 BRT 2011
+[INFO] Final Memory: 6M/265M
+[INFO] ------------------------------------------------------------------------
+
+ 
+  
+
+ regards              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-261572" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/454?focusedCommentId=261572&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-261572" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_261572_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_261572_verbose subText"><span class="date user-tz" title="26/Mar/11 5:50 AM"><time class="livestamp" datetime="2011-03-26T05:50-0500">26/Mar/11 5:50 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>The noughtsandcrosses example (<a href="https://github.com/jbehave/jbehave-core/tree/master/examples/noughtsandcrosses" class="external-link" rel="nofollow">https://github.com/jbehave/jbehave-core/tree/master/examples/noughtsandcrosses</a>) shows stories loaded from a test directory and run as embeddables. </p>
+
+<p>What you're missing is the &lt;scope&gt;test&lt;/scope&gt; in your configuration. </p>
+
+<p>The gameoflife example will also work if you move them to test directory and use configure test scope.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_261572_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_261572_concise subText"><span class="date user-tz" title="26/Mar/11 5:50 AM"><time class="livestamp" datetime="2011-03-26T05:50-0500">26/Mar/11 5:50 AM</time></span></span>                    The noughtsandcrosses example ( https://github.com/jbehave/jbehave-core/tree/master/examples/noughtsandcrosses ) shows stories loaded from a test directory and run as embeddables.  
+
+ What you're missing is the &lt;scope&gt;test&lt;/scope&gt; in your configuration.  
+
+ The gameoflife example will also work if you move them to test directory and use configure test scope.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-261588" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/454?focusedCommentId=261588&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-261588" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="estaub" id="commentauthor_261588_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=estaub"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Edward Staub</a>
+ added a comment  - <span class="commentdate_261588_verbose subText"><span class="date user-tz" title="26/Mar/11 11:06 AM"><time class="livestamp" datetime="2011-03-26T11:06-0500">26/Mar/11 11:06 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Cristiano, Mauro,</p>
+
+<p>Many thanks!<br>
+Point taken on using the user-list - sorry.</p>
+
+<p>So... I guess the maven integration-test phase doesn't include the test directory in the classpath.  Makes sense.</p>
+
+<p>-Ed</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="estaub" id="commentauthor_261588_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=estaub"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Edward Staub</a>
+ added a comment  - <span class="commentdate_261588_concise subText"><span class="date user-tz" title="26/Mar/11 11:06 AM"><time class="livestamp" datetime="2011-03-26T11:06-0500">26/Mar/11 11:06 AM</time></span></span>                    Cristiano, Mauro, 
+
+ Many thanks! 
+Point taken on using the user-list - sorry. 
+
+ So... I guess the maven integration-test phase doesn't include the test directory in the classpath.  Makes sense. 
+
+ -Ed              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-296632" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/454?focusedCommentId=296632&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-296632" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="andersand" id="commentauthor_296632_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=andersand"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Anders Sandberg Nordbø</a>
+ added a comment  - <span class="commentdate_296632_verbose subText"><span class="date user-tz" title="17/Apr/12 8:02 AM"><time class="livestamp" datetime="2012-04-17T08:02-0500">17/Apr/12 8:02 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>FWIW <a href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=estaub" class="user-hover" rel="estaub">Edward Staub</a>, this was helpful to me as well. Thanks for asking - even if they don't like tickets to be opened, this is searchable info on the web.</p>
+
+<p>Note that the online docs are missing this &lt;scope&gt;test&lt;/scope&gt; from the configuration and will not work on many projects.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="andersand" id="commentauthor_296632_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=andersand"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Anders Sandberg Nordbø</a>
+ added a comment  - <span class="commentdate_296632_concise subText"><span class="date user-tz" title="17/Apr/12 8:02 AM"><time class="livestamp" datetime="2012-04-17T08:02-0500">17/Apr/12 8:02 AM</time></span></span>                    FWIW  Edward Staub , this was helpful to me as well. Thanks for asking - even if they don't like tickets to be opened, this is searchable info on the web. 
+
+ Note that the online docs are missing this &lt;scope&gt;test&lt;/scope&gt; from the configuration and will not work on many projects.              </div>
+        </div>
+    </div>
+</div>
+                             </div>
+    </div>
+</div></div></div><div id="viewissuesidebar" class="aui-item issue-side-column"><div id="peoplemodule" class="module toggle-wrap"><div id="peoplemodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">People</h2></div><div class="mod-content"><ul class="item-details" id="peopledetails">
+    <li class="people-details">
+                <dl>
+            <dt>Assignee:</dt>
+            <dd>
+                <span id="assignee-val" class="view-issue-field">
+
+    <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span>
+    Unassigned
+</span>
+                            </dd>
+        </dl>
+                        <dl>
+            <dt>Reporter:</dt>
+            <dd>
+                <span id="reporter-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_reporter_estaub" rel="estaub">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-2.png"></span></span>
+            Edward Staub
+        </span>
+    </span>
+            </dd>
+        </dl>
+                    </li>
+</ul>
+    <ul class="item-details">
+        <li>
+                            <dl>
+                    <dt>Votes:</dt>
+                    <dd>
+                                                                            <span id="vote-data" class="aui-badge vote-state-off">1</span>
+                        
+                                                                                                        <span id="vote-label" title="You have to be logged in to vote for an issue.">Vote for this issue</span>
+                                            </dd>
+                </dl>
+                                        <dl>
+                    <dt>Watchers:</dt>
+                    <dd>
+                                                                        
+                                                                            <span id="watcher-data" class="aui-badge watch-state-off">0</span>
+                        
+                                                                                <span id="watch-label" title="You have to be logged in to watch an issue.">Start watching this issue</span>
+                                            </dd>
+                </dl>
+                    </li>
+    </ul>
+</div></div><div id="datesmodule" class="module toggle-wrap"><div id="datesmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Dates</h2></div><div class="mod-content"><ul class="item-details">
+    <li>
+            <dl class="dates">
+            <dt>Created:</dt>
+            <dd class="date user-tz" title="25/Mar/11 4:22 PM">
+
+                <span data-name="Created" id="create-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2011-03-25T16:22-0500">25/Mar/11 4:22 PM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Updated:</dt>
+            <dd class="date user-tz" title="17/Apr/12 8:02 AM">
+
+                <span data-name="Updated" id="updated-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-04-17T08:02-0500">17/Apr/12 8:02 AM</time>                                                             </span>
+            </dd>
+        </dl>
+        </li>
+</ul>
+</div></div></div></div>
+                    </div>
+                </div>
+                        </div>
+
+    <fieldset class="hidden parameters">
+        <input title="autocompleteEnabled" value="true" type="hidden">
+    </fieldset>
+    
+    </section>
+    <footer id="footer" role="contentinfo">
+        
+        
+
+
+
+<div class="footer-body">
+    <ul>
+        <li>
+                        <a href="http://www.atlassian.com/software/jira">Atlassian JIRA</a>
+
+                                                    
+                        
+            <span id="footer-build-information">(v6.1.6#6162-<span title="7af547ce7c84dbb7c1e345a65437ed7b85efffa2" data-commit-id="7af547ce7c84dbb7c1e345a65437ed7b85efffa2}">sha1:7af547c</span>)</span>
+        </li>
+        <li>
+            <a id="about-link" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+        </li>
+        <li>
+                                    <a id="footer-report-problem-link" href="https://jira.codehaus.org/secure/CreateIssue%21default.jspa">Report a problem</a>
+        </li>
+    </ul>
+            <ul>
+            <li class="licensemessage">
+                                    Powered by a free Atlassian <a href="http://www.atlassian.com/software/jira">JIRA</a> open source license for Codehaus. Try JIRA - <a href="http://www.atlassian.com/software/jira">bug tracking software</a> for <i>your</i> team.
+
+                            </li>
+        </ul>
+    </div>
+
+<form id="jira_request_timing_info" class="dont-default-focus">
+	<fieldset class="parameters hidden">
+
+
+
+
+		<input title="jira.session.expiry.in.mins" value="299" type="hidden">
+
+	</fieldset>
+</form>
+<!--
+	                 
+	          
+	               
+	                 
+	        CONCURRENT REQUESTS : 1
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input title="loggedInUser" value="" type="hidden">
+    <input title="ajaxTimeout" value="The call to the JIRA server did not complete within the timeout period.  We are unsure of the result of this operation." type="hidden">
+    <input title="JiraVersion" value="6.1.6" type="hidden">
+    <input title="ajaxUnauthorised" value="You are not authorised to perform this operation.  Please log in." type="hidden">
+    <input title="baseURL" value="https://jira.codehaus.org:443" type="hidden">
+    <input title="ajaxCommsError" value="The JIRA server could not be contacted.  This may be a temporary glitch or the server may be down." type="hidden">
+    <input title="ajaxServerError" value="The JIRA server was contacted but has returned an error response. We are unsure of the result of this operation." type="hidden">
+    <input title="ajaxErrorCloseDialog" value="Close this dialog and press refresh in your browser" type="hidden">
+    <input title="ajaxErrorDialogHeading" value="Communications Breakdown" type="hidden">
+
+    <input title="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost." type="hidden">
+    <input title="dirtyDialogMessage" value="You have entered new data in this dialog. If you navigate away from this dialog without first saving your data, the changes will be lost. Click cancel to return to the dialog." type="hidden">
+    <input title="keyType" value="Type" type="hidden">
+    <input title="keyThen" value="then" type="hidden">
+    <input title="dblClickToExpand" value="Double click to expand" type="hidden">
+    <input title="actions" value="Actions" type="hidden">
+    <input title="removeItem" value="Remove" type="hidden">
+    <input title="workflow" value="Workflow" type="hidden">
+    <input title="labelNew" value="New Label" type="hidden">
+    <input title="issueActionsHint" value="Begin typing for available operations or press down to see all" type="hidden">
+    <input title="closelink" value="Close" type="hidden">
+    <input title="dotOperations" value="Operations" type="hidden">
+    <input title="dotLoading" value="Loading..." type="hidden">
+    <input title="frotherSuggestions" value="Suggestions" type="hidden">
+    <input title="frotherNomatches" value="No Matches" type="hidden">
+    <input title="multiselectVersionsError" value="{0} is not a valid version." type="hidden">
+    <input title="multiselectComponentsError" value="{0} is not a valid component." type="hidden">
+    <input title="multiselectGenericError" value="The value {0} is invalid." type="hidden">
+</fieldset>
+
+    </footer>
+</div>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:void(0);" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:void(0);" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div class="navigator-sidebar collapsed ui-popout ui-popout-detached ui-popout-collapsed" id="navigator-sidebar"><a class="toggle-filter-panel" href="#" title="Dock the filters panel ([)"></a></div><div style="display: none;" class="jira-dialog box-shadow" id="edit-issue-dialog"><div class="jira-dialog-content"></div></div><div style="display: none;" class="jira-dialog box-shadow" id="create-subtask-dialog"><div class="jira-dialog-content"></div></div></body></html>

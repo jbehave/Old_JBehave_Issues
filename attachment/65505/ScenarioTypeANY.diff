@@ -1,0 +1,362 @@
+From 02e27d8b9542fdc0349993c91460790610e7e4da Mon Sep 17 00:00:00 2001
+From: Daniel Kolman <daniel@kolman.cz>
+Date: Fri, 4 Apr 2014 16:51:09 +0200
+Subject: [PATCH] JBEHAVE-1008 Before/After scenario method that is called
+ every time
+
+Methods annotated with
+	@BeforeScenario(uponType=ScenarioType.ANY)
+or
+        @AfterScenario(uponType=ScenarioType.ANY)
+will be called before/after each scenario case, regardless whether is is parametrised or not.
+---
+ .../org/jbehave/core/annotations/ScenarioType.java |   8 +-
+ .../org/jbehave/core/embedder/StoryRunner.java     |   4 +-
+ .../core/embedder/StoryRunnerBehaviour.java        | 110 ++++++++++++++++++---
+ .../MarkUnmatchedStepsAsPendingBehaviour.java      |   1 +
+ .../org/jbehave/core/steps/StepsBehaviour.java     |  55 ++++++++---
+ 5 files changed, 146 insertions(+), 32 deletions(-)
+
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/annotations/ScenarioType.java b/jbehave-core/src/main/java/org/jbehave/core/annotations/ScenarioType.java
+index 4dcf9f7..9c61c98 100644
+--- a/jbehave-core/src/main/java/org/jbehave/core/annotations/ScenarioType.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/annotations/ScenarioType.java
+@@ -10,6 +10,10 @@ public enum ScenarioType {
+     /**
+      * Scenario that is parametrised by example
+      */
+-    EXAMPLE
+-    
++    EXAMPLE,
++
++    /**
++     * Any type of scenario
++     */
++    ANY
+ }
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/embedder/StoryRunner.java b/jbehave-core/src/main/java/org/jbehave/core/embedder/StoryRunner.java
+index 8b45566..35f9613 100755
+--- a/jbehave-core/src/main/java/org/jbehave/core/embedder/StoryRunner.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/embedder/StoryRunner.java
+@@ -399,7 +399,7 @@ public class StoryRunner {
+                 scenarios.add(scenario);
+             }
+         }
+-        return new Story(story.getPath(), story.getDescription(), story.getMeta(), story.getNarrative(), scenarios); 
++        return new Story(story.getPath(), story.getDescription(), story.getMeta(), story.getNarrative(), scenarios);
+     }
+ 
+     private boolean matchesParameters(Scenario scenario, Map<String, String> parameters) {
+@@ -438,11 +438,13 @@ public class StoryRunner {
+     }
+ 
+     private void runStepsWithLifecycle(RunContext context, Lifecycle lifecycle, Map<String, String> parameters, Scenario scenario, Meta storyAndScenarioMeta) throws Throwable {
++        runBeforeOrAfterScenarioSteps(context, scenario, storyAndScenarioMeta, Stage.BEFORE, ScenarioType.ANY);
+         runLifecycleSteps(context, lifecycle, Stage.BEFORE, storyAndScenarioMeta);
+         addMetaParameters(parameters, storyAndScenarioMeta);
+         runGivenStories(scenario.getGivenStories(), parameters, context);
+         runScenarioSteps(context, scenario, parameters);
+         runLifecycleSteps(context, lifecycle, Stage.AFTER, storyAndScenarioMeta);
++        runBeforeOrAfterScenarioSteps(context, scenario, storyAndScenarioMeta, Stage.AFTER, ScenarioType.ANY);
+     }
+ 
+     private Meta parameterMeta(Keywords keywords,
+diff --git a/jbehave-core/src/test/java/org/jbehave/core/embedder/StoryRunnerBehaviour.java b/jbehave-core/src/test/java/org/jbehave/core/embedder/StoryRunnerBehaviour.java
+index b2c100e..47152a7 100755
+--- a/jbehave-core/src/test/java/org/jbehave/core/embedder/StoryRunnerBehaviour.java
++++ b/jbehave-core/src/test/java/org/jbehave/core/embedder/StoryRunnerBehaviour.java
+@@ -691,8 +691,9 @@ public class StoryRunnerBehaviour {
+     @Test
+     public void shouldRunScenarioAndLifecycleStepsInCorrectOrderWithExamplesTable() throws Throwable{
+         // Given
+-        ExamplesTable examplesTable = new ExamplesTable("|one|two|\n|1|2|\n");
+-        Map<String, String> tableRow = examplesTable.getRow(0);
++        ExamplesTable examplesTable = new ExamplesTable("|one|two|\n|1|2|\n|3|4|\n");
++        Map<String, String> tableRow1 = examplesTable.getRow(0);
++        Map<String, String> tableRow2 = examplesTable.getRow(1);
+         Scenario scenario1 = new Scenario("my title 1", Meta.EMPTY, GivenStories.EMPTY, examplesTable, asList("step <one>",
+                 "step <two>"));
+         Story story = new Story(new Description("my blurb"), Narrative.EMPTY, asList(scenario1));
+@@ -704,20 +705,18 @@ public class StoryRunnerBehaviour {
+         CandidateSteps mySteps = new Steps(configuration);
+         Step firstStep = mockSuccessfulStep("step <one>");
+         Step secondStep = mockSuccessfulStep("step <two>");
+-        when(collector.collectScenarioSteps(asList(mySteps), scenario1,tableRow)).thenReturn(
++        when(collector.collectScenarioSteps(asList(mySteps), scenario1,tableRow1)).thenReturn(
++                asList(firstStep, secondStep));
++        when(collector.collectScenarioSteps(asList(mySteps), scenario1,tableRow2)).thenReturn(
+                 asList(firstStep, secondStep));
+         boolean givenStory = false;
+         givenStoryWithNoBeforeOrAfterSteps(story, givenStory, collector, mySteps);
+ 
+-        Step beforeExampleStep = mockSuccessfulStep("beforeExampleStep");
+-        Step afterExampleStep = mockSuccessfulStep("afterExampleStep");
+-        when(collector.collectBeforeOrAfterScenarioSteps(eq(asList(mySteps)), Matchers.<Meta>any(), eq(Stage.BEFORE), eq(ScenarioType.EXAMPLE))).thenReturn(asList(beforeExampleStep));
+-        when(collector.collectBeforeOrAfterScenarioSteps(eq(asList(mySteps)), Matchers.<Meta>any(), eq(Stage.AFTER), eq(ScenarioType.EXAMPLE))).thenReturn(asList(afterExampleStep));
++        givenBeforeAndAfterScenarioSteps(ScenarioType.NORMAL, collector, mySteps);
++        givenBeforeAndAfterScenarioSteps(ScenarioType.ANY, collector, mySteps);
++        givenBeforeAndAfterScenarioSteps(ScenarioType.EXAMPLE, collector, mySteps);
+ 
+-        Step beforeStep = mockSuccessfulStep("lifecycleBeforeStep");
+-        Step afterStep = mockSuccessfulStep("lifecycleAfterStep");
+-        when(collector.collectLifecycleSteps(eq(asList(mySteps)), eq(Lifecycle.EMPTY), any(Meta.class), eq(Stage.BEFORE))).thenReturn(asList(beforeStep));
+-        when(collector.collectLifecycleSteps(eq(asList(mySteps)), eq(Lifecycle.EMPTY), any(Meta.class), eq(Stage.AFTER))).thenReturn(asList(afterStep));
++        givenLifecycleSteps(collector, mySteps);
+ 
+         // When
+         StoryRunner runner = new StoryRunner();
+@@ -725,15 +724,67 @@ public class StoryRunnerBehaviour {
+ 
+         // Then
+         InOrder inOrder = inOrder(reporter, failureStrategy);
+-        inOrder.verify(reporter).successful("beforeExampleStep");
+-        inOrder.verify(reporter).successful("lifecycleBeforeStep");
++        inOrder.verify(reporter).successful(stepNameFor(Stage.BEFORE, ScenarioType.NORMAL));
++
++        inOrder.verify(reporter).successful(stepNameFor(Stage.BEFORE, ScenarioType.EXAMPLE));
++        inOrder.verify(reporter).successful(stepNameFor(Stage.BEFORE, ScenarioType.ANY));
++        inOrder.verify(reporter).successful(lifecycleStepNameFor(Stage.BEFORE));
+         inOrder.verify(reporter).successful("step <one>");
+         inOrder.verify(reporter).successful("step <two>");
+-        inOrder.verify(reporter).successful("lifecycleAfterStep");
+-        inOrder.verify(reporter).successful("afterExampleStep");
++        inOrder.verify(reporter).successful(lifecycleStepNameFor(Stage.AFTER));
++        inOrder.verify(reporter).successful(stepNameFor(Stage.AFTER, ScenarioType.ANY));
++        inOrder.verify(reporter).successful(stepNameFor(Stage.AFTER, ScenarioType.EXAMPLE));
++
++        inOrder.verify(reporter).successful(stepNameFor(Stage.BEFORE, ScenarioType.EXAMPLE));
++        inOrder.verify(reporter).successful(stepNameFor(Stage.BEFORE, ScenarioType.ANY));
++        inOrder.verify(reporter).successful(lifecycleStepNameFor(Stage.BEFORE));
++        inOrder.verify(reporter).successful("step <one>");
++        inOrder.verify(reporter).successful("step <two>");
++        inOrder.verify(reporter).successful(lifecycleStepNameFor(Stage.AFTER));
++        inOrder.verify(reporter).successful(stepNameFor(Stage.AFTER, ScenarioType.ANY));
++        inOrder.verify(reporter).successful(stepNameFor(Stage.AFTER, ScenarioType.EXAMPLE));
++
++        inOrder.verify(reporter).successful(stepNameFor(Stage.AFTER, ScenarioType.NORMAL));
+ 
+     }
+ 
++    @Test
++    public void shouldRunAfterAndBeforeScenarioSteps() throws Throwable{
++        // Given
++        Scenario scenario1 = new Scenario("my title 1", Meta.EMPTY, GivenStories.EMPTY, ExamplesTable.EMPTY, asList("step"));
++        Story story = new Story(new Description("my blurb"), Narrative.EMPTY, asList(scenario1));
++        StoryReporter reporter = mock(ConcurrentStoryReporter.class);
++        StepCollector collector = mock(StepCollector.class);
++        FailureStrategy failureStrategy = mock(FailureStrategy.class);
++        Configuration configuration = configurationWith(reporter, collector, failureStrategy);
++        configuration.storyControls().doDryRun(true);
++        CandidateSteps mySteps = new Steps(configuration);
++        Step firstStep = mockSuccessfulStep("step");
++        when(collector.collectScenarioSteps(asList(mySteps), scenario1, new HashMap<String, String>())).thenReturn(
++                asList(firstStep));
++        boolean givenStory = false;
++        givenStoryWithNoBeforeOrAfterSteps(story, givenStory, collector, mySteps);
++
++        givenBeforeAndAfterScenarioSteps(ScenarioType.NORMAL, collector, mySteps);
++        givenBeforeAndAfterScenarioSteps(ScenarioType.ANY, collector, mySteps);
++
++        givenLifecycleSteps(collector, mySteps);
++
++        // When
++        StoryRunner runner = new StoryRunner();
++        runner.run(configuration, asList(mySteps), story);
++
++        // Then
++        InOrder inOrder = inOrder(reporter, failureStrategy);
++        inOrder.verify(reporter).successful(stepNameFor(Stage.BEFORE, ScenarioType.NORMAL));
++        inOrder.verify(reporter).successful(stepNameFor(Stage.BEFORE, ScenarioType.ANY));
++        inOrder.verify(reporter).successful(lifecycleStepNameFor(Stage.BEFORE));
++        inOrder.verify(reporter).successful("step");
++        inOrder.verify(reporter).successful(lifecycleStepNameFor(Stage.AFTER));
++        inOrder.verify(reporter).successful(stepNameFor(Stage.AFTER, ScenarioType.ANY));
++        inOrder.verify(reporter).successful(stepNameFor(Stage.AFTER, ScenarioType.NORMAL));
++
++    }
+ 
+     @Test
+     public void shouldRunStepsInDryRunMode() throws Throwable {
+@@ -906,6 +957,35 @@ public class StoryRunnerBehaviour {
+         when(collector.collectBeforeOrAfterStorySteps(asList(mySteps), story, Stage.AFTER, givenStory)).thenReturn(steps);
+     }
+ 
++
++    private void givenLifecycleSteps(StepCollector collector, CandidateSteps mySteps) {
++        givenLifecycleStep(Stage.BEFORE, collector, mySteps);
++        givenLifecycleStep(Stage.AFTER, collector, mySteps);
++    }
++
++    private void givenLifecycleStep(Stage stage, StepCollector collector, CandidateSteps mySteps) {
++        Step beforeStep = mockSuccessfulStep(lifecycleStepNameFor(stage));
++        when(collector.collectLifecycleSteps(eq(asList(mySteps)), eq(Lifecycle.EMPTY), any(Meta.class), eq(stage))).thenReturn(asList(beforeStep));
++    }
++
++    private String lifecycleStepNameFor(Stage stage) {
++        return String.format("Lifecycle %s Step", stage);
++    }
++
++    private void givenBeforeAndAfterScenarioSteps(ScenarioType scenarioType, StepCollector collector, CandidateSteps mySteps) {
++        givenBeforeOrAfterScenarioStep(Stage.BEFORE, scenarioType, collector, mySteps);
++        givenBeforeOrAfterScenarioStep(Stage.AFTER, scenarioType, collector, mySteps);
++    }
++
++    private void givenBeforeOrAfterScenarioStep(Stage stage, ScenarioType scenarioType, StepCollector collector, CandidateSteps mySteps) {
++        Step step = mockSuccessfulStep(stepNameFor(stage, scenarioType));
++        when(collector.collectBeforeOrAfterScenarioSteps(eq(asList(mySteps)), Matchers.<Meta>any(), eq(stage), eq(scenarioType))).thenReturn(asList(step));
++    }
++
++    private String stepNameFor(Stage stage, ScenarioType scenarioType) {
++        return String.format("%s %s Step", stage, scenarioType);
++    }
++
+     private Configuration configurationWithPendingStrategy(StepCollector collector, StoryReporter reporter,
+                                                                 PendingStepStrategy strategy) {
+         return configurationWith(new RegexStoryParser(), new LoadFromClasspath(), reporter, collector,
+diff --git a/jbehave-core/src/test/java/org/jbehave/core/steps/MarkUnmatchedStepsAsPendingBehaviour.java b/jbehave-core/src/test/java/org/jbehave/core/steps/MarkUnmatchedStepsAsPendingBehaviour.java
+index 66364aa..ca7504d 100755
+--- a/jbehave-core/src/test/java/org/jbehave/core/steps/MarkUnmatchedStepsAsPendingBehaviour.java
++++ b/jbehave-core/src/test/java/org/jbehave/core/steps/MarkUnmatchedStepsAsPendingBehaviour.java
+@@ -225,6 +225,7 @@ public class MarkUnmatchedStepsAsPendingBehaviour {
+     public void shouldCollectBeforeAndAfterScenarioAnnotatedSteps() {
+         assertThatBeforeAndAfterScenarioAnnotatedStepsCanBeCollectedForGivenType(ScenarioType.NORMAL);
+         assertThatBeforeAndAfterScenarioAnnotatedStepsCanBeCollectedForGivenType(ScenarioType.EXAMPLE);
++        assertThatBeforeAndAfterScenarioAnnotatedStepsCanBeCollectedForGivenType(ScenarioType.ANY);
+     }
+ 
+     private void assertThatBeforeAndAfterScenarioAnnotatedStepsCanBeCollectedForGivenType(ScenarioType scenarioType) {
+diff --git a/jbehave-core/src/test/java/org/jbehave/core/steps/StepsBehaviour.java b/jbehave-core/src/test/java/org/jbehave/core/steps/StepsBehaviour.java
+index b867281..67c9b9e 100755
+--- a/jbehave-core/src/test/java/org/jbehave/core/steps/StepsBehaviour.java
++++ b/jbehave-core/src/test/java/org/jbehave/core/steps/StepsBehaviour.java
+@@ -146,12 +146,12 @@ public class StepsBehaviour {
+         assertThat(beforeAfterScenario.size(), equalTo(4));
+ 
+         beforeAfterScenario.get(0).createStep().perform(null);
+-        assertThat(steps.beforeScenario, is(true));
++        assertThat(steps.beforeNormalScenario, is(true));
+ 
+         Meta storyAndScenarioMeta = null;
+         // uponOutcome=ANY
+         beforeAfterScenario.get(1).createStepUponOutcome(storyAndScenarioMeta).perform(null);
+-        assertThat(steps.afterAnyScenario, is(true));
++        assertThat(steps.afterNormalScenario, is(true));
+ 
+         // uponOutcome=SUCCESS
+         beforeAfterScenario.get(2).createStepUponOutcome(storyAndScenarioMeta).doNotPerform(null);
+@@ -170,12 +170,12 @@ public class StepsBehaviour {
+         assertThat(beforeAfterScenario.size(), equalTo(4));
+         
+         beforeAfterScenario.get(0).createStep().perform(null);
+-        assertThat(steps.beforeScenario, is(true));
++        assertThat(steps.beforeNormalScenario, is(true));
+ 
+         Meta storyAndScenarioMeta = null;
+         // uponOutcome=ANY
+         beforeAfterScenario.get(1).createStepUponOutcome(storyAndScenarioMeta).perform(null);
+-        assertThat(steps.afterAnyScenario, is(true));
++        assertThat(steps.afterNormalScenario, is(true));
+         
+         // uponOutcome=SUCCESS
+         beforeAfterScenario.get(2).createStepUponOutcome(storyAndScenarioMeta).perform(null);
+@@ -195,13 +195,13 @@ public class StepsBehaviour {
+ 		assertThat(beforeAfterScenario.size(), equalTo(4));
+ 		
+     	beforeAfterScenario.get(0).createStep().doNotPerform(null);
+-    	assertThat(steps.beforeScenario, is(true));
++    	assertThat(steps.beforeNormalScenario, is(true));
+ 
+         Meta storyAndScenarioMeta = null;
+         UUIDExceptionWrapper failure = new UUIDExceptionWrapper();
+         // uponOutcome=ANY
+         beforeAfterScenario.get(1).createStepUponOutcome(storyAndScenarioMeta).doNotPerform(failure);
+-    	assertThat(steps.afterAnyScenario, is(true));
++    	assertThat(steps.afterNormalScenario, is(true));
+     	
+     	// uponOutcome=SUCCESS
+         beforeAfterScenario.get(2).createStepUponOutcome(storyAndScenarioMeta).doNotPerform(failure);
+@@ -224,7 +224,22 @@ public class StepsBehaviour {
+ 
+         beforeAfterScenario.get(1).createStep().perform(null);
+         assertThat(steps.afterExampleScenario, is(true));
+-        
++
++    }
++
++    @Test
++    public void shouldProvideStepsToBePerformedBeforeAndAfterAnyScenario() {
++        MultipleAliasesSteps steps = new MultipleAliasesSteps();
++        ScenarioType scenarioType = ScenarioType.ANY;
++        List<BeforeOrAfterStep> beforeAfterScenario = steps.listBeforeOrAfterScenario(scenarioType);
++        assertThat(beforeAfterScenario.size(), equalTo(2));
++
++        beforeAfterScenario.get(0).createStep().perform(null);
++        assertThat(steps.beforeAnyScenario, is(true));
++
++        beforeAfterScenario.get(1).createStep().perform(null);
++        assertThat(steps.afterAnyScenario, is(true));
++
+     }
+ 
+     @Test
+@@ -301,12 +316,14 @@ public class StepsBehaviour {
+         private int whens;
+         private int thens;
+         
+-        private boolean beforeScenario;
+-        private boolean afterAnyScenario;
++        private boolean beforeNormalScenario;
++        private boolean afterNormalScenario;
+         private boolean afterSuccessfulScenario;
+         private boolean afterFailedScenario;
+         private boolean beforeExampleScenario;
+         private boolean afterExampleScenario;
++        private boolean beforeAnyScenario;
++        private boolean afterAnyScenario;
+         private boolean beforeStory;
+         private boolean afterStory;
+         private boolean beforeGivenStory;
+@@ -363,8 +380,8 @@ public class StepsBehaviour {
+         }        
+         
+         @org.jbehave.core.annotations.BeforeScenario
+-        public void beforeAnyScenarios() {
+-        	beforeScenario = true;
++        public void beforeNormalScenarios() {
++        	beforeNormalScenario = true;
+         }
+ 
+         @org.jbehave.core.annotations.BeforeScenario(uponType=ScenarioType.EXAMPLE)
+@@ -372,16 +389,26 @@ public class StepsBehaviour {
+             beforeExampleScenario = true;
+         }
+ 
++        @org.jbehave.core.annotations.BeforeScenario(uponType=ScenarioType.ANY)
++        public void beforeAnyScenarios() {
++            beforeAnyScenario = true;
++        }
++
+         @org.jbehave.core.annotations.AfterScenario
+-        public void afterAnyScenarios() {
+-        	afterAnyScenario = true;
++        public void afterNormalScenarios() {
++        	afterNormalScenario = true;
+         }
+ 
+         @org.jbehave.core.annotations.AfterScenario(uponType=ScenarioType.EXAMPLE)
+         public void afterExampleScenarios() {
+             afterExampleScenario = true;
+         }
+-        
++
++        @org.jbehave.core.annotations.AfterScenario(uponType=ScenarioType.ANY)
++        public void afterAnyScenarios() {
++            afterAnyScenario = true;
++        }
++
+         @org.jbehave.core.annotations.AfterScenario(uponOutcome=AfterScenario.Outcome.SUCCESS)
+         public void afterSuccessfulScenarios() {
+         	afterSuccessfulScenario = true;
+-- 
+1.8.1.2
+

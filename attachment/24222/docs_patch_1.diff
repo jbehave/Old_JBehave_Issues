@@ -1,0 +1,27 @@
+Index: website/content/architecture.textile
+===================================================================
+--- website/content/architecture.textile	(revision 0)
++++ website/content/architecture.textile	(revision 0)
+@@ -0,0 +1,6 @@
++---------------------------------------------------
++Architecture
++---------------------------------------------------
++h1(FirstChild). Architecture
++
++(TODO: Describe JBehave's architecture)
+Index: website/skinner.rb
+===================================================================
+--- website/skinner.rb	(revision 570)
++++ website/skinner.rb	(working copy)
+@@ -119,8 +119,10 @@
+ end
+ 
+ def add_class( element, new_class )
++    return if element.nil?
++    
+     old_class = element.attributes["class"]
+-    if old_class != nil
++    if old_class.nil?
+         new_class = "#{old_class} #{new_class}"
+     end
+     element.add_attribute( "class", new_class )

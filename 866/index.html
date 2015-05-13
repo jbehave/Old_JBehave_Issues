@@ -1,0 +1,1510 @@
+<!DOCTYPE html><html class="mozilla"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>[JBEHAVE-866] Jbehave Maven Integration Exceptions - jira.codehaus.org</title>
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<link rel="shortcut icon" href="index_files/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://jira.codehaus.org/osd.jsp" title="[JBEHAVE-866] Jbehave Maven Integration Exceptions - jira.codehaus.org">
+
+    
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+<link type="text/css" rel="stylesheet" href="index_files/batch.css" media="all">
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="index_files/batch-1.css" media="all">
+<script type="text/javascript" src="index_files/batch.js"></script><style type="text/css"></style>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="index_files/batch-1.js"></script>
+<script type="text/javascript" src="index_files/jira.webresources_calendar-en.js"></script>
+<script type="text/javascript" src="index_files/com.atlassian.administraticksearch-webresources.js"></script>
+
+<script type="text/javascript" src="index_files/shortcuts.js"></script>
+
+
+    
+    
+    
+    <meta name="decorator" content="atl.general">
+    <meta id="isNavigator" name="isNavigator" content="true">
+    <meta name="ajs-user.search.mode" content="basic">
+    <meta name="ajs-issue-search-help-title" content="Searching for Issues">
+    <meta name="ajs-issue-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Searching+for+Issues">
+    <meta name="ajs-advanced-search-help-title" content="Performing Advanced Searches">
+    <meta name="ajs-advanced-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Advanced+Searching">
+    
+</head>
+<body data-aui-version="5.1.8" id="jira" class="aui-layout aui-theme-default ka ajax-issue-search-and-view page-type-navigator navigator-issue-only" data-version="6.1.6">
+<div id="page">
+    <header id="header" style="display:none" role="banner">
+        
+
+
+
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+
+<fieldset class="parameters hidden dont-default-focus">
+    <input title="tzdetect.pref.tzid" value="America/Chicago" type="hidden">
+    <input title="tzdetect.pref.tzname" value="(GMT-06:00) Chicago" type="hidden">
+    <input title="tzdetect.pref.tzoffset" value="(GMT-06:00)" type="hidden">
+    <input title="tzdetect.pref.tzdst" value="true" type="hidden">
+    <input title="tzdetect.pref.nothanks" value="" type="hidden">
+</fieldset>
+<nav data-aui-responsive="true" class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class="aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-haspopup="true" tabindex="0"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link nav-link-local"><a href="https://jira.codehaus.org/" class="aui-dropdown2-radio interactive checked" title="https://jira.codehaus.org/"><span class="nav-link-label">jira.codehaus.org</span></a></li><li class="nav-link"><a href="http://jira.sonarsource.com/" class="aui-dropdown2-radio interactive" title="http://jira.sonarsource.com/"><span class="nav-link-label">SonarSource</span></a></li><li class="nav-link"><a href="http://docs.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://docs.codehaus.org/"><span class="nav-link-label">Codehaus</span></a></li><li class="nav-link"><a href="http://xircles.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://xircles.codehaus.org"><span class="nav-link-label">Xircles</span></a></li></ul></div></div><script><!--
+/* Script removed by snapshot save */
+--></script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://jira.codehaus.org/secure/MyJiraHome.jspa"><img data-aui-responsive-header-index="0" src="urn:download-error:http://www.codehaus.org/codehaus-small.gif" alt="jira.codehaus.org"></a></h1><ul style="width: auto;" class="aui-nav">
+
+
+
+
+<li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/Dashboard.jspa" id="home_link" accesskey="d" title="View and manage your dashboards" aria-haspopup="true" aria-owns="home_link-content">Dashboards</a><div id="home_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="home_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="/Old_JBehave_Issues/index.html" id="browse_link" accesskey="p" title="View recent projects and browse a list of projects" aria-haspopup="true" aria-owns="browse_link-content">Projects</a><div id="browse_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="browse_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/IssueNavigator.jspa" id="find_link" accesskey="i" title="Search for issues and view recent issues" aria-haspopup="true" aria-owns="find_link-content">Issues</a><div id="find_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="find_link"></div></li>
+<li style="display: none;"><a id="aui-responsive-header-dropdown-trigger-0" class="aui-dropdown2-trigger" aria-owns="aui-responsive-header-dropdown-content-0" aria-haspopup="true" href="#">More<span class="icon aui-icon-dropdown"></span></a><div id="aui-responsive-header-dropdown-content-0" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul id="aui-responsive-header-dropdown-list-0"></ul></div></div></li></ul></div><div class="aui-header-secondary"><ul class="aui-nav"><li>
+    <form action="https://jira.codehaus.org/secure/QuickSearch.jspa" method="post" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" class="search" title="Quick Search ( Type '/' )" placeholder="Quick Search" name="searchString" accesskey="q" type="text">
+        <input class="hidden" value="Search" type="submit">
+    </form>
+</li>
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger" aria-haspopup="true" aria-owns="system-help-menu-content" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank" title="Help"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a id="view_help" class="interactive" title="Goto the online documentation for JIRA" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank">Online Help</a>
+                                </li>
+                                                            <li>
+                                    <a id="keyshortscuthelp" class="interactive" title="Get more information about JIRA's Keyboard Shortcuts ( Type '?' )" href="https://jira.codehaus.org/secure/ViewKeyboardShortcuts%21default.jspa" target="_blank">Keyboard Shortcuts</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_about" class="interactive" title="Get more information about JIRA" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_credits" class="interactive" title="See who did what" href="https://jira.codehaus.org/secure/JiraCreditsPage%21default.jspa" target="_blank">JIRA Credits</a>
+                                </li>
+                                                            <li>
+                                    <a id="whats-new-menu-link" class="interactive" href="https://docs.atlassian.com/jira/docs-061/whatsnew/iframe">What?s New</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a class="aui-nav-link login-link" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-866">Log In</a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <div style="position: absolute; right: 20em; top: -2em">
+  <a href="https://xircles.codehaus.org/signup">Signup</a>
+</div>
+</div>
+
+
+    <section id="content" role="main">
+        
+    
+
+    <div class="issue-container ">
+                                    <div id="issue-content" class="issue-edit-form">
+                    <header id="stalker" class="issue-header js-stalker">
+                        <div class="issue-header-content"><header class="aui-page-header"><div class="aui-page-header-inner"><div class="aui-page-header-image"><span id="10680" class="aui-avatar aui-avatar-large aui-avatar-project"><span class="aui-avatar-inner"><img id="project-avatar" alt="JBehave" src="index_files/projectavatar.png"></span></span></div><!-- .aui-page-header-image --><div class="aui-page-header-main"><ol class="aui-nav aui-nav-breadcrumbs"><li><a id="project-name-val" href="/Old_JBehave_Issues/index.html">JBehave</a></li><li><a class="issue-link" data-issue-key="JBEHAVE-454" href="/Old_JBehave_Issues/454" id="parent_issue_summary" title="Can't run-stories-as-embeddables from test directory using Maven plugin">JBEHAVE-454 Can't run-stories-as-embeddables from test directory using Maven plugin</a></li><li><a class="issue-link" data-issue-key="JBEHAVE-866" href="#" id="key-val" rel="142529">JBEHAVE-866</a></li></ol><h1 id="summary-val">Jbehave Maven Integration Exceptions</h1></div><!-- .aui-page-header-main --><div class="aui-page-header-actions"><div id="issue-header-pager"></div></div><!-- .aui-page-header-actions --></div><!-- .aui-page-header-inner --></header><!-- .aui-page-header --><div class="command-bar"><div class="ops-cont"><div class="ops-menus aui-toolbar"><div class="toolbar-split toolbar-split-left"><ul id="opsbar-ops-login-lnk_container" class="toolbar-group pluggable-ops"><li class="toolbar-item"><a id="ops-login-lnk" style="display:none" title="Log In" class="toolbar-trigger" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-866"><span class="trigger-label">Log In</span></a></li></ul><ul id="opsbar-opsbar-operations" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-transitions" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-admin" class="toolbar-group pluggable-ops"></ul></div><div class="toolbar-split toolbar-split-right"><ul id="opsbar-jira.issue.tools" style="display:none" class="toolbar-group pluggable-ops"><li class="toolbar-item toolbar-dropdown"><div><a href="#" id="viewissue-export" title="Export this issue in another format" data-hide-on-scroll=".split-view .issue-container" data-contain-to-window="true" class="toolbar-trigger  js-default-dropdown"><span class="icon icon-export viewissue-export"></span> <span class="dropdown-text">Export</span><span class="icon drop-menu"></span></a><div class="aui-list hidden"><ul class="aui-list-section aui-first aui-last"><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-xml/JBEHAVE-866/JBEHAVE-866.xml" class="aui-list-item-link" id="jira.issueviews:issue-xml"><span class="trigger-label">XML</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-word/JBEHAVE-866/JBEHAVE-866.doc" class="aui-list-item-link" id="jira.issueviews:issue-word"><span class="trigger-label">Word</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-html/JBEHAVE-866/JBEHAVE-866.html" class="aui-list-item-link" id="jira.issueviews:issue-html"><span class="trigger-label">Printable</span></a></li></ul></div></div></li></ul></div></div></div></div></div>
+                    </header>
+                    <div class="issue-body-content">
+                        <div class="aui-group issue-body"><div class="aui-item issue-main-column"><div id="details-module" class="module toggle-wrap"><div id="details-module_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Details</h2></div><div class="mod-content">
+
+
+
+
+<ul id="issuedetails" class="property-list two-cols">
+    <li class="item">
+        <div class="wrap">
+            <strong class="name">Type:</strong>
+            <span id="type-val" class="value">
+                                <img alt="Sub-task" src="index_files/subtask_alternate.png" title="Sub-task - The sub-task of the issue" height="16" width="16"> Sub-task
+            </span>
+        </div>
+    </li>
+    <li class="item item-right">
+        <div class="wrap">
+            <strong class="name">Status:</strong>
+            <span id="status-val" class="value">
+                                
+
+<img src="index_files/resolved.png" alt="Resolved" title="Resolved - A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed." height="16" width="16"> Resolved
+            </span>
+                    </div>
+    </li>
+            <li class="item">
+            <div class="wrap">
+                <strong class="name">Priority:</strong>
+                <span id="priority-val" class="value">
+                                        <img alt="Major" src="index_files/major.png" title="Major - Major loss of function." height="16" width="16"> Major
+                </span>
+            </div>
+        </li>
+                                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Resolution:</strong>
+                <span id="resolution-val" class="value resolved">
+                                     Not A Bug
+                                </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Affects Version/s:</strong>
+                <span id="versions-val" class="value">
+                                            None
+                                    </span>
+            </div>
+        </li>
+                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Fix Version/s:</strong>
+                <span id="fixfor-val" class="value">
+                                            None
+                                    </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Component/s:</strong>
+                <span id="components-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="components-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/component/11089" title="Build ">Build</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                    <li class="item full-width">
+            <div class="wrap" id="wrap-labels">
+                <strong class="name">Labels:</strong>
+                    <div class="labels-wrap value">
+            <span class="labels" id="labels-142529-value">None</span>
+                </div>
+            </div>
+        </li>
+        </ul>
+
+<div id="customfieldmodule">
+    <div class="aui-tabs horizontal-tabs" id="customfield-tabs">
+                    <div id="customfield-panel-1" class="tabs-pane active-pane">
+                        <ul class="property-list">
+                                                <li id="rowForcustomfield_10210" class="item">
+                        <div class="wrap">
+                            <strong title="Number of attachments " class="name">Number of attachments :</strong>
+                            <div id="customfield_10210-val" class="value type-attachments" data-fieldtype="attachments" data-fieldtypecompletekey="com.atlassian.jira.toolkit:attachments">
+                                    0
+
+                            </div>
+                        </div>
+                    </li>
+                                        </ul>
+        </div>
+        </div></div>
+</div></div><div id="descriptionmodule" class="module toggle-wrap"><div id="descriptionmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Description</h2></div><div class="mod-content"><div id="description-val" class="field-ignore-highlight">
+    <div class="user-content-block">
+                    <p>I've integrated Jbehave test in Hudson as A Maven goal but whenever I run Test via Hudson-web-interface, I get following error</p>
+
+<p> BUILD FAILURE<br>
+ <span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+ <span class="error">[INFO]</span> Total time: 33.609s<br>
+ <span class="error">[INFO]</span> Finished at: Mon Dec 03 15:08:52  2012<br>
+ <span class="error">[INFO]</span> Final Memory: 26M/81M<br>
+ <span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+ <span class="error">[INFO]</span> o.h.m.e.h.MavenExecutionResultHandler - Build failed with exception(s)<br>
+ <span class="error">[INFO]</span> o.h.m.e.h.MavenExecutionResultHandler - <span class="error">[1]</span>    org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal org.jbehave:jbehave-maven-plugin:4.0-beta-2:run-stories-as-paths (run-stories-as-paths) on project ABCServices: Failed to run stories as paths<br>
+ <span class="error">[DEBUG]</span> Closing connection to remote<br>
+<span class="error">[ERROR]</span> Failed to execute goal org.jbehave:jbehave-maven-plugin:4.0-beta-2:run-stories-as-paths (run-stories-as-paths) on project ABCServices:<br>
+ Failed to run stories as paths: Story path '.svn/all-wcprops' not found by class loader EmbedderClassLoader[urls=<span class="error">[/Users/abc/.hudson/jobs/TestHudson/workspace/target/test-classes/, /Users/abc/.hudson/jobs/TestHudson/workspace/target/classes/, SSIOServicesClient-1.0-SNAPSHOT.jar, poi-3.8.jar, cxf-rt-frontend-jaxws-2.5.2.jar, xml-resolver-1.2.jar, asm-3.3.jar, cxf-api-2.5.2.jar, cxf-rt-core-2.5.2.jar, cxf-rt-bindings-soap-2.5.2.jar, cxf-tools-common-2.5.2.jar, cxf-rt-databinding-jaxb-2.5.2.jar, cxf-rt-bindings-xml-2.5.2.jar, cxf-rt-frontend-simple-2.5.2.jar, cxf-rt-ws-addr-2.5.2.jar, cxf-rt-transports-http-2.5.2.jar, cxf-rt-transports-common-2.5.2.jar, cxf-rt-frontend-jaxrs-2.5.0.jar, cxf-common-utilities-2.5.0.jar, jsr311-api-1.1.1.jar, jettison-1.3.jar, jaxb-api-2.1.jar, stax-api-1.0-2.jar, activation-1.1.jar, cxf-bundle-jaxrs-2.5.0.jar, xmlschema-core-2.0.1.jar, woodstox-core-asl-4.1.1.jar, stax2-api-3.1.1.jar, geronimo-stax-api_1.0_spec-1.0.1.jar, geronimo-annotation_1.0_spec-1.1.1.jar, neethi-3.0.1.jar, wsdl4j-1.6.2.jar, geronimo-activation_1.1_spec-1.1.jar, geronimo-javamail_1.4_spec-1.7.1.jar, aopalliance-1.0.jar, spring-asm-3.0.6.RELEASE.jar, commons-logging-1.1.1.jar, jetty-continuation-7.5.3.v20111011.jar, jetty-http-7.5.3.v20111011.jar, jetty-io-7.5.3.v20111011.jar, jetty-util-7.5.3.v20111011.jar, jetty-security-7.5.3.v20111011.jar, slf4j-api-1.6.2.jar, geronimo-servlet_2.5_spec-1.1.2.jar, log4j-1.2.16.jar, gson-1.7.1.jar, jaxb-impl-2.0.3.jar, jsr173_api-1.0.jar, testng-6.5.1.jar, junit-4.10.jar, hamcrest-core-1.1.jar, bsh-2.0b4.jar, jcommander-1.12.jar, snakeyaml-1.6.jar, spring-core-3.1.1.RELEASE.jar, spring-context-3.1.1.RELEASE.jar, spring-web-3.1.1.RELEASE.jar, spring-expression-3.1.1.RELEASE.jar, spring-beans-3.1.1.RELEASE.jar, spring-aop-3.1.1.RELEASE.jar, spring-context-support-3.1.1.RELEASE.jar, spring-tx-3.1.1.RELEASE.jar, spring-orm-3.1.1.RELEASE.jar, spring-jdbc-3.1.1.RELEASE.jar, spring-oxm-3.1.1.RELEASE.jar, commons-lang-2.5.jar, spring-test-3.1.1.RELEASE.jar, commons-httpclient-3.1.jar, commons-codec-1.2.jar, SharedshelfSchema-0.7.jar, xom-1.2.5.jar, xml-apis-1.3.03.jar, xercesImpl-2.8.0.jar, xalan-2.7.0.jar, json-lib-2.4-jdk15.jar, commons-beanutils-1.8.0.jar, commons-collections-3.2.1.jar, ezmorph-1.0.6.jar, VWWebServicesClient-1.0.jar, httpclient-4.2.1.jar, httpcore-4.2.1.jar, httpmime-4.0.1.jar, apache-mime4j-0.6.jar, json-20090211.jar, hibernate-entitymanager-3.5.6-Final.jar, hibernate-core-3.5.6-Final.jar, antlr-2.7.6.jar, dom4j-1.6.1.jar, jta-1.1.jar, hibernate-annotations-3.5.6-Final.jar, hibernate-commons-annotations-3.2.0.Final.jar, cglib-2.2.jar, javassist-3.9.0.GA.jar, hibernate-jpa-2.0-api-1.0.0.Final.jar, morphia-0.99.1-SNAPSHOT.jar, mongo-java-driver-2.10.0.jar, cglib-nodep-2.2.2.jar, jbehave-maven-plugin-4.0-beta-3.jar, jbehave-core-4.0-beta-3.jar, junit-dep-4.8.2.jar, hamcrest-library-1.1.jar, hamcrest-integration-1.1.jar, commons-io-1.4.jar, plexus-utils-2.0.5.jar, freemarker-2.3.16.jar, paranamer-2.4.jar, xstream-1.3.1.jar, xpp3_min-1.1.4c.jar, maven-plugin-api-2.0.11.jar, maven-artifact-2.0.11.jar, maven-project-2.0.11.jar, maven-settings-2.0.11.jar, maven-profile-2.0.11.jar, maven-model-2.0.11.jar, maven-artifact-manager-2.0.11.jar, maven-repository-metadata-2.0.11.jar, wagon-provider-api-1.0-beta-2.jar, maven-plugin-registry-2.0.11.jar, plexus-interpolation-1.1.jar, plexus-container-default-1.0-alpha-9-stable-1.jar, classworlds-1.1-alpha-2.jar, plexus-archiver-1.2.jar, plexus-io-1.0.1.jar, proxytoys-1.0.jar, tuprolog-extensions-2.1.1.jar, tuprolog-2.1.1.jar, xunit-1.9.jar, guice-2.0.1.jar, dtkit-metrics-model-0.8.jar, dtkit-metrics-util-0.8.jar, saxon-9.1.0.8.jar, saxon-9.1.0.8-s9api.jar, saxon-9.1.0.8-dom.jar, dtkit-metrics-hudson-api-0.8.jar, dtkit-junit-model-0.8.jar, dtkit-default-junit-hudson-0.9.jar, dtkit-default-junit-0.9.jar]</span>,parent=ClassRealm<span class="error">[plugin&gt;org.jbehave:jbehave-maven-plugin:4.0-beta-2, parent: sun.misc.Launcher$AppClassLoader@5ab8df17]</span>] -&gt; <span class="error">[Help 1]</span><br>
+ <span class="error">[ERROR]</span> </p>
+
+<p>Please tell me what should I do to resolve this issue.</p>
+
+<p>PS: I am not using any Source Code Management.</p>
+            </div>
+</div>
+</div></div><div id="activitymodule" class="module toggle-wrap"><div id="activitymodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Activity</h2></div><div class="mod-content">
+
+
+
+
+
+
+
+
+
+
+    <div class="tabwrap tabs2" style="display:none">
+                    <div class="sortwrap">
+                                    <a class="icon icon-sort-down ajax-activity-content" rel="nofollow" href="/Old_JBehave_Issues/866?actionOrder=desc" title="Ascending order - Click to sort in descending order"><span>Ascending order - Click to sort in descending order</span></a>
+                            </div>
+                <ul id="issue-tabs" class="tabs horizontal">
+                                
+            <li class="active" id="all-tabpanel" data-id="all-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel" data-label="All" data-href="/browse/JBEHAVE-866">
+                            <strong>All</strong>
+                        </li>
+                                
+            <li data-id="comment-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel" data-label="Comments" data-href="/browse/JBEHAVE-866">
+                            <a class="ajax-activity-content" id="comment-tabpanel" href="/Old_JBehave_Issues/866"><strong>Comments</strong></a>
+                        </li>
+                                
+            <li data-id="worklog-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:worklog-tabpanel" data-label="Work Log" data-href="/browse/JBEHAVE-866">
+                            <a class="ajax-activity-content" id="worklog-tabpanel" href="/Old_JBehave_Issues/866"><strong>Work Log</strong></a>
+                        </li>
+                                
+            <li data-id="changehistory-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:changehistory-tabpanel" data-label="History" data-href="/browse/JBEHAVE-866">
+                            <a class="ajax-activity-content" id="changehistory-tabpanel" href="/Old_JBehave_Issues/866"><strong>History</strong></a>
+                        </li>
+                                
+            <li data-id="activity-stream-issue-tab" data-key="com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab" data-label="Activity" data-href="/browse/JBEHAVE-866">
+                            <a class="ajax-activity-content" id="activity-stream-issue-tab" href="/Old_JBehave_Issues/866"><strong>Activity</strong></a>
+                        </li>
+                </ul>
+    </div>
+    <div class="issuePanelWrapper">
+        <div class="issuePanelProgress"></div>
+        <div class="issuePanelContainer" id="issue_actions_container">
+                                    
+
+
+<div id="comment-314882" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/866?focusedCommentId=314882&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314882" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_314882_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_314882_verbose subText"><span class="date user-tz" title="03/Dec/12 5:00 AM"><time class="livestamp" datetime="2012-12-03T05:00-0600">03/Dec/12 5:00 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Well, the clue is in the error message:  "Failed to run stories as paths: Story path '.svn/all-wcprops' not found"  </p>
+
+<p>You say you're not using any SCM but evidently the .svn directories are still there.  </p>
+
+<p>Solution is to exclude these stories or put a filter on the story paths.  Have a look at the examples : </p>
+
+<p><a href="https://github.com/jbehave/jbehave-core/tree/jbehave-4.x/examples" class="external-link" rel="nofollow">https://github.com/jbehave/jbehave-core/tree/jbehave-4.x/examples</a></p>
+
+<p>Look in the *Stories files for the story path config. </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_314882_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_314882_concise subText"><span class="date user-tz" title="03/Dec/12 5:00 AM"><time class="livestamp" datetime="2012-12-03T05:00-0600">03/Dec/12 5:00 AM</time></span></span>                    Well, the clue is in the error message:  "Failed to run stories as paths: Story path '.svn/all-wcprops' not found"   
+
+ You say you're not using any SCM but evidently the .svn directories are still there.   
+
+ Solution is to exclude these stories or put a filter on the story paths.  Have a look at the examples :  
+
+  https://github.com/jbehave/jbehave-core/tree/jbehave-4.x/examples  
+
+ Look in the *Stories files for the story path config.               </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-413284">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_413284">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_413284" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="03/Dec/12 5:00 AM"><time class="livestamp" datetime="2012-12-03T05:00-0600">03/Dec/12 5:00 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_413284" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <thead>
+                    <tr>
+                        <th width="20%">Field</th>
+                        <th width="40%">Original Value</th>
+                        <th width="40%">New Value</th>
+                    </tr>
+                </thead>
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Open
+                                                                                                <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Resolved
+                                                                                               <span class="hist-value">[    5
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Resolution
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Not A Bug
+                                                                                               <span class="hist-value">[    6
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-314884" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/866?focusedCommentId=314884&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314884" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="commentauthor_314884_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ added a comment  - <span class="commentdate_314884_verbose subText"><span class="date user-tz" title="03/Dec/12 5:12 AM"><time class="livestamp" datetime="2012-12-03T05:12-0600">03/Dec/12 5:12 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Really appreciate your help. I am using Jbehave, Hudson, Maven first time, can you please tell me how to exclude these svn stories(.svn/all-wcprops' ), Link that u have shared has lots of folders and files(*Stories), Can you please tell me specifically which file should I look, for reference?</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="commentauthor_314884_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ added a comment  - <span class="commentdate_314884_concise subText"><span class="date user-tz" title="03/Dec/12 5:12 AM"><time class="livestamp" datetime="2012-12-03T05:12-0600">03/Dec/12 5:12 AM</time></span></span>                    Really appreciate your help. I am using Jbehave, Hudson, Maven first time, can you please tell me how to exclude these svn stories(.svn/all-wcprops' ), Link that u have shared has lots of folders and files(*Stories), Can you please tell me specifically which file should I look, for reference?              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-314891" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/866?focusedCommentId=314891&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314891" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_314891_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_314891_verbose subText"><span class="date user-tz" title="03/Dec/12 6:37 AM"><time class="livestamp" datetime="2012-12-03T06:37-0600">03/Dec/12 6:37 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p><a href="https://github.com/jbehave/jbehave-core/blob/jbehave-4.x/examples/trader/src/main/java/org/jbehave/examples/trader/TraderStories.java" class="external-link" rel="nofollow">https://github.com/jbehave/jbehave-core/blob/jbehave-4.x/examples/trader/src/main/java/org/jbehave/examples/trader/TraderStories.java</a></p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"> @Override    
+<span class="code-keyword">protected</span> List&lt;<span class="code-object">String</span>&gt; storyPaths() {        
+    <span class="code-keyword">return</span> <span class="code-keyword">new</span> StoryFinder().findPaths(codeLocationFromClass(<span class="code-keyword">this</span>.getClass()).getFile(), asList(<span class="code-quote">"**/*.story"</span>), asList(<span class="code-quote">"**/failing_before*.story"</span>, <span class="code-quote">"**/given_relative*.story"</span>));    
+}
+</pre>
+</div></div>
+
+<p>The StoryFinder allows you to control the source and the includes/excludes.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_314891_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_314891_concise subText"><span class="date user-tz" title="03/Dec/12 6:37 AM"><time class="livestamp" datetime="2012-12-03T06:37-0600">03/Dec/12 6:37 AM</time></span></span>                     https://github.com/jbehave/jbehave-core/blob/jbehave-4.x/examples/trader/src/main/java/org/jbehave/examples/trader/TraderStories.java  
+
+  
+ 
+ @Override    
+ protected  List&lt; String &gt; storyPaths() {        
+     return   new  StoryFinder().findPaths(codeLocationFromClass( this .getClass()).getFile(), asList( "**/*.story" ), asList( "**/failing_before*.story" ,  "**/given_relative*.story" ));    
+}
+ 
+  
+
+ The StoryFinder allows you to control the source and the includes/excludes.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-314894" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/866?focusedCommentId=314894&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314894" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="jocce" id="commentauthor_314894_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=jocce"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Joachim Nilsson</a>
+ added a comment  - <span class="commentdate_314894_verbose subText"><span class="date user-tz" title="03/Dec/12 7:06 AM"><time class="livestamp" datetime="2012-12-03T07:06-0600">03/Dec/12 7:06 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi, <br>
+Consider controlling the stories from outside your code, which might be true if you allow QA department to control which stories to run automated after development is done.</p>
+
+<p>Example:<br>
+	@Override<br>
+	protected List&lt;String&gt; storyPaths() {<br>
+		try </p>
+{
+			return Arrays.asList(System.getProperty(“storyfiles”).split(","));
+		}
+<p> catch (NullPointerException | SecurityException | IllegalArgumentException e) </p>
+{
+			throw new RuntimeException("System property 'storyfiles' was not available during startup.", e);
+		}
+<p>	}</p>
+
+
+<p>Example of a gradle task that will run the stories if you have extended JUnitStories:<br>
+task runJBehaveTests(type: Test) {<br>
+	file('target').mkdirs()<br>
+	FileTree tree = fileTree(dir: 'src/test/resources')<br>
+	tree.include '*<b>/</b>.story'<br>
+	String storyfiles = ""<br>
+	tree.each </p>
+{ file -&gt;
+		storyfiles += "," + file.getName() 
+	}
+<p>	storyfiles  = storyfiles.replaceFirst(",","")<br>
+	System.out.println("This test will run following stories: "+storyfiles)<br>
+	systemProperty 'storyfiles',storyfiles<br>
+}</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="jocce" id="commentauthor_314894_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=jocce"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span> Joachim Nilsson</a>
+ added a comment  - <span class="commentdate_314894_concise subText"><span class="date user-tz" title="03/Dec/12 7:06 AM"><time class="livestamp" datetime="2012-12-03T07:06-0600">03/Dec/12 7:06 AM</time></span></span>                    Hi,  
+Consider controlling the stories from outside your code, which might be true if you allow QA department to control which stories to run automated after development is done. 
+
+ Example: 
+	@Override 
+	protected List&lt;String&gt; storyPaths() { 
+		try  
+{
+			return Arrays.asList(System.getProperty(“storyfiles”).split(","));
+		}
+  catch (NullPointerException | SecurityException | IllegalArgumentException e)  
+{
+			throw new RuntimeException("System property 'storyfiles' was not available during startup.", e);
+		}
+ 	} 
+
+
+ Example of a gradle task that will run the stories if you have extended JUnitStories: 
+task runJBehaveTests(type: Test) { 
+	file('target').mkdirs() 
+	FileTree tree = fileTree(dir: 'src/test/resources') 
+	tree.include '* / .story' 
+	String storyfiles = "" 
+	tree.each  
+{ file -&gt;
+		storyfiles += "," + file.getName() 
+	}
+ 	storyfiles  = storyfiles.replaceFirst(",","") 
+	System.out.println("This test will run following stories: "+storyfiles) 
+	systemProperty 'storyfiles',storyfiles 
+}              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-314932" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/866?focusedCommentId=314932&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314932" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="commentauthor_314932_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ added a comment  - <span class="commentdate_314932_verbose subText"><span class="date user-tz" title="03/Dec/12 10:19 PM"><time class="livestamp" datetime="2012-12-03T22:19-0600">03/Dec/12 10:19 PM</time></span></span>   - <span class="redText subText" title="Sobia Ali - 03/Dec/12 10:38 PM">edited</span> </div>
+        </div>
+        <div class="action-body flooded"><p>you both are overriding "storyPaths()" but I am not using it because I am extending my story from JUnitStory rather than JUnitStories.So I am not able to override this method.My code is here</p>
+
+<p>public class ABCStory extends JUnitStory {</p>
+
+<p>	@Override</p>
+
+<p>	public Configuration configuration() </p>
+{
+		return new MostUsefulConfiguration()
+		.useStoryLoader(new LoadFromClasspath(this.getClass().getClassLoader()))
+				.useStoryReporterBuilder(
+						new StoryReporterBuilder().withDefaultFormats()
+								.withFormats(Format.CONSOLE, Format.HTML));
+	}
+
+<p>	// Here we specify the steps classes<br>
+	@Override</p>
+
+<p>	public List&lt;CandidateSteps&gt; candidateSteps() </p>
+{
+		
+		return new InstanceStepsFactory(configuration(), new ABCSteps())
+				.createCandidateSteps();
+	}
+
+<p>	@Override<br>
+	@Test<br>
+	public void run() {<br>
+		try </p>
+{
+			super.run();
+		}
+<p> catch (Throwable e) </p>
+{
+			
+			e.printStackTrace();
+		}
+<p>	}</p>
+
+<p>Also codeLocationFromClass() is not working it gives compile time exception of "No Such method".</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="commentauthor_314932_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ added a comment  - <span class="commentdate_314932_concise subText"><span class="date user-tz" title="03/Dec/12 10:19 PM"><time class="livestamp" datetime="2012-12-03T22:19-0600">03/Dec/12 10:19 PM</time></span></span>   - <span class="redText subText" title="Sobia Ali - 03/Dec/12 10:38 PM">edited</span>                   you both are overriding "storyPaths()" but I am not using it because I am extending my story from JUnitStory rather than JUnitStories.So I am not able to override this method.My code is here 
+
+ public class ABCStory extends JUnitStory { 
+
+ 	@Override 
+
+ 	public Configuration configuration()  
+{
+		return new MostUsefulConfiguration()
+		.useStoryLoader(new LoadFromClasspath(this.getClass().getClassLoader()))
+				.useStoryReporterBuilder(
+						new StoryReporterBuilder().withDefaultFormats()
+								.withFormats(Format.CONSOLE, Format.HTML));
+	}
+
+ 	// Here we specify the steps classes 
+	@Override 
+
+ 	public List&lt;CandidateSteps&gt; candidateSteps()  
+{
+		
+		return new InstanceStepsFactory(configuration(), new ABCSteps())
+				.createCandidateSteps();
+	}
+
+ 	@Override 
+	@Test 
+	public void run() { 
+		try  
+{
+			super.run();
+		}
+  catch (Throwable e)  
+{
+			
+			e.printStackTrace();
+		}
+ 	} 
+
+ Also codeLocationFromClass() is not working it gives compile time exception of "No Such method".              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-314933" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/866?focusedCommentId=314933&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314933" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="commentauthor_314933_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ added a comment  - <span class="commentdate_314933_verbose subText"><span class="date user-tz" title="03/Dec/12 11:04 PM"><time class="livestamp" datetime="2012-12-03T23:04-0600">03/Dec/12 11:04 PM</time></span></span>   - <span class="redText subText" title="Sobia Ali - 03/Dec/12 11:51 PM">edited</span> </div>
+        </div>
+        <div class="action-body flooded"><p>Guys!! I tried to include following code as u suggested<br>
+@Override    <br>
+	protected List&lt;String&gt; storyPaths() </p>
+{        
+	    return new StoryFinder().findPaths(CodeLocations.codeLocationFromClass(this.getClass()).getFile(), Arrays.asList("**/*.story"),Arrays.asList("**/.svn/*"));    
+	}
+
+<p>but it makes no difference, still getting the same error.What am I missing?</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="commentauthor_314933_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ added a comment  - <span class="commentdate_314933_concise subText"><span class="date user-tz" title="03/Dec/12 11:04 PM"><time class="livestamp" datetime="2012-12-03T23:04-0600">03/Dec/12 11:04 PM</time></span></span>   - <span class="redText subText" title="Sobia Ali - 03/Dec/12 11:51 PM">edited</span>                   Guys!! I tried to include following code as u suggested 
+@Override     
+	protected List&lt;String&gt; storyPaths()  
+{        
+	    return new StoryFinder().findPaths(CodeLocations.codeLocationFromClass(this.getClass()).getFile(), Arrays.asList("**/*.story"),Arrays.asList("**/.svn/*"));    
+	}
+
+ but it makes no difference, still getting the same error.What am I missing?              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-413399">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_413399">
+                                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="changehistoryauthor_413399" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ made changes  - <span class="date" title="03/Dec/12 11:05 PM"><time class="livestamp" datetime="2012-12-03T23:05-0600">03/Dec/12 11:05 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_413399" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Resolution
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Not A Bug
+                                                                                                <span class="hist-value">[    6
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Resolved
+                                                                                                <span class="hist-value">[    5
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Reopened
+                                                                                               <span class="hist-value">[    4
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-314935" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/866?focusedCommentId=314935&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314935" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="commentauthor_314935_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ added a comment  - <span class="commentdate_314935_verbose subText"><span class="date user-tz" title="04/Dec/12 12:41 AM"><time class="livestamp" datetime="2012-12-04T00:41-0600">04/Dec/12 12:41 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Ok finally I have resolved all previous issues and set all parameters now getting following error </p>
+
+<p><span class="error">[INFO]</span> BUILD FAILURE<br>
+<span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+<span class="error">[INFO]</span> Total time: 27.414s<br>
+<span class="error">[INFO]</span> Finished at: Tue Dec 04 11:34:05 PKT 2012<br>
+<span class="error">[INFO]</span> Final Memory: 26M/81M<br>
+<span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+<span class="error">[INFO]</span> o.h.m.e.h.MavenExecutionResultHandler - Build failed with exception(s)<br>
+<span class="error">[INFO]</span> o.h.m.e.h.MavenExecutionResultHandler - <span class="error">[1]</span> org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal org.jbehave:jbehave-maven-plugin:4.0-beta-2:run-stories-as-paths (run-stories-as-paths) on project ABCServices: Failed to run stories as paths<br>
+<span class="error">[DEBUG]</span> Closing connection to remote<br>
+<span class="error">[ERROR]</span> Failed to execute goal org.jbehave:jbehave-maven-plugin:4.0-beta-2:run-stories-as-paths (run-stories-as-paths) on project ABCServices: Failed to run stories as paths: Story path 'org/art/abc/server/test/ABCStory.java' not found by class loader EmbedderClassLoader[urls=<span class="error">[/Users/abc/.hudson/jobs/TestHudson-ABC/workspace/target/test-classes/, /Users/abc/.hudson/jobs/TestHudson-ABC/workspace/target/classes/, SSIOServicesClient-1.0-SNAPSHOT.jar, poi-3.8.jar, cxf-rt-frontend-jaxws-2.5.2.jar, xml-resolver-1.2.jar, asm-3.3.jar, cxf-api-2.5.2.jar, cxf-rt-core-2.5.2.jar, cxf-rt-bindings-soap-2.5.2.jar, cxf-tools-common-2.5.2.jar, cxf-rt-databinding-jaxb-2.5.2.jar, cxf-rt-bindings-xml-2.5.2.jar, cxf-rt-frontend-simple-2.5.2.jar, cxf-rt-ws-addr-2.5.2.jar, cxf-rt-transports-http-2.5.2.jar, cxf-rt-transports-common-2.5.2.jar, cxf-rt-frontend-jaxrs-2.5.0.jar, cxf-common-utilities-2.5.0.jar, jsr311-api-1.1.1.jar, jettison-1.3.jar, jaxb-api-2.1.jar, stax-api-1.0-2.jar, activation-1.1.jar, cxf-bundle-jaxrs-2.5.0.jar, xmlschema-core-2.0.1.jar, woodstox-core-asl-4.1.1.jar, stax2-api-3.1.1.jar, geronimo-stax-api_1.0_spec-1.0.1.jar, geronimo-annotation_1.0_spec-1.1.1.jar, neethi-3.0.1.jar, wsdl4j-1.6.2.jar, geronimo-activation_1.1_spec-1.1.jar, geronimo-javamail_1.4_spec-1.7.1.jar, aopalliance-1.0.jar, spring-asm-3.0.6.RELEASE.jar, commons-logging-1.1.1.jar, jetty-continuation-7.5.3.v20111011.jar, jetty-http-7.5.3.v20111011.jar, jetty-io-7.5.3.v20111011.jar, jetty-util-7.5.3.v20111011.jar, jetty-security-7.5.3.v20111011.jar, slf4j-api-1.6.2.jar, geronimo-servlet_2.5_spec-1.1.2.jar, log4j-1.2.16.jar, gson-1.7.1.jar, jaxb-impl-2.0.3.jar, jsr173_api-1.0.jar, testng-6.5.1.jar, junit-4.10.jar, hamcrest-core-1.1.jar, bsh-2.0b4.jar, jcommander-1.12.jar, snakeyaml-1.6.jar, spring-core-3.1.1.RELEASE.jar, spring-context-3.1.1.RELEASE.jar, spring-web-3.1.1.RELEASE.jar, spring-expression-3.1.1.RELEASE.jar, spring-beans-3.1.1.RELEASE.jar, spring-aop-3.1.1.RELEASE.jar, spring-context-support-3.1.1.RELEASE.jar, spring-tx-3.1.1.RELEASE.jar, spring-orm-3.1.1.RELEASE.jar, spring-jdbc-3.1.1.RELEASE.jar, spring-oxm-3.1.1.RELEASE.jar, commons-lang-2.5.jar, spring-test-3.1.1.RELEASE.jar, commons-httpclient-3.1.jar, commons-codec-1.2.jar, SharedshelfSchema-0.7.jar, xom-1.2.5.jar, xml-apis-1.3.03.jar, xercesImpl-2.8.0.jar, xalan-2.7.0.jar, json-lib-2.4-jdk15.jar, commons-beanutils-1.8.0.jar, commons-collections-3.2.1.jar, ezmorph-1.0.6.jar, VWWebServicesClient-1.0.jar, httpclient-4.2.1.jar, httpcore-4.2.1.jar, httpmime-4.0.1.jar, apache-mime4j-0.6.jar, json-20090211.jar, hibernate-entitymanager-3.5.6-Final.jar, hibernate-core-3.5.6-Final.jar, antlr-2.7.6.jar, dom4j-1.6.1.jar, jta-1.1.jar, hibernate-annotations-3.5.6-Final.jar, hibernate-commons-annotations-3.2.0.Final.jar, cglib-2.2.jar, javassist-3.9.0.GA.jar, hibernate-jpa-2.0-api-1.0.0.Final.jar, morphia-0.99.1-SNAPSHOT.jar, mongo-java-driver-2.10.0.jar, cglib-nodep-2.2.2.jar, jbehave-maven-plugin-4.0-beta-3.jar, jbehave-core-4.0-beta-3.jar, junit-dep-4.8.2.jar, hamcrest-library-1.1.jar, hamcrest-integration-1.1.jar, commons-io-1.4.jar, plexus-utils-2.0.5.jar, freemarker-2.3.16.jar, paranamer-2.4.jar, xstream-1.3.1.jar, xpp3_min-1.1.4c.jar, maven-plugin-api-2.0.11.jar, maven-artifact-2.0.11.jar, maven-project-2.0.11.jar, maven-settings-2.0.11.jar, maven-profile-2.0.11.jar, maven-model-2.0.11.jar, maven-artifact-manager-2.0.11.jar, maven-repository-metadata-2.0.11.jar, wagon-provider-api-1.0-beta-2.jar, maven-plugin-registry-2.0.11.jar, plexus-interpolation-1.1.jar, plexus-container-default-1.0-alpha-9-stable-1.jar, classworlds-1.1-alpha-2.jar, plexus-archiver-1.2.jar, plexus-io-1.0.1.jar, proxytoys-1.0.jar, tuprolog-extensions-2.1.1.jar, tuprolog-2.1.1.jar, xunit-1.9.jar, guice-2.0.1.jar, dtkit-metrics-model-0.8.jar, dtkit-metrics-util-0.8.jar, saxon-9.1.0.8.jar, saxon-9.1.0.8-s9api.jar, saxon-9.1.0.8-dom.jar, dtkit-metrics-hudson-api-0.8.jar, dtkit-junit-model-0.8.jar, dtkit-default-junit-hudson-0.9.jar, dtkit-default-junit-0.9.jar]</span>,parent=ClassRealm<span class="error">[plugin&gt;org.jbehave:jbehave-maven-plugin:4.0-beta-2, parent: sun.misc.Launcher$AppClassLoader@5ab8df17]</span>] -&gt; <span class="error">[Help 1]</span></p>
+
+<p>please tell me what to do to resolve this issue? .. I have this file 'org/art/abc/server/test/ABCStory.java' in my filesystem at exat position.</p>
+
+<p>My Pom.xml entry is </p>
+
+<p>&lt;plugin&gt;<br>
+				&lt;groupId&gt;org.jbehave&lt;/groupId&gt;<br>
+				&lt;artifactId&gt;jbehave-maven-plugin&lt;/artifactId&gt;<br>
+				&lt;version&gt;4.0-beta-2&lt;/version&gt;<br>
+				&lt;dependencies&gt;<br>
+&lt;dependency&gt;<br>
+&lt;groupId&gt;log4j&lt;/groupId&gt;<br>
+&lt;artifactId&gt;log4j&lt;/artifactId&gt;<br>
+&lt;version&gt;1.2.16&lt;/version&gt;<br>
+&lt;/dependency&gt;<br>
+&lt;/dependencies&gt;<br>
+				&lt;executions&gt;<br>
+						&lt;execution&gt;</p>
+
+<p>							&lt;id&gt;run-stories-as-paths&lt;/id&gt;</p>
+
+<p>							&lt;phase&gt;integration-test&lt;/phase&gt;</p>
+
+<p>							&lt;configuration&gt;</p>
+
+<p>								&lt;Includes&gt;<br>
+									&lt;Include&gt;**/ABCStory.java<br>
+									&lt;/Include&gt;</p>
+
+<p>								&lt;/Includes&gt;<br>
+								 &lt;excludes&gt;<br>
+									&lt;exclude&gt;*<b>/.svn/</b>*&lt;/exclude&gt;<br>
+									&lt;exclude&gt;**/ABCSteps.java<br>
+									&lt;/exclude&gt;</p>
+
+<p>									&lt;/excludes&gt;</p>
+
+
+<p>								&lt;scope&gt;test&lt;/scope&gt;<br>
+								&lt;ignoreFailureInStories&gt;false&lt;/ignoreFailureInStories&gt;<br>
+								&lt;ignoreFailureInView&gt;false&lt;/ignoreFailureInView&gt;</p>
+
+<p>							&lt;/configuration&gt;</p>
+
+<p>							&lt;goals&gt;<br>
+								&lt;goal&gt;run-stories-as-paths&lt;/goal&gt;</p>
+
+<p>							&lt;/goals&gt;<br>
+						&lt;/execution&gt;</p>
+
+<p>					&lt;/executions&gt;<br>
+			&lt;/plugin&gt;</p>
+
+
+
+<p>and Story file looks like</p>
+
+<p>public class ABCStory extends JUnitStories {</p>
+
+
+<p>	@Override</p>
+
+<p>	public Configuration configuration() </p>
+{
+		return new MostUsefulConfiguration()
+				.useStoryLoader(new LoadFromClasspath(this.getClass().getClassLoader()))
+				.useStoryReporterBuilder(
+						new StoryReporterBuilder().withDefaultFormats()
+								.withFormats(Format.CONSOLE, Format.HTML));
+	}
+
+<p>	@Override    <br>
+	protected List&lt;String&gt; storyPaths() </p>
+{        
+	    return new StoryFinder().findPaths(CodeLocations.codeLocationFromClass(this.getClass()).getFile(), Arrays.asList("**/*.story","**/*story.*"),Arrays.asList("**/all-wcprops"));    
+	}
+
+
+<p>	// Here we specify the steps classes<br>
+	@Override</p>
+
+<p>	public List&lt;CandidateSteps&gt; candidateSteps() </p>
+{
+		
+		return new InstanceStepsFactory(configuration(), new ABCSteps())
+				.createCandidateSteps();
+	}
+
+
+<p>	@Override<br>
+	@Test<br>
+	public void run() {<br>
+		try </p>
+{
+			super.run();
+		}
+<p> catch (Throwable e) </p>
+{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+<p>	}<br>
+}</p>
+
+
+<p>Please reply. All the help would be appreciated.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="commentauthor_314935_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ added a comment  - <span class="commentdate_314935_concise subText"><span class="date user-tz" title="04/Dec/12 12:41 AM"><time class="livestamp" datetime="2012-12-04T00:41-0600">04/Dec/12 12:41 AM</time></span></span>                    Ok finally I have resolved all previous issues and set all parameters now getting following error  
+
+  [INFO]  BUILD FAILURE 
+ [INFO]  ------------------------------------------------------------------------ 
+ [INFO]  Total time: 27.414s 
+ [INFO]  Finished at: Tue Dec 04 11:34:05 PKT 2012 
+ [INFO]  Final Memory: 26M/81M 
+ [INFO]  ------------------------------------------------------------------------ 
+ [INFO]  o.h.m.e.h.MavenExecutionResultHandler - Build failed with exception(s) 
+ [INFO]  o.h.m.e.h.MavenExecutionResultHandler -  [1]  org.apache.maven.lifecycle.LifecycleExecutionException: Failed to execute goal org.jbehave:jbehave-maven-plugin:4.0-beta-2:run-stories-as-paths (run-stories-as-paths) on project ABCServices: Failed to run stories as paths 
+ [DEBUG]  Closing connection to remote 
+ [ERROR]  Failed to execute goal org.jbehave:jbehave-maven-plugin:4.0-beta-2:run-stories-as-paths (run-stories-as-paths) on project ABCServices: Failed to run stories as paths: Story path 'org/art/abc/server/test/ABCStory.java' not found by class loader EmbedderClassLoader[urls= [/Users/abc/.hudson/jobs/TestHudson-ABC/workspace/target/test-classes/, /Users/abc/.hudson/jobs/TestHudson-ABC/workspace/target/classes/, SSIOServicesClient-1.0-SNAPSHOT.jar, poi-3.8.jar, cxf-rt-frontend-jaxws-2.5.2.jar, xml-resolver-1.2.jar, asm-3.3.jar, cxf-api-2.5.2.jar, cxf-rt-core-2.5.2.jar, cxf-rt-bindings-soap-2.5.2.jar, cxf-tools-common-2.5.2.jar, cxf-rt-databinding-jaxb-2.5.2.jar, cxf-rt-bindings-xml-2.5.2.jar, cxf-rt-frontend-simple-2.5.2.jar, cxf-rt-ws-addr-2.5.2.jar, cxf-rt-transports-http-2.5.2.jar, cxf-rt-transports-common-2.5.2.jar, cxf-rt-frontend-jaxrs-2.5.0.jar, cxf-common-utilities-2.5.0.jar, jsr311-api-1.1.1.jar, jettison-1.3.jar, jaxb-api-2.1.jar, stax-api-1.0-2.jar, activation-1.1.jar, cxf-bundle-jaxrs-2.5.0.jar, xmlschema-core-2.0.1.jar, woodstox-core-asl-4.1.1.jar, stax2-api-3.1.1.jar, geronimo-stax-api_1.0_spec-1.0.1.jar, geronimo-annotation_1.0_spec-1.1.1.jar, neethi-3.0.1.jar, wsdl4j-1.6.2.jar, geronimo-activation_1.1_spec-1.1.jar, geronimo-javamail_1.4_spec-1.7.1.jar, aopalliance-1.0.jar, spring-asm-3.0.6.RELEASE.jar, commons-logging-1.1.1.jar, jetty-continuation-7.5.3.v20111011.jar, jetty-http-7.5.3.v20111011.jar, jetty-io-7.5.3.v20111011.jar, jetty-util-7.5.3.v20111011.jar, jetty-security-7.5.3.v20111011.jar, slf4j-api-1.6.2.jar, geronimo-servlet_2.5_spec-1.1.2.jar, log4j-1.2.16.jar, gson-1.7.1.jar, jaxb-impl-2.0.3.jar, jsr173_api-1.0.jar, testng-6.5.1.jar, junit-4.10.jar, hamcrest-core-1.1.jar, bsh-2.0b4.jar, jcommander-1.12.jar, snakeyaml-1.6.jar, spring-core-3.1.1.RELEASE.jar, spring-context-3.1.1.RELEASE.jar, spring-web-3.1.1.RELEASE.jar, spring-expression-3.1.1.RELEASE.jar, spring-beans-3.1.1.RELEASE.jar, spring-aop-3.1.1.RELEASE.jar, spring-context-support-3.1.1.RELEASE.jar, spring-tx-3.1.1.RELEASE.jar, spring-orm-3.1.1.RELEASE.jar, spring-jdbc-3.1.1.RELEASE.jar, spring-oxm-3.1.1.RELEASE.jar, commons-lang-2.5.jar, spring-test-3.1.1.RELEASE.jar, commons-httpclient-3.1.jar, commons-codec-1.2.jar, SharedshelfSchema-0.7.jar, xom-1.2.5.jar, xml-apis-1.3.03.jar, xercesImpl-2.8.0.jar, xalan-2.7.0.jar, json-lib-2.4-jdk15.jar, commons-beanutils-1.8.0.jar, commons-collections-3.2.1.jar, ezmorph-1.0.6.jar, VWWebServicesClient-1.0.jar, httpclient-4.2.1.jar, httpcore-4.2.1.jar, httpmime-4.0.1.jar, apache-mime4j-0.6.jar, json-20090211.jar, hibernate-entitymanager-3.5.6-Final.jar, hibernate-core-3.5.6-Final.jar, antlr-2.7.6.jar, dom4j-1.6.1.jar, jta-1.1.jar, hibernate-annotations-3.5.6-Final.jar, hibernate-commons-annotations-3.2.0.Final.jar, cglib-2.2.jar, javassist-3.9.0.GA.jar, hibernate-jpa-2.0-api-1.0.0.Final.jar, morphia-0.99.1-SNAPSHOT.jar, mongo-java-driver-2.10.0.jar, cglib-nodep-2.2.2.jar, jbehave-maven-plugin-4.0-beta-3.jar, jbehave-core-4.0-beta-3.jar, junit-dep-4.8.2.jar, hamcrest-library-1.1.jar, hamcrest-integration-1.1.jar, commons-io-1.4.jar, plexus-utils-2.0.5.jar, freemarker-2.3.16.jar, paranamer-2.4.jar, xstream-1.3.1.jar, xpp3_min-1.1.4c.jar, maven-plugin-api-2.0.11.jar, maven-artifact-2.0.11.jar, maven-project-2.0.11.jar, maven-settings-2.0.11.jar, maven-profile-2.0.11.jar, maven-model-2.0.11.jar, maven-artifact-manager-2.0.11.jar, maven-repository-metadata-2.0.11.jar, wagon-provider-api-1.0-beta-2.jar, maven-plugin-registry-2.0.11.jar, plexus-interpolation-1.1.jar, plexus-container-default-1.0-alpha-9-stable-1.jar, classworlds-1.1-alpha-2.jar, plexus-archiver-1.2.jar, plexus-io-1.0.1.jar, proxytoys-1.0.jar, tuprolog-extensions-2.1.1.jar, tuprolog-2.1.1.jar, xunit-1.9.jar, guice-2.0.1.jar, dtkit-metrics-model-0.8.jar, dtkit-metrics-util-0.8.jar, saxon-9.1.0.8.jar, saxon-9.1.0.8-s9api.jar, saxon-9.1.0.8-dom.jar, dtkit-metrics-hudson-api-0.8.jar, dtkit-junit-model-0.8.jar, dtkit-default-junit-hudson-0.9.jar, dtkit-default-junit-0.9.jar] ,parent=ClassRealm [plugin&gt;org.jbehave:jbehave-maven-plugin:4.0-beta-2, parent: sun.misc.Launcher$AppClassLoader@5ab8df17] ] -&gt;  [Help 1]  
+
+ please tell me what to do to resolve this issue? .. I have this file 'org/art/abc/server/test/ABCStory.java' in my filesystem at exat position. 
+
+ My Pom.xml entry is  
+
+ &lt;plugin&gt; 
+				&lt;groupId&gt;org.jbehave&lt;/groupId&gt; 
+				&lt;artifactId&gt;jbehave-maven-plugin&lt;/artifactId&gt; 
+				&lt;version&gt;4.0-beta-2&lt;/version&gt; 
+				&lt;dependencies&gt; 
+&lt;dependency&gt; 
+&lt;groupId&gt;log4j&lt;/groupId&gt; 
+&lt;artifactId&gt;log4j&lt;/artifactId&gt; 
+&lt;version&gt;1.2.16&lt;/version&gt; 
+&lt;/dependency&gt; 
+&lt;/dependencies&gt; 
+				&lt;executions&gt; 
+						&lt;execution&gt; 
+
+ 							&lt;id&gt;run-stories-as-paths&lt;/id&gt; 
+
+ 							&lt;phase&gt;integration-test&lt;/phase&gt; 
+
+ 							&lt;configuration&gt; 
+
+ 								&lt;Includes&gt; 
+									&lt;Include&gt;**/ABCStory.java 
+									&lt;/Include&gt; 
+
+ 								&lt;/Includes&gt; 
+								 &lt;excludes&gt; 
+									&lt;exclude&gt;* /.svn/ *&lt;/exclude&gt; 
+									&lt;exclude&gt;**/ABCSteps.java 
+									&lt;/exclude&gt; 
+
+ 									&lt;/excludes&gt; 
+
+
+ 								&lt;scope&gt;test&lt;/scope&gt; 
+								&lt;ignoreFailureInStories&gt;false&lt;/ignoreFailureInStories&gt; 
+								&lt;ignoreFailureInView&gt;false&lt;/ignoreFailureInView&gt; 
+
+ 							&lt;/configuration&gt; 
+
+ 							&lt;goals&gt; 
+								&lt;goal&gt;run-stories-as-paths&lt;/goal&gt; 
+
+ 							&lt;/goals&gt; 
+						&lt;/execution&gt; 
+
+ 					&lt;/executions&gt; 
+			&lt;/plugin&gt; 
+
+
+
+ and Story file looks like 
+
+ public class ABCStory extends JUnitStories { 
+
+
+ 	@Override 
+
+ 	public Configuration configuration()  
+{
+		return new MostUsefulConfiguration()
+				.useStoryLoader(new LoadFromClasspath(this.getClass().getClassLoader()))
+				.useStoryReporterBuilder(
+						new StoryReporterBuilder().withDefaultFormats()
+								.withFormats(Format.CONSOLE, Format.HTML));
+	}
+
+ 	@Override     
+	protected List&lt;String&gt; storyPaths()  
+{        
+	    return new StoryFinder().findPaths(CodeLocations.codeLocationFromClass(this.getClass()).getFile(), Arrays.asList("**/*.story","**/*story.*"),Arrays.asList("**/all-wcprops"));    
+	}
+
+
+ 	// Here we specify the steps classes 
+	@Override 
+
+ 	public List&lt;CandidateSteps&gt; candidateSteps()  
+{
+		
+		return new InstanceStepsFactory(configuration(), new ABCSteps())
+				.createCandidateSteps();
+	}
+
+
+ 	@Override 
+	@Test 
+	public void run() { 
+		try  
+{
+			super.run();
+		}
+  catch (Throwable e)  
+{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+ 	} 
+} 
+
+
+ Please reply. All the help would be appreciated.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-314943" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/866?focusedCommentId=314943&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314943" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_314943_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_314943_verbose subText"><span class="date user-tz" title="04/Dec/12 2:13 AM"><time class="livestamp" datetime="2012-12-04T02:13-0600">04/Dec/12 2:13 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>You're looking for the wrong story.  The story path needed is to the textual path, not the Java class that contains the configuration.  </p>
+
+<p>You should consider an archetype to get you started:</p>
+
+<p><a href="http://jbehave.org/reference/stable/archetypes.html" class="external-link" rel="nofollow">http://jbehave.org/reference/stable/archetypes.html</a></p>
+
+<p>In any case, please use the user mailing list to discuss issues: </p>
+
+<p><a href="http://jbehave.org/mailing-lists.html" class="external-link" rel="nofollow">http://jbehave.org/mailing-lists.html</a></p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_314943_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_314943_concise subText"><span class="date user-tz" title="04/Dec/12 2:13 AM"><time class="livestamp" datetime="2012-12-04T02:13-0600">04/Dec/12 2:13 AM</time></span></span>                    You're looking for the wrong story.  The story path needed is to the textual path, not the Java class that contains the configuration.   
+
+ You should consider an archetype to get you started: 
+
+  http://jbehave.org/reference/stable/archetypes.html  
+
+ In any case, please use the user mailing list to discuss issues:  
+
+  http://jbehave.org/mailing-lists.html               </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-413409">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_413409">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_413409" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="04/Dec/12 2:13 AM"><time class="livestamp" datetime="2012-12-04T02:13-0600">04/Dec/12 2:13 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_413409" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Reopened
+                                                                                                <span class="hist-value">[    4
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Resolved
+                                                                                               <span class="hist-value">[    5
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Resolution
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Not A Bug
+                                                                                               <span class="hist-value">[    6
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-314944" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/866?focusedCommentId=314944&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314944" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="commentauthor_314944_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ added a comment  - <span class="commentdate_314944_verbose subText"><span class="date user-tz" title="04/Dec/12 2:15 AM"><time class="livestamp" datetime="2012-12-04T02:15-0600">04/Dec/12 2:15 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I also tried Abc.story instead of AbcStory.Java but got same error.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="javadeveloper" id="commentauthor_314944_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=javadeveloper"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Sobia Ali</a>
+ added a comment  - <span class="commentdate_314944_concise subText"><span class="date user-tz" title="04/Dec/12 2:15 AM"><time class="livestamp" datetime="2012-12-04T02:15-0600">04/Dec/12 2:15 AM</time></span></span>                    I also tried Abc.story instead of AbcStory.Java but got same error.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-314952" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/866?focusedCommentId=314952&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314952" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_314952_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_314952_verbose subText"><span class="date user-tz" title="04/Dec/12 3:17 AM"><time class="livestamp" datetime="2012-12-04T03:17-0600">04/Dec/12 3:17 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Have you tried the archetypes?  They're meant precisely to help you get started correctly.</p>
+
+<p>If you can't get it working, please send a simple sample mvn project to the user list reproducing the problem.  </p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_314952_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_314952_concise subText"><span class="date user-tz" title="04/Dec/12 3:17 AM"><time class="livestamp" datetime="2012-12-04T03:17-0600">04/Dec/12 3:17 AM</time></span></span>                    Have you tried the archetypes?  They're meant precisely to help you get started correctly. 
+
+ If you can't get it working, please send a simple sample mvn project to the user list reproducing the problem.   
+             </div>
+        </div>
+    </div>
+</div>
+                             </div>
+    </div>
+</div></div></div><div id="viewissuesidebar" class="aui-item issue-side-column"><div id="peoplemodule" class="module toggle-wrap"><div id="peoplemodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">People</h2></div><div class="mod-content"><ul class="item-details" id="peopledetails">
+    <li class="people-details">
+                <dl>
+            <dt>Assignee:</dt>
+            <dd>
+                <span id="assignee-val" class="view-issue-field">
+
+    <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-2.png"></span></span>
+    Unassigned
+</span>
+                            </dd>
+        </dl>
+                        <dl>
+            <dt>Reporter:</dt>
+            <dd>
+                <span id="reporter-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_reporter_javadeveloper" rel="javadeveloper">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-3.png"></span></span>
+            Sobia Ali
+        </span>
+    </span>
+            </dd>
+        </dl>
+                    </li>
+</ul>
+    <ul class="item-details">
+        <li>
+                            <dl>
+                    <dt>Votes:</dt>
+                    <dd>
+                                                                            <span id="vote-data" class="aui-badge vote-state-off">0</span>
+                        
+                                                                                                        <span id="vote-label" title="You have to be logged in to vote for an issue.">Vote for this issue</span>
+                                            </dd>
+                </dl>
+                                        <dl>
+                    <dt>Watchers:</dt>
+                    <dd>
+                                                                        
+                                                                            <span id="watcher-data" class="aui-badge watch-state-off">3</span>
+                        
+                                                                                <span id="watch-label" title="You have to be logged in to watch an issue.">Start watching this issue</span>
+                                            </dd>
+                </dl>
+                    </li>
+    </ul>
+</div></div><div id="datesmodule" class="module toggle-wrap"><div id="datesmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Dates</h2></div><div class="mod-content"><ul class="item-details">
+    <li>
+            <dl class="dates">
+            <dt>Created:</dt>
+            <dd class="date user-tz" title="03/Dec/12 4:48 AM">
+
+                <span data-name="Created" id="create-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-12-03T04:48-0600">03/Dec/12 4:48 AM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Updated:</dt>
+            <dd class="date user-tz" title="04/Dec/12 3:17 AM">
+
+                <span data-name="Updated" id="updated-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-12-04T03:17-0600">04/Dec/12 3:17 AM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Resolved:</dt>
+            <dd class="date user-tz" title="04/Dec/12 2:13 AM">
+
+                <span data-name="Resolved" id="resolved-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-12-04T02:13-0600">04/Dec/12 2:13 AM</time>                                                             </span>
+            </dd>
+        </dl>
+        </li>
+</ul>
+</div></div></div></div>
+                    </div>
+                </div>
+                        </div>
+
+    <fieldset class="hidden parameters">
+        <input title="autocompleteEnabled" value="true" type="hidden">
+    </fieldset>
+    
+    </section>
+    <footer id="footer" role="contentinfo">
+        
+        
+
+
+
+<div class="footer-body">
+    <ul>
+        <li>
+                        <a href="http://www.atlassian.com/software/jira">Atlassian JIRA</a>
+
+                                                    
+                        
+            <span id="footer-build-information">(v6.1.6#6162-<span title="7af547ce7c84dbb7c1e345a65437ed7b85efffa2" data-commit-id="7af547ce7c84dbb7c1e345a65437ed7b85efffa2}">sha1:7af547c</span>)</span>
+        </li>
+        <li>
+            <a id="about-link" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+        </li>
+        <li>
+                                    <a id="footer-report-problem-link" href="https://jira.codehaus.org/secure/CreateIssue%21default.jspa">Report a problem</a>
+        </li>
+    </ul>
+            <ul>
+            <li class="licensemessage">
+                                    Powered by a free Atlassian <a href="http://www.atlassian.com/software/jira">JIRA</a> open source license for Codehaus. Try JIRA - <a href="http://www.atlassian.com/software/jira">bug tracking software</a> for <i>your</i> team.
+
+                            </li>
+        </ul>
+    </div>
+
+<form id="jira_request_timing_info" class="dont-default-focus">
+	<fieldset class="parameters hidden">
+
+
+
+
+		<input title="jira.session.expiry.in.mins" value="299" type="hidden">
+
+	</fieldset>
+</form>
+<!--
+	                 
+	          
+	               
+	                 
+	        CONCURRENT REQUESTS : 4
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input title="loggedInUser" value="" type="hidden">
+    <input title="ajaxTimeout" value="The call to the JIRA server did not complete within the timeout period.  We are unsure of the result of this operation." type="hidden">
+    <input title="JiraVersion" value="6.1.6" type="hidden">
+    <input title="ajaxUnauthorised" value="You are not authorised to perform this operation.  Please log in." type="hidden">
+    <input title="baseURL" value="https://jira.codehaus.org:443" type="hidden">
+    <input title="ajaxCommsError" value="The JIRA server could not be contacted.  This may be a temporary glitch or the server may be down." type="hidden">
+    <input title="ajaxServerError" value="The JIRA server was contacted but has returned an error response. We are unsure of the result of this operation." type="hidden">
+    <input title="ajaxErrorCloseDialog" value="Close this dialog and press refresh in your browser" type="hidden">
+    <input title="ajaxErrorDialogHeading" value="Communications Breakdown" type="hidden">
+
+    <input title="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost." type="hidden">
+    <input title="dirtyDialogMessage" value="You have entered new data in this dialog. If you navigate away from this dialog without first saving your data, the changes will be lost. Click cancel to return to the dialog." type="hidden">
+    <input title="keyType" value="Type" type="hidden">
+    <input title="keyThen" value="then" type="hidden">
+    <input title="dblClickToExpand" value="Double click to expand" type="hidden">
+    <input title="actions" value="Actions" type="hidden">
+    <input title="removeItem" value="Remove" type="hidden">
+    <input title="workflow" value="Workflow" type="hidden">
+    <input title="labelNew" value="New Label" type="hidden">
+    <input title="issueActionsHint" value="Begin typing for available operations or press down to see all" type="hidden">
+    <input title="closelink" value="Close" type="hidden">
+    <input title="dotOperations" value="Operations" type="hidden">
+    <input title="dotLoading" value="Loading..." type="hidden">
+    <input title="frotherSuggestions" value="Suggestions" type="hidden">
+    <input title="frotherNomatches" value="No Matches" type="hidden">
+    <input title="multiselectVersionsError" value="{0} is not a valid version." type="hidden">
+    <input title="multiselectComponentsError" value="{0} is not a valid component." type="hidden">
+    <input title="multiselectGenericError" value="The value {0} is invalid." type="hidden">
+</fieldset>
+
+    </footer>
+</div>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:void(0);" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:void(0);" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div class="navigator-sidebar collapsed ui-popout ui-popout-detached ui-popout-collapsed" id="navigator-sidebar"><a class="toggle-filter-panel" href="#" title="Dock the filters panel ([)"></a></div><div style="display: none;" class="jira-dialog box-shadow" id="edit-issue-dialog"><div class="jira-dialog-content"></div></div><div style="display: none;" class="jira-dialog box-shadow" id="create-subtask-dialog"><div class="jira-dialog-content"></div></div></body></html>

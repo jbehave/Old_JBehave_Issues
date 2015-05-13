@@ -1,0 +1,1129 @@
+<!DOCTYPE html><html class="mozilla"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>[JBEHAVE-573] Step Marked as PENDING without preceding FAILED step - silent failure??? - jira.codehaus.org</title>
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<link rel="shortcut icon" href="index_files/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://jira.codehaus.org/osd.jsp" title="[JBEHAVE-573] Step Marked as PENDING without preceding FAILED step - silent failure??? - jira.codehaus.org">
+
+    
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+<link type="text/css" rel="stylesheet" href="index_files/batch.css" media="all">
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="index_files/batch-1.css" media="all">
+<script type="text/javascript" src="index_files/batch.js"></script><style type="text/css"></style>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="index_files/batch-1.js"></script>
+<script type="text/javascript" src="index_files/jira.webresources_calendar-en.js"></script>
+<script type="text/javascript" src="index_files/com.atlassian.administraticksearch-webresources.js"></script>
+
+<script type="text/javascript" src="index_files/shortcuts.js"></script>
+
+
+    
+    
+    
+    <meta name="decorator" content="atl.general">
+    <meta id="isNavigator" name="isNavigator" content="true">
+    <meta name="ajs-user.search.mode" content="basic">
+    <meta name="ajs-issue-search-help-title" content="Searching for Issues">
+    <meta name="ajs-issue-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Searching+for+Issues">
+    <meta name="ajs-advanced-search-help-title" content="Performing Advanced Searches">
+    <meta name="ajs-advanced-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Advanced+Searching">
+    
+</head>
+<body data-aui-version="5.1.8" id="jira" class="aui-layout aui-theme-default ka ajax-issue-search-and-view page-type-navigator navigator-issue-only" data-version="6.1.6">
+<div id="page">
+    <header id="header" style="display:none" role="banner">
+        
+
+
+
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+
+<fieldset class="parameters hidden dont-default-focus">
+    <input title="tzdetect.pref.tzid" value="America/Chicago" type="hidden">
+    <input title="tzdetect.pref.tzname" value="(GMT-06:00) Chicago" type="hidden">
+    <input title="tzdetect.pref.tzoffset" value="(GMT-06:00)" type="hidden">
+    <input title="tzdetect.pref.tzdst" value="true" type="hidden">
+    <input title="tzdetect.pref.nothanks" value="" type="hidden">
+</fieldset>
+<nav data-aui-responsive="true" class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class="aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-haspopup="true" tabindex="0"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link nav-link-local"><a href="https://jira.codehaus.org/" class="aui-dropdown2-radio interactive checked" title="https://jira.codehaus.org/"><span class="nav-link-label">jira.codehaus.org</span></a></li><li class="nav-link"><a href="http://jira.sonarsource.com/" class="aui-dropdown2-radio interactive" title="http://jira.sonarsource.com/"><span class="nav-link-label">SonarSource</span></a></li><li class="nav-link"><a href="http://docs.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://docs.codehaus.org/"><span class="nav-link-label">Codehaus</span></a></li><li class="nav-link"><a href="http://xircles.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://xircles.codehaus.org"><span class="nav-link-label">Xircles</span></a></li></ul></div></div><script><!--
+/* Script removed by snapshot save */
+--></script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://jira.codehaus.org/secure/MyJiraHome.jspa"><img data-aui-responsive-header-index="0" src="urn:download-error:http://www.codehaus.org/codehaus-small.gif" alt="jira.codehaus.org"></a></h1><ul style="width: auto;" class="aui-nav">
+
+
+
+
+<li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/Dashboard.jspa" id="home_link" accesskey="d" title="View and manage your dashboards" aria-haspopup="true" aria-owns="home_link-content">Dashboards</a><div id="home_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="home_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="/Old_JBehave_Issues/index.html" id="browse_link" accesskey="p" title="View recent projects and browse a list of projects" aria-haspopup="true" aria-owns="browse_link-content">Projects</a><div id="browse_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="browse_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/IssueNavigator.jspa" id="find_link" accesskey="i" title="Search for issues and view recent issues" aria-haspopup="true" aria-owns="find_link-content">Issues</a><div id="find_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="find_link"></div></li>
+<li style="display: none;"><a id="aui-responsive-header-dropdown-trigger-0" class="aui-dropdown2-trigger" aria-owns="aui-responsive-header-dropdown-content-0" aria-haspopup="true" href="#">More<span class="icon aui-icon-dropdown"></span></a><div id="aui-responsive-header-dropdown-content-0" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul id="aui-responsive-header-dropdown-list-0"></ul></div></div></li></ul></div><div class="aui-header-secondary"><ul class="aui-nav"><li>
+    <form action="https://jira.codehaus.org/secure/QuickSearch.jspa" method="post" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" class="search" title="Quick Search ( Type '/' )" placeholder="Quick Search" name="searchString" accesskey="q" type="text">
+        <input class="hidden" value="Search" type="submit">
+    </form>
+</li>
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger" aria-haspopup="true" aria-owns="system-help-menu-content" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank" title="Help"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a id="view_help" class="interactive" title="Goto the online documentation for JIRA" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank">Online Help</a>
+                                </li>
+                                                            <li>
+                                    <a id="keyshortscuthelp" class="interactive" title="Get more information about JIRA's Keyboard Shortcuts ( Type '?' )" href="https://jira.codehaus.org/secure/ViewKeyboardShortcuts%21default.jspa" target="_blank">Keyboard Shortcuts</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_about" class="interactive" title="Get more information about JIRA" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_credits" class="interactive" title="See who did what" href="https://jira.codehaus.org/secure/JiraCreditsPage%21default.jspa" target="_blank">JIRA Credits</a>
+                                </li>
+                                                            <li>
+                                    <a id="whats-new-menu-link" class="interactive" href="https://docs.atlassian.com/jira/docs-061/whatsnew/iframe">What?s New</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a class="aui-nav-link login-link" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-573">Log In</a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <div style="position: absolute; right: 20em; top: -2em">
+  <a href="https://xircles.codehaus.org/signup">Signup</a>
+</div>
+</div>
+
+
+    <section id="content" role="main">
+        
+    
+
+    <div class="issue-container ">
+                                    <div id="issue-content" class="issue-edit-form">
+                    <header id="stalker" class="issue-header js-stalker">
+                        <div class="issue-header-content"><header class="aui-page-header"><div class="aui-page-header-inner"><div class="aui-page-header-image"><span id="10680" class="aui-avatar aui-avatar-large aui-avatar-project"><span class="aui-avatar-inner"><img id="project-avatar" alt="JBehave" src="index_files/projectavatar.png"></span></span></div><!-- .aui-page-header-image --><div class="aui-page-header-main"><ol class="aui-nav aui-nav-breadcrumbs"><li><a id="project-name-val" href="/Old_JBehave_Issues/index.html">JBehave</a></li><li><a class="issue-link" data-issue-key="JBEHAVE-573" href="#" id="key-val" rel="128023">JBEHAVE-573</a></li></ol><h1 id="summary-val">Step Marked as PENDING without preceding FAILED step - silent failure???</h1></div><!-- .aui-page-header-main --><div class="aui-page-header-actions"><div id="issue-header-pager"></div></div><!-- .aui-page-header-actions --></div><!-- .aui-page-header-inner --></header><!-- .aui-page-header --><div class="command-bar"><div class="ops-cont"><div class="ops-menus aui-toolbar"><div class="toolbar-split toolbar-split-left"><ul id="opsbar-ops-login-lnk_container" class="toolbar-group pluggable-ops"><li class="toolbar-item"><a id="ops-login-lnk" style="display:none" title="Log In" class="toolbar-trigger" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-573"><span class="trigger-label">Log In</span></a></li></ul><ul id="opsbar-opsbar-operations" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-transitions" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-admin" class="toolbar-group pluggable-ops"></ul></div><div class="toolbar-split toolbar-split-right"><ul id="opsbar-jira.issue.tools" style="display:none" class="toolbar-group pluggable-ops"><li class="toolbar-item toolbar-dropdown"><div><a href="#" id="viewissue-export" title="Export this issue in another format" data-hide-on-scroll=".split-view .issue-container" data-contain-to-window="true" class="toolbar-trigger  js-default-dropdown"><span class="icon icon-export viewissue-export"></span> <span class="dropdown-text">Export</span><span class="icon drop-menu"></span></a><div class="aui-list hidden"><ul class="aui-list-section aui-first aui-last"><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-xml/JBEHAVE-573/JBEHAVE-573.xml" class="aui-list-item-link" id="jira.issueviews:issue-xml"><span class="trigger-label">XML</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-word/JBEHAVE-573/JBEHAVE-573.doc" class="aui-list-item-link" id="jira.issueviews:issue-word"><span class="trigger-label">Word</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-html/JBEHAVE-573/JBEHAVE-573.html" class="aui-list-item-link" id="jira.issueviews:issue-html"><span class="trigger-label">Printable</span></a></li></ul></div></div></li></ul></div></div></div></div></div>
+                    </header>
+                    <div class="issue-body-content">
+                        <div class="aui-group issue-body"><div class="aui-item issue-main-column"><div id="details-module" class="module toggle-wrap"><div id="details-module_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Details</h2></div><div class="mod-content">
+
+
+
+
+<ul id="issuedetails" class="property-list two-cols">
+    <li class="item">
+        <div class="wrap">
+            <strong class="name">Type:</strong>
+            <span id="type-val" class="value">
+                                <img alt="Bug" src="index_files/bug.png" title="Bug - A problem which impairs or prevents the functions of the product." height="16" width="16"> Bug
+            </span>
+        </div>
+    </li>
+    <li class="item item-right">
+        <div class="wrap">
+            <strong class="name">Status:</strong>
+            <span id="status-val" class="value">
+                                
+
+<img src="index_files/resolved.png" alt="Resolved" title="Resolved - A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed." height="16" width="16"> Resolved
+            </span>
+                    </div>
+    </li>
+            <li class="item">
+            <div class="wrap">
+                <strong class="name">Priority:</strong>
+                <span id="priority-val" class="value">
+                                        <img alt="Major" src="index_files/major.png" title="Major - Major loss of function." height="16" width="16"> Major
+                </span>
+            </div>
+        </li>
+                                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Resolution:</strong>
+                <span id="resolution-val" class="value resolved">
+                                     Not A Bug
+                                </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Affects Version/s:</strong>
+                <span id="versions-val" class="value">
+                                            None
+                                    </span>
+            </div>
+        </li>
+                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Fix Version/s:</strong>
+                <span id="fixfor-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="fixVersions-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/fixforversion/18964" title="3.7.4 ">3.7.4</a>,                                                            <a href="/Old_JBehave_Issues/index.html/fixforversion/19104" title="3.8 ">3.8</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Component/s:</strong>
+                <span id="components-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="components-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/component/11086" title="Core ">Core</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                    <li class="item full-width">
+            <div class="wrap" id="wrap-labels">
+                <strong class="name">Labels:</strong>
+                    <div class="labels-wrap value">
+            <span class="labels" id="labels-128023-value">None</span>
+                </div>
+            </div>
+        </li>
+        </ul>
+
+<div id="customfieldmodule">
+    <div class="aui-tabs horizontal-tabs" id="customfield-tabs">
+                    <div id="customfield-panel-1" class="tabs-pane active-pane">
+                        <ul class="property-list">
+                                                <li id="rowForcustomfield_10210" class="item">
+                        <div class="wrap">
+                            <strong title="Number of attachments " class="name">Number of attachments :</strong>
+                            <div id="customfield_10210-val" class="value type-attachments" data-fieldtype="attachments" data-fieldtypecompletekey="com.atlassian.jira.toolkit:attachments">
+                                    0
+
+                            </div>
+                        </div>
+                    </li>
+                                        </ul>
+        </div>
+        </div></div>
+</div></div><div id="descriptionmodule" class="module toggle-wrap"><div id="descriptionmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Description</h2></div><div class="mod-content"><div id="description-val" class="field-ignore-highlight">
+    <div class="user-content-block">
+                    <p>In a pull of master today, but using that JBehave-Core with client code, we have a case where the scenario output looks like :-</p>
+
+<p>Given foo<br>
+When bar<br>
+And I never get to this line (PENDING)<br>
+Then it does not matter about this line (NOT PERFORMED)</p>
+
+<p>We can 100% assert that "I never get to this line" matches a single well defined step, with no sound-alikes.</p>
+
+<p>We can't see a FAILED line, which is our usual experience with JBehave</p>
+
+<p>We can see a Selenium screenshot, but we don't know what that pertains to, and it does not show anything that looks like an error. We're not sure why it was produced.</p>
+
+            </div>
+</div>
+</div></div><div id="activitymodule" class="module toggle-wrap"><div id="activitymodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Activity</h2></div><div class="mod-content">
+
+
+
+
+
+
+
+
+
+
+    <div class="tabwrap tabs2" style="display:none">
+                    <div class="sortwrap">
+                                    <a class="icon icon-sort-down ajax-activity-content" rel="nofollow" href="/Old_JBehave_Issues/573?actionOrder=desc" title="Ascending order - Click to sort in descending order"><span>Ascending order - Click to sort in descending order</span></a>
+                            </div>
+                <ul id="issue-tabs" class="tabs horizontal">
+                                
+            <li class="active" id="all-tabpanel" data-id="all-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel" data-label="All" data-href="/browse/JBEHAVE-573">
+                            <strong>All</strong>
+                        </li>
+                                
+            <li data-id="comment-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel" data-label="Comments" data-href="/browse/JBEHAVE-573">
+                            <a class="ajax-activity-content" id="comment-tabpanel" href="/Old_JBehave_Issues/573"><strong>Comments</strong></a>
+                        </li>
+                                
+            <li data-id="worklog-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:worklog-tabpanel" data-label="Work Log" data-href="/browse/JBEHAVE-573">
+                            <a class="ajax-activity-content" id="worklog-tabpanel" href="/Old_JBehave_Issues/573"><strong>Work Log</strong></a>
+                        </li>
+                                
+            <li data-id="changehistory-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:changehistory-tabpanel" data-label="History" data-href="/browse/JBEHAVE-573">
+                            <a class="ajax-activity-content" id="changehistory-tabpanel" href="/Old_JBehave_Issues/573"><strong>History</strong></a>
+                        </li>
+                                
+            <li data-id="activity-stream-issue-tab" data-key="com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab" data-label="Activity" data-href="/browse/JBEHAVE-573">
+                            <a class="ajax-activity-content" id="activity-stream-issue-tab" href="/Old_JBehave_Issues/573"><strong>Activity</strong></a>
+                        </li>
+                </ul>
+    </div>
+    <div class="issuePanelWrapper">
+        <div class="issuePanelProgress"></div>
+        <div class="issuePanelContainer" id="issue_actions_container">
+                                    
+
+
+<div id="comment-274850" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/573?focusedCommentId=274850&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-274850" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="cvgaviao" id="commentauthor_274850_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=cvgaviao"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Cristiano Gavião</a>
+ added a comment  - <span class="commentdate_274850_verbose subText"><span class="date user-tz" title="02/Aug/11 3:30 PM"><time class="livestamp" datetime="2011-08-02T15:30-0500">02/Aug/11 3:30 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi David, could you please provide some code that reproduce the problem?<br>
+thanks</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="cvgaviao" id="commentauthor_274850_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=cvgaviao"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Cristiano Gavião</a>
+ added a comment  - <span class="commentdate_274850_concise subText"><span class="date user-tz" title="02/Aug/11 3:30 PM"><time class="livestamp" datetime="2011-08-02T15:30-0500">02/Aug/11 3:30 PM</time></span></span>                    Hi David, could you please provide some code that reproduce the problem? 
+thanks              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-274854" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/573?focusedCommentId=274854&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-274854" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="batchfam" id="commentauthor_274854_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=batchfam"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> David Batchelor</a>
+ added a comment  - <span class="commentdate_274854_verbose subText"><span class="date user-tz" title="02/Aug/11 4:11 PM"><time class="livestamp" datetime="2011-08-02T16:11-0500">02/Aug/11 4:11 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>We've learned that "matching" Groovy methods only match because Java bytecode is generated for Groovy source (and JBehave picks up on them.</p>
+
+<p>Thus the following works:</p>
+
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre> 
+   @When("I never get to this line")
+    void neverBlahBlah()  {
+      // etc
+    }
+</pre>
+</div></div> 
+
+<p>But this Groovy case fails because bytecode is not generated for it:</p>
+
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre> 
+   @When("I never get to this line")
+    void neverBlahBlah(String foo = "bar")  {
+      // etc
+    }
+</pre>
+</div></div> 
+
+<p>This is because Groovy generates meta-methods for more sophisticated method signatures like that.  Can JBehave peer into Groovy's meta-model more ?  This is going to be a pitfall for others...</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="batchfam" id="commentauthor_274854_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=batchfam"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> David Batchelor</a>
+ added a comment  - <span class="commentdate_274854_concise subText"><span class="date user-tz" title="02/Aug/11 4:11 PM"><time class="livestamp" datetime="2011-08-02T16:11-0500">02/Aug/11 4:11 PM</time></span></span>                    We've learned that "matching" Groovy methods only match because Java bytecode is generated for Groovy source (and JBehave picks up on them. 
+
+ Thus the following works: 
+
+  
+  
+   @When("I never get to this line")
+    void neverBlahBlah()  {
+      // etc
+    }
+ 
+   
+
+ But this Groovy case fails because bytecode is not generated for it: 
+
+  
+  
+   @When("I never get to this line")
+    void neverBlahBlah(String foo = "bar")  {
+      // etc
+    }
+ 
+   
+
+ This is because Groovy generates meta-methods for more sophisticated method signatures like that.  Can JBehave peer into Groovy's meta-model more ?  This is going to be a pitfall for others...              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-274889" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/573?focusedCommentId=274889&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-274889" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_274889_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_274889_verbose subText"><span class="date user-tz" title="03/Aug/11 3:42 AM"><time class="livestamp" datetime="2011-08-03T03:42-0500">03/Aug/11 3:42 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>What's the usecase for the different method signature? </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_274889_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_274889_concise subText"><span class="date user-tz" title="03/Aug/11 3:42 AM"><time class="livestamp" datetime="2011-08-03T03:42-0500">03/Aug/11 3:42 AM</time></span></span>                    What's the usecase for the different method signature?               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-312344" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/573?focusedCommentId=312344&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-312344" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="damonsmith" id="commentauthor_312344_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=damonsmith"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Damon Smith</a>
+ added a comment  - <span class="commentdate_312344_verbose subText"><span class="date user-tz" title="26/Oct/12 2:04 AM"><time class="livestamp" datetime="2012-10-26T02:04-0500">26/Oct/12 2:04 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I had the same problem with this: @When("I enter '$value' into the form field '$controlName'")</p>
+
+<p>when my method turns out to be private instead of public.</p>
+
+<p>I can see that there's reasoning behind why failing steps say pending. It's so that people can "write steps before they are implemented".</p>
+
+<p>Meanwhile, out here in the real world people don't actually want a build that passes successfully before the test methods are implemented. That's not helping anyone. No one does that. That would actually just be crazy.</p>
+
+<p>What people actually do out here in the real world is mistype the text of the step or (in my case) put a step annotation in front of what turns out to be a private method. Or any other of a litany of minor development errors that might cause a step not to match a function. Then spend HOURS trying to why the F*#K jbehave isn't working.</p>
+
+<p>When this happens, jbehave's approach is to fail silently, and if the developer should scroll through their voluminous log output then they might find that says a step is "pending". Insofar as jbehave is little more than a library to parse some text and call some functions from said text, do you not think it might be useful to THROW ERROR MESSAGES WHEN ERRORS OCCUR?!</p>
+
+<p>And then perhaps we can all get back to doing our actual work. I've had work mates try to explain to me that "no no you don't understand, that's the way it's supposed to work; it says pending when it means failed." We also have this FailingUponPendingStep thing. It means the tests fail but it doesn't mean that it tells me I don't have a method for my function.</p>
+
+<p>You can probably tell that this is annoying me slightly. JBehave is a TOOL. To do a VERY SIMPLE JOB. It has to parse some frickin text and call some frickin functions from it. It's not rocket surgery. When there's an error, throw an error and exit. You will make everyone else's lives much less of a misery if you just write software that does one single job in an orderly and predictable fashion.</p>
+
+<p>I say it again NOTHING IS WORSE THAN SILENT FAILURE in a software library. I would recommend that you a) fix this particular one and b) don't embed the concept of silent failure into the very business logic of your software.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="damonsmith" id="commentauthor_312344_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=damonsmith"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Damon Smith</a>
+ added a comment  - <span class="commentdate_312344_concise subText"><span class="date user-tz" title="26/Oct/12 2:04 AM"><time class="livestamp" datetime="2012-10-26T02:04-0500">26/Oct/12 2:04 AM</time></span></span>                    I had the same problem with this: @When("I enter '$value' into the form field '$controlName'") 
+
+ when my method turns out to be private instead of public. 
+
+ I can see that there's reasoning behind why failing steps say pending. It's so that people can "write steps before they are implemented". 
+
+ Meanwhile, out here in the real world people don't actually want a build that passes successfully before the test methods are implemented. That's not helping anyone. No one does that. That would actually just be crazy. 
+
+ What people actually do out here in the real world is mistype the text of the step or (in my case) put a step annotation in front of what turns out to be a private method. Or any other of a litany of minor development errors that might cause a step not to match a function. Then spend HOURS trying to why the F*#K jbehave isn't working. 
+
+ When this happens, jbehave's approach is to fail silently, and if the developer should scroll through their voluminous log output then they might find that says a step is "pending". Insofar as jbehave is little more than a library to parse some text and call some functions from said text, do you not think it might be useful to THROW ERROR MESSAGES WHEN ERRORS OCCUR?! 
+
+ And then perhaps we can all get back to doing our actual work. I've had work mates try to explain to me that "no no you don't understand, that's the way it's supposed to work; it says pending when it means failed." We also have this FailingUponPendingStep thing. It means the tests fail but it doesn't mean that it tells me I don't have a method for my function. 
+
+ You can probably tell that this is annoying me slightly. JBehave is a TOOL. To do a VERY SIMPLE JOB. It has to parse some frickin text and call some frickin functions from it. It's not rocket surgery. When there's an error, throw an error and exit. You will make everyone else's lives much less of a misery if you just write software that does one single job in an orderly and predictable fashion. 
+
+ I say it again NOTHING IS WORSE THAN SILENT FAILURE in a software library. I would recommend that you a) fix this particular one and b) don't embed the concept of silent failure into the very business logic of your software.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-312345" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/573?focusedCommentId=312345&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-312345" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_312345_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_312345_verbose subText"><span class="date user-tz" title="26/Oct/12 2:17 AM"><time class="livestamp" datetime="2012-10-26T02:17-0500">26/Oct/12 2:17 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I would say there's nothing worse than someone ranting at a tool when they are using it in the way it's not meant for. </p>
+
+<p>The executable methods are meant to be public, and the step is marked as pending because a matching step is not found.  </p>
+
+<p>We can improve documentation or even try to find a way to improve the functionality.   But a bit less attitude would help <img class="emoticon" src="index_files/smile.gif" alt="" height="16" align="absmiddle" border="0" width="16"></p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_312345_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_312345_concise subText"><span class="date user-tz" title="26/Oct/12 2:17 AM"><time class="livestamp" datetime="2012-10-26T02:17-0500">26/Oct/12 2:17 AM</time></span></span>                    I would say there's nothing worse than someone ranting at a tool when they are using it in the way it's not meant for.  
+
+ The executable methods are meant to be public, and the step is marked as pending because a matching step is not found.   
+
+ We can improve documentation or even try to find a way to improve the functionality.   But a bit less attitude would help   
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-312347" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/573?focusedCommentId=312347&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-312347" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="colinvipurs" id="commentauthor_312347_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=colinvipurs"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Colin Vipurs</a>
+ added a comment  - <span class="commentdate_312347_verbose subText"><span class="date user-tz" title="26/Oct/12 3:08 AM"><time class="livestamp" datetime="2012-10-26T03:08-0500">26/Oct/12 3:08 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Some of us actually <b>do</b> work the way JBehave was intended and to suggest otherwise is disingenuous at best and plain arrogant at worst.  When writing new stories we want them in source control and CI even though they haven't been implemented yet and absolutely do not want them breaking the build.  </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="colinvipurs" id="commentauthor_312347_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=colinvipurs"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Colin Vipurs</a>
+ added a comment  - <span class="commentdate_312347_concise subText"><span class="date user-tz" title="26/Oct/12 3:08 AM"><time class="livestamp" datetime="2012-10-26T03:08-0500">26/Oct/12 3:08 AM</time></span></span>                    Some of us actually  do  work the way JBehave was intended and to suggest otherwise is disingenuous at best and plain arrogant at worst.  When writing new stories we want them in source control and CI even though they haven't been implemented yet and absolutely do not want them breaking the build.                </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-312377" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/573?focusedCommentId=312377&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-312377" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="cvgaviao" id="commentauthor_312377_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=cvgaviao"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Cristiano Gavião</a>
+ added a comment  - <span class="commentdate_312377_verbose subText"><span class="date user-tz" title="26/Oct/12 9:47 AM"><time class="livestamp" datetime="2012-10-26T09:47-0500">26/Oct/12 9:47 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Poor Damon Smith, sounds like a crying baby...</p>
+
+<p>I would recommend you A) Know a little bit more about what PRIVATE means and use it properly B) Don't blame about something that you don't payed for this way C) be more polite !!! </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="cvgaviao" id="commentauthor_312377_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=cvgaviao"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Cristiano Gavião</a>
+ added a comment  - <span class="commentdate_312377_concise subText"><span class="date user-tz" title="26/Oct/12 9:47 AM"><time class="livestamp" datetime="2012-10-26T09:47-0500">26/Oct/12 9:47 AM</time></span></span>                    Poor Damon Smith, sounds like a crying baby... 
+
+ I would recommend you A) Know a little bit more about what PRIVATE means and use it properly B) Don't blame about something that you don't payed for this way C) be more polite !!!               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-312406" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/573?focusedCommentId=312406&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-312406" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="damonsmith" id="commentauthor_312406_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=damonsmith"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Damon Smith</a>
+ added a comment  - <span class="commentdate_312406_verbose subText"><span class="date user-tz" title="26/Oct/12 4:40 PM"><time class="livestamp" datetime="2012-10-26T16:40-0500">26/Oct/12 4:40 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>You're right, it was an unnecessary rant, I'm sorry. It was not a personal attack on anyone and I was purely venting my frustration at the design decisions that led to this particular framework failing silently when I make one of my many programming errors.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="damonsmith" id="commentauthor_312406_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=damonsmith"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Damon Smith</a>
+ added a comment  - <span class="commentdate_312406_concise subText"><span class="date user-tz" title="26/Oct/12 4:40 PM"><time class="livestamp" datetime="2012-10-26T16:40-0500">26/Oct/12 4:40 PM</time></span></span>                    You're right, it was an unnecessary rant, I'm sorry. It was not a personal attack on anyone and I was purely venting my frustration at the design decisions that led to this particular framework failing silently when I make one of my many programming errors.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-312442" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/573?focusedCommentId=312442&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-312442" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_312442_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_312442_verbose subText"><span class="date user-tz" title="27/Oct/12 6:24 AM"><time class="livestamp" datetime="2012-10-27T06:24-0500">27/Oct/12 6:24 AM</time></span></span>   - <span class="redText subText" title="Mauro Talevi - 27/Oct/12 6:25 AM">edited</span> </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Damon, it's all right, we've all been through the frustration of not understanding why something fails to work as expected. </p>
+
+<p>We welcome all feedback and always try to improve the tool and the user experience.  But let's try to be constructive.</p>
+
+<p>As for the issue at hand:  a step is not marked as "pending" after a failure, that is a "not performed step". Pending means that is has not been matched to any public method in the steps classes.  It is true that we've not explicitly underlined that the method must be public, and I'll update the docs in this sense to make it clearer. </p>
+
+<p>So in this sense, there is no silent failure, just lack of matched steps. </p>
+
+<p>Incidentally, it wouldn't be difficult to allow non-public methods to be used, but I wonder what the usefulness of it would be.   The idea we're trying to convey is to create an API of available steps, declared by annotations.   </p>
+
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_312442_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_312442_concise subText"><span class="date user-tz" title="27/Oct/12 6:24 AM"><time class="livestamp" datetime="2012-10-27T06:24-0500">27/Oct/12 6:24 AM</time></span></span>   - <span class="redText subText" title="Mauro Talevi - 27/Oct/12 6:25 AM">edited</span>                   Hi Damon, it's all right, we've all been through the frustration of not understanding why something fails to work as expected.  
+
+ We welcome all feedback and always try to improve the tool and the user experience.  But let's try to be constructive. 
+
+ As for the issue at hand:  a step is not marked as "pending" after a failure, that is a "not performed step". Pending means that is has not been matched to any public method in the steps classes.  It is true that we've not explicitly underlined that the method must be public, and I'll update the docs in this sense to make it clearer.  
+
+ So in this sense, there is no silent failure, just lack of matched steps.  
+
+ Incidentally, it wouldn't be difficult to allow non-public methods to be used, but I wonder what the usefulness of it would be.   The idea we're trying to convey is to create an API of available steps, declared by annotations.    
+
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-312500" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/573?focusedCommentId=312500&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-312500" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_312500_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_312500_verbose subText"><span class="date user-tz" title="28/Oct/12 5:26 PM"><time class="livestamp" datetime="2012-10-28T17:26-0500">28/Oct/12 5:26 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Updated docs: <a href="/Old_JBehave_Issues/847" title="Improve documentation on pending steps" class="issue-link" data-issue-key="JBEHAVE-847"><del>JBEHAVE-847</del></a></p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_312500_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_312500_concise subText"><span class="date user-tz" title="28/Oct/12 5:26 PM"><time class="livestamp" datetime="2012-10-28T17:26-0500">28/Oct/12 5:26 PM</time></span></span>                    Updated docs:   JBEHAVE-847                </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-410942">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_410942">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_410942" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="13/Nov/12 3:40 AM"><time class="livestamp" datetime="2012-11-13T03:40-0600">13/Nov/12 3:40 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_410942" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <thead>
+                    <tr>
+                        <th width="20%">Field</th>
+                        <th width="40%">Original Value</th>
+                        <th width="40%">New Value</th>
+                    </tr>
+                </thead>
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Open
+                                                                                                <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Resolved
+                                                                                               <span class="hist-value">[    5
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               3.7.4
+                                                                                               <span class="hist-value">[    18964
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Resolution
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Not A Bug
+                                                                                               <span class="hist-value">[    6
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-424636">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_424636">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_424636" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="14/Apr/13 2:39 PM"><time class="livestamp" datetime="2013-04-14T14:39-0500">14/Apr/13 2:39 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_424636" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               3.8
+                                                                                               <span class="hist-value">[    19104
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             </div>
+    </div>
+</div></div></div><div id="viewissuesidebar" class="aui-item issue-side-column"><div id="peoplemodule" class="module toggle-wrap"><div id="peoplemodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">People</h2></div><div class="mod-content"><ul class="item-details" id="peopledetails">
+    <li class="people-details">
+                <dl>
+            <dt>Assignee:</dt>
+            <dd>
+                <span id="assignee-val" class="view-issue-field">
+
+    <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span>
+    Unassigned
+</span>
+                            </dd>
+        </dl>
+                        <dl>
+            <dt>Reporter:</dt>
+            <dd>
+                <span id="reporter-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_reporter_batchfam" rel="batchfam">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-2.png"></span></span>
+            David Batchelor
+        </span>
+    </span>
+            </dd>
+        </dl>
+                    </li>
+</ul>
+    <ul class="item-details">
+        <li>
+                            <dl>
+                    <dt>Votes:</dt>
+                    <dd>
+                                                                            <span id="vote-data" class="aui-badge vote-state-off">0</span>
+                        
+                                                                                                        <span id="vote-label" title="You have to be logged in to vote for an issue.">Vote for this issue</span>
+                                            </dd>
+                </dl>
+                                        <dl>
+                    <dt>Watchers:</dt>
+                    <dd>
+                                                                        
+                                                                            <span id="watcher-data" class="aui-badge watch-state-off">4</span>
+                        
+                                                                                <span id="watch-label" title="You have to be logged in to watch an issue.">Start watching this issue</span>
+                                            </dd>
+                </dl>
+                    </li>
+    </ul>
+</div></div><div id="datesmodule" class="module toggle-wrap"><div id="datesmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Dates</h2></div><div class="mod-content"><ul class="item-details">
+    <li>
+            <dl class="dates">
+            <dt>Created:</dt>
+            <dd class="date user-tz" title="02/Aug/11 3:22 PM">
+
+                <span data-name="Created" id="create-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2011-08-02T15:22-0500">02/Aug/11 3:22 PM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Updated:</dt>
+            <dd class="date user-tz" title="14/Apr/13 2:39 PM">
+
+                <span data-name="Updated" id="updated-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2013-04-14T14:39-0500">14/Apr/13 2:39 PM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Resolved:</dt>
+            <dd class="date user-tz" title="13/Nov/12 3:40 AM">
+
+                <span data-name="Resolved" id="resolved-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-11-13T03:40-0600">13/Nov/12 3:40 AM</time>                                                             </span>
+            </dd>
+        </dl>
+        </li>
+</ul>
+</div></div></div></div>
+                    </div>
+                </div>
+                        </div>
+
+    <fieldset class="hidden parameters">
+        <input title="autocompleteEnabled" value="true" type="hidden">
+    </fieldset>
+    
+    </section>
+    <footer id="footer" role="contentinfo">
+        
+        
+
+
+
+<div class="footer-body">
+    <ul>
+        <li>
+                        <a href="http://www.atlassian.com/software/jira">Atlassian JIRA</a>
+
+                                                    
+                        
+            <span id="footer-build-information">(v6.1.6#6162-<span title="7af547ce7c84dbb7c1e345a65437ed7b85efffa2" data-commit-id="7af547ce7c84dbb7c1e345a65437ed7b85efffa2}">sha1:7af547c</span>)</span>
+        </li>
+        <li>
+            <a id="about-link" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+        </li>
+        <li>
+                                    <a id="footer-report-problem-link" href="https://jira.codehaus.org/secure/CreateIssue%21default.jspa">Report a problem</a>
+        </li>
+    </ul>
+            <ul>
+            <li class="licensemessage">
+                                    Powered by a free Atlassian <a href="http://www.atlassian.com/software/jira">JIRA</a> open source license for Codehaus. Try JIRA - <a href="http://www.atlassian.com/software/jira">bug tracking software</a> for <i>your</i> team.
+
+                            </li>
+        </ul>
+    </div>
+
+<form id="jira_request_timing_info" class="dont-default-focus">
+	<fieldset class="parameters hidden">
+
+
+
+
+		<input title="jira.session.expiry.in.mins" value="299" type="hidden">
+
+	</fieldset>
+</form>
+<!--
+	                 
+	          
+	               
+	                 
+	        CONCURRENT REQUESTS : 2
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input title="loggedInUser" value="" type="hidden">
+    <input title="ajaxTimeout" value="The call to the JIRA server did not complete within the timeout period.  We are unsure of the result of this operation." type="hidden">
+    <input title="JiraVersion" value="6.1.6" type="hidden">
+    <input title="ajaxUnauthorised" value="You are not authorised to perform this operation.  Please log in." type="hidden">
+    <input title="baseURL" value="https://jira.codehaus.org:443" type="hidden">
+    <input title="ajaxCommsError" value="The JIRA server could not be contacted.  This may be a temporary glitch or the server may be down." type="hidden">
+    <input title="ajaxServerError" value="The JIRA server was contacted but has returned an error response. We are unsure of the result of this operation." type="hidden">
+    <input title="ajaxErrorCloseDialog" value="Close this dialog and press refresh in your browser" type="hidden">
+    <input title="ajaxErrorDialogHeading" value="Communications Breakdown" type="hidden">
+
+    <input title="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost." type="hidden">
+    <input title="dirtyDialogMessage" value="You have entered new data in this dialog. If you navigate away from this dialog without first saving your data, the changes will be lost. Click cancel to return to the dialog." type="hidden">
+    <input title="keyType" value="Type" type="hidden">
+    <input title="keyThen" value="then" type="hidden">
+    <input title="dblClickToExpand" value="Double click to expand" type="hidden">
+    <input title="actions" value="Actions" type="hidden">
+    <input title="removeItem" value="Remove" type="hidden">
+    <input title="workflow" value="Workflow" type="hidden">
+    <input title="labelNew" value="New Label" type="hidden">
+    <input title="issueActionsHint" value="Begin typing for available operations or press down to see all" type="hidden">
+    <input title="closelink" value="Close" type="hidden">
+    <input title="dotOperations" value="Operations" type="hidden">
+    <input title="dotLoading" value="Loading..." type="hidden">
+    <input title="frotherSuggestions" value="Suggestions" type="hidden">
+    <input title="frotherNomatches" value="No Matches" type="hidden">
+    <input title="multiselectVersionsError" value="{0} is not a valid version." type="hidden">
+    <input title="multiselectComponentsError" value="{0} is not a valid component." type="hidden">
+    <input title="multiselectGenericError" value="The value {0} is invalid." type="hidden">
+</fieldset>
+
+    </footer>
+</div>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:void(0);" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:void(0);" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div class="navigator-sidebar collapsed ui-popout ui-popout-detached ui-popout-collapsed" id="navigator-sidebar"><a class="toggle-filter-panel" href="#" title="Dock the filters panel ([)"></a></div><div style="display: none;" class="jira-dialog box-shadow" id="edit-issue-dialog"><div class="jira-dialog-content"></div></div><div style="display: none;" class="jira-dialog box-shadow" id="create-subtask-dialog"><div class="jira-dialog-content"></div></div></body></html>

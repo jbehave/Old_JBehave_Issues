@@ -1,0 +1,54 @@
+Index: jbehave-spring/src/test/java/org/jbehave/core/configuration/spring/configuration.xml
+===================================================================
+--- jbehave-spring/src/test/java/org/jbehave/core/configuration/spring/configuration.xml	(revision dedc4401921e76a3458205b3b286935a772d7564)
++++ jbehave-spring/src/test/java/org/jbehave/core/configuration/spring/configuration.xml	(revision )
+@@ -21,6 +21,10 @@
+     </constructor-arg>
+   </bean>
+ 
++  <bean class="java.lang.Object" abstract="true" >
++    <description>Proves that we can handle abstract classes</description>
++  </bean>
++    
+   <bean
+     class="org.jbehave.core.configuration.spring.SpringStoryReporterBuilder"
+     init-method="withDefaultFormats">
+Index: jbehave-spring/src/main/java/org/jbehave/core/steps/spring/SpringStepsFactory.java
+===================================================================
+--- jbehave-spring/src/main/java/org/jbehave/core/steps/spring/SpringStepsFactory.java	(revision dedc4401921e76a3458205b3b286935a772d7564)
++++ jbehave-spring/src/main/java/org/jbehave/core/steps/spring/SpringStepsFactory.java	(revision )
+@@ -1,14 +1,15 @@
+ package org.jbehave.core.steps.spring;
+ 
+-import java.lang.reflect.Modifier;
+-import java.util.ArrayList;
+-import java.util.List;
+-
+ import org.jbehave.core.configuration.Configuration;
+ import org.jbehave.core.steps.AbstractStepsFactory;
+ import org.jbehave.core.steps.InjectableStepsFactory;
++import org.springframework.beans.BeansException;
+ import org.springframework.context.ApplicationContext;
+ 
++import java.lang.reflect.Modifier;
++import java.util.ArrayList;
++import java.util.List;
++
+ /**
+  * An {@link InjectableStepsFactory} that uses Spring's
+  * {@link ApplicationContext} for the composition and instantiation of all
+@@ -30,9 +31,13 @@
+     protected List<Object> stepsInstances() {
+         List<Object> steps = new ArrayList<Object>();
+         for (String name : context.getBeanDefinitionNames()) {
++            try{
+-            Class<?> type = context.getType(name);            
++            Class<?> type = context.getType(name);
+             if ( isNotAbstract(type) && hasAnnotatedMethods(type)) {
+                 steps.add(context.getBean(name));
++            }}
++            catch(BeansException be){
++                //Abstract classes cannot be instantiated, ignore
+             }
+         }
+         return steps;

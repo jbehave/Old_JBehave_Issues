@@ -1,0 +1,24 @@
+Index: sitespec.rb
+===================================================================
+--- sitespec.rb	(revision 573)
++++ sitespec.rb	(working copy)
+@@ -1,12 +1,14 @@
+-require 'buildmaster'
++require 'rubygems'
++require_gem 'BuildMaster'
++require 'BuildMaster/cotta'
+ 
+-
+ class MySiteSpec < BuildMaster::SiteSpec
+   def initialize
+     root = File.dirname(__FILE__)
+-    @output_dir = File.join(root, 'website', 'output')
+-    @content_dir = File.join(root, 'website', 'content')
+-    @template_file = File.join(root, 'website', 'templates', 'skin.html')
++    cotta = BuildMaster::Cotta.new
++    @output_dir = cotta.dir(File.join(root, 'website', 'output'))
++    @content_dir = cotta.dir(File.join(root, 'website', 'content'))
++    @template_file = cotta.file(File.join(root, 'website', 'templates', 'skin.html'))
+   end
+ 
+   def index_file?(content_path)

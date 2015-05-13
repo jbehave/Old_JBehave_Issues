@@ -1,0 +1,22 @@
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/parsers/RegexStoryParser.java b/jbehave-core/src/main/java/org/jbehave/core/parsers/RegexStoryParser.java
+index 24ed2b3..245c80e 100755
+--- a/jbehave-core/src/main/java/org/jbehave/core/parsers/RegexStoryParser.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/parsers/RegexStoryParser.java
+@@ -227,7 +227,7 @@ public class RegexStoryParser implements StoryParser {
+ 
+     private Pattern patternToPullGivenStoriesIntoGroupOne() {
+         String startingWords = concatenateWithOr("\\n", "", keywords.startingWords());
+-        return compile(".*\\n" + keywords.givenStories() + "((.|\\n)*?)\\s*(" + startingWords + ").*", DOTALL);
++        return compile("\\n" + keywords.givenStories() + "((.|\\n)*?)\\s*(" + startingWords + ").*", DOTALL);
+     }
+ 
+     private Pattern patternToPullStepsIntoGroupOne() {
+@@ -239,7 +239,7 @@ public class RegexStoryParser implements StoryParser {
+     }
+ 
+     private Pattern patternToPullExamplesTableIntoGroupOne() {
+-        return compile(".*\\n" + keywords.examplesTable() + "\\s*(.*)", DOTALL);
++        return compile("\\n" + keywords.examplesTable() + "\\s*(.*)", DOTALL);
+     }
+ 
+     private String concatenateWithOr(String... keywords) {

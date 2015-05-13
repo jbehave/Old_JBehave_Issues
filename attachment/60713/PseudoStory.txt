@@ -1,0 +1,56 @@
+Narrative: narrative
+
+Blah blah blah
+
+Scenario: scenario name
+
+GivenStories: stories/Given_story_name.story
+
+Given command line: -key1 value1 -key2 value2 -key3 value3 -key4 value4 -key5 value5 -key6 value6
+When when step annotation
+Then then step annotation
+And another then step annotation
+And another one then step annotation
+And then step annotation is
+|something|another something|
+|1|1|
+
+
+Scenario: another scenario name
+
+GivenStories: stories/Given_story_name.story
+
+Given command line: -key1 <column1> -key2 <column2> -key3 <column4> -key4 <column5> -key5 <column6> 
+When when step annotation
+Then then step annotation
+And I see something is <column7>
+And I see another something is <column8>
+And I see another something is <column2> and <column3>
+And I see property <column9>
+And I see something with
+|key|value|
+|1|column10|
+
+Examples:
+|column1|column2|column3|column4|column5|column6|column7|column8|column9|column10|
+|1|2|3|4|5|6|7|8|9|10|
+|1|2|3|4|5|6|7|8|9|10|
+
+Scenario: another one scenario name
+
+GivenStories: stories/Given_story_name.story
+
+Given command line: -key1 value1 -key2 value2 -key3 value3 -key4 value4 -key5 value5 -key6 value6
+When when step annotation
+Then then step annotation
+And I see something is <column1>
+And I see another something
+
+
+Examples:
+|column1|column2|
+|1|1|
+|1|1|
+
+
+

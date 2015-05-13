@@ -1,0 +1,48 @@
+Index: core/jbehave-core/src/main/java/org/jbehave/scenario/parser/PatternScenarioParser.java
+===================================================================
+--- core/jbehave-core/src/main/java/org/jbehave/scenario/parser/PatternScenarioParser.java	(revision 1572)
++++ core/jbehave-core/src/main/java/org/jbehave/scenario/parser/PatternScenarioParser.java	(revision )
+@@ -266,7 +266,7 @@
+ 				keywords.when(), keywords.then(), keywords.others());
+ 		String scenario = keywords.scenario();
+ 		String table = keywords.examplesTable();
+-		return compile("((" + givenWhenThen + ") (.|\\s)*?)\\s*(\\Z|"
+-				+ givenWhenThenSpaced + "|" + scenario + "|"+ table + ")");
++		return compile("((" + givenWhenThen + ") (.)*?)\\s*(\\Z|"
++				+ givenWhenThenSpaced + "|" + scenario + "|"+ table + ")", DOTALL);
+ 	}
+ }
+Index: core/jbehave-core/src/behaviour/java/org/jbehave/scenario/parser/PatternScenarioParserBehaviour.java
+===================================================================
+--- core/jbehave-core/src/behaviour/java/org/jbehave/scenario/parser/PatternScenarioParserBehaviour.java	(revision 1572)
++++ core/jbehave-core/src/behaviour/java/org/jbehave/scenario/parser/PatternScenarioParserBehaviour.java	(revision )
+@@ -183,6 +183,29 @@
+     }
+ 
+     @Test
++    public void shouldParseStoryWithVeryLongStep() {
++        String scenario = aScenarioWithAVeryLongGivenStep();
++        ensureThatScenarioCanBeParsed(scenario);
++    }
++
++    private String aScenarioWithAVeryLongGivenStep() {
++        StringBuilder longScenarioBuilder = new StringBuilder()
++                .append("Given all these examples:" + NL)
++                .append("|one|two|three|" + NL);
++        int numberOfLinesInStep = 50;
++        for (int i = 0; i < numberOfLinesInStep; i++) {
++            longScenarioBuilder.append("|a|sample|line|" + NL);
++        }
++        longScenarioBuilder.append("When I do something" + NL);
++        longScenarioBuilder.append("Then something should happen" + NL);
++        return longScenarioBuilder.toString();
++    }
++
++    private void ensureThatScenarioCanBeParsed(String scenario) {
++        parser.defineStoryFrom(scenario);
++    }
++
++    @Test
+     public void shouldParseLongStoryWithKeywordSplitScenarios() {
+     	ensureLongStoryCanBeParsed(parser);        
+     }

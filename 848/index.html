@@ -1,0 +1,1718 @@
+<!DOCTYPE html><html class="mozilla"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>[JBEHAVE-848] Report files not closed  - jira.codehaus.org</title>
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<link rel="shortcut icon" href="index_files/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://jira.codehaus.org/osd.jsp" title="[JBEHAVE-848] Report files not closed  - jira.codehaus.org">
+
+    
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+<link type="text/css" rel="stylesheet" href="index_files/batch.css" media="all">
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="index_files/batch-1.css" media="all">
+<script type="text/javascript" src="index_files/batch.js"></script><style type="text/css"></style>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="index_files/batch-1.js"></script>
+<script type="text/javascript" src="index_files/jira.webresources_calendar-en.js"></script>
+<script type="text/javascript" src="index_files/com.atlassian.administraticksearch-webresources.js"></script>
+
+<script type="text/javascript" src="index_files/shortcuts.js"></script>
+
+
+    
+    
+    
+    <meta name="decorator" content="atl.general">
+    <meta id="isNavigator" name="isNavigator" content="true">
+    <meta name="ajs-user.search.mode" content="basic">
+    <meta name="ajs-issue-search-help-title" content="Searching for Issues">
+    <meta name="ajs-issue-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Searching+for+Issues">
+    <meta name="ajs-advanced-search-help-title" content="Performing Advanced Searches">
+    <meta name="ajs-advanced-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Advanced+Searching">
+    
+</head>
+<body data-aui-version="5.1.8" id="jira" class="aui-layout aui-theme-default ka ajax-issue-search-and-view page-type-navigator navigator-issue-only" data-version="6.1.6">
+<div id="page">
+    <header id="header" style="display:none" role="banner">
+        
+
+
+
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+
+<fieldset class="parameters hidden dont-default-focus">
+    <input title="tzdetect.pref.tzid" value="America/Chicago" type="hidden">
+    <input title="tzdetect.pref.tzname" value="(GMT-06:00) Chicago" type="hidden">
+    <input title="tzdetect.pref.tzoffset" value="(GMT-06:00)" type="hidden">
+    <input title="tzdetect.pref.tzdst" value="true" type="hidden">
+    <input title="tzdetect.pref.nothanks" value="" type="hidden">
+</fieldset>
+<nav data-aui-responsive="true" class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class="aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-haspopup="true" tabindex="0"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link nav-link-local"><a href="https://jira.codehaus.org/" class="aui-dropdown2-radio interactive checked" title="https://jira.codehaus.org/"><span class="nav-link-label">jira.codehaus.org</span></a></li><li class="nav-link"><a href="http://jira.sonarsource.com/" class="aui-dropdown2-radio interactive" title="http://jira.sonarsource.com/"><span class="nav-link-label">SonarSource</span></a></li><li class="nav-link"><a href="http://docs.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://docs.codehaus.org/"><span class="nav-link-label">Codehaus</span></a></li><li class="nav-link"><a href="http://xircles.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://xircles.codehaus.org"><span class="nav-link-label">Xircles</span></a></li></ul></div></div><script><!--
+/* Script removed by snapshot save */
+--></script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://jira.codehaus.org/secure/MyJiraHome.jspa"><img data-aui-responsive-header-index="0" src="urn:download-error:http://www.codehaus.org/codehaus-small.gif" alt="jira.codehaus.org"></a></h1><ul style="width: auto;" class="aui-nav">
+
+
+
+
+<li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/Dashboard.jspa" id="home_link" accesskey="d" title="View and manage your dashboards" aria-haspopup="true" aria-owns="home_link-content">Dashboards</a><div id="home_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="home_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="/Old_JBehave_Issues/index.html" id="browse_link" accesskey="p" title="View recent projects and browse a list of projects" aria-haspopup="true" aria-owns="browse_link-content">Projects</a><div id="browse_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="browse_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/IssueNavigator.jspa" id="find_link" accesskey="i" title="Search for issues and view recent issues" aria-haspopup="true" aria-owns="find_link-content">Issues</a><div id="find_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="find_link"></div></li>
+<li style="display: none;"><a id="aui-responsive-header-dropdown-trigger-0" class="aui-dropdown2-trigger" aria-owns="aui-responsive-header-dropdown-content-0" aria-haspopup="true" href="#">More<span class="icon aui-icon-dropdown"></span></a><div id="aui-responsive-header-dropdown-content-0" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul id="aui-responsive-header-dropdown-list-0"></ul></div></div></li></ul></div><div class="aui-header-secondary"><ul class="aui-nav"><li>
+    <form action="https://jira.codehaus.org/secure/QuickSearch.jspa" method="post" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" class="search" title="Quick Search ( Type '/' )" placeholder="Quick Search" name="searchString" accesskey="q" type="text">
+        <input class="hidden" value="Search" type="submit">
+    </form>
+</li>
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger" aria-haspopup="true" aria-owns="system-help-menu-content" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank" title="Help"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a id="view_help" class="interactive" title="Goto the online documentation for JIRA" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank">Online Help</a>
+                                </li>
+                                                            <li>
+                                    <a id="keyshortscuthelp" class="interactive" title="Get more information about JIRA's Keyboard Shortcuts ( Type '?' )" href="https://jira.codehaus.org/secure/ViewKeyboardShortcuts%21default.jspa" target="_blank">Keyboard Shortcuts</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_about" class="interactive" title="Get more information about JIRA" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_credits" class="interactive" title="See who did what" href="https://jira.codehaus.org/secure/JiraCreditsPage%21default.jspa" target="_blank">JIRA Credits</a>
+                                </li>
+                                                            <li>
+                                    <a id="whats-new-menu-link" class="interactive" href="https://docs.atlassian.com/jira/docs-061/whatsnew/iframe">What?s New</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a class="aui-nav-link login-link" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-848">Log In</a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <div style="position: absolute; right: 20em; top: -2em">
+  <a href="https://xircles.codehaus.org/signup">Signup</a>
+</div>
+</div>
+
+
+    <section id="content" role="main">
+        
+    
+
+    <div class="issue-container ">
+                                    <div id="issue-content" class="issue-edit-form">
+                    <header id="stalker" class="issue-header js-stalker">
+                        <div class="issue-header-content"><header class="aui-page-header"><div class="aui-page-header-inner"><div class="aui-page-header-image"><span id="10680" class="aui-avatar aui-avatar-large aui-avatar-project"><span class="aui-avatar-inner"><img id="project-avatar" alt="JBehave" src="index_files/projectavatar.png"></span></span></div><!-- .aui-page-header-image --><div class="aui-page-header-main"><ol class="aui-nav aui-nav-breadcrumbs"><li><a id="project-name-val" href="/Old_JBehave_Issues/index.html">JBehave</a></li><li><a class="issue-link" data-issue-key="JBEHAVE-848" href="#" id="key-val" rel="141858">JBEHAVE-848</a></li></ol><h1 id="summary-val">Report files not closed </h1></div><!-- .aui-page-header-main --><div class="aui-page-header-actions"><div id="issue-header-pager"></div></div><!-- .aui-page-header-actions --></div><!-- .aui-page-header-inner --></header><!-- .aui-page-header --><div class="command-bar"><div class="ops-cont"><div class="ops-menus aui-toolbar"><div class="toolbar-split toolbar-split-left"><ul id="opsbar-ops-login-lnk_container" class="toolbar-group pluggable-ops"><li class="toolbar-item"><a id="ops-login-lnk" style="display:none" title="Log In" class="toolbar-trigger" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-848"><span class="trigger-label">Log In</span></a></li></ul><ul id="opsbar-opsbar-operations" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-transitions" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-admin" class="toolbar-group pluggable-ops"></ul></div><div class="toolbar-split toolbar-split-right"><ul id="opsbar-jira.issue.tools" style="display:none" class="toolbar-group pluggable-ops"><li class="toolbar-item toolbar-dropdown"><div><a href="#" id="viewissue-export" title="Export this issue in another format" data-hide-on-scroll=".split-view .issue-container" data-contain-to-window="true" class="toolbar-trigger  js-default-dropdown"><span class="icon icon-export viewissue-export"></span> <span class="dropdown-text">Export</span><span class="icon drop-menu"></span></a><div class="aui-list hidden"><ul class="aui-list-section aui-first aui-last"><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-xml/JBEHAVE-848/JBEHAVE-848.xml" class="aui-list-item-link" id="jira.issueviews:issue-xml"><span class="trigger-label">XML</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-word/JBEHAVE-848/JBEHAVE-848.doc" class="aui-list-item-link" id="jira.issueviews:issue-word"><span class="trigger-label">Word</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-html/JBEHAVE-848/JBEHAVE-848.html" class="aui-list-item-link" id="jira.issueviews:issue-html"><span class="trigger-label">Printable</span></a></li></ul></div></div></li></ul></div></div></div></div></div>
+                    </header>
+                    <div class="issue-body-content">
+                        <div class="aui-group issue-body"><div class="aui-item issue-main-column"><div id="details-module" class="module toggle-wrap"><div id="details-module_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Details</h2></div><div class="mod-content">
+
+
+
+
+<ul id="issuedetails" class="property-list two-cols">
+    <li class="item">
+        <div class="wrap">
+            <strong class="name">Type:</strong>
+            <span id="type-val" class="value">
+                                <img alt="Bug" src="index_files/bug.png" title="Bug - A problem which impairs or prevents the functions of the product." height="16" width="16"> Bug
+            </span>
+        </div>
+    </li>
+    <li class="item item-right">
+        <div class="wrap">
+            <strong class="name">Status:</strong>
+            <span id="status-val" class="value">
+                                
+
+<img src="index_files/resolved.png" alt="Resolved" title="Resolved - A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed." height="16" width="16"> Resolved
+            </span>
+                    </div>
+    </li>
+            <li class="item">
+            <div class="wrap">
+                <strong class="name">Priority:</strong>
+                <span id="priority-val" class="value">
+                                        <img alt="Critical" src="index_files/critical.png" title="Critical - Crashes, loss of data, severe memory leak." height="16" width="16"> Critical
+                </span>
+            </div>
+        </li>
+                                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Resolution:</strong>
+                <span id="resolution-val" class="value resolved">
+                                     Fixed
+                                </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Affects Version/s:</strong>
+                <span id="versions-val" class="value">
+                                            None
+                                    </span>
+            </div>
+        </li>
+                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Fix Version/s:</strong>
+                <span id="fixfor-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="fixVersions-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/fixforversion/18964" title="3.7.4 ">3.7.4</a>,                                                            <a href="/Old_JBehave_Issues/index.html/fixforversion/19104" title="3.8 ">3.8</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Component/s:</strong>
+                <span id="components-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="components-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/component/11086" title="Core ">Core</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                    <li class="item full-width">
+            <div class="wrap" id="wrap-labels">
+                <strong class="name">Labels:</strong>
+                    <div class="labels-wrap value">
+            <span class="labels" id="labels-141858-value">None</span>
+                </div>
+            </div>
+        </li>
+        </ul>
+
+<div id="customfieldmodule">
+    <div class="aui-tabs horizontal-tabs" id="customfield-tabs">
+                    <div id="customfield-panel-1" class="tabs-pane active-pane">
+                        <ul class="property-list">
+                                                <li id="rowForcustomfield_10210" class="item">
+                        <div class="wrap">
+                            <strong title="Number of attachments " class="name">Number of attachments :</strong>
+                            <div id="customfield_10210-val" class="value type-attachments" data-fieldtype="attachments" data-fieldtypecompletekey="com.atlassian.jira.toolkit:attachments">
+                                    1
+
+                            </div>
+                        </div>
+                    </li>
+                                        </ul>
+        </div>
+        </div></div>
+</div></div><div id="descriptionmodule" class="module toggle-wrap"><div id="descriptionmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Description</h2></div><div class="mod-content"><div id="description-val" class="field-ignore-highlight">
+    <div class="user-content-block">
+                    <p>I'm running an embedder as part of another java application. When the execution of the embedder completes I can see files on disk but they are empty (or of small size) and the files are locked open by the process (can't delete them on windows). It appears that the files are only written out when I exit the java process in which the embedder has been started.</p>
+            </div>
+</div>
+</div></div><div id="attachmentmodule" class="module toggle-wrap"><div id="attachmentmodule_heading" class="mod-header"><ul class="ops"><li class="drop"><div class="aui-dd-parent"><a href="#" class="icon drop-menu js-default-dropdown" title="Options"><span>Options</span></a><div class="aui-dropdown-content aui-list"><ul id="attachment-sorting-options" class="aui-list-section aui-first"><li class="aui-list-item"><a id="attachment-sort-key-name" href="/Old_JBehave_Issues/848?attachmentSortBy=fileName#attachmentmodule" class="aui-list-checked aui-checked aui-list-item-link" title="viewissue.subtasks.tab.show.all.name"><span>Sort By Name</span></a></li><li class="aui-list-item"><a id="attachment-sort-key-date" href="/Old_JBehave_Issues/848?attachmentSortBy=dateTime#attachmentmodule" class="aui-list-checked aui-list-item-link" title="Sort By Date"><span>Sort By Date</span></a></li></ul><ul id="attachment-sorting-order-options" class="aui-list-section"><li class="aui-list-item"><a id="attachment-sort-direction-asc" href="/Old_JBehave_Issues/848?attachmentOrder=asc#attachmentmodule" class="aui-list-checked aui-checked aui-list-item-link" title="Ascending"><span>Ascending</span></a></li><li class="aui-list-item"><a id="attachment-sort-direction-desc" href="/Old_JBehave_Issues/848?attachmentOrder=desc#attachmentmodule" class="aui-list-checked aui-list-item-link" title="Descending"><span>Descending</span></a></li></ul><ul id="attachment-manage-options" class="aui-list-section aui-last"><li class="aui-list-item"><a id="aszip" href="/Old_JBehave_Issues/attachmentzip/141858.zip" class="aui-list-checked aui-list-item-link" title="Download all attachments as a ZIP file"><span>Download All</span></a></li></ul></div></div></li></ul><h2 class="toggle-title">Attachments</h2></div><div class="mod-content">
+            <ol id="file_attachments" class="item-attachments">
+                            <li class="attachment-content">
+                                            <div class="twixi-block collapsed">
+                            <div class="twixi-wrap verbose">
+                                <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+                                <div class="attachment-thumb">
+                                    <a href="/Old_JBehave_Issues/attachment/61913/$%7BfileAttachment.fileNameUrlEncoded%7D" draggable="true" data-downloadurl="application/zip:fileclose.zip:/Old_JBehave_Issues/attachment/61913/fileclose.zip">
+                                            <img src="index_files/zip.gif" alt="Zip Archive" height="16" border="0" width="16">
+                                    </a>
+                                </div>
+                                <dl>
+                                        <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/61913/fileclose.zip" title="Latest  07/Nov/12 2:16 PM - Alexander Lehmann" draggable="true" data-downloadurl="application/zip:fileclose.zip:/Old_JBehave_Issues/attachment/61913/fileclose.zip">fileclose.zip
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2012-11-07T14:16-0600">07/Nov/12 2:16 PM</time></dd>
+    <dd class="attachment-size">6 kB</dd>
+    <dd class="attachment-author">Alexander Lehmann</dd>
+                                    <dd class="zip-contents">
+                                        <ol>
+                                                                                                                                                <li>
+                                                        <div class="attachment-thumb">
+                                                            <a href="/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B0%5D/pom.xml" draggable="true" data-downloadurl="application/xml:pom.xml:/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B0%5D/pom.xml">
+                                                                    <img src="index_files/xml.gif" alt="XML File" height="16" border="0" width="16">
+                                                            </a>
+                                                        </div>
+                                                        <a href="/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B0%5D/pom.xml" title="pom.xml" draggable="true" data-downloadurl="application/xml:pom.xml:/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B0%5D/pom.xml">
+                                                            pom.xml
+                                                        </a>
+                                                        <span class="attachment-size">
+                                                            3 kB
+                                                        </span>
+                                                    </li>
+                                                                                                                                                                                                <li>
+                                                        <div class="attachment-thumb">
+                                                            <a href="/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B8%5D/src/main/java/cx/lehmann/jbehave/fileclose/MainClass.java" draggable="true" data-downloadurl="text/plain:src/main/java/cx/lehmann/jbehave/fileclose/MainClass.java:/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B8%5D/src/main/java/cx/lehmann/jbehave/fileclose/MainClass.java">
+                                                                    <img src="index_files/java.gif" alt="Java Source File" height="16" border="0" width="16">
+                                                            </a>
+                                                        </div>
+                                                        <a href="/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B8%5D/src/main/java/cx/lehmann/jbehave/fileclose/MainClass.java" title="src/main/java/cx/lehmann/jbehave/fileclose/MainClass.java" draggable="true" data-downloadurl="text/plain:src/main/java/cx/lehmann/jbehave/fileclose/MainClass.java:/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B8%5D/src/main/java/cx/lehmann/jbehave/fileclose/MainClass.java">
+                                                            src/main/java/.../fileclose/MainClass.java
+                                                        </a>
+                                                        <span class="attachment-size">
+                                                            0.6 kB
+                                                        </span>
+                                                    </li>
+                                                                                                                                                                                                <li>
+                                                        <div class="attachment-thumb">
+                                                            <a href="/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B9%5D/src/main/java/cx/lehmann/jbehave/fileclose/MyStories.java" draggable="true" data-downloadurl="text/plain:src/main/java/cx/lehmann/jbehave/fileclose/MyStories.java:/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B9%5D/src/main/java/cx/lehmann/jbehave/fileclose/MyStories.java">
+                                                                    <img src="index_files/java.gif" alt="Java Source File" height="16" border="0" width="16">
+                                                            </a>
+                                                        </div>
+                                                        <a href="/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B9%5D/src/main/java/cx/lehmann/jbehave/fileclose/MyStories.java" title="src/main/java/cx/lehmann/jbehave/fileclose/MyStories.java" draggable="true" data-downloadurl="text/plain:src/main/java/cx/lehmann/jbehave/fileclose/MyStories.java:/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B9%5D/src/main/java/cx/lehmann/jbehave/fileclose/MyStories.java">
+                                                            src/main/java/.../fileclose/MyStories.java
+                                                        </a>
+                                                        <span class="attachment-size">
+                                                            3 kB
+                                                        </span>
+                                                    </li>
+                                                                                                                                                                                                <li>
+                                                        <div class="attachment-thumb">
+                                                            <a href="/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B11%5D/src/main/java/cx/lehmann/jbehave/fileclose/steps/MySteps.java" draggable="true" data-downloadurl="text/plain:src/main/java/cx/lehmann/jbehave/fileclose/steps/MySteps.java:/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B11%5D/src/main/java/cx/lehmann/jbehave/fileclose/steps/MySteps.java">
+                                                                    <img src="index_files/java.gif" alt="Java Source File" height="16" border="0" width="16">
+                                                            </a>
+                                                        </div>
+                                                        <a href="/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B11%5D/src/main/java/cx/lehmann/jbehave/fileclose/steps/MySteps.java" title="src/main/java/cx/lehmann/jbehave/fileclose/steps/MySteps.java" draggable="true" data-downloadurl="text/plain:src/main/java/cx/lehmann/jbehave/fileclose/steps/MySteps.java:/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B11%5D/src/main/java/cx/lehmann/jbehave/fileclose/steps/MySteps.java">
+                                                            src/main/java/.../steps/MySteps.java
+                                                        </a>
+                                                        <span class="attachment-size">
+                                                            0.2 kB
+                                                        </span>
+                                                    </li>
+                                                                                                                                                                                                <li>
+                                                        <div class="attachment-thumb">
+                                                            <a href="/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B18%5D/src/main/resources/cx/lehmann/jbehave/fileclose/stories/my.story" draggable="true" data-downloadurl="${zipEntry.mimetype}:src/main/resources/cx/lehmann/jbehave/fileclose/stories/my.story:/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B18%5D/src/main/resources/cx/lehmann/jbehave/fileclose/stories/my.story">
+                                                                    <img src="index_files/file.gif" alt="File" height="16" border="0" width="16">
+                                                            </a>
+                                                        </div>
+                                                        <a href="/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B18%5D/src/main/resources/cx/lehmann/jbehave/fileclose/stories/my.story" title="src/main/resources/cx/lehmann/jbehave/fileclose/stories/my.story" draggable="true" data-downloadurl="${zipEntry.mimetype}:src/main/resources/cx/lehmann/jbehave/fileclose/stories/my.story:/Old_JBehave_Issues/attachmentzip/unzip/141858/61913%5B18%5D/src/main/resources/cx/lehmann/jbehave/fileclose/stories/my.story">
+                                                            src/main/resources/.../stories/my.story
+                                                        </a>
+                                                        <span class="attachment-size">
+                                                            0.2 kB
+                                                        </span>
+                                                    </li>
+                                                                                                                                    </ol>
+                                        <span class="zip-contents-trailer">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/61913/fileclose.zip" draggable="true" data-downloadurl="application/zip:fileclose.zip:/Old_JBehave_Issues/attachment/61913/${fileAttachment.fileNameUrlEncoded}">Download Zip</a>
+                                        </span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="twixi-wrap concise">
+                                <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+
+                                <div class="attachment-thumb">
+                                    <a href="/Old_JBehave_Issues/attachment/61913/fileclose.zip" draggable="true" data-downloadurl="application/zip:fileclose.zip:/Old_JBehave_Issues/attachment/61913/fileclose.zip">
+                                            <img src="index_files/zip.gif" alt="Zip Archive" height="16" border="0" width="16">
+                                    </a>
+                                </div>
+                                <dl>
+                                        <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/61913/fileclose.zip" title="Latest  07/Nov/12 2:16 PM - Alexander Lehmann" draggable="true" data-downloadurl="application/zip:fileclose.zip:/Old_JBehave_Issues/attachment/61913/fileclose.zip">fileclose.zip
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2012-11-07T14:16-0600">07/Nov/12 2:16 PM</time></dd>
+    <dd class="attachment-size">6 kB</dd>
+    <dd class="attachment-author">Alexander Lehmann</dd>
+                                </dl>
+                            </div>
+                        </div>
+                                    </li>
+                    </ol>
+        </div></div><div id="activitymodule" class="module toggle-wrap"><div id="activitymodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Activity</h2></div><div class="mod-content">
+
+
+
+
+
+
+
+
+
+
+    <div class="tabwrap tabs2" style="display:none">
+                    <div class="sortwrap">
+                                    <a class="icon icon-sort-down ajax-activity-content" rel="nofollow" href="/Old_JBehave_Issues/848?actionOrder=desc" title="Ascending order - Click to sort in descending order"><span>Ascending order - Click to sort in descending order</span></a>
+                            </div>
+                <ul id="issue-tabs" class="tabs horizontal">
+                                
+            <li class="active" id="all-tabpanel" data-id="all-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel" data-label="All" data-href="/browse/JBEHAVE-848">
+                            <strong>All</strong>
+                        </li>
+                                
+            <li data-id="comment-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel" data-label="Comments" data-href="/browse/JBEHAVE-848">
+                            <a class="ajax-activity-content" id="comment-tabpanel" href="/Old_JBehave_Issues/848"><strong>Comments</strong></a>
+                        </li>
+                                
+            <li data-id="worklog-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:worklog-tabpanel" data-label="Work Log" data-href="/browse/JBEHAVE-848">
+                            <a class="ajax-activity-content" id="worklog-tabpanel" href="/Old_JBehave_Issues/848"><strong>Work Log</strong></a>
+                        </li>
+                                
+            <li data-id="changehistory-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:changehistory-tabpanel" data-label="History" data-href="/browse/JBEHAVE-848">
+                            <a class="ajax-activity-content" id="changehistory-tabpanel" href="/Old_JBehave_Issues/848"><strong>History</strong></a>
+                        </li>
+                                
+            <li data-id="activity-stream-issue-tab" data-key="com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab" data-label="Activity" data-href="/browse/JBEHAVE-848">
+                            <a class="ajax-activity-content" id="activity-stream-issue-tab" href="/Old_JBehave_Issues/848"><strong>Activity</strong></a>
+                        </li>
+                </ul>
+    </div>
+    <div class="issuePanelWrapper">
+        <div class="issuePanelProgress"></div>
+        <div class="issuePanelContainer" id="issue_actions_container">
+                                    
+
+
+<div id="comment-312991" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=312991&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-312991" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_312991_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_312991_verbose subText"><span class="date user-tz" title="07/Nov/12 2:07 AM"><time class="livestamp" datetime="2012-11-07T02:07-0600">07/Nov/12 2:07 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Do you have a sample project that reproduces the issue?</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_312991_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_312991_concise subText"><span class="date user-tz" title="07/Nov/12 2:07 AM"><time class="livestamp" datetime="2012-11-07T02:07-0600">07/Nov/12 2:07 AM</time></span></span>                    Do you have a sample project that reproduces the issue?              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313044" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313044&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313044" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313044_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313044_verbose subText"><span class="date user-tz" title="07/Nov/12 2:11 PM"><time class="livestamp" datetime="2012-11-07T14:11-0600">07/Nov/12 2:11 PM</time></span></span>   - <span class="redText subText" title="Alexander Lehmann - 07/Nov/12 2:13 PM">edited</span> </div>
+        </div>
+        <div class="action-body flooded"><p>I think I noticed this a while back as well, but I didn't get around to actually checking out why this happens. I have created a sample project that shows the problem, however this is only noticeable in Windows since open files cannot be deleted in Windows, but this is possible in Linux (if your directory is on nfs you may get leftover nfs files for the open delete files).</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313044_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313044_concise subText"><span class="date user-tz" title="07/Nov/12 2:11 PM"><time class="livestamp" datetime="2012-11-07T14:11-0600">07/Nov/12 2:11 PM</time></span></span>   - <span class="redText subText" title="Alexander Lehmann - 07/Nov/12 2:13 PM">edited</span>                   I think I noticed this a while back as well, but I didn't get around to actually checking out why this happens. I have created a sample project that shows the problem, however this is only noticeable in Windows since open files cannot be deleted in Windows, but this is possible in Linux (if your directory is on nfs you may get leftover nfs files for the open delete files).              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-410443">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_410443">
+                                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="changehistoryauthor_410443" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ made changes  - <span class="date" title="07/Nov/12 2:16 PM"><time class="livestamp" datetime="2012-11-07T14:16-0600">07/Nov/12 2:16 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_410443" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <thead>
+                    <tr>
+                        <th width="20%">Field</th>
+                        <th width="40%">Original Value</th>
+                        <th width="40%">New Value</th>
+                    </tr>
+                </thead>
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/61913/fileclose.zip">fileclose.zip</a>
+                                                                                                                       <span class="hist-value">[    61913
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313046" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313046&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313046" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313046_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313046_verbose subText"><span class="date user-tz" title="07/Nov/12 3:40 PM"><time class="livestamp" datetime="2012-11-07T15:40-0600">07/Nov/12 3:40 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>this is basically a project created with the simple archetype plus a main class that calls the run method and waits.<br>
+If you run the test and then try to delete the files in the target/jbehave in Windows, the java process has the files locked and they are only released when the jvm exits.<br>
+It may be possible to observe the open files with lsof in Linux, I haven't tried that since I not have a Linux machine available right now.</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313046_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313046_concise subText"><span class="date user-tz" title="07/Nov/12 3:40 PM"><time class="livestamp" datetime="2012-11-07T15:40-0600">07/Nov/12 3:40 PM</time></span></span>                    this is basically a project created with the simple archetype plus a main class that calls the run method and waits. 
+If you run the test and then try to delete the files in the target/jbehave in Windows, the java process has the files locked and they are only released when the jvm exits. 
+It may be possible to observe the open files with lsof in Linux, I haven't tried that since I not have a Linux machine available right now. 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313049" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313049&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313049" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="pascal@rapicault.net" id="commentauthor_313049_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=pascal%40rapicault.net"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Pascal Rapicault</a>
+ added a comment  - <span class="commentdate_313049_verbose subText"><span class="date user-tz" title="07/Nov/12 3:56 PM"><time class="livestamp" datetime="2012-11-07T15:56-0600">07/Nov/12 3:56 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Thanks for attaching the sample Alexander.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="pascal@rapicault.net" id="commentauthor_313049_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=pascal%40rapicault.net"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Pascal Rapicault</a>
+ added a comment  - <span class="commentdate_313049_concise subText"><span class="date user-tz" title="07/Nov/12 3:56 PM"><time class="livestamp" datetime="2012-11-07T15:56-0600">07/Nov/12 3:56 PM</time></span></span>                    Thanks for attaching the sample Alexander.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313055" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313055&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313055" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313055_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313055_verbose subText"><span class="date user-tz" title="07/Nov/12 4:35 PM"><time class="livestamp" datetime="2012-11-07T16:35-0600">07/Nov/12 4:35 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>haven't had time to look at the actual problem though <img class="emoticon" src="index_files/smile.gif" alt="" height="16" align="absmiddle" border="0" width="16"></p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313055_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313055_concise subText"><span class="date user-tz" title="07/Nov/12 4:35 PM"><time class="livestamp" datetime="2012-11-07T16:35-0600">07/Nov/12 4:35 PM</time></span></span>                    haven't had time to look at the actual problem though   
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313063" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313063&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313063" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313063_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313063_verbose subText"><span class="date user-tz" title="07/Nov/12 5:44 PM"><time class="livestamp" datetime="2012-11-07T17:44-0600">07/Nov/12 5:44 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I guess PrintStreamOutput needs a close() method that closes the PrintStream that is called when a report is finished.<br>
+Or the StoryReporter interface needs a finish or close method that is called to close the Stream if there is one.</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313063_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313063_concise subText"><span class="date user-tz" title="07/Nov/12 5:44 PM"><time class="livestamp" datetime="2012-11-07T17:44-0600">07/Nov/12 5:44 PM</time></span></span>                    I guess PrintStreamOutput needs a close() method that closes the PrintStream that is called when a report is finished. 
+Or the StoryReporter interface needs a finish or close method that is called to close the Stream if there is one. 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313224" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313224&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313224" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313224_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313224_verbose subText"><span class="date user-tz" title="08/Nov/12 5:31 PM"><time class="livestamp" datetime="2012-11-08T17:31-0600">08/Nov/12 5:31 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Does anybody have an idea how to generically check for open files?</p>
+
+<p>I guess it would be possible in this case to create a subclass of FilePrintStreamFactory that gives out a PrintStream that can be checked if it was closed, but I wonder how this could be solved in general.</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313224_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313224_concise subText"><span class="date user-tz" title="08/Nov/12 5:31 PM"><time class="livestamp" datetime="2012-11-08T17:31-0600">08/Nov/12 5:31 PM</time></span></span>                    Does anybody have an idea how to generically check for open files? 
+
+ I guess it would be possible in this case to create a subclass of FilePrintStreamFactory that gives out a PrintStream that can be checked if it was closed, but I wonder how this could be solved in general. 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313494" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313494&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313494" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="pascal@rapicault.net" id="commentauthor_313494_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=pascal%40rapicault.net"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Pascal Rapicault</a>
+ added a comment  - <span class="commentdate_313494_verbose subText"><span class="date user-tz" title="13/Nov/12 7:34 PM"><time class="livestamp" datetime="2012-11-13T19:34-0600">13/Nov/12 7:34 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>If I wanted to look into this, where would I start? I mean where are the files that are being written actually opened?</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="pascal@rapicault.net" id="commentauthor_313494_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=pascal%40rapicault.net"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Pascal Rapicault</a>
+ added a comment  - <span class="commentdate_313494_concise subText"><span class="date user-tz" title="13/Nov/12 7:34 PM"><time class="livestamp" datetime="2012-11-13T19:34-0600">13/Nov/12 7:34 PM</time></span></span>                    If I wanted to look into this, where would I start? I mean where are the files that are being written actually opened?              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313565" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313565&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313565" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313565_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313565_verbose subText"><span class="date user-tz" title="14/Nov/12 4:54 PM"><time class="livestamp" datetime="2012-11-14T16:54-0600">14/Nov/12 4:54 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>The report files are created by FilePrintStreamFactory.createPrintStream(), which is called when the respective Format is processed in StoryReporterBuilder<br>
+the main problem is finding the point where the PrintStream could be closed and then finding the PrintStreams that should actually be closed.<br>
+I started trying to implement a close() method for each StoryReporter that takes care of closing the PrintStream and passing the close call to the delegate reporter etc. This does not yet work correctly, until now I can close the Before and After report files.</p>
+
+<p>However the report files are still open, so they are apparently opened later in the code again and these streams are not closed either (i.e. each open file is leaked more than once). I haven't found out where this happens yet.</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313565_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313565_concise subText"><span class="date user-tz" title="14/Nov/12 4:54 PM"><time class="livestamp" datetime="2012-11-14T16:54-0600">14/Nov/12 4:54 PM</time></span></span>                    The report files are created by FilePrintStreamFactory.createPrintStream(), which is called when the respective Format is processed in StoryReporterBuilder 
+the main problem is finding the point where the PrintStream could be closed and then finding the PrintStreams that should actually be closed. 
+I started trying to implement a close() method for each StoryReporter that takes care of closing the PrintStream and passing the close call to the delegate reporter etc. This does not yet work correctly, until now I can close the Before and After report files. 
+
+ However the report files are still open, so they are apparently opened later in the code again and these streams are not closed either (i.e. each open file is leaked more than once). I haven't found out where this happens yet. 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313567" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313567&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313567" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_313567_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_313567_verbose subText"><span class="date user-tz" title="14/Nov/12 5:03 PM"><time class="livestamp" datetime="2012-11-14T17:03-0600">14/Nov/12 5:03 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>They should be closed in the afterStory(boolean givenStory) method of the PrintStreamOuput. </p>
+
+<p>Have a look at the TemplateableOutput - it does something similar.</p>
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_313567_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_313567_concise subText"><span class="date user-tz" title="14/Nov/12 5:03 PM"><time class="livestamp" datetime="2012-11-14T17:03-0600">14/Nov/12 5:03 PM</time></span></span>                    They should be closed in the afterStory(boolean givenStory) method of the PrintStreamOuput.  
+
+ Have a look at the TemplateableOutput - it does something similar. 
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313612" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313612&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313612" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313612_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313612_verbose subText"><span class="date user-tz" title="15/Nov/12 4:57 PM"><time class="livestamp" datetime="2012-11-15T16:57-0600">15/Nov/12 4:57 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>thanks, that takes care of a few open files, but there are still some leaks.<br>
+I will look a bit further.</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313612_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313612_concise subText"><span class="date user-tz" title="15/Nov/12 4:57 PM"><time class="livestamp" datetime="2012-11-15T16:57-0600">15/Nov/12 4:57 PM</time></span></span>                    thanks, that takes care of a few open files, but there are still some leaks. 
+I will look a bit further. 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313783" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313783&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313783" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313783_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313783_verbose subText"><span class="date user-tz" title="16/Nov/12 4:57 PM"><time class="livestamp" datetime="2012-11-16T16:57-0600">16/Nov/12 4:57 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Fixed <a href="#" title="Report files not closed " class="issue-link" data-issue-key="JBEHAVE-848"><del>JBEHAVE-848</del></a>: Report files not closed</p>
+
+<p>added close() calls to afterStory in PrintStreamOutput and to a few Writers that were not closed.<br>
+And changed a few calls that where constructing streams as a parameter to IOUtils.toString.</p>
+
+<p><a href="https://github.com/alexlehm/jbehave-core/commit/31000d962e0382bca6dddfebe8b7ccb2fb5009ba" class="external-link" rel="nofollow">https://github.com/alexlehm/jbehave-core/commit/31000d962e0382bca6dddfebe8b7ccb2fb5009ba</a></p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313783_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313783_concise subText"><span class="date user-tz" title="16/Nov/12 4:57 PM"><time class="livestamp" datetime="2012-11-16T16:57-0600">16/Nov/12 4:57 PM</time></span></span>                    Fixed   JBEHAVE-848  : Report files not closed 
+
+ added close() calls to afterStory in PrintStreamOutput and to a few Writers that were not closed. 
+And changed a few calls that where constructing streams as a parameter to IOUtils.toString. 
+
+  https://github.com/alexlehm/jbehave-core/commit/31000d962e0382bca6dddfebe8b7ccb2fb5009ba  
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313784" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313784&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313784" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313784_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313784_verbose subText"><span class="date user-tz" title="16/Nov/12 5:03 PM"><time class="livestamp" datetime="2012-11-16T17:03-0600">16/Nov/12 5:03 PM</time></span></span>   - <span class="redText subText" title="Alexander Lehmann - 16/Nov/12 5:03 PM">edited</span> </div>
+        </div>
+        <div class="action-body flooded"><p>I should add that of course I'm not sure if I caught all files, however I checked that test program doesn't have files open.</p>
+
+<p>The changes do not contain any unit tests since I am still not sure how to test this, maybe I can add some later.</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313784_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313784_concise subText"><span class="date user-tz" title="16/Nov/12 5:03 PM"><time class="livestamp" datetime="2012-11-16T17:03-0600">16/Nov/12 5:03 PM</time></span></span>   - <span class="redText subText" title="Alexander Lehmann - 16/Nov/12 5:03 PM">edited</span>                   I should add that of course I'm not sure if I caught all files, however I checked that test program doesn't have files open. 
+
+ The changes do not contain any unit tests since I am still not sure how to test this, maybe I can add some later. 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-411324">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_411324">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_411324" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="18/Nov/12 5:32 AM"><time class="livestamp" datetime="2012-11-18T05:32-0600">18/Nov/12 5:32 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_411324" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               3.7.4
+                                                                                               <span class="hist-value">[    18964
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313836" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313836&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313836" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_313836_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_313836_verbose subText"><span class="date user-tz" title="18/Nov/12 7:39 AM"><time class="livestamp" datetime="2012-11-18T07:39-0600">18/Nov/12 7:39 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Patch pulled.   Added a custom IOUtils class for JBehave to collect methods with close option. </p>
+
+<p>Pushed new 3.8-SNAPSHOT release.  </p>
+
+<p>Pascal, can you please test snapshot?  If working we'll cut the 3.7.4 release. </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_313836_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_313836_concise subText"><span class="date user-tz" title="18/Nov/12 7:39 AM"><time class="livestamp" datetime="2012-11-18T07:39-0600">18/Nov/12 7:39 AM</time></span></span>                    Patch pulled.   Added a custom IOUtils class for JBehave to collect methods with close option.  
+
+ Pushed new 3.8-SNAPSHOT release.   
+
+ Pascal, can you please test snapshot?  If working we'll cut the 3.7.4 release.               </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-411354">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_411354">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_411354" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="18/Nov/12 7:55 AM"><time class="livestamp" datetime="2012-11-18T07:55-0600">18/Nov/12 7:55 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_411354" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Assignee
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Mauro Talevi
+                                                                                               <span class="hist-value">[    maurotalevi
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-411355">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_411355">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_411355" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="18/Nov/12 7:56 AM"><time class="livestamp" datetime="2012-11-18T07:56-0600">18/Nov/12 7:56 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_411355" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Open
+                                                                                                <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               In Progress
+                                                                                               <span class="hist-value">[    3
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313847" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313847&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313847" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313847_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313847_verbose subText"><span class="date user-tz" title="18/Nov/12 9:23 AM"><time class="livestamp" datetime="2012-11-18T09:23-0600">18/Nov/12 9:23 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I thought about extracting the method as well but didn't get around to doing it yet.<br>
+To be completely correct, the close method should be in a finally block, in case of an IOException otherwise the file will remain open (I can add that, if you like)</p>
+
+<p>On a side note, I think calling the class IOUtils as well is not good since it makes the methods from the other class available only by complete package name, maybe the class could be called IOUtils2 ?</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313847_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313847_concise subText"><span class="date user-tz" title="18/Nov/12 9:23 AM"><time class="livestamp" datetime="2012-11-18T09:23-0600">18/Nov/12 9:23 AM</time></span></span>                    I thought about extracting the method as well but didn't get around to doing it yet. 
+To be completely correct, the close method should be in a finally block, in case of an IOException otherwise the file will remain open (I can add that, if you like) 
+
+ On a side note, I think calling the class IOUtils as well is not good since it makes the methods from the other class available only by complete package name, maybe the class could be called IOUtils2 ? 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313848" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313848&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313848" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_313848_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_313848_verbose subText"><span class="date user-tz" title="18/Nov/12 9:47 AM"><time class="livestamp" datetime="2012-11-18T09:47-0600">18/Nov/12 9:47 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>If there is an IOException, I'm not sure it would be closable anyway.  And in any case, the exception is handled upstream.  Let's deal with this when there is a more concrete scenario to satisfy.</p>
+
+<p>As for the name of the class, there are plenty IOUtils around in several libs.  The users will choose the one that they need (and if need be use the full package name).   I don't like xxx2 names.  They don't mean anything.    Also, this IOUtils is intended for internal use, as a replacement for the commons-io one.  Most likely, you won't be using it in conjunction with commons-io. </p>
+
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_313848_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_313848_concise subText"><span class="date user-tz" title="18/Nov/12 9:47 AM"><time class="livestamp" datetime="2012-11-18T09:47-0600">18/Nov/12 9:47 AM</time></span></span>                    If there is an IOException, I'm not sure it would be closable anyway.  And in any case, the exception is handled upstream.  Let's deal with this when there is a more concrete scenario to satisfy. 
+
+ As for the name of the class, there are plenty IOUtils around in several libs.  The users will choose the one that they need (and if need be use the full package name).   I don't like xxx2 names.  They don't mean anything.    Also, this IOUtils is intended for internal use, as a replacement for the commons-io one.  Most likely, you won't be using it in conjunction with commons-io.  
+
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313851" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313851&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313851" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313851_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313851_verbose subText"><span class="date user-tz" title="18/Nov/12 11:37 AM"><time class="livestamp" datetime="2012-11-18T11:37-0600">18/Nov/12 11:37 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I think it might be closable, depending on when the exception happened (in most cases the exception will be something like file not found or permission denied in that case the file is not open anyway), I agree that this is not a likely scenario, this is not a real problem in our case. (FindBugs sometimes complains about missing close statements in case of exception, with our source code only in TemplateableViewGenerator line 366)</p>
+
+<p>As for the class name, you are right, no argument.</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_313851_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_313851_concise subText"><span class="date user-tz" title="18/Nov/12 11:37 AM"><time class="livestamp" datetime="2012-11-18T11:37-0600">18/Nov/12 11:37 AM</time></span></span>                    I think it might be closable, depending on when the exception happened (in most cases the exception will be something like file not found or permission denied in that case the file is not open anyway), I agree that this is not a likely scenario, this is not a real problem in our case. (FindBugs sometimes complains about missing close statements in case of exception, with our source code only in TemplateableViewGenerator line 366) 
+
+ As for the class name, you are right, no argument. 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313872" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313872&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313872" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_313872_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_313872_verbose subText"><span class="date user-tz" title="19/Nov/12 2:46 AM"><time class="livestamp" datetime="2012-11-19T02:46-0600">19/Nov/12 2:46 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>If you want to provide a patch to close in a finally clause, by all means do.  </p>
+
+<p>But let's unit test the IOUtils methods with the occasion. </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_313872_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_313872_concise subText"><span class="date user-tz" title="19/Nov/12 2:46 AM"><time class="livestamp" datetime="2012-11-19T02:46-0600">19/Nov/12 2:46 AM</time></span></span>                    If you want to provide a patch to close in a finally clause, by all means do.   
+
+ But let's unit test the IOUtils methods with the occasion.               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-313947" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=313947&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-313947" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="pascal@rapicault.net" id="commentauthor_313947_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=pascal%40rapicault.net"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Pascal Rapicault</a>
+ added a comment  - <span class="commentdate_313947_verbose subText"><span class="date user-tz" title="19/Nov/12 6:57 PM"><time class="livestamp" datetime="2012-11-19T18:57-0600">19/Nov/12 6:57 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I'll take a look at it tomorrow Tuesday.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="pascal@rapicault.net" id="commentauthor_313947_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=pascal%40rapicault.net"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Pascal Rapicault</a>
+ added a comment  - <span class="commentdate_313947_concise subText"><span class="date user-tz" title="19/Nov/12 6:57 PM"><time class="livestamp" datetime="2012-11-19T18:57-0600">19/Nov/12 6:57 PM</time></span></span>                    I'll take a look at it tomorrow Tuesday.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-314040" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/848?focusedCommentId=314040&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-314040" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="pascal@rapicault.net" id="commentauthor_314040_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=pascal%40rapicault.net"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Pascal Rapicault</a>
+ added a comment  - <span class="commentdate_314040_verbose subText"><span class="date user-tz" title="20/Nov/12 3:23 PM"><time class="livestamp" datetime="2012-11-20T15:23-0600">20/Nov/12 3:23 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I confirm that this is now working for me.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="pascal@rapicault.net" id="commentauthor_314040_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=pascal%40rapicault.net"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Pascal Rapicault</a>
+ added a comment  - <span class="commentdate_314040_concise subText"><span class="date user-tz" title="20/Nov/12 3:23 PM"><time class="livestamp" datetime="2012-11-20T15:23-0600">20/Nov/12 3:23 PM</time></span></span>                    I confirm that this is now working for me.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-412342">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_412342">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_412342" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="22/Nov/12 2:50 AM"><time class="livestamp" datetime="2012-11-22T02:50-0600">22/Nov/12 2:50 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_412342" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                In Progress
+                                                                                                <span class="hist-value">[    3
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Resolved
+                                                                                               <span class="hist-value">[    5
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Resolution
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Fixed
+                                                                                               <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-412630">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_412630">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_412630" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="24/Nov/12 4:16 AM"><time class="livestamp" datetime="2012-11-24T04:16-0600">24/Nov/12 4:16 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_412630" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Component/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Core
+                                                                                               <span class="hist-value">[    11086
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-424632">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_424632">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_424632" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="14/Apr/13 2:39 PM"><time class="livestamp" datetime="2013-04-14T14:39-0500">14/Apr/13 2:39 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_424632" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               3.8
+                                                                                               <span class="hist-value">[    19104
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             </div>
+    </div>
+</div></div></div><div id="viewissuesidebar" class="aui-item issue-side-column"><div id="peoplemodule" class="module toggle-wrap"><div id="peoplemodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">People</h2></div><div class="mod-content"><ul class="item-details" id="peopledetails">
+    <li class="people-details">
+                <dl>
+            <dt>Assignee:</dt>
+            <dd>
+                <span id="assignee-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_assignee_maurotalevi" rel="maurotalevi">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span>
+            Mauro Talevi
+        </span>
+    </span>
+                            </dd>
+        </dl>
+                        <dl>
+            <dt>Reporter:</dt>
+            <dd>
+                <span id="reporter-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_reporter_pascal@rapicault.net" rel="pascal@rapicault.net">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span>
+            Pascal Rapicault
+        </span>
+    </span>
+            </dd>
+        </dl>
+                    </li>
+</ul>
+    <ul class="item-details">
+        <li>
+                            <dl>
+                    <dt>Votes:</dt>
+                    <dd>
+                                                                            <span id="vote-data" class="aui-badge vote-state-off">0</span>
+                        
+                                                                                                        <span id="vote-label" title="You have to be logged in to vote for an issue.">Vote for this issue</span>
+                                            </dd>
+                </dl>
+                                        <dl>
+                    <dt>Watchers:</dt>
+                    <dd>
+                                                                        
+                                                                            <span id="watcher-data" class="aui-badge watch-state-off">3</span>
+                        
+                                                                                <span id="watch-label" title="You have to be logged in to watch an issue.">Start watching this issue</span>
+                                            </dd>
+                </dl>
+                    </li>
+    </ul>
+</div></div><div id="datesmodule" class="module toggle-wrap"><div id="datesmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Dates</h2></div><div class="mod-content"><ul class="item-details">
+    <li>
+            <dl class="dates">
+            <dt>Created:</dt>
+            <dd class="date user-tz" title="06/Nov/12 9:22 PM">
+
+                <span data-name="Created" id="create-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-11-06T21:22-0600">06/Nov/12 9:22 PM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Updated:</dt>
+            <dd class="date user-tz" title="14/Apr/13 2:39 PM">
+
+                <span data-name="Updated" id="updated-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2013-04-14T14:39-0500">14/Apr/13 2:39 PM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Resolved:</dt>
+            <dd class="date user-tz" title="22/Nov/12 2:50 AM">
+
+                <span data-name="Resolved" id="resolved-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-11-22T02:50-0600">22/Nov/12 2:50 AM</time>                                                             </span>
+            </dd>
+        </dl>
+        </li>
+</ul>
+</div></div></div></div>
+                    </div>
+                </div>
+                        </div>
+
+    <fieldset class="hidden parameters">
+        <input title="autocompleteEnabled" value="true" type="hidden">
+    </fieldset>
+    
+    </section>
+    <footer id="footer" role="contentinfo">
+        
+        
+
+
+
+<div class="footer-body">
+    <ul>
+        <li>
+                        <a href="http://www.atlassian.com/software/jira">Atlassian JIRA</a>
+
+                                                    
+                        
+            <span id="footer-build-information">(v6.1.6#6162-<span title="7af547ce7c84dbb7c1e345a65437ed7b85efffa2" data-commit-id="7af547ce7c84dbb7c1e345a65437ed7b85efffa2}">sha1:7af547c</span>)</span>
+        </li>
+        <li>
+            <a id="about-link" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+        </li>
+        <li>
+                                    <a id="footer-report-problem-link" href="https://jira.codehaus.org/secure/CreateIssue%21default.jspa">Report a problem</a>
+        </li>
+    </ul>
+            <ul>
+            <li class="licensemessage">
+                                    Powered by a free Atlassian <a href="http://www.atlassian.com/software/jira">JIRA</a> open source license for Codehaus. Try JIRA - <a href="http://www.atlassian.com/software/jira">bug tracking software</a> for <i>your</i> team.
+
+                            </li>
+        </ul>
+    </div>
+
+<form id="jira_request_timing_info" class="dont-default-focus">
+	<fieldset class="parameters hidden">
+
+
+
+
+		<input title="jira.session.expiry.in.mins" value="299" type="hidden">
+
+	</fieldset>
+</form>
+<!--
+	                 
+	          
+	               
+	                 
+	        CONCURRENT REQUESTS : 2
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input title="loggedInUser" value="" type="hidden">
+    <input title="ajaxTimeout" value="The call to the JIRA server did not complete within the timeout period.  We are unsure of the result of this operation." type="hidden">
+    <input title="JiraVersion" value="6.1.6" type="hidden">
+    <input title="ajaxUnauthorised" value="You are not authorised to perform this operation.  Please log in." type="hidden">
+    <input title="baseURL" value="https://jira.codehaus.org:443" type="hidden">
+    <input title="ajaxCommsError" value="The JIRA server could not be contacted.  This may be a temporary glitch or the server may be down." type="hidden">
+    <input title="ajaxServerError" value="The JIRA server was contacted but has returned an error response. We are unsure of the result of this operation." type="hidden">
+    <input title="ajaxErrorCloseDialog" value="Close this dialog and press refresh in your browser" type="hidden">
+    <input title="ajaxErrorDialogHeading" value="Communications Breakdown" type="hidden">
+
+    <input title="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost." type="hidden">
+    <input title="dirtyDialogMessage" value="You have entered new data in this dialog. If you navigate away from this dialog without first saving your data, the changes will be lost. Click cancel to return to the dialog." type="hidden">
+    <input title="keyType" value="Type" type="hidden">
+    <input title="keyThen" value="then" type="hidden">
+    <input title="dblClickToExpand" value="Double click to expand" type="hidden">
+    <input title="actions" value="Actions" type="hidden">
+    <input title="removeItem" value="Remove" type="hidden">
+    <input title="workflow" value="Workflow" type="hidden">
+    <input title="labelNew" value="New Label" type="hidden">
+    <input title="issueActionsHint" value="Begin typing for available operations or press down to see all" type="hidden">
+    <input title="closelink" value="Close" type="hidden">
+    <input title="dotOperations" value="Operations" type="hidden">
+    <input title="dotLoading" value="Loading..." type="hidden">
+    <input title="frotherSuggestions" value="Suggestions" type="hidden">
+    <input title="frotherNomatches" value="No Matches" type="hidden">
+    <input title="multiselectVersionsError" value="{0} is not a valid version." type="hidden">
+    <input title="multiselectComponentsError" value="{0} is not a valid component." type="hidden">
+    <input title="multiselectGenericError" value="The value {0} is invalid." type="hidden">
+</fieldset>
+
+    </footer>
+</div>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:void(0);" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:void(0);" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div class="navigator-sidebar collapsed ui-popout ui-popout-detached ui-popout-collapsed" id="navigator-sidebar"><a class="toggle-filter-panel" href="#" title="Dock the filters panel ([)"></a></div><div style="display: none;" class="jira-dialog box-shadow" id="edit-issue-dialog"><div class="jira-dialog-content"></div></div><div style="display: none;" class="jira-dialog box-shadow" id="create-subtask-dialog"><div class="jira-dialog-content"></div></div></body></html>

@@ -1,0 +1,44 @@
+From bf988ae1cc1278fd7b3dc00899353b5079a52300 Tue, 26 Jul 2011 14:14:47 +1000
+From: Jaroslav Sedlacek <kara.cz@gmail.com>
+Date: Tue, 26 Jul 2011 14:13:58 +1000
+Subject: [PATCH] JBEHAVE-570: Excluded scenarios should not be included into ScenarioSuccessful count
+
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/reporters/PostStoryStatisticsCollector.java b/jbehave-core/src/main/java/org/jbehave/core/reporters/PostStoryStatisticsCollector.java
+index 3c04f84..4d04d61 100644
+--- a/jbehave-core/src/main/java/org/jbehave/core/reporters/PostStoryStatisticsCollector.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/reporters/PostStoryStatisticsCollector.java
+@@ -162,10 +162,12 @@
+ 
+     private void countScenarios(String namespace) {
+         add(namespace);
+-        if (cause != null || outcomesFailed != null) {
+-            add(namespace + "Failed");
+-        } else {
+-            add(namespace + "Successful");
++        if (!currentScenarioNotAllowed){
++	        if (cause != null || outcomesFailed != null) {
++	            add(namespace + "Failed");
++	        } else {
++	            add(namespace + "Successful");
++	        }
+         }
+     }
+ 
+diff --git a/jbehave-core/src/test/java/org/jbehave/core/reporters/PostStoryStatisticsCollectorBehaviour.java b/jbehave-core/src/test/java/org/jbehave/core/reporters/PostStoryStatisticsCollectorBehaviour.java
+index eb4c97d..98fd1d2 100644
+--- a/jbehave-core/src/test/java/org/jbehave/core/reporters/PostStoryStatisticsCollectorBehaviour.java
++++ b/jbehave-core/src/test/java/org/jbehave/core/reporters/PostStoryStatisticsCollectorBehaviour.java
+@@ -89,8 +89,12 @@
+         // Then
+         String statistics = out.toString();
+         assertThat(statistics, containsString("notAllowed=0"));
+-        assertThat(statistics, containsString("scenariosNotAllowed=1"));
+         assertThat(statistics, containsString("pending=0"));
++        assertThat(statistics, containsString("scenarios=1"));
++        assertThat(statistics, containsString("scenariosSuccessful=0"));
++        assertThat(statistics, containsString("scenariosPending=0"));
++        assertThat(statistics, containsString("scenariosFailed=0"));
++        assertThat(statistics, containsString("scenariosNotAllowed=1"));
+     }
+ 
+     @Test

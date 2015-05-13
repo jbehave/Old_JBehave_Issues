@@ -1,0 +1,24 @@
+diff --git a/jbehave-maven-plugin/src/main/java/org/jbehave/mojo/AbstractEmbedderMojo.java b/jbehave-maven-plugin/src/main/java/org/jbehave/mojo/AbstractEmbedderMojo.java
+--- a/jbehave-maven-plugin/src/main/java/org/jbehave/mojo/AbstractEmbedderMojo.java
++++ b/jbehave-maven-plugin/src/main/java/org/jbehave/mojo/AbstractEmbedderMojo.java
+@@ -154,6 +154,8 @@
+      */
+     List<String> metaFilters = asList();
+ 
++    private EmbedderClassLoader classLoader;
++    
+     /**
+      * Determines if the scope of the mojo classpath is "test"
+      * 
+@@ -177,7 +179,10 @@
+      * @return A EmbedderClassLoader
+      */
+     protected EmbedderClassLoader createClassLoader() {
+-        return new EmbedderClassLoader(classpathElements());
++        if (classLoader == null)
++            classLoader = new EmbedderClassLoader(classpathElements());
++
++        return classLoader;
+     }
+ 
+     List<String> classpathElements() {

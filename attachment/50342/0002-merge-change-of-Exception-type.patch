@@ -1,0 +1,25 @@
+From 2499595137b79036bc29ba401330da0139f3b9c9 Mon Sep 17 00:00:00 2001
+From: Brian Repko <brian.repko@learnthinkcode.com>
+Date: Sun, 25 Jul 2010 16:15:38 -0500
+Subject: [PATCH 2/3] merge change of Exception type
+
+---
+ .../core/configuration/AnnotationFinder.java       |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/configuration/AnnotationFinder.java b/jbehave-core/src/main/java/org/jbehave/core/configuration/AnnotationFinder.java
+index 5b882ba..fd1a98d 100644
+--- a/jbehave-core/src/main/java/org/jbehave/core/configuration/AnnotationFinder.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/configuration/AnnotationFinder.java
+@@ -31,7 +31,7 @@ public class AnnotationFinder {
+ 				return (T) value;
+ 			}
+ 		}
+-		throw new MissingAnnotationException(annotationClass, memberName);
++		throw new AnnotationRequired(annotationClass, memberName);
+ 	}
+ 
+ 	@SuppressWarnings("unchecked")
+-- 
+1.7.1.GIT
+

@@ -1,0 +1,1288 @@
+<!DOCTYPE html><html class="mozilla"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>[JBEHAVE-207] Exclude SCM patterns from ScenarioClassNameFinder - jira.codehaus.org</title>
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<link rel="shortcut icon" href="index_files/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://jira.codehaus.org/osd.jsp" title="[JBEHAVE-207] Exclude SCM patterns from ScenarioClassNameFinder - jira.codehaus.org">
+
+    
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+<link type="text/css" rel="stylesheet" href="index_files/batch.css" media="all">
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="index_files/batch-1.css" media="all">
+<script type="text/javascript" src="index_files/batch.js"></script><style type="text/css"></style>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="index_files/batch-1.js"></script>
+<script type="text/javascript" src="index_files/jira.webresources_calendar-en.js"></script>
+<script type="text/javascript" src="index_files/com.atlassian.administraticksearch-webresources.js"></script>
+
+<script type="text/javascript" src="index_files/shortcuts.js"></script>
+
+
+    
+    
+    
+    <meta name="decorator" content="atl.general">
+    <meta id="isNavigator" name="isNavigator" content="true">
+    <meta name="ajs-user.search.mode" content="basic">
+    <meta name="ajs-issue-search-help-title" content="Searching for Issues">
+    <meta name="ajs-issue-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Searching+for+Issues">
+    <meta name="ajs-advanced-search-help-title" content="Performing Advanced Searches">
+    <meta name="ajs-advanced-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Advanced+Searching">
+    
+</head>
+<body data-aui-version="5.1.8" id="jira" class="aui-layout aui-theme-default ka ajax-issue-search-and-view page-type-navigator navigator-issue-only" data-version="6.1.6">
+<div id="page">
+    <header id="header" style="display:none" role="banner">
+        
+
+
+
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+
+<fieldset class="parameters hidden dont-default-focus">
+    <input title="tzdetect.pref.tzid" value="America/Chicago" type="hidden">
+    <input title="tzdetect.pref.tzname" value="(GMT-06:00) Chicago" type="hidden">
+    <input title="tzdetect.pref.tzoffset" value="(GMT-06:00)" type="hidden">
+    <input title="tzdetect.pref.tzdst" value="true" type="hidden">
+    <input title="tzdetect.pref.nothanks" value="" type="hidden">
+</fieldset>
+<nav data-aui-responsive="true" class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class="aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-haspopup="true" tabindex="0"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link nav-link-local"><a href="https://jira.codehaus.org/" class="aui-dropdown2-radio interactive checked" title="https://jira.codehaus.org/"><span class="nav-link-label">jira.codehaus.org</span></a></li><li class="nav-link"><a href="http://jira.sonarsource.com/" class="aui-dropdown2-radio interactive" title="http://jira.sonarsource.com/"><span class="nav-link-label">SonarSource</span></a></li><li class="nav-link"><a href="http://docs.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://docs.codehaus.org/"><span class="nav-link-label">Codehaus</span></a></li><li class="nav-link"><a href="http://xircles.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://xircles.codehaus.org"><span class="nav-link-label">Xircles</span></a></li></ul></div></div><script><!--
+/* Script removed by snapshot save */
+--></script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://jira.codehaus.org/secure/MyJiraHome.jspa"><img data-aui-responsive-header-index="0" src="urn:download-error:http://www.codehaus.org/codehaus-small.gif" alt="jira.codehaus.org"></a></h1><ul style="width: auto;" class="aui-nav">
+
+
+
+
+<li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/Dashboard.jspa" id="home_link" accesskey="d" title="View and manage your dashboards" aria-haspopup="true" aria-owns="home_link-content">Dashboards</a><div id="home_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="home_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="/Old_JBehave_Issues/index.html" id="browse_link" accesskey="p" title="View recent projects and browse a list of projects" aria-haspopup="true" aria-owns="browse_link-content">Projects</a><div id="browse_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="browse_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/IssueNavigator.jspa" id="find_link" accesskey="i" title="Search for issues and view recent issues" aria-haspopup="true" aria-owns="find_link-content">Issues</a><div id="find_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="find_link"></div></li>
+<li style="display: none;"><a id="aui-responsive-header-dropdown-trigger-0" class="aui-dropdown2-trigger" aria-owns="aui-responsive-header-dropdown-content-0" aria-haspopup="true" href="#">More<span class="icon aui-icon-dropdown"></span></a><div id="aui-responsive-header-dropdown-content-0" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul id="aui-responsive-header-dropdown-list-0"></ul></div></div></li></ul></div><div class="aui-header-secondary"><ul class="aui-nav"><li>
+    <form action="https://jira.codehaus.org/secure/QuickSearch.jspa" method="post" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" class="search" title="Quick Search ( Type '/' )" placeholder="Quick Search" name="searchString" accesskey="q" type="text">
+        <input class="hidden" value="Search" type="submit">
+    </form>
+</li>
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger" aria-haspopup="true" aria-owns="system-help-menu-content" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank" title="Help"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a id="view_help" class="interactive" title="Goto the online documentation for JIRA" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank">Online Help</a>
+                                </li>
+                                                            <li>
+                                    <a id="keyshortscuthelp" class="interactive" title="Get more information about JIRA's Keyboard Shortcuts ( Type '?' )" href="https://jira.codehaus.org/secure/ViewKeyboardShortcuts%21default.jspa" target="_blank">Keyboard Shortcuts</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_about" class="interactive" title="Get more information about JIRA" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_credits" class="interactive" title="See who did what" href="https://jira.codehaus.org/secure/JiraCreditsPage%21default.jspa" target="_blank">JIRA Credits</a>
+                                </li>
+                                                            <li>
+                                    <a id="whats-new-menu-link" class="interactive" href="https://docs.atlassian.com/jira/docs-061/whatsnew/iframe">What?s New</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a class="aui-nav-link login-link" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-207">Log In</a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <div style="position: absolute; right: 20em; top: -2em">
+  <a href="https://xircles.codehaus.org/signup">Signup</a>
+</div>
+</div>
+
+
+    <section id="content" role="main">
+        
+    
+
+    <div class="issue-container ">
+                                    <div id="issue-content" class="issue-edit-form">
+                    <header id="stalker" class="issue-header js-stalker">
+                        <div class="issue-header-content"><header class="aui-page-header"><div class="aui-page-header-inner"><div class="aui-page-header-image"><span id="10680" class="aui-avatar aui-avatar-large aui-avatar-project"><span class="aui-avatar-inner"><img id="project-avatar" alt="JBehave" src="index_files/projectavatar.png"></span></span></div><!-- .aui-page-header-image --><div class="aui-page-header-main"><ol class="aui-nav aui-nav-breadcrumbs"><li><a id="project-name-val" href="/Old_JBehave_Issues/index.html">JBehave</a></li><li><a class="issue-link" data-issue-key="JBEHAVE-207" href="#" id="key-val" rel="100936">JBEHAVE-207</a></li></ol><h1 id="summary-val">Exclude SCM patterns from ScenarioClassNameFinder</h1></div><!-- .aui-page-header-main --><div class="aui-page-header-actions"><div id="issue-header-pager"></div></div><!-- .aui-page-header-actions --></div><!-- .aui-page-header-inner --></header><!-- .aui-page-header --><div class="command-bar"><div class="ops-cont"><div class="ops-menus aui-toolbar"><div class="toolbar-split toolbar-split-left"><ul id="opsbar-ops-login-lnk_container" class="toolbar-group pluggable-ops"><li class="toolbar-item"><a id="ops-login-lnk" style="display:none" title="Log In" class="toolbar-trigger" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-207"><span class="trigger-label">Log In</span></a></li></ul><ul id="opsbar-opsbar-operations" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-transitions" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-admin" class="toolbar-group pluggable-ops"></ul></div><div class="toolbar-split toolbar-split-right"><ul id="opsbar-jira.issue.tools" style="display:none" class="toolbar-group pluggable-ops"><li class="toolbar-item toolbar-dropdown"><div><a href="#" id="viewissue-export" title="Export this issue in another format" data-hide-on-scroll=".split-view .issue-container" data-contain-to-window="true" class="toolbar-trigger  js-default-dropdown"><span class="icon icon-export viewissue-export"></span> <span class="dropdown-text">Export</span><span class="icon drop-menu"></span></a><div class="aui-list hidden"><ul class="aui-list-section aui-first aui-last"><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-xml/JBEHAVE-207/JBEHAVE-207.xml" class="aui-list-item-link" id="jira.issueviews:issue-xml"><span class="trigger-label">XML</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-word/JBEHAVE-207/JBEHAVE-207.doc" class="aui-list-item-link" id="jira.issueviews:issue-word"><span class="trigger-label">Word</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-html/JBEHAVE-207/JBEHAVE-207.html" class="aui-list-item-link" id="jira.issueviews:issue-html"><span class="trigger-label">Printable</span></a></li></ul></div></div></li></ul></div></div></div></div></div>
+                    </header>
+                    <div class="issue-body-content">
+                        <div class="aui-group issue-body"><div class="aui-item issue-main-column"><div id="details-module" class="module toggle-wrap"><div id="details-module_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Details</h2></div><div class="mod-content">
+
+
+
+
+<ul id="issuedetails" class="property-list two-cols">
+    <li class="item">
+        <div class="wrap">
+            <strong class="name">Type:</strong>
+            <span id="type-val" class="value">
+                                <img alt="Improvement" src="index_files/improvement.png" title="Improvement - An improvement or enhancement to an existing feature or task." height="16" width="16"> Improvement
+            </span>
+        </div>
+    </li>
+    <li class="item item-right">
+        <div class="wrap">
+            <strong class="name">Status:</strong>
+            <span id="status-val" class="value">
+                                
+
+<img src="index_files/resolved.png" alt="Resolved" title="Resolved - A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed." height="16" width="16"> Resolved
+            </span>
+                    </div>
+    </li>
+            <li class="item">
+            <div class="wrap">
+                <strong class="name">Priority:</strong>
+                <span id="priority-val" class="value">
+                                        <img alt="Minor" src="index_files/minor.png" title="Minor - Minor loss of function, or other problem where easy workaround is present." height="16" width="16"> Minor
+                </span>
+            </div>
+        </li>
+                                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Resolution:</strong>
+                <span id="resolution-val" class="value resolved">
+                                     Won't Fix
+                                </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Affects Version/s:</strong>
+                <span id="versions-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="versions-field">
+                                                            <span title="2.3 ">2.3</span>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Fix Version/s:</strong>
+                <span id="fixfor-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="fixVersions-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/fixforversion/16473" title="2.5.6 ">2.5.6</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Component/s:</strong>
+                <span id="components-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="components-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/component/11086" title="Core ">Core</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                    <li class="item full-width">
+            <div class="wrap" id="wrap-labels">
+                <strong class="name">Labels:</strong>
+                    <div class="labels-wrap value">
+            <span class="labels" id="labels-100936-value">None</span>
+                </div>
+            </div>
+        </li>
+        </ul>
+
+<div id="customfieldmodule">
+    <div class="aui-tabs horizontal-tabs" id="customfield-tabs">
+                    <div id="customfield-panel-1" class="tabs-pane active-pane">
+                        <ul class="property-list">
+                                                <li id="rowForcustomfield_10210" class="item">
+                        <div class="wrap">
+                            <strong title="Number of attachments " class="name">Number of attachments :</strong>
+                            <div id="customfield_10210-val" class="value type-attachments" data-fieldtype="attachments" data-fieldtypecompletekey="com.atlassian.jira.toolkit:attachments">
+                                    0
+
+                            </div>
+                        </div>
+                    </li>
+                                        </ul>
+        </div>
+        </div></div>
+</div></div><div id="descriptionmodule" class="module toggle-wrap"><div id="descriptionmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Description</h2></div><div class="mod-content"><div id="description-val" class="field-ignore-highlight">
+    <div class="user-content-block">
+                    <p>Automatically exclude .svn and other SCM directories from the directory scan.</p>
+            </div>
+</div>
+</div></div><div id="activitymodule" class="module toggle-wrap"><div id="activitymodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Activity</h2></div><div class="mod-content">
+
+
+
+
+
+
+
+
+
+
+    <div class="tabwrap tabs2" style="display:none">
+                    <div class="sortwrap">
+                                    <a class="icon icon-sort-down ajax-activity-content" rel="nofollow" href="/Old_JBehave_Issues/207?actionOrder=desc" title="Ascending order - Click to sort in descending order"><span>Ascending order - Click to sort in descending order</span></a>
+                            </div>
+                <ul id="issue-tabs" class="tabs horizontal">
+                                
+            <li class="active" id="all-tabpanel" data-id="all-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel" data-label="All" data-href="/browse/JBEHAVE-207">
+                            <strong>All</strong>
+                        </li>
+                                
+            <li data-id="comment-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel" data-label="Comments" data-href="/browse/JBEHAVE-207">
+                            <a class="ajax-activity-content" id="comment-tabpanel" href="/Old_JBehave_Issues/207"><strong>Comments</strong></a>
+                        </li>
+                                
+            <li data-id="worklog-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:worklog-tabpanel" data-label="Work Log" data-href="/browse/JBEHAVE-207">
+                            <a class="ajax-activity-content" id="worklog-tabpanel" href="/Old_JBehave_Issues/207"><strong>Work Log</strong></a>
+                        </li>
+                                
+            <li data-id="changehistory-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:changehistory-tabpanel" data-label="History" data-href="/browse/JBEHAVE-207">
+                            <a class="ajax-activity-content" id="changehistory-tabpanel" href="/Old_JBehave_Issues/207"><strong>History</strong></a>
+                        </li>
+                                
+            <li data-id="activity-stream-issue-tab" data-key="com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab" data-label="Activity" data-href="/browse/JBEHAVE-207">
+                            <a class="ajax-activity-content" id="activity-stream-issue-tab" href="/Old_JBehave_Issues/207"><strong>Activity</strong></a>
+                        </li>
+                </ul>
+    </div>
+    <div class="issuePanelWrapper">
+        <div class="issuePanelProgress"></div>
+        <div class="issuePanelContainer" id="issue_actions_container">
+                                    
+
+
+<div id="comment-203808" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/207?focusedCommentId=203808&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-203808" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_203808_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_203808_verbose subText"><span class="date user-tz" title="22/Dec/09 6:21 AM"><time class="livestamp" datetime="2009-12-22T06:21-0600">22/Dec/09 6:21 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Actually, the Ant DirectoryScanner already has the SCM patterns excluded by default.<br>
+The problem of SVN files being included in the finder lookup doesn't seem to be reproducible - at least on command-line.</p>
+
+<p>It seems though from thread on list that issue occurs withing IDE.  So more details are needed to reproduce and verify (possibly a sample project).</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_203808_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_203808_concise subText"><span class="date user-tz" title="22/Dec/09 6:21 AM"><time class="livestamp" datetime="2009-12-22T06:21-0600">22/Dec/09 6:21 AM</time></span></span>                    Actually, the Ant DirectoryScanner already has the SCM patterns excluded by default. 
+The problem of SVN files being included in the finder lookup doesn't seem to be reproducible - at least on command-line. 
+
+ It seems though from thread on list that issue occurs withing IDE.  So more details are needed to reproduce and verify (possibly a sample project).              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-266923">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_266923">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_266923" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="07/Jan/10 9:25 AM"><time class="livestamp" datetime="2010-01-07T09:25-0600">07/Jan/10 9:25 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_266923" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <thead>
+                    <tr>
+                        <th width="20%">Field</th>
+                        <th width="40%">Original Value</th>
+                        <th width="40%">New Value</th>
+                    </tr>
+                </thead>
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               2.5
+                                                                                               <span class="hist-value">[    15850
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                2.4
+                                                                                                <span class="hist-value">[    15664
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Affects Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               2.3
+                                                                                               <span class="hist-value">[    14941
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Component/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Core
+                                                                                               <span class="hist-value">[    11086
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-210727" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/207?focusedCommentId=210727&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-210727" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_210727_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_210727_verbose subText"><span class="date user-tz" title="19/Feb/10 4:43 AM"><time class="livestamp" datetime="2010-02-19T04:43-0600">19/Feb/10 4:43 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Descoping until an example to reproduce behaviour is available.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_210727_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_210727_concise subText"><span class="date user-tz" title="19/Feb/10 4:43 AM"><time class="livestamp" datetime="2010-02-19T04:43-0600">19/Feb/10 4:43 AM</time></span></span>                    Descoping until an example to reproduce behaviour is available.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-273097">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_273097">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_273097" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="19/Feb/10 4:43 AM"><time class="livestamp" datetime="2010-02-19T04:43-0600">19/Feb/10 4:43 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_273097" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                2.5
+                                                                                                <span class="hist-value">[    15850
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-220570" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/207?focusedCommentId=220570&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-220570" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="prishedko" id="commentauthor_220570_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=prishedko"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Bogdan Prishedko</a>
+ added a comment  - <span class="commentdate_220570_verbose subText"><span class="date user-tz" title="09/May/10 12:34 PM"><time class="livestamp" datetime="2010-05-09T12:34-0500">09/May/10 12:34 PM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>This issue reproduces stable if we have &lt;configuration&gt; section is placed only under &lt;execution&gt; section, as in \examples\gameoflife\pom.xml:</p>
+
+<p>      &lt;plugin&gt;<br>
+        &lt;groupId&gt;org.jbehave&lt;/groupId&gt;<br>
+        &lt;artifactId&gt;jbehave-maven-plugin&lt;/artifactId&gt;<br>
+        &lt;executions&gt;<br>
+          &lt;execution&gt;<br>
+            &lt;id&gt;run-scenarios-found&lt;/id&gt;<br>
+            &lt;phase&gt;integration-test&lt;/phase&gt;<br>
+            &lt;configuration&gt;<br>
+              &lt;scenarioIncludes&gt;<br>
+                &lt;scenarioInclude&gt;$</p>
+{scenario.includes}&lt;/scenarioInclude&gt;<br>
+              &lt;/scenarioIncludes&gt;<br>
+              &lt;scenarioExcludes&gt;<br>
+                &lt;scenarioExclude&gt;**/*Steps.java&lt;/scenarioExclude&gt;<br>
+              &lt;/scenarioExcludes&gt;<br>
+              &lt;classLoaderInjected&gt;false&lt;/classLoaderInjected&gt;<br>
+            &lt;/configuration&gt;<br>
+            &lt;goals&gt;<br>
+              &lt;goal&gt;run-scenarios&lt;/goal&gt;<br>
+            &lt;/goals&gt;<br>
+          &lt;/execution&gt;<br>
+        &lt;/executions&gt;<br>
+      &lt;/plugin&gt;<br>
+<br>
+In this case Maven doesn't injects configuration parameters (see including and excluding below):<br>
+<br>
+<span class="error">[INFO]</span> <span class="error">[jbehave:run-scenarios {execution: default-cli}]</span><br>
+<span class="error">[DEBUG]</span> Searching for scenario class names including null and excluding null<br>
+<span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+<span class="error">[ERROR]</span> FATAL ERROR<br>
+<span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+<span class="error">[INFO]</span> Invalid scenario class path .svn\all-wcprops<br>
+<span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+<span class="error">[DEBUG]</span> Trace<br>
+org.jbehave.scenario.errors.InvalidScenarioClassPathException: Invalid scenario class path .svn\all-wcprops<br>
+	at org.jbehave.scenario.parser.ScenarioClassNameFinder.classNameFor(ScenarioClassNameFinder.java:53)<br>
+	at org.jbehave.scenario.parser.ScenarioClassNameFinder.listScenarioClassNames(ScenarioClassNameFinder.java:41)<br>
+<br>
+And it can be fixed by moving &lt;configuration&gt; from &lt;execution&gt; to &lt;plugin&gt; tag:<br>
+<br>
+      &lt;plugin&gt;<br>
+        &lt;groupId&gt;org.jbehave&lt;/groupId&gt;<br>
+        &lt;artifactId&gt;jbehave-maven-plugin&lt;/artifactId&gt;<br>
+          &lt;configuration&gt;<br>
+            &lt;scenarioIncludes&gt;<br>
+              &lt;scenarioInclude&gt;${scenario.includes}
+<p>&lt;/scenarioInclude&gt;<br>
+            &lt;/scenarioIncludes&gt;<br>
+            &lt;scenarioExcludes&gt;<br>
+              &lt;scenarioExclude&gt;**/*Steps.java&lt;/scenarioExclude&gt;<br>
+            &lt;/scenarioExcludes&gt;<br>
+            &lt;classLoaderInjected&gt;false&lt;/classLoaderInjected&gt;<br>
+          &lt;/configuration&gt;          <br>
+        &lt;executions&gt;<br>
+          &lt;execution&gt;<br>
+            &lt;id&gt;run-scenarios-found&lt;/id&gt;<br>
+            &lt;phase&gt;integration-test&lt;/phase&gt;<br>
+            &lt;goals&gt;<br>
+              &lt;goal&gt;run-scenarios&lt;/goal&gt;<br>
+            &lt;/goals&gt;<br>
+          &lt;/execution&gt;<br>
+        &lt;/executions&gt;<br>
+      &lt;/plugin&gt;</p>
+
+<p>After this result of execution is the following:</p>
+
+<p><span class="error">[DEBUG]</span> Searching for scenario class names including <span class="error">[**/scenario/*.java]</span> and excluding <span class="error">[**/*Steps.java]</span><br>
+<span class="error">[DEBUG]</span> Found scenario class names: []<br>
+<span class="error">[INFO]</span> No scenarios to run.<br>
+<span class="error">[INFO]</span> <br>
+<span class="error">[INFO]</span> <br>
+<span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+<span class="error">[INFO]</span> Reactor Summary:<br>
+<span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+<span class="error">[INFO]</span> JBehave Examples ...................................... SUCCESS <span class="error">[1.592s]</span><br>
+<span class="error">[INFO]</span> JBehave Game of Life Example .......................... SUCCESS <span class="error">[0.015s]</span><br>
+<span class="error">[INFO]</span> JBehave Game of Life Example Scenarios ................ SUCCESS <span class="error">[0.010s]</span><br>
+<span class="error">[INFO]</span> JBehave Trader Example ................................ SUCCESS <span class="error">[0.031s]</span><br>
+<span class="error">[INFO]</span> JBehave Trader Test Scope Example ..................... SUCCESS <span class="error">[0.004s]</span><br>
+<span class="error">[INFO]</span> JBehave Noughts And Crosses Example ................... SUCCESS <span class="error">[0.011s]</span><br>
+<span class="error">[INFO]</span> JBehave Noughts And Crosses Example Scenarios ......... SUCCESS <span class="error">[0.014s]</span><br>
+<span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+<span class="error">[INFO]</span> ------------------------------------------------------------------------<br>
+<span class="error">[INFO]</span> BUILD SUCCESSFUL</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="prishedko" id="commentauthor_220570_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=prishedko"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Bogdan Prishedko</a>
+ added a comment  - <span class="commentdate_220570_concise subText"><span class="date user-tz" title="09/May/10 12:34 PM"><time class="livestamp" datetime="2010-05-09T12:34-0500">09/May/10 12:34 PM</time></span></span>                    This issue reproduces stable if we have &lt;configuration&gt; section is placed only under &lt;execution&gt; section, as in \examples\gameoflife\pom.xml: 
+
+       &lt;plugin&gt; 
+        &lt;groupId&gt;org.jbehave&lt;/groupId&gt; 
+        &lt;artifactId&gt;jbehave-maven-plugin&lt;/artifactId&gt; 
+        &lt;executions&gt; 
+          &lt;execution&gt; 
+            &lt;id&gt;run-scenarios-found&lt;/id&gt; 
+            &lt;phase&gt;integration-test&lt;/phase&gt; 
+            &lt;configuration&gt; 
+              &lt;scenarioIncludes&gt; 
+                &lt;scenarioInclude&gt;$ 
+{scenario.includes}&lt;/scenarioInclude&gt; 
+              &lt;/scenarioIncludes&gt; 
+              &lt;scenarioExcludes&gt; 
+                &lt;scenarioExclude&gt;**/*Steps.java&lt;/scenarioExclude&gt; 
+              &lt;/scenarioExcludes&gt; 
+              &lt;classLoaderInjected&gt;false&lt;/classLoaderInjected&gt; 
+            &lt;/configuration&gt; 
+            &lt;goals&gt; 
+              &lt;goal&gt;run-scenarios&lt;/goal&gt; 
+            &lt;/goals&gt; 
+          &lt;/execution&gt; 
+        &lt;/executions&gt; 
+      &lt;/plugin&gt; 
+ 
+In this case Maven doesn't injects configuration parameters (see including and excluding below): 
+ 
+ [INFO]   [jbehave:run-scenarios {execution: default-cli}]  
+ [DEBUG]  Searching for scenario class names including null and excluding null 
+ [INFO]  ------------------------------------------------------------------------ 
+ [ERROR]  FATAL ERROR 
+ [INFO]  ------------------------------------------------------------------------ 
+ [INFO]  Invalid scenario class path .svn\all-wcprops 
+ [INFO]  ------------------------------------------------------------------------ 
+ [DEBUG]  Trace 
+org.jbehave.scenario.errors.InvalidScenarioClassPathException: Invalid scenario class path .svn\all-wcprops 
+	at org.jbehave.scenario.parser.ScenarioClassNameFinder.classNameFor(ScenarioClassNameFinder.java:53) 
+	at org.jbehave.scenario.parser.ScenarioClassNameFinder.listScenarioClassNames(ScenarioClassNameFinder.java:41) 
+ 
+And it can be fixed by moving &lt;configuration&gt; from &lt;execution&gt; to &lt;plugin&gt; tag: 
+ 
+      &lt;plugin&gt; 
+        &lt;groupId&gt;org.jbehave&lt;/groupId&gt; 
+        &lt;artifactId&gt;jbehave-maven-plugin&lt;/artifactId&gt; 
+          &lt;configuration&gt; 
+            &lt;scenarioIncludes&gt; 
+              &lt;scenarioInclude&gt;${scenario.includes}
+ &lt;/scenarioInclude&gt; 
+            &lt;/scenarioIncludes&gt; 
+            &lt;scenarioExcludes&gt; 
+              &lt;scenarioExclude&gt;**/*Steps.java&lt;/scenarioExclude&gt; 
+            &lt;/scenarioExcludes&gt; 
+            &lt;classLoaderInjected&gt;false&lt;/classLoaderInjected&gt; 
+          &lt;/configuration&gt;           
+        &lt;executions&gt; 
+          &lt;execution&gt; 
+            &lt;id&gt;run-scenarios-found&lt;/id&gt; 
+            &lt;phase&gt;integration-test&lt;/phase&gt; 
+            &lt;goals&gt; 
+              &lt;goal&gt;run-scenarios&lt;/goal&gt; 
+            &lt;/goals&gt; 
+          &lt;/execution&gt; 
+        &lt;/executions&gt; 
+      &lt;/plugin&gt; 
+
+ After this result of execution is the following: 
+
+  [DEBUG]  Searching for scenario class names including  [**/scenario/*.java]  and excluding  [**/*Steps.java]  
+ [DEBUG]  Found scenario class names: [] 
+ [INFO]  No scenarios to run. 
+ [INFO]   
+ [INFO]   
+ [INFO]  ------------------------------------------------------------------------ 
+ [INFO]  Reactor Summary: 
+ [INFO]  ------------------------------------------------------------------------ 
+ [INFO]  JBehave Examples ...................................... SUCCESS  [1.592s]  
+ [INFO]  JBehave Game of Life Example .......................... SUCCESS  [0.015s]  
+ [INFO]  JBehave Game of Life Example Scenarios ................ SUCCESS  [0.010s]  
+ [INFO]  JBehave Trader Example ................................ SUCCESS  [0.031s]  
+ [INFO]  JBehave Trader Test Scope Example ..................... SUCCESS  [0.004s]  
+ [INFO]  JBehave Noughts And Crosses Example ................... SUCCESS  [0.011s]  
+ [INFO]  JBehave Noughts And Crosses Example Scenarios ......... SUCCESS  [0.014s]  
+ [INFO]  ------------------------------------------------------------------------ 
+ [INFO]  ------------------------------------------------------------------------ 
+ [INFO]  BUILD SUCCESSFUL              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-286422">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_286422">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_286422" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="11/May/10 10:13 AM"><time class="livestamp" datetime="2010-05-11T10:13-0500">11/May/10 10:13 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_286422" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               2.5.6
+                                                                                               <span class="hist-value">[    16473
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-221301" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/207?focusedCommentId=221301&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-221301" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_221301_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_221301_verbose subText"><span class="date user-tz" title="15/May/10 7:41 AM"><time class="livestamp" datetime="2010-05-15T07:41-0500">15/May/10 7:41 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Thanks for clarification.  This seems to confirm that the issue is with the embedded Maven in the IDE.</p>
+
+<p>Closing issue for now, as there is a workaround via a different configuration.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_221301_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_221301_concise subText"><span class="date user-tz" title="15/May/10 7:41 AM"><time class="livestamp" datetime="2010-05-15T07:41-0500">15/May/10 7:41 AM</time></span></span>                    Thanks for clarification.  This seems to confirm that the issue is with the embedded Maven in the IDE. 
+
+ Closing issue for now, as there is a workaround via a different configuration.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-287126">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_287126">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_287126" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="15/May/10 7:41 AM"><time class="livestamp" datetime="2010-05-15T07:41-0500">15/May/10 7:41 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_287126" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Open
+                                                                                                <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Resolved
+                                                                                               <span class="hist-value">[    5
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Resolution
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Won't Fix
+                                                                                               <span class="hist-value">[    2
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-253978" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/207?focusedCommentId=253978&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-253978" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="marco13" id="commentauthor_253978_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=marco13"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Marc Siramy</a>
+ added a comment  - <span class="commentdate_253978_verbose subText"><span class="date user-tz" title="03/Feb/11 5:03 AM"><time class="livestamp" datetime="2011-02-03T05:03-0600">03/Feb/11 5:03 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hello,</p>
+
+<p>I can reproduce that bug with my plugin configuration - even when moving &lt;configuration&gt; section in plugin section unless I add &lt;includes&gt; and &lt;excludes&gt; section in that configuration.<br>
+Moreover, my scenarii class names are not found with that configuration.</p>
+
+<p>For details, please see my plugin configuration below:<br>
+&lt;plugin&gt;<br>
+				&lt;groupId&gt;org.jbehave&lt;/groupId&gt;<br>
+				&lt;artifactId&gt;jbehave-maven-plugin&lt;/artifactId&gt;<br>
+				&lt;version&gt;$</p>
+{jbehave.maven.plugin.version}
+<p>&lt;/version&gt;<br>
+				&lt;!-- configuration moved from execution section to plugin section - see <a href="http://jira.codehaus.org/browse/JBEHAVE-207" class="external-link" rel="nofollow">http://jira.codehaus.org/browse/JBEHAVE-207</a> --&gt;<br>
+				&lt;configuration&gt;<br>
+					&lt;scenarioIncludes&gt;<br>
+						&lt;scenarioInclude&gt;**/*CommonStoriesTest.java&lt;/scenarioInclude&gt;<br>
+					&lt;/scenarioIncludes&gt;<br>
+					&lt;scenarioExcludes&gt;<br>
+						&lt;scenarioExclude&gt;**/*Steps.java&lt;/scenarioExclude&gt;<br>
+					&lt;/scenarioExcludes&gt;<br>
+					&lt;includes&gt;<br>
+						&lt;include&gt;**/*all-wcprops&lt;/include&gt;<br>
+					&lt;/includes&gt;<br>
+					&lt;excludes&gt;<br>
+						&lt;exclude&gt;**/*all-wcprops&lt;/exclude&gt;<br>
+					&lt;/excludes&gt;<br>
+					&lt;metaFilters&gt;<br>
+						&lt;metaFilter&gt;+author *&lt;/metaFilter&gt;<br>
+						&lt;metaFilter&gt;-skip&lt;/metaFilter&gt;<br>
+					&lt;/metaFilters&gt;<br>
+					&lt;systemProperties&gt;<br>
+						&lt;property&gt;<br>
+							&lt;name&gt;java.awt.headless&lt;/name&gt;<br>
+							&lt;value&gt;false&lt;/value&gt;<br>
+						&lt;/property&gt;<br>
+					&lt;/systemProperties&gt;<br>
+					&lt;ignoreFailureInStories&gt;false&lt;/ignoreFailureInStories&gt;<br>
+					&lt;ignoreFailureInView&gt;false&lt;/ignoreFailureInView&gt;<br>
+					&lt;batch&gt;true&lt;/batch&gt;<br>
+				&lt;/configuration&gt;<br>
+				&lt;executions&gt;<br>
+					&lt;execution&gt;<br>
+						&lt;id&gt;run-stories-as-embeddables&lt;/id&gt;<br>
+						&lt;phase&gt;integration-test&lt;/phase&gt;<br>
+						&lt;goals&gt;<br>
+							&lt;goal&gt;run-stories-as-embeddables&lt;/goal&gt;<br>
+							&lt;goal&gt;report-stepdocs&lt;/goal&gt;<br>
+							&lt;goal&gt;generate-stories-view&lt;/goal&gt;<br>
+						&lt;/goals&gt;<br>
+					&lt;/execution&gt;<br>
+				&lt;/executions&gt;<br>
+				&lt;dependencies&gt;<br>
+					&lt;dependency&gt;<br>
+						&lt;groupId&gt;log4j&lt;/groupId&gt;<br>
+						&lt;artifactId&gt;log4j&lt;/artifactId&gt;<br>
+						&lt;version&gt;$</p>
+{log4j.version}
+<p>&lt;/version&gt;<br>
+					&lt;/dependency&gt;<br>
+				&lt;/dependencies&gt;<br>
+			&lt;/plugin&gt;</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="marco13" id="commentauthor_253978_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=marco13"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Marc Siramy</a>
+ added a comment  - <span class="commentdate_253978_concise subText"><span class="date user-tz" title="03/Feb/11 5:03 AM"><time class="livestamp" datetime="2011-02-03T05:03-0600">03/Feb/11 5:03 AM</time></span></span>                    Hello, 
+
+ I can reproduce that bug with my plugin configuration - even when moving &lt;configuration&gt; section in plugin section unless I add &lt;includes&gt; and &lt;excludes&gt; section in that configuration. 
+Moreover, my scenarii class names are not found with that configuration. 
+
+ For details, please see my plugin configuration below: 
+&lt;plugin&gt; 
+				&lt;groupId&gt;org.jbehave&lt;/groupId&gt; 
+				&lt;artifactId&gt;jbehave-maven-plugin&lt;/artifactId&gt; 
+				&lt;version&gt;$ 
+{jbehave.maven.plugin.version}
+ &lt;/version&gt; 
+				&lt;!-- configuration moved from execution section to plugin section - see  http://jira.codehaus.org/browse/JBEHAVE-207  --&gt; 
+				&lt;configuration&gt; 
+					&lt;scenarioIncludes&gt; 
+						&lt;scenarioInclude&gt;**/*CommonStoriesTest.java&lt;/scenarioInclude&gt; 
+					&lt;/scenarioIncludes&gt; 
+					&lt;scenarioExcludes&gt; 
+						&lt;scenarioExclude&gt;**/*Steps.java&lt;/scenarioExclude&gt; 
+					&lt;/scenarioExcludes&gt; 
+					&lt;includes&gt; 
+						&lt;include&gt;**/*all-wcprops&lt;/include&gt; 
+					&lt;/includes&gt; 
+					&lt;excludes&gt; 
+						&lt;exclude&gt;**/*all-wcprops&lt;/exclude&gt; 
+					&lt;/excludes&gt; 
+					&lt;metaFilters&gt; 
+						&lt;metaFilter&gt;+author *&lt;/metaFilter&gt; 
+						&lt;metaFilter&gt;-skip&lt;/metaFilter&gt; 
+					&lt;/metaFilters&gt; 
+					&lt;systemProperties&gt; 
+						&lt;property&gt; 
+							&lt;name&gt;java.awt.headless&lt;/name&gt; 
+							&lt;value&gt;false&lt;/value&gt; 
+						&lt;/property&gt; 
+					&lt;/systemProperties&gt; 
+					&lt;ignoreFailureInStories&gt;false&lt;/ignoreFailureInStories&gt; 
+					&lt;ignoreFailureInView&gt;false&lt;/ignoreFailureInView&gt; 
+					&lt;batch&gt;true&lt;/batch&gt; 
+				&lt;/configuration&gt; 
+				&lt;executions&gt; 
+					&lt;execution&gt; 
+						&lt;id&gt;run-stories-as-embeddables&lt;/id&gt; 
+						&lt;phase&gt;integration-test&lt;/phase&gt; 
+						&lt;goals&gt; 
+							&lt;goal&gt;run-stories-as-embeddables&lt;/goal&gt; 
+							&lt;goal&gt;report-stepdocs&lt;/goal&gt; 
+							&lt;goal&gt;generate-stories-view&lt;/goal&gt; 
+						&lt;/goals&gt; 
+					&lt;/execution&gt; 
+				&lt;/executions&gt; 
+				&lt;dependencies&gt; 
+					&lt;dependency&gt; 
+						&lt;groupId&gt;log4j&lt;/groupId&gt; 
+						&lt;artifactId&gt;log4j&lt;/artifactId&gt; 
+						&lt;version&gt;$ 
+{log4j.version}
+ &lt;/version&gt; 
+					&lt;/dependency&gt; 
+				&lt;/dependencies&gt; 
+			&lt;/plugin&gt;              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-284684" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/207?focusedCommentId=284684&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-284684" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="mberg2007" id="commentauthor_284684_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=mberg2007"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Michael Berg</a>
+ added a comment  - <span class="commentdate_284684_verbose subText"><span class="date user-tz" title="01/Dec/11 7:52 AM"><time class="livestamp" datetime="2011-12-01T07:52-0600">01/Dec/11 7:52 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Using maven 3.0.3 and jbehave-maven-plugin 3.5.3, I am able to reproduce the problem above. I am using the maven command line client, not the embedded eclipse maven.</p>
+
+<p>The problem seems to manifest itself only with the maven "site" goal. In this case the configuration section appears to be more or less inherited from the maven-surefire-plugin configuration?? This is true at least for the includes and excludes. I have no idea how this can be, but it is pretty easy to verify.</p>
+
+<p>An "mvn test" runs fine, with configuration data injected as expected.</p>
+
+<p>I think this issue needs to be reopened and looked at, there is definitely something funny going on here.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="mberg2007" id="commentauthor_284684_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=mberg2007"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Michael Berg</a>
+ added a comment  - <span class="commentdate_284684_concise subText"><span class="date user-tz" title="01/Dec/11 7:52 AM"><time class="livestamp" datetime="2011-12-01T07:52-0600">01/Dec/11 7:52 AM</time></span></span>                    Using maven 3.0.3 and jbehave-maven-plugin 3.5.3, I am able to reproduce the problem above. I am using the maven command line client, not the embedded eclipse maven. 
+
+ The problem seems to manifest itself only with the maven "site" goal. In this case the configuration section appears to be more or less inherited from the maven-surefire-plugin configuration?? This is true at least for the includes and excludes. I have no idea how this can be, but it is pretty easy to verify. 
+
+ An "mvn test" runs fine, with configuration data injected as expected. 
+
+ I think this issue needs to be reopened and looked at, there is definitely something funny going on here.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-284810" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/207?focusedCommentId=284810&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-284810" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_284810_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_284810_verbose subText"><span class="date user-tz" title="03/Dec/11 8:45 AM"><time class="livestamp" datetime="2011-12-03T08:45-0600">03/Dec/11 8:45 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Please open a new jira issue, and if possible add a mini project to reproduce problem.</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_284810_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_284810_concise subText"><span class="date user-tz" title="03/Dec/11 8:45 AM"><time class="livestamp" datetime="2011-12-03T08:45-0600">03/Dec/11 8:45 AM</time></span></span>                    Please open a new jira issue, and if possible add a mini project to reproduce problem. 
+             </div>
+        </div>
+    </div>
+</div>
+                             </div>
+    </div>
+</div></div></div><div id="viewissuesidebar" class="aui-item issue-side-column"><div id="peoplemodule" class="module toggle-wrap"><div id="peoplemodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">People</h2></div><div class="mod-content"><ul class="item-details" id="peopledetails">
+    <li class="people-details">
+                <dl>
+            <dt>Assignee:</dt>
+            <dd>
+                <span id="assignee-val" class="view-issue-field">
+
+    <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span>
+    Unassigned
+</span>
+                            </dd>
+        </dl>
+                        <dl>
+            <dt>Reporter:</dt>
+            <dd>
+                <span id="reporter-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_reporter_maurotalevi" rel="maurotalevi">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-2.png"></span></span>
+            Mauro Talevi
+        </span>
+    </span>
+            </dd>
+        </dl>
+                    </li>
+</ul>
+    <ul class="item-details">
+        <li>
+                            <dl>
+                    <dt>Votes:</dt>
+                    <dd>
+                                                                            <span id="vote-data" class="aui-badge vote-state-off">1</span>
+                        
+                                                                                                        <span id="vote-label" title="You have to be logged in to vote for an issue.">Vote for this issue</span>
+                                            </dd>
+                </dl>
+                                        <dl>
+                    <dt>Watchers:</dt>
+                    <dd>
+                                                                        
+                                                                            <span id="watcher-data" class="aui-badge watch-state-off">1</span>
+                        
+                                                                                <span id="watch-label" title="You have to be logged in to watch an issue.">Start watching this issue</span>
+                                            </dd>
+                </dl>
+                    </li>
+    </ul>
+</div></div><div id="datesmodule" class="module toggle-wrap"><div id="datesmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Dates</h2></div><div class="mod-content"><ul class="item-details">
+    <li>
+            <dl class="dates">
+            <dt>Created:</dt>
+            <dd class="date user-tz" title="15/Nov/09 6:48 PM">
+
+                <span data-name="Created" id="create-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2009-11-15T18:48-0600">15/Nov/09 6:48 PM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Updated:</dt>
+            <dd class="date user-tz" title="03/Dec/11 8:45 AM">
+
+                <span data-name="Updated" id="updated-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2011-12-03T08:45-0600">03/Dec/11 8:45 AM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Resolved:</dt>
+            <dd class="date user-tz" title="15/May/10 7:41 AM">
+
+                <span data-name="Resolved" id="resolved-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2010-05-15T07:41-0500">15/May/10 7:41 AM</time>                                                             </span>
+            </dd>
+        </dl>
+        </li>
+</ul>
+</div></div></div></div>
+                    </div>
+                </div>
+                        </div>
+
+    <fieldset class="hidden parameters">
+        <input title="autocompleteEnabled" value="true" type="hidden">
+    </fieldset>
+    
+    </section>
+    <footer id="footer" role="contentinfo">
+        
+        
+
+
+
+<div class="footer-body">
+    <ul>
+        <li>
+                        <a href="http://www.atlassian.com/software/jira">Atlassian JIRA</a>
+
+                                                    
+                        
+            <span id="footer-build-information">(v6.1.6#6162-<span title="7af547ce7c84dbb7c1e345a65437ed7b85efffa2" data-commit-id="7af547ce7c84dbb7c1e345a65437ed7b85efffa2}">sha1:7af547c</span>)</span>
+        </li>
+        <li>
+            <a id="about-link" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+        </li>
+        <li>
+                                    <a id="footer-report-problem-link" href="https://jira.codehaus.org/secure/CreateIssue%21default.jspa">Report a problem</a>
+        </li>
+    </ul>
+            <ul>
+            <li class="licensemessage">
+                                    Powered by a free Atlassian <a href="http://www.atlassian.com/software/jira">JIRA</a> open source license for Codehaus. Try JIRA - <a href="http://www.atlassian.com/software/jira">bug tracking software</a> for <i>your</i> team.
+
+                            </li>
+        </ul>
+    </div>
+
+<form id="jira_request_timing_info" class="dont-default-focus">
+	<fieldset class="parameters hidden">
+
+
+
+
+		<input title="jira.session.expiry.in.mins" value="299" type="hidden">
+
+	</fieldset>
+</form>
+<!--
+	                 
+	          
+	               
+	                 
+	        CONCURRENT REQUESTS : 1
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input title="loggedInUser" value="" type="hidden">
+    <input title="ajaxTimeout" value="The call to the JIRA server did not complete within the timeout period.  We are unsure of the result of this operation." type="hidden">
+    <input title="JiraVersion" value="6.1.6" type="hidden">
+    <input title="ajaxUnauthorised" value="You are not authorised to perform this operation.  Please log in." type="hidden">
+    <input title="baseURL" value="https://jira.codehaus.org:443" type="hidden">
+    <input title="ajaxCommsError" value="The JIRA server could not be contacted.  This may be a temporary glitch or the server may be down." type="hidden">
+    <input title="ajaxServerError" value="The JIRA server was contacted but has returned an error response. We are unsure of the result of this operation." type="hidden">
+    <input title="ajaxErrorCloseDialog" value="Close this dialog and press refresh in your browser" type="hidden">
+    <input title="ajaxErrorDialogHeading" value="Communications Breakdown" type="hidden">
+
+    <input title="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost." type="hidden">
+    <input title="dirtyDialogMessage" value="You have entered new data in this dialog. If you navigate away from this dialog without first saving your data, the changes will be lost. Click cancel to return to the dialog." type="hidden">
+    <input title="keyType" value="Type" type="hidden">
+    <input title="keyThen" value="then" type="hidden">
+    <input title="dblClickToExpand" value="Double click to expand" type="hidden">
+    <input title="actions" value="Actions" type="hidden">
+    <input title="removeItem" value="Remove" type="hidden">
+    <input title="workflow" value="Workflow" type="hidden">
+    <input title="labelNew" value="New Label" type="hidden">
+    <input title="issueActionsHint" value="Begin typing for available operations or press down to see all" type="hidden">
+    <input title="closelink" value="Close" type="hidden">
+    <input title="dotOperations" value="Operations" type="hidden">
+    <input title="dotLoading" value="Loading..." type="hidden">
+    <input title="frotherSuggestions" value="Suggestions" type="hidden">
+    <input title="frotherNomatches" value="No Matches" type="hidden">
+    <input title="multiselectVersionsError" value="{0} is not a valid version." type="hidden">
+    <input title="multiselectComponentsError" value="{0} is not a valid component." type="hidden">
+    <input title="multiselectGenericError" value="The value {0} is invalid." type="hidden">
+</fieldset>
+
+    </footer>
+</div>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:void(0);" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:void(0);" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div class="navigator-sidebar collapsed ui-popout ui-popout-detached ui-popout-collapsed" id="navigator-sidebar"><a class="toggle-filter-panel" href="#" title="Dock the filters panel ([)"></a></div><div style="display: none;" class="jira-dialog box-shadow" id="edit-issue-dialog"><div class="jira-dialog-content"></div></div><div style="display: none;" class="jira-dialog box-shadow" id="create-subtask-dialog"><div class="jira-dialog-content"></div></div></body></html>

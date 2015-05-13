@@ -1,0 +1,63 @@
+diff --git a/etsy-stories/src/main/groovy/pages/AdvancedSearch.groovy b/etsy-stories/src/main/groovy/pages/AdvancedSearch.groovy
+index 2fc8017..f77b7fb 100644
+--- a/etsy-stories/src/main/groovy/pages/AdvancedSearch.groovy
++++ b/etsy-stories/src/main/groovy/pages/AdvancedSearch.groovy
+@@ -25,7 +25,7 @@ class AdvancedSearch extends BasePage{
+   }
+ 
+   def subCategory(String subCategory) {
+-    def select = findElement(By.className("handmade"))
++    def select = findElement(By.className("handmadeee"))
+     def List options = select.findElements(By.tagName("option"))
+     for (int i = 0; i < options.size(); i++) {
+       def WebElement o =  options.get(i);
+diff --git a/etsy-stories/src/main/groovy/pages/Buy.groovy b/etsy-stories/src/main/groovy/pages/Buy.groovy
+index 3906bfb..d09d08c 100644
+--- a/etsy-stories/src/main/groovy/pages/Buy.groovy
++++ b/etsy-stories/src/main/groovy/pages/Buy.groovy
+@@ -9,6 +9,6 @@ class Buy extends BasePage{
+   }
+ 
+   def selectTreasury() {
+-    findElement(By.id("treasury-panel-button")).click()
++    findElement(By.id("treasury-panel-buttonnn")).click()
+   }
+ }
+diff --git a/etsy-stories/src/main/groovy/pages/CartContents.groovy b/etsy-stories/src/main/groovy/pages/CartContents.groovy
+index 74df0fe..b6c8350 100644
+--- a/etsy-stories/src/main/groovy/pages/CartContents.groovy
++++ b/etsy-stories/src/main/groovy/pages/CartContents.groovy
+@@ -21,6 +21,6 @@ class CartContents extends BasePage{
+ 
+   def removeItem() {
+     get("http://www.etsy.com/cartcheckout.php")
+-    findElement(By.xpath("//a[@rel = 'remove']")).click()
++    findElement(By.xpath("//a[@rel = 'removeeeeeeeeeee']")).click()
+   }
+ }
+diff --git a/etsy-stories/src/main/groovy/pages/SearchResults.groovy b/etsy-stories/src/main/groovy/pages/SearchResults.groovy
+index df5e4ba..1c68121 100644
+--- a/etsy-stories/src/main/groovy/pages/SearchResults.groovy
++++ b/etsy-stories/src/main/groovy/pages/SearchResults.groovy
+@@ -13,7 +13,7 @@ class SearchResults extends BasePage{
+     List elems = getElems()
+     for (int i = 0; i < elems.size(); i++) {
+       def elem = elems.get(i)
+-      def title = elem.getAttribute("title")
++      def title = elem.getAttribute("titleee")
+       if (title.toLowerCase().contains(thing.toLowerCase())) {
+         elem.click()
+         def ix = getCurrentUrl().indexOf("/listing/") + 9
+diff --git a/etsy-stories/src/main/groovy/pages/Treasury.groovy b/etsy-stories/src/main/groovy/pages/Treasury.groovy
+index 3f12e8a..fca89a5 100644
+--- a/etsy-stories/src/main/groovy/pages/Treasury.groovy
++++ b/etsy-stories/src/main/groovy/pages/Treasury.groovy
+@@ -9,7 +9,7 @@ class Treasury extends BasePage{
+   }
+ 
+   def chooseFirstGallery() {
+-      def element = findElement(By.xpath("//div[@class='item-treasury-info-box']/h3/a"))
++      def element = findElement(By.xpath("//div[@class='item-treasury-info-boxxxq']/h3/a"))
+       element.click()
+   }
+ }

@@ -1,0 +1,68 @@
+From 49d02aaad2ccd7de0184005a0718e7422dfb6ae2 Tue, 26 Jul 2011 11:15:13 +1000
+From: Jaroslav Sedlacek <kara.cz@gmail.com>
+Date: Tue, 26 Jul 2011 11:05:49 +1000
+Subject: [PATCH] JBEHAVE-567: Excluded (filtered-out) scenarios are reported as pending as well
+
+diff --git a/jbehave-core/src/main/java/org/jbehave/core/reporters/PostStoryStatisticsCollector.java b/jbehave-core/src/main/java/org/jbehave/core/reporters/PostStoryStatisticsCollector.java
+old mode 100755
+new mode 100644
+index 18a91e5..3c04f84
+--- a/jbehave-core/src/main/java/org/jbehave/core/reporters/PostStoryStatisticsCollector.java
++++ b/jbehave-core/src/main/java/org/jbehave/core/reporters/PostStoryStatisticsCollector.java
+@@ -39,6 +39,7 @@
+     private OutcomesTable outcomesFailed;
+     private int givenStories;
+     private long storyStartTime;
++    private boolean currentScenarioNotAllowed;
+ 
+     public PostStoryStatisticsCollector(OutputStream output) {
+         this.output = output;
+@@ -127,6 +128,7 @@
+     public void beforeScenario(String title) {
+         cause = null;
+         outcomesFailed = null;
++        currentScenarioNotAllowed = false;
+         reset("currentScenarioSteps");
+         reset("currentScenarioStepsPending");
+     }
+@@ -136,6 +138,7 @@
+             add("givenStoryScenariosNotAllowed");
+         } else {
+             add("scenariosNotAllowed");
++            currentScenarioNotAllowed = true;
+         }
+     }
+ 
+@@ -148,7 +151,7 @@
+         } else {
+             countScenarios("scenarios");
+         }
+-        if (has("currentScenarioStepsPending") || !has("currentScenarioSteps")) {
++        if (has("currentScenarioStepsPending") || (!has("currentScenarioSteps") && !currentScenarioNotAllowed)) {
+             if (givenStories > 0) {
+                 add("givenStoryScenariosPending");
+             } else {
+diff --git a/jbehave-core/src/test/java/org/jbehave/core/reporters/PostStoryStatisticsCollectorBehaviour.java b/jbehave-core/src/test/java/org/jbehave/core/reporters/PostStoryStatisticsCollectorBehaviour.java
+old mode 100755
+new mode 100644
+index bf6cdfa..eb4c97d
+--- a/jbehave-core/src/test/java/org/jbehave/core/reporters/PostStoryStatisticsCollectorBehaviour.java
++++ b/jbehave-core/src/test/java/org/jbehave/core/reporters/PostStoryStatisticsCollectorBehaviour.java
+@@ -90,6 +90,7 @@
+         String statistics = out.toString();
+         assertThat(statistics, containsString("notAllowed=0"));
+         assertThat(statistics, containsString("scenariosNotAllowed=1"));
++        assertThat(statistics, containsString("pending=0"));
+     }
+ 
+     @Test
+@@ -182,7 +183,9 @@
+             reporter.storyNotAllowed(story, "-theme testing");
+         } else {
+             reporter.beforeStory(story, false);
++            reporter.beforeScenario(story.getScenarios().get(0).getTitle());
+             reporter.scenarioNotAllowed(story.getScenarios().get(0), "-theme testing");
++            reporter.afterScenario();
+             reporter.afterStory(false);
+         }
+     }

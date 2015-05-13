@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--2--><!--Found example--><!--Found example--><testsuite name="org/jbehave/examples/trader/stories/claims_with_null_calendar.story"
+           tests="2"
+           time="0"
+           failures="0"
+           errors="0"
+           skipped="0">
+   <testcase name=" {date=none, amount=0.0}"/>
+   <testcase name=" {date=01/06/2010, amount=2.15}"/>
+</testsuite>

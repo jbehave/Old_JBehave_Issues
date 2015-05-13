@@ -1,0 +1,188 @@
+Index: plugins/maven/src/main/java/org/jbehave/mojo/AbstractJBehaveMojo.java
+===================================================================
+--- plugins/maven/src/main/java/org/jbehave/mojo/AbstractJBehaveMojo.java	(revision 720)
++++ plugins/maven/src/main/java/org/jbehave/mojo/AbstractJBehaveMojo.java	(working copy)
+@@ -1,5 +1,6 @@
+ package org.jbehave.mojo;
+ 
++import java.io.File;
+ import java.util.List;
+ 
+ import org.apache.maven.plugin.AbstractMojo;
+@@ -18,7 +19,22 @@
+      * @required
+      * @readonly
+      */
+-    List classpathElements;
++    protected List compileClasspathElements;
+     
+-   
++    /**
++     * Test classpath.
++     *
++     * @parameter expression="${project.testClasspathElements}"
++     * @required
++     * @readonly
++     */
++    protected List testClasspathElements;
++
++    /**
++     * The directory containing generated classes of the project being tested.
++     *
++     * @parameter expression="${project.build.outputDirectory}"
++     * @required
++     */
++    protected File classesDirectory;
+ }
+Index: plugins/maven/src/main/java/org/jbehave/mojo/BehaviourRunnerMojo.java
+===================================================================
+--- plugins/maven/src/main/java/org/jbehave/mojo/BehaviourRunnerMojo.java	(revision 720)
++++ plugins/maven/src/main/java/org/jbehave/mojo/BehaviourRunnerMojo.java	(working copy)
+@@ -1,6 +1,9 @@
+ package org.jbehave.mojo;
+ 
+-import java.net.MalformedURLException;
++import java.io.PrintStream;
++import java.lang.reflect.Method;
++import java.util.ArrayList;
++import java.util.List;
+ 
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
+@@ -5,6 +8,7 @@
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
+ import org.jbehave.core.BehaviourRunner;
++import org.jbehave.core.behaviour.Behaviour;
+ import org.jbehave.core.behaviour.Behaviours;
+ 
+ /**
+@@ -11,6 +15,8 @@
+  * Mojo to run Behaviours
+  * 
+  * @author Mauro Talevi
++
++ * @requiresDependencyResolution test
+  * @goal run-behaviours
+  */
+ public class BehaviourRunnerMojo  extends AbstractJBehaveMojo {
+@@ -21,24 +27,82 @@
+      */
+     String behavioursClassName;
+     
+-    private BehaviourRunner runner = new BehaviourRunner(System.out);
+-    
+     public void execute() throws MojoExecutionException, MojoFailureException {
++    	BehaviourRunnerFacade runner;
++        boolean succeeded;
+         try {
+             getLog().debug("Running behaviours "+ behavioursClassName);
+-            Behaviours behaviours = loadBehaviours(behavioursClassName);
+-            Class[] classes = behaviours.getBehaviours();
+-            for (int i = 0; i < classes.length; i++) {
+-                runner.verifyBehaviour(classes[i]);
+-            }            
++            
++            IsolatedClassLoader classLoader = new IsolatedClassLoader(buildClasspath(), null);
++            
++            runner = new BehaviourRunnerFacade(System.out, classLoader);
++        	
++        	Class[] behaviours = extractBehaviours(behavioursClassName, classLoader);
++	        for (int i = 0; i < behaviours.length; i++) {
++	    		runner.verifyBehaviour(behaviours[i]);
++	        }
++			
++	        succeeded = runner.succeeded();
+         } catch (Exception e) {
+-            throw new MojoExecutionException("Failed to verify behaviours", e);
++            throw new MojoExecutionException("Error while verifying behaviours", e);
++        }
++
++        if (!succeeded) {
++        	throw new MojoFailureException("Failed to verify behaviours!");
+         }
+     }
+ 
+-    private Behaviours loadBehaviours(String name) throws MalformedURLException, InstantiationException, IllegalAccessException {        
+-        BehavioursClassLoader cl = new BehavioursClassLoader(classpathElements);
+-        return cl.newBehaviours(name);
++    /**
++     * Extract behaviours from a given {@link Behaviours}-instance
++     * 
++     * @param name the {@link Behaviours}' class name
++     * @param classLoader the classloader to use
++     * @return an array of {@link Behaviour}-classes
++     * @throws Exception
++     */
++    private Class[] extractBehaviours(String name, ClassLoader classLoader) throws Exception {
++    	Class behaviours = classLoader.loadClass(name);
++    	Method getBehavioursMethod = behaviours.getMethod("getBehaviours", new Class[]{});
++    	return (Class[]) getBehavioursMethod.invoke(behaviours.newInstance(), null);
++    }
++    
++    /**
++     * Returns a classpath comprising Maven's test classpath and this project's sources 
++     * @return
++     */
++    private List buildClasspath() {
++    	List augmentedClasspath = new ArrayList();
++    	augmentedClasspath.add(classesDirectory.getAbsolutePath());
++    	augmentedClasspath.add(testClasspathElements);
++    	
++    	return augmentedClasspath;
+     }
+ 
++	
++	/**
++	 * Handy {@link BehaviourRunner}-facade to cope with classloader mechanics
++	 * 
++	 * @author Stefan Huebner
++	 *
++	 */
++	private static final class BehaviourRunnerFacade {
++		private Object innerRunner;
++		private Method verifyBehaviourMethod;
++		private Method succeededMethod;
++
++		public BehaviourRunnerFacade(PrintStream stream, ClassLoader classLoader) throws Exception {
++			Class runnerClass = classLoader.loadClass(BehaviourRunner.class.getName());
++			innerRunner = runnerClass.getConstructor(new Class[]{PrintStream.class, ClassLoader.class}).newInstance(new Object[]{stream, classLoader});
++			verifyBehaviourMethod = runnerClass.getMethod("verifyBehaviour", new Class[]{Class.class});
++			succeededMethod = runnerClass.getMethod("succeeded", new Class[]{});
++		}
++		
++	    public void verifyBehaviour(Class classToVerify) throws Exception {
++	    	verifyBehaviourMethod.invoke(innerRunner, new Object[]{classToVerify});
++	    }
++	    
++	    public boolean succeeded() throws Exception {
++			return ((Boolean)succeededMethod.invoke(innerRunner, new Object[]{})).booleanValue();
++	    }
++	}
+ }
+Index: plugins/maven/src/main/java/org/jbehave/mojo/StoryPrinterMojo.java
+===================================================================
+--- plugins/maven/src/main/java/org/jbehave/mojo/StoryPrinterMojo.java	(revision 720)
++++ plugins/maven/src/main/java/org/jbehave/mojo/StoryPrinterMojo.java	(working copy)
+@@ -34,7 +34,7 @@
+     public void execute() throws MojoExecutionException, MojoFailureException {
+         try {
+             getLog().debug("Printing story "+ storyPath);
+-            StoryLoader loader = new StoryLoader(storyParser, new BehavioursClassLoader(classpathElements));
++            StoryLoader loader = new StoryLoader(storyParser, new BehavioursClassLoader(compileClasspathElements));
+             StoryPrinter storyPrinter = new StoryPrinter(loader, new PlainTextRenderer(System.out));            
+             storyPrinter.print(storyPath, storyPackage);
+         } catch (Exception e) {
+Index: plugins/maven/src/main/java/org/jbehave/mojo/StoryRunnerMojo.java
+===================================================================
+--- plugins/maven/src/main/java/org/jbehave/mojo/StoryRunnerMojo.java	(revision 720)
++++ plugins/maven/src/main/java/org/jbehave/mojo/StoryRunnerMojo.java	(working copy)
+@@ -37,7 +37,7 @@
+     public void execute() throws MojoExecutionException, MojoFailureException {
+         try {
+             getLog().debug("Running story "+ storyPath);
+-            StoryLoader loader = new StoryLoader(storyParser, new BehavioursClassLoader(classpathElements));
++            StoryLoader loader = new StoryLoader(storyParser, new BehavioursClassLoader(compileClasspathElements));
+             Story story = loader.loadStory(storyPath, storyPackage);            
+             storyRunner.run(story);
+         } catch (Exception e) {

@@ -1,0 +1,2195 @@
+<!DOCTYPE html><html class="mozilla"><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>[JBEHAVE-702] Allow directives to support multiple step pattern variant - jira.codehaus.org</title>
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<link rel="shortcut icon" href="index_files/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://jira.codehaus.org/osd.jsp" title="[JBEHAVE-702] Allow directives to support multiple step pattern variant - jira.codehaus.org">
+
+    
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript"><!--
+/* Script removed by snapshot save */
+--></script>
+<link type="text/css" rel="stylesheet" href="index_files/batch.css" media="all">
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="index_files/batch-1.css" media="all">
+<script type="text/javascript" src="index_files/batch.js"></script><style type="text/css"></style>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="/s/d41d8cd98f00b204e9800998ecf8427e/en_UK-huda6k-1988229788/6162/7/9/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="index_files/batch-1.js"></script>
+<script type="text/javascript" src="index_files/jira.webresources_calendar-en.js"></script>
+<script type="text/javascript" src="index_files/com.atlassian.administraticksearch-webresources.js"></script>
+
+<script type="text/javascript" src="index_files/shortcuts.js"></script>
+
+
+    
+    
+    
+    <meta name="decorator" content="atl.general">
+    <meta id="isNavigator" name="isNavigator" content="true">
+    <meta name="ajs-user.search.mode" content="basic">
+    <meta name="ajs-issue-search-help-title" content="Searching for Issues">
+    <meta name="ajs-issue-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Searching+for+Issues">
+    <meta name="ajs-advanced-search-help-title" content="Performing Advanced Searches">
+    <meta name="ajs-advanced-search-help-url" content="https://docs.atlassian.com/jira/docs-061/Advanced+Searching">
+    
+</head>
+<body data-aui-version="5.1.8" id="jira" class="aui-layout aui-theme-default ka ajax-issue-search-and-view page-type-navigator navigator-issue-only" data-version="6.1.6">
+<div id="page">
+    <header id="header" style="display:none" role="banner">
+        
+
+
+
+    
+        
+            
+        
+    
+
+
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+
+
+
+<fieldset class="parameters hidden dont-default-focus">
+    <input title="tzdetect.pref.tzid" value="America/Chicago" type="hidden">
+    <input title="tzdetect.pref.tzname" value="(GMT-06:00) Chicago" type="hidden">
+    <input title="tzdetect.pref.tzoffset" value="(GMT-06:00)" type="hidden">
+    <input title="tzdetect.pref.tzdst" value="true" type="hidden">
+    <input title="tzdetect.pref.nothanks" value="" type="hidden">
+</fieldset>
+<nav data-aui-responsive="true" class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class="aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-haspopup="true" tabindex="0"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul class="nav-links"><li class="nav-link nav-link-local"><a href="https://jira.codehaus.org/" class="aui-dropdown2-radio interactive checked" title="https://jira.codehaus.org/"><span class="nav-link-label">jira.codehaus.org</span></a></li><li class="nav-link"><a href="http://jira.sonarsource.com/" class="aui-dropdown2-radio interactive" title="http://jira.sonarsource.com/"><span class="nav-link-label">SonarSource</span></a></li><li class="nav-link"><a href="http://docs.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://docs.codehaus.org/"><span class="nav-link-label">Codehaus</span></a></li><li class="nav-link"><a href="http://xircles.codehaus.org/" class="aui-dropdown2-radio interactive" title="http://xircles.codehaus.org"><span class="nav-link-label">Xircles</span></a></li></ul></div></div><script><!--
+/* Script removed by snapshot save */
+--></script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://jira.codehaus.org/secure/MyJiraHome.jspa"><img data-aui-responsive-header-index="0" src="urn:download-error:http://www.codehaus.org/codehaus-small.gif" alt="jira.codehaus.org"></a></h1><ul style="width: auto;" class="aui-nav">
+
+
+
+
+<li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/Dashboard.jspa" id="home_link" accesskey="d" title="View and manage your dashboards" aria-haspopup="true" aria-owns="home_link-content">Dashboards</a><div id="home_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="home_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="/Old_JBehave_Issues/index.html" id="browse_link" accesskey="p" title="View recent projects and browse a list of projects" aria-haspopup="true" aria-owns="browse_link-content">Projects</a><div id="browse_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="browse_link"></div></li><li><a class="aui-nav-link aui-dropdown2-ajax jira-ajax-menu aui-dropdown2-trigger " href="https://jira.codehaus.org/secure/IssueNavigator.jspa" id="find_link" accesskey="i" title="Search for issues and view recent issues" aria-haspopup="true" aria-owns="find_link-content">Issues</a><div id="find_link-content" class="aui-dropdown2 aui-style-default" data-aui-dropdown2-ajax-key="find_link"></div></li>
+<li style="display: none;"><a id="aui-responsive-header-dropdown-trigger-0" class="aui-dropdown2-trigger" aria-owns="aui-responsive-header-dropdown-content-0" aria-haspopup="true" href="#">More<span class="icon aui-icon-dropdown"></span></a><div id="aui-responsive-header-dropdown-content-0" class="aui-dropdown2 aui-style-default"><div class="aui-dropdown2-section"><ul id="aui-responsive-header-dropdown-list-0"></ul></div></div></li></ul></div><div class="aui-header-secondary"><ul class="aui-nav"><li>
+    <form action="https://jira.codehaus.org/secure/QuickSearch.jspa" method="post" id="quicksearch" class="aui-quicksearch dont-default-focus ajs-dirty-warning-exempt">
+        <input id="quickSearchInput" class="search" title="Quick Search ( Type '/' )" placeholder="Quick Search" name="searchString" accesskey="q" type="text">
+        <input class="hidden" value="Search" type="submit">
+    </form>
+</li>
+
+
+
+    <li id="system-help-menu">
+        <a class="aui-nav-link aui-dropdown2-trigger" aria-haspopup="true" aria-owns="system-help-menu-content" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank" title="Help"><span class="aui-icon aui-icon-small aui-iconfont-help">Help</span></a>
+        <div id="system-help-menu-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                                <ul id="jira-help" class="aui-list-truncate">
+                                                            <li>
+                                    <a id="view_help" class="interactive" title="Goto the online documentation for JIRA" href="https://docs.atlassian.com/jira/docs-061/JIRA+Documentation" target="_blank">Online Help</a>
+                                </li>
+                                                            <li>
+                                    <a id="keyshortscuthelp" class="interactive" title="Get more information about JIRA's Keyboard Shortcuts ( Type '?' )" href="https://jira.codehaus.org/secure/ViewKeyboardShortcuts%21default.jspa" target="_blank">Keyboard Shortcuts</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_about" class="interactive" title="Get more information about JIRA" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+                                </li>
+                                                            <li>
+                                    <a id="view_credits" class="interactive" title="See who did what" href="https://jira.codehaus.org/secure/JiraCreditsPage%21default.jspa" target="_blank">JIRA Credits</a>
+                                </li>
+                                                            <li>
+                                    <a id="whats-new-menu-link" class="interactive" href="https://docs.atlassian.com/jira/docs-061/whatsnew/iframe">What?s New</a>
+                                </li>
+                                                    </ul>
+                                    </div>
+                    </div>
+    </li>
+
+
+
+
+
+
+
+
+
+<li id="user-options">
+            <a class="aui-nav-link login-link" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-702">Log In</a>
+                <div id="user-options-content" class="aui-dropdown2 aui-style-default">
+                            <div class="aui-dropdown2-section">
+                                                        </div>
+                    </div>
+    </li>
+</ul></div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    </header>
+    
+
+
+<div id="announcement-banner" class="alertHeader">
+    <div style="position: absolute; right: 20em; top: -2em">
+  <a href="https://xircles.codehaus.org/signup">Signup</a>
+</div>
+</div>
+
+
+    <section id="content" role="main">
+        
+    
+
+    <div class="issue-container ">
+                                    <div id="issue-content" class="issue-edit-form">
+                    <header id="stalker" class="issue-header js-stalker">
+                        <div class="issue-header-content"><header class="aui-page-header"><div class="aui-page-header-inner"><div class="aui-page-header-image"><span id="10680" class="aui-avatar aui-avatar-large aui-avatar-project"><span class="aui-avatar-inner"><img id="project-avatar" alt="JBehave" src="index_files/projectavatar.png"></span></span></div><!-- .aui-page-header-image --><div class="aui-page-header-main"><ol class="aui-nav aui-nav-breadcrumbs"><li><a id="project-name-val" href="/Old_JBehave_Issues/index.html">JBehave</a></li><li><a class="issue-link" data-issue-key="JBEHAVE-702" href="#" id="key-val" rel="133274">JBEHAVE-702</a></li></ol><h1 id="summary-val">Allow directives to support multiple step pattern variant</h1></div><!-- .aui-page-header-main --><div class="aui-page-header-actions"><div id="issue-header-pager"></div></div><!-- .aui-page-header-actions --></div><!-- .aui-page-header-inner --></header><!-- .aui-page-header --><div class="command-bar"><div class="ops-cont"><div class="ops-menus aui-toolbar"><div class="toolbar-split toolbar-split-left"><ul id="opsbar-ops-login-lnk_container" class="toolbar-group pluggable-ops"><li class="toolbar-item"><a id="ops-login-lnk" style="display:none" title="Log In" class="toolbar-trigger" href="https://jira.codehaus.org/login.jsp?os_destination=%2Fbrowse%2FJBEHAVE-702"><span class="trigger-label">Log In</span></a></li></ul><ul id="opsbar-opsbar-operations" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-transitions" class="toolbar-group pluggable-ops"></ul><ul id="opsbar-opsbar-admin" class="toolbar-group pluggable-ops"></ul></div><div class="toolbar-split toolbar-split-right"><ul id="opsbar-jira.issue.tools" style="display:none" class="toolbar-group pluggable-ops"><li class="toolbar-item toolbar-dropdown"><div><a href="#" id="viewissue-export" title="Export this issue in another format" data-hide-on-scroll=".split-view .issue-container" data-contain-to-window="true" class="toolbar-trigger  js-default-dropdown"><span class="icon icon-export viewissue-export"></span> <span class="dropdown-text">Export</span><span class="icon drop-menu"></span></a><div class="aui-list hidden"><ul class="aui-list-section aui-first aui-last"><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-xml/JBEHAVE-702/JBEHAVE-702.xml" class="aui-list-item-link" id="jira.issueviews:issue-xml"><span class="trigger-label">XML</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-word/JBEHAVE-702/JBEHAVE-702.doc" class="aui-list-item-link" id="jira.issueviews:issue-word"><span class="trigger-label">Word</span></a></li><li class="aui-list-item"><a href="https://jira.codehaus.org/si/jira.issueviews:issue-html/JBEHAVE-702/JBEHAVE-702.html" class="aui-list-item-link" id="jira.issueviews:issue-html"><span class="trigger-label">Printable</span></a></li></ul></div></div></li></ul></div></div></div></div></div>
+                    </header>
+                    <div class="issue-body-content">
+                        <div class="aui-group issue-body"><div class="aui-item issue-main-column"><div id="details-module" class="module toggle-wrap"><div id="details-module_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Details</h2></div><div class="mod-content">
+
+
+
+
+<ul id="issuedetails" class="property-list two-cols">
+    <li class="item">
+        <div class="wrap">
+            <strong class="name">Type:</strong>
+            <span id="type-val" class="value">
+                                <img alt="New Feature" src="index_files/newfeature.png" title="New Feature - A new feature of the product, which has yet to be developed." height="16" width="16"> New Feature
+            </span>
+        </div>
+    </li>
+    <li class="item item-right">
+        <div class="wrap">
+            <strong class="name">Status:</strong>
+            <span id="status-val" class="value">
+                                
+
+<img src="index_files/resolved.png" alt="Resolved" title="Resolved - A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed." height="16" width="16"> Resolved
+            </span>
+                    </div>
+    </li>
+            <li class="item">
+            <div class="wrap">
+                <strong class="name">Priority:</strong>
+                <span id="priority-val" class="value">
+                                        <img alt="Major" src="index_files/major.png" title="Major - Major loss of function." height="16" width="16"> Major
+                </span>
+            </div>
+        </li>
+                                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Resolution:</strong>
+                <span id="resolution-val" class="value resolved">
+                                     Fixed
+                                </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Affects Version/s:</strong>
+                <span id="versions-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="versions-field">
+                                                            <span title="3.5.4 ">3.5.4</span>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item item-right">
+            <div class="wrap">
+                <strong class="name">Fix Version/s:</strong>
+                <span id="fixfor-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="fixVersions-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/fixforversion/17721" title="3.6 ">3.6</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                <li class="item">
+            <div class="wrap">
+                <strong class="name">Component/s:</strong>
+                <span id="components-val" class="value">
+                                            <span style="height: auto;" class="shorten" id="components-field">
+                                                            <a href="/Old_JBehave_Issues/index.html/component/11086" title="Core ">Core</a>                                                    </span>
+                                    </span>
+            </div>
+        </li>
+                    <li class="item full-width">
+            <div class="wrap" id="wrap-labels">
+                <strong class="name">Labels:</strong>
+                    <div class="labels-wrap value">
+            <ul class="labels" id="labels-133274-value">
+                                                        <li><a class="lozenge" href="https://jira.codehaus.org/secure/IssueNavigator.jspa?reset=true&amp;jqlQuery=labels+%3D+i18n" title="i18n"><span>i18n</span></a></li>
+                                                                                    <li><a class="lozenge" href="https://jira.codehaus.org/secure/IssueNavigator.jspa?reset=true&amp;jqlQuery=labels+%3D+wish" title="wish"><span>wish</span></a></li>
+                                                    </ul>
+        </div>
+            </div>
+        </li>
+        </ul>
+
+<div id="customfieldmodule">
+    <div class="aui-tabs horizontal-tabs" id="customfield-tabs">
+                    <div id="customfield-panel-1" class="tabs-pane active-pane">
+                        <ul class="property-list">
+                                                <li id="rowForcustomfield_10210" class="item">
+                        <div class="wrap">
+                            <strong title="Number of attachments " class="name">Number of attachments :</strong>
+                            <div id="customfield_10210-val" class="value type-attachments" data-fieldtype="attachments" data-fieldtypecompletekey="com.atlassian.jira.toolkit:attachments">
+                                    3
+
+                            </div>
+                        </div>
+                    </li>
+                                        </ul>
+        </div>
+        </div></div>
+</div></div><div id="descriptionmodule" class="module toggle-wrap"><div id="descriptionmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Description</h2></div><div class="mod-content"><div id="description-val" class="field-ignore-highlight">
+    <div class="user-content-block">
+                    <p>To get more natural German story texts, it would be very helpful if the Steps.listCandidates() method could be amended.<br>
+This would allow for automatically generating slight variations of the texts without having to specify them all as aliases. Currently I am doing this:</p>
+
+<p>@Then("soll foo bar with $xyz")<br>
+@Aliases(values = </p>
+{
+	"foo bar with $xyz",
+	"soll foo bar: $xyz",
+	"foo bar: $xyz" }
+<p>)</p>
+
+<p>The word "soll" is made optional this way. The reasoning behind this is that when using "And" it is more natural to write</p>
+
+<p>Then soll something else<br>
+And foo bar with $xyz</p>
+
+<p>instead of</p>
+
+<p>Then soll something else<br>
+And soll foo bar with $xyz</p>
+
+
+<p>It would be very nice to not have define aliases for all these variants, because it makes the code harder to maintain. Instead, I though I'd add this dynamically, the same way annotated Aliases are, but it seems this functionality would require providing a new subclass of org.jbehave.core.steps.Steps which I cannot see how to do.</p>
+
+<p>I suggest a change like this:</p>
+
+<p>1) In org.jbehave.core.steps.Steps add another call in listCandidates() after each of the addCandidatesFromAliases(...) like addCustomDerivedCandidates(...) with the same signature and a protected empty default implementation.<br>
+2) Allow configuration to specify a custom subclass of org.jbehave.core.steps.Steps. In there custom additions to the candidates list could be made, like the one I described.</p>
+
+            </div>
+</div>
+</div></div><div id="attachmentmodule" class="module toggle-wrap"><div id="attachmentmodule_heading" class="mod-header"><ul class="ops"><li class="drop"><div class="aui-dd-parent"><a href="#" class="icon drop-menu js-default-dropdown" title="Options"><span>Options</span></a><div class="aui-dropdown-content aui-list"><ul id="attachment-sorting-options" class="aui-list-section aui-first"><li class="aui-list-item"><a id="attachment-sort-key-name" href="/Old_JBehave_Issues/702?attachmentSortBy=fileName#attachmentmodule" class="aui-list-checked aui-checked aui-list-item-link" title="viewissue.subtasks.tab.show.all.name"><span>Sort By Name</span></a></li><li class="aui-list-item"><a id="attachment-sort-key-date" href="/Old_JBehave_Issues/702?attachmentSortBy=dateTime#attachmentmodule" class="aui-list-checked aui-list-item-link" title="Sort By Date"><span>Sort By Date</span></a></li></ul><ul id="attachment-sorting-order-options" class="aui-list-section"><li class="aui-list-item"><a id="attachment-sort-direction-asc" href="/Old_JBehave_Issues/702?attachmentOrder=asc#attachmentmodule" class="aui-list-checked aui-checked aui-list-item-link" title="Ascending"><span>Ascending</span></a></li><li class="aui-list-item"><a id="attachment-sort-direction-desc" href="/Old_JBehave_Issues/702?attachmentOrder=desc#attachmentmodule" class="aui-list-checked aui-list-item-link" title="Descending"><span>Descending</span></a></li></ul><ul id="attachment-manage-options" class="aui-list-section aui-last"><li class="aui-list-item"><a id="aszip" href="/Old_JBehave_Issues/attachmentzip/133274.zip" class="aui-list-checked aui-list-item-link" title="Download all attachments as a ZIP file"><span>Download All</span></a></li></ul></div></div></li></ul><h2 class="toggle-title">Attachments</h2></div><div class="mod-content">
+            <ol id="file_attachments" class="item-attachments">
+                            <li class="attachment-content">
+                                            <div class="twixi-block collapsed">
+                            <div class="twixi-wrap verbose">
+                                <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+                                <div class="attachment-thumb">
+                                    <a href="/Old_JBehave_Issues/attachment/58559/$%7BfileAttachment.fileNameUrlEncoded%7D" draggable="true" data-downloadurl="application/zip:jbehave-702-1.zip:/Old_JBehave_Issues/attachment/58559/jbehave-702-1.zip">
+                                            <img src="index_files/zip.gif" alt="Zip Archive" height="16" border="0" width="16">
+                                    </a>
+                                </div>
+                                <dl>
+                                        <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/58559/jbehave-702-1.zip" title="Latest  19/Jan/12 6:20 AM - Daniel Schneller" draggable="true" data-downloadurl="application/zip:jbehave-702-1.zip:/Old_JBehave_Issues/attachment/58559/jbehave-702-1.zip">jbehave-702-1.zip
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2012-01-19T06:20-0600">19/Jan/12 6:20 AM</time></dd>
+    <dd class="attachment-size">8 kB</dd>
+    <dd class="attachment-author">Daniel Schneller</dd>
+                                    <dd class="zip-contents">
+                                        <ol>
+                                                                                                                                                <li>
+                                                        <div class="attachment-thumb">
+                                                            <a href="/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B7%5D/src/main/java/org/jbehave/core/steps/Steps.java" draggable="true" data-downloadurl="text/plain:src/main/java/org/jbehave/core/steps/Steps.java:/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B7%5D/src/main/java/org/jbehave/core/steps/Steps.java">
+                                                                    <img src="index_files/java.gif" alt="Java Source File" height="16" border="0" width="16">
+                                                            </a>
+                                                        </div>
+                                                        <a href="/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B7%5D/src/main/java/org/jbehave/core/steps/Steps.java" title="src/main/java/org/jbehave/core/steps/Steps.java" draggable="true" data-downloadurl="text/plain:src/main/java/org/jbehave/core/steps/Steps.java:/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B7%5D/src/main/java/org/jbehave/core/steps/Steps.java">
+                                                            src/main/java/org/.../core/steps/Steps.java
+                                                        </a>
+                                                        <span class="attachment-size">
+                                                            14 kB
+                                                        </span>
+                                                    </li>
+                                                                                                                                                                                                <li>
+                                                        <div class="attachment-thumb">
+                                                            <a href="/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B8%5D/src/main/java/org/jbehave/core/steps/StepsPermutationBuilder.java" draggable="true" data-downloadurl="text/plain:src/main/java/org/jbehave/core/steps/StepsPermutationBuilder.java:/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B8%5D/src/main/java/org/jbehave/core/steps/StepsPermutationBuilder.java">
+                                                                    <img src="index_files/java.gif" alt="Java Source File" height="16" border="0" width="16">
+                                                            </a>
+                                                        </div>
+                                                        <a href="/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B8%5D/src/main/java/org/jbehave/core/steps/StepsPermutationBuilder.java" title="src/main/java/org/jbehave/core/steps/StepsPermutationBuilder.java" draggable="true" data-downloadurl="text/plain:src/main/java/org/jbehave/core/steps/StepsPermutationBuilder.java:/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B8%5D/src/main/java/org/jbehave/core/steps/StepsPermutationBuilder.java">
+                                                            src/main/.../StepsPermutationBuilder.java
+                                                        </a>
+                                                        <span class="attachment-size">
+                                                            7 kB
+                                                        </span>
+                                                    </li>
+                                                                                                                                                                                                <li>
+                                                        <div class="attachment-thumb">
+                                                            <a href="/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B15%5D/src/test/java/org/jbehave/core/steps/PermTest.java" draggable="true" data-downloadurl="text/plain:src/test/java/org/jbehave/core/steps/PermTest.java:/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B15%5D/src/test/java/org/jbehave/core/steps/PermTest.java">
+                                                                    <img src="index_files/java.gif" alt="Java Source File" height="16" border="0" width="16">
+                                                            </a>
+                                                        </div>
+                                                        <a href="/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B15%5D/src/test/java/org/jbehave/core/steps/PermTest.java" title="src/test/java/org/jbehave/core/steps/PermTest.java" draggable="true" data-downloadurl="text/plain:src/test/java/org/jbehave/core/steps/PermTest.java:/Old_JBehave_Issues/attachmentzip/unzip/133274/58559%5B15%5D/src/test/java/org/jbehave/core/steps/PermTest.java">
+                                                            src/test/java/.../core/steps/PermTest.java
+                                                        </a>
+                                                        <span class="attachment-size">
+                                                            3 kB
+                                                        </span>
+                                                    </li>
+                                                                                                                                    </ol>
+                                        <span class="zip-contents-trailer">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/58559/jbehave-702-1.zip" draggable="true" data-downloadurl="application/zip:jbehave-702-1.zip:/Old_JBehave_Issues/attachment/58559/${fileAttachment.fileNameUrlEncoded}">Download Zip</a>
+                                        </span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="twixi-wrap concise">
+                                <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+
+                                <div class="attachment-thumb">
+                                    <a href="/Old_JBehave_Issues/attachment/58559/jbehave-702-1.zip" draggable="true" data-downloadurl="application/zip:jbehave-702-1.zip:/Old_JBehave_Issues/attachment/58559/jbehave-702-1.zip">
+                                            <img src="index_files/zip.gif" alt="Zip Archive" height="16" border="0" width="16">
+                                    </a>
+                                </div>
+                                <dl>
+                                        <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/58559/jbehave-702-1.zip" title="Latest  19/Jan/12 6:20 AM - Daniel Schneller" draggable="true" data-downloadurl="application/zip:jbehave-702-1.zip:/Old_JBehave_Issues/attachment/58559/jbehave-702-1.zip">jbehave-702-1.zip
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2012-01-19T06:20-0600">19/Jan/12 6:20 AM</time></dd>
+    <dd class="attachment-size">8 kB</dd>
+    <dd class="attachment-author">Daniel Schneller</dd>
+                                </dl>
+                            </div>
+                        </div>
+                                    </li>
+                            <li class="attachment-content">
+                                            <div class="attachment-thumb">
+                            <a href="/Old_JBehave_Issues/attachment/58496/Steps.java" draggable="true" data-downloadurl="text/plain:Steps.java:/Old_JBehave_Issues/attachment/58496/Steps.java">
+                                    <img src="index_files/java.gif" alt="Java Source File" height="16" border="0" width="16">
+                            </a>
+                        </div>
+                        <dl>
+                                <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/58496/Steps.java" title="Latest  13/Jan/12 4:45 AM - Daniel Schneller" draggable="true" data-downloadurl="text/plain:Steps.java:/Old_JBehave_Issues/attachment/58496/Steps.java">Steps.java
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2012-01-13T04:45-0600">13/Jan/12 4:45 AM</time></dd>
+    <dd class="attachment-size">14 kB</dd>
+    <dd class="attachment-author">Daniel Schneller</dd>
+                        </dl>
+                                    </li>
+                            <li class="attachment-content earlier-version">
+                                            <div class="attachment-thumb">
+                            <a href="/Old_JBehave_Issues/attachment/58482/Steps.java" draggable="true" data-downloadurl="text/plain:Steps.java:/Old_JBehave_Issues/attachment/58482/Steps.java">
+                                    <img src="index_files/java.gif" alt="Java Source File" height="16" border="0" width="16">
+                            </a>
+                        </div>
+                        <dl>
+                                <dt class="attachment-title">
+        <a href="/Old_JBehave_Issues/attachment/58482/Steps.java" title=" 12/Jan/12 4:17 AM - Daniel Schneller" draggable="true" data-downloadurl="text/plain:Steps.java:/Old_JBehave_Issues/attachment/58482/Steps.java">Steps.java
+        </a>
+    </dt>
+    <dd class="attachment-delete">
+                    <span class="icon"></span>
+            </dd>
+    <dd class="attachment-date"><time class="livestamp" datetime="2012-01-12T04:17-0600">12/Jan/12 4:17 AM</time></dd>
+    <dd class="attachment-size">15 kB</dd>
+    <dd class="attachment-author">Daniel Schneller</dd>
+                        </dl>
+                                    </li>
+                    </ol>
+        </div></div><div id="activitymodule" class="module toggle-wrap"><div id="activitymodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Activity</h2></div><div class="mod-content">
+
+
+
+
+
+
+
+
+
+
+    <div class="tabwrap tabs2" style="display:none">
+                    <div class="sortwrap">
+                                    <a class="icon icon-sort-down ajax-activity-content" rel="nofollow" href="/Old_JBehave_Issues/702?actionOrder=desc" title="Ascending order - Click to sort in descending order"><span>Ascending order - Click to sort in descending order</span></a>
+                            </div>
+                <ul id="issue-tabs" class="tabs horizontal">
+                                
+            <li class="active" id="all-tabpanel" data-id="all-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel" data-label="All" data-href="/browse/JBEHAVE-702">
+                            <strong>All</strong>
+                        </li>
+                                
+            <li data-id="comment-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel" data-label="Comments" data-href="/browse/JBEHAVE-702">
+                            <a class="ajax-activity-content" id="comment-tabpanel" href="/Old_JBehave_Issues/702"><strong>Comments</strong></a>
+                        </li>
+                                
+            <li data-id="worklog-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:worklog-tabpanel" data-label="Work Log" data-href="/browse/JBEHAVE-702">
+                            <a class="ajax-activity-content" id="worklog-tabpanel" href="/Old_JBehave_Issues/702"><strong>Work Log</strong></a>
+                        </li>
+                                
+            <li data-id="changehistory-tabpanel" data-key="com.atlassian.jira.plugin.system.issuetabpanels:changehistory-tabpanel" data-label="History" data-href="/browse/JBEHAVE-702">
+                            <a class="ajax-activity-content" id="changehistory-tabpanel" href="/Old_JBehave_Issues/702"><strong>History</strong></a>
+                        </li>
+                                
+            <li data-id="activity-stream-issue-tab" data-key="com.atlassian.streams.streams-jira-plugin:activity-stream-issue-tab" data-label="Activity" data-href="/browse/JBEHAVE-702">
+                            <a class="ajax-activity-content" id="activity-stream-issue-tab" href="/Old_JBehave_Issues/702"><strong>Activity</strong></a>
+                        </li>
+                </ul>
+    </div>
+    <div class="issuePanelWrapper">
+        <div class="issuePanelProgress"></div>
+        <div class="issuePanelContainer" id="issue_actions_container">
+                                    
+
+
+<div id="comment-288016" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288016&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288016" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288016_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288016_verbose subText"><span class="date user-tz" title="11/Jan/12 8:28 AM"><time class="livestamp" datetime="2012-01-11T08:28-0600">11/Jan/12 8:28 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Daniel, not very clear how your "dynamical" approach would work and how generic this solution would be.   Can you provide an example of your proposed addCustomDerivedCandidates().</p>
+
+<p>In general, I think subclassing steps is not a good solution as it mixes declaration and implementation.  </p>
+
+<p>If there is a need, we can enhance the declarative functionality, either via modifying the @Aliases annotation or providing a new one.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288016_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288016_concise subText"><span class="date user-tz" title="11/Jan/12 8:28 AM"><time class="livestamp" datetime="2012-01-11T08:28-0600">11/Jan/12 8:28 AM</time></span></span>                    Hi Daniel, not very clear how your "dynamical" approach would work and how generic this solution would be.   Can you provide an example of your proposed addCustomDerivedCandidates(). 
+
+ In general, I think subclassing steps is not a good solution as it mixes declaration and implementation.   
+
+ If there is a need, we can enhance the declarative functionality, either via modifying the @Aliases annotation or providing a new one.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288103" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288103&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288103" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288103_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288103_verbose subText"><span class="date user-tz" title="12/Jan/12 4:16 AM"><time class="livestamp" datetime="2012-01-12T04:16-0600">12/Jan/12 4:16 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Reading your comment I realized that my original idea was maybe a little too complicated for what I had in mind. I tried an implementation locally by introducing "@Variant"/@Variants with the same structure as "@Alias"/"@Aliases".</p>
+
+<p>Doing this:</p>
+
+<p>    @Then("foo bar with $xyz")<br>
+    @Alias("foo bar: $xyz"<br>
+    @Variant("soll")<br>
+    public void foobar() </p>
+{...}
+
+
+<p>would lead to these 4 permutations all being added as candidates:</p>
+
+<p>    foo bar with $xyz<br>
+    soll foo bar with $xyz<br>
+    foo bar: $xyz<br>
+    soll foo far: $xyz</p>
+
+<p>In Steps.java I added this method:</p>
+
+<p>	private void addVariants(List&lt;StepCandidate&gt; candidates, Method method,<br>
+			StepType stepType, String alias, int priority) {<br>
+		List&lt;String&gt; allVariants = getVariants(method);<br>
+		for (String variant : allVariants) </p>
+{
+			addCandidate(candidates, method, stepType, variant + " " + alias, priority);
+		}
+<p>	}</p>
+
+<p>which is called from each of the three blocks in listCandidates() and the two blocks in addCandidatesFromAliases(...).</p>
+
+<p>That way the change is very minimal and remains fully backwards compatible.</p>
+
+<p>I will attach my modified Steps class.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288103_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288103_concise subText"><span class="date user-tz" title="12/Jan/12 4:16 AM"><time class="livestamp" datetime="2012-01-12T04:16-0600">12/Jan/12 4:16 AM</time></span></span>                    Reading your comment I realized that my original idea was maybe a little too complicated for what I had in mind. I tried an implementation locally by introducing "@Variant"/@Variants with the same structure as "@Alias"/"@Aliases". 
+
+ Doing this: 
+
+     @Then("foo bar with $xyz") 
+    @Alias("foo bar: $xyz" 
+    @Variant("soll") 
+    public void foobar()  
+{...}
+
+
+ would lead to these 4 permutations all being added as candidates: 
+
+     foo bar with $xyz 
+    soll foo bar with $xyz 
+    foo bar: $xyz 
+    soll foo far: $xyz 
+
+ In Steps.java I added this method: 
+
+ 	private void addVariants(List&lt;StepCandidate&gt; candidates, Method method, 
+			StepType stepType, String alias, int priority) { 
+		List&lt;String&gt; allVariants = getVariants(method); 
+		for (String variant : allVariants)  
+{
+			addCandidate(candidates, method, stepType, variant + " " + alias, priority);
+		}
+ 	} 
+
+ which is called from each of the three blocks in listCandidates() and the two blocks in addCandidatesFromAliases(...). 
+
+ That way the change is very minimal and remains fully backwards compatible. 
+
+ I will attach my modified Steps class.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288104" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288104&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288104" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288104_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288104_verbose subText"><span class="date user-tz" title="12/Jan/12 4:17 AM"><time class="livestamp" datetime="2012-01-12T04:17-0600">12/Jan/12 4:17 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Modified Steps.java with additions for @Variant(s).</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288104_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288104_concise subText"><span class="date user-tz" title="12/Jan/12 4:17 AM"><time class="livestamp" datetime="2012-01-12T04:17-0600">12/Jan/12 4:17 AM</time></span></span>                    Modified Steps.java with additions for @Variant(s).              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-378770">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_378770">
+                                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="changehistoryauthor_378770" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ made changes  - <span class="date" title="12/Jan/12 4:17 AM"><time class="livestamp" datetime="2012-01-12T04:17-0600">12/Jan/12 4:17 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_378770" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <thead>
+                    <tr>
+                        <th width="20%">Field</th>
+                        <th width="40%">Original Value</th>
+                        <th width="40%">New Value</th>
+                    </tr>
+                </thead>
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/58482/Steps.java">Steps.java</a>
+                                                                                                                       <span class="hist-value">[    58482
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288118" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288118&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288118" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288118_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288118_verbose subText"><span class="date user-tz" title="12/Jan/12 8:39 AM"><time class="livestamp" datetime="2012-01-12T08:39-0600">12/Jan/12 8:39 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Why not simply add an optional "variants" property to the @Alias/es annotations? </p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288118_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288118_concise subText"><span class="date user-tz" title="12/Jan/12 8:39 AM"><time class="livestamp" datetime="2012-01-12T08:39-0600">12/Jan/12 8:39 AM</time></span></span>                    Why not simply add an optional "variants" property to the @Alias/es annotations?               </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288226" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288226&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288226" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288226_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288226_verbose subText"><span class="date user-tz" title="13/Jan/12 4:45 AM"><time class="livestamp" datetime="2012-01-13T04:45-0600">13/Jan/12 4:45 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Good point. However, as it would be a reasonable requirement to have variants without other "classic" aliases, I needed to make the value/s attribute of the Alias/Aliases annotations optional, too. Attached find a new version of the Steps class that implements this change. If you like, I could also upload Alias/Aliases, but as the change in there is minimal, I did not bother.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288226_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288226_concise subText"><span class="date user-tz" title="13/Jan/12 4:45 AM"><time class="livestamp" datetime="2012-01-13T04:45-0600">13/Jan/12 4:45 AM</time></span></span>                    Good point. However, as it would be a reasonable requirement to have variants without other "classic" aliases, I needed to make the value/s attribute of the Alias/Aliases annotations optional, too. Attached find a new version of the Steps class that implements this change. If you like, I could also upload Alias/Aliases, but as the change in there is minimal, I did not bother.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-378924">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_378924">
+                                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="changehistoryauthor_378924" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ made changes  - <span class="date" title="13/Jan/12 4:45 AM"><time class="livestamp" datetime="2012-01-13T04:45-0600">13/Jan/12 4:45 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_378924" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/58496/Steps.java">Steps.java</a>
+                                                                                                                       <span class="hist-value">[    58496
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288244" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288244&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288244" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288244_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288244_verbose subText"><span class="date user-tz" title="13/Jan/12 9:01 AM"><time class="livestamp" datetime="2012-01-13T09:01-0600">13/Jan/12 9:01 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I'm not sure there is a real difference between a variant and an alias.  The effect is in any case to create another step candidate with a modified pattern.</p>
+
+<p>Do you have a use case where you'd use @Variant without @Alias?</p>
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288244_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288244_concise subText"><span class="date user-tz" title="13/Jan/12 9:01 AM"><time class="livestamp" datetime="2012-01-13T09:01-0600">13/Jan/12 9:01 AM</time></span></span>                    I'm not sure there is a real difference between a variant and an alias.  The effect is in any case to create another step candidate with a modified pattern. 
+
+ Do you have a use case where you'd use @Variant without @Alias? 
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288256" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288256&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288256" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288256_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288256_verbose subText"><span class="date user-tz" title="13/Jan/12 1:16 PM"><time class="livestamp" datetime="2012-01-13T13:16-0600">13/Jan/12 1:16 PM</time></span></span>   - <span class="redText subText" title="Daniel Schneller - 13/Jan/12 1:18 PM">edited</span> </div>
+        </div>
+        <div class="action-body flooded"><p>Here a few examples where I would not like to create an alias for given and then cases, because they would be virtually identical, but for the "variant" word. </p>
+
+<p>A little German lesson upfront <img class="emoticon" src="index_files/smile.gif" alt="" height="16" align="absmiddle" border="0" width="16"> </p>
+
+<ul>
+	<li>Gegeben = Given</li>
+	<li>Dann = then</li>
+	<li>sei = be</li>
+	<li>soll = should</li>
+</ul>
+
+
+
+<p>The "sei" (be) is associated with the <em>first</em> "Gegeben" in a German sentence, further conditions added with "and" do <em>not</em> repeat it. Doing so would be very awkward language.</p>
+
+<p>The same goes for "soll" (should). The <em>first</em> part of a "Then" very often gets it, the following ones do not.</p>
+
+<p>The difference to, say, English is a) the repetition and b) the order of the words. While in English you'd write</p>
+
+<p>... then A should be 1 and B should be 2 ...</p>
+
+<p>in German it would be</p>
+
+<p>... dann sollte A 1 sein und B 2 sein ...</p>
+
+
+<p>So, I agree to your idea that a new attribute of the existing Alias/es would be enough, because that's what it really is. What I am trying to avoid is having to multiply aliases to build all permutations with these variant words in front of them (there are a few more than "sei" and "soll", e. g. "sollte" as an equivalent to "soll" in most cases).</p>
+
+<p>Having a way to add these concisely would increase legibility of the code and also help avoid copy/paste errors.</p>
+
+<p>A few examples:</p>
+
+<p>--------------------<br>
+Good:<br>
+Gegeben sei eine Usersession <span class="error">["sei" for the first case]</span><br>
+Und ein Artikel im Warenkorb <span class="error">[no repeated "sei"]</span></p>
+
+<p>Also good, equivalent:<br>
+Gegeben sei ein Artikel im Warenkorb <span class="error">["sei" for the first case]</span><br>
+Und eine Usersession <span class="error">[no repeated "sei"]</span></p>
+
+<p>Not Good:<br>
+Gegeben sei eine Usersession<br>
+Und sei ein Artikel im Warenkorb <span class="error">[repeated "sei" very awkward]</span><br>
+--------------------</p>
+
+<p>Could be written as</p>
+
+<p>@Given("eine Usersession")<br>
+@Aliases(values=</p>
+{"eine bestehende Session","eine aktive Session"}
+<p>,variants=</p>
+{"sei"})<br>
+<br>
+@Given("ein Artikel im Warenkorb")<br>
+@Alias(variants={"sei"}
+<p>)</p>
+
+
+
+<p>--------------------<br>
+Good:<br>
+Dann soll eine Meldung angezeigt werden <span class="error">["soll" for first case]</span><br>
+Und ein Logeintrag geschrieben werden <span class="error">[not repeated]</span></p>
+
+<p>Not Good:<br>
+Dann soll und ein Logeintrag geschrieben werden<br>
+Und soll eine Meldung angezeigt werden <span class="error">[repetition awkward]</span><br>
+--------------------</p>
+
+<p>Could be written as</p>
+
+<p>@Then("eine Meldung angezeigt werden")<br>
+@Aliases(variants=</p>
+{"soll","sollte"})<br>
+<br>
+@Then("eine Meldung angezeigt werden")<br>
+@Aliases(variants={"soll","sollte"}
+<p>)</p>
+
+
+<p>Without the variants, I would either need to write down a lot of aliases explicitly, or the people writing the tests would not be at their leisure to modify the order of the conditions they use without sacrificing natural language rules.</p>
+
+<p>I hope I get the point across. It is a little difficult to describe the peculiarities of one language with the words of the other <img class="emoticon" src="index_files/smile.gif" alt="" height="16" align="absmiddle" border="0" width="16"></p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+                                            
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288256_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288256_concise subText"><span class="date user-tz" title="13/Jan/12 1:16 PM"><time class="livestamp" datetime="2012-01-13T13:16-0600">13/Jan/12 1:16 PM</time></span></span>   - <span class="redText subText" title="Daniel Schneller - 13/Jan/12 1:18 PM">edited</span>                   Here a few examples where I would not like to create an alias for given and then cases, because they would be virtually identical, but for the "variant" word.  
+
+ A little German lesson upfront    
+
+ 
+	 Gegeben = Given 
+	 Dann = then 
+	 sei = be 
+	 soll = should 
+ 
+
+
+
+ The "sei" (be) is associated with the  first  "Gegeben" in a German sentence, further conditions added with "and" do  not  repeat it. Doing so would be very awkward language. 
+
+ The same goes for "soll" (should). The  first  part of a "Then" very often gets it, the following ones do not. 
+
+ The difference to, say, English is a) the repetition and b) the order of the words. While in English you'd write 
+
+ ... then A should be 1 and B should be 2 ... 
+
+ in German it would be 
+
+ ... dann sollte A 1 sein und B 2 sein ... 
+
+
+ So, I agree to your idea that a new attribute of the existing Alias/es would be enough, because that's what it really is. What I am trying to avoid is having to multiply aliases to build all permutations with these variant words in front of them (there are a few more than "sei" and "soll", e. g. "sollte" as an equivalent to "soll" in most cases). 
+
+ Having a way to add these concisely would increase legibility of the code and also help avoid copy/paste errors. 
+
+ A few examples: 
+
+ -------------------- 
+Good: 
+Gegeben sei eine Usersession  ["sei" for the first case]  
+Und ein Artikel im Warenkorb  [no repeated "sei"]  
+
+ Also good, equivalent: 
+Gegeben sei ein Artikel im Warenkorb  ["sei" for the first case]  
+Und eine Usersession  [no repeated "sei"]  
+
+ Not Good: 
+Gegeben sei eine Usersession 
+Und sei ein Artikel im Warenkorb  [repeated "sei" very awkward]  
+-------------------- 
+
+ Could be written as 
+
+ @Given("eine Usersession") 
+@Aliases(values= 
+{"eine bestehende Session","eine aktive Session"}
+ ,variants= 
+{"sei"}) 
+ 
+@Given("ein Artikel im Warenkorb") 
+@Alias(variants={"sei"}
+ ) 
+
+
+
+ -------------------- 
+Good: 
+Dann soll eine Meldung angezeigt werden  ["soll" for first case]  
+Und ein Logeintrag geschrieben werden  [not repeated]  
+
+ Not Good: 
+Dann soll und ein Logeintrag geschrieben werden 
+Und soll eine Meldung angezeigt werden  [repetition awkward]  
+-------------------- 
+
+ Could be written as 
+
+ @Then("eine Meldung angezeigt werden") 
+@Aliases(variants= 
+{"soll","sollte"}) 
+ 
+@Then("eine Meldung angezeigt werden") 
+@Aliases(variants={"soll","sollte"}
+ ) 
+
+
+ Without the variants, I would either need to write down a lot of aliases explicitly, or the people writing the tests would not be at their leisure to modify the order of the conditions they use without sacrificing natural language rules. 
+
+ I hope I get the point across. It is a little difficult to describe the peculiarities of one language with the words of the other   
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288289" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288289&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288289" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_288289_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_288289_verbose subText"><span class="date user-tz" title="14/Jan/12 5:35 AM"><time class="livestamp" datetime="2012-01-14T05:35-0600">14/Jan/12 5:35 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I wonder if it would be feasible to write an alternate steps matcher that supports optional words or variants in the step sentence (similar to a regular expression pattern), I think this would make writing alternates easier.</p>
+
+<p>Dann soll eine Meldung angezeigt werden<br>
+Und (soll )?ein Logeintrag geschrieben werden</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="alexlehm" id="commentauthor_288289_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=alexlehm"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Alexander Lehmann</a>
+ added a comment  - <span class="commentdate_288289_concise subText"><span class="date user-tz" title="14/Jan/12 5:35 AM"><time class="livestamp" datetime="2012-01-14T05:35-0600">14/Jan/12 5:35 AM</time></span></span>                    I wonder if it would be feasible to write an alternate steps matcher that supports optional words or variants in the step sentence (similar to a regular expression pattern), I think this would make writing alternates easier. 
+
+ Dann soll eine Meldung angezeigt werden 
+Und (soll )?ein Logeintrag geschrieben werden 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288296" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288296&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288296" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288296_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288296_verbose subText"><span class="date user-tz" title="14/Jan/12 10:00 AM"><time class="livestamp" datetime="2012-01-14T10:00-0600">14/Jan/12 10:00 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I've been coming to a similar conclusion - that is to provide a pattern language to express variants of aliases.  Only, I would keep it separate from the step pattern parser, because else it would complicate things considerably (between what is the pattern language and its underlying regex expressions).   I would have it instead in the Steps class when the candidate steps are created for each new step pattern.</p>
+
+<p>We should collect the desired behaviour with examples expressed in English so as to gather the maximum feedback.  I'm pretty sure this sort of requirement, while applicable in different ways in different languages, is actually quite common. </p>
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288296_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288296_concise subText"><span class="date user-tz" title="14/Jan/12 10:00 AM"><time class="livestamp" datetime="2012-01-14T10:00-0600">14/Jan/12 10:00 AM</time></span></span>                    I've been coming to a similar conclusion - that is to provide a pattern language to express variants of aliases.  Only, I would keep it separate from the step pattern parser, because else it would complicate things considerably (between what is the pattern language and its underlying regex expressions).   I would have it instead in the Steps class when the candidate steps are created for each new step pattern. 
+
+ We should collect the desired behaviour with examples expressed in English so as to gather the maximum feedback.  I'm pretty sure this sort of requirement, while applicable in different ways in different languages, is actually quite common.  
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288811" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288811&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288811" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288811_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288811_verbose subText"><span class="date user-tz" title="19/Jan/12 6:20 AM"><time class="livestamp" datetime="2012-01-19T06:20-0600">19/Jan/12 6:20 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Alright, I have come up with something that would work for me. Feedback appreciated <img class="emoticon" src="index_files/smile.gif" alt="" height="16" align="absmiddle" border="0" width="16"><br>
+It is based on the premise that the usual case would be to have some parts of a step be optional or picked from a list of variants like so.</p>
+
+<p><b>Example 1: two variants</b></p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@When(<span class="code-quote">"$A plus $B"</span>)
+@Alias(<span class="code-quote">"$A + $B"</span>)
+</pre>
+</div></div>
+<p>could become:</p>
+<div class="preformatted panel" style="border-width: 1px;"><div class="preformattedContent panelContent">
+<pre>@When("@$A {plus|+}")
+</pre>
+</div></div>
+
+<p><b>Example 2: optional phrases with alternatives</b></p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@Then(<span class="code-quote">"the result be $x"</span>)
+@Alias(values={<span class="code-quote">"the result must be $x"</span>,
+               <span class="code-quote">"the result should be $x"</span>,
+               <span class="code-quote">"the result has to be $x"</span>})
+</pre>
+</div></div>
+<p>could be written as</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@Then(<span class="code-quote">"the result {must |should |has to |}be"</span>)
+</pre>
+</div></div>
+<p>Here the trailing | introduces an "empty" variant, essentially making the pattern optional.</p>
+
+<p><b>Example 3: multiple patterns in one step</b><br>
+It is possible to have more than one pattern group in a step description. </p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@Then(<span class="code-quote">"A {must |has to |is to |} be $x unless {it's|it is} {part of|contained in} {list |}$y"</span>)
+</pre>
+</div></div>
+<p>In this example writing this with aliases would result in 31 aliased variants (4*2*2*2 permutations). </p>
+
+
+<p>I will attach a small ZIP file containing a modified Steps class and the permutation builder I have hacked together. As said before, any feedback is welcome.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288811_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288811_concise subText"><span class="date user-tz" title="19/Jan/12 6:20 AM"><time class="livestamp" datetime="2012-01-19T06:20-0600">19/Jan/12 6:20 AM</time></span></span>                    Alright, I have come up with something that would work for me. Feedback appreciated   
+It is based on the premise that the usual case would be to have some parts of a step be optional or picked from a list of variants like so. 
+
+  Example 1: two variants  
+  
+ 
+@When( "$A plus $B" )
+@Alias( "$A + $B" )
+ 
+  
+ could become: 
+  
+ @When("@$A {plus|+}")
+ 
+  
+
+  Example 2: optional phrases with alternatives  
+  
+ 
+@Then( "the result be $x" )
+@Alias(values={ "the result must be $x" ,
+                "the result should be $x" ,
+                "the result has to be $x" })
+ 
+  
+ could be written as 
+  
+ 
+@Then( "the result {must |should |has to |}be" )
+ 
+  
+ Here the trailing | introduces an "empty" variant, essentially making the pattern optional. 
+
+  Example 3: multiple patterns in one step  
+It is possible to have more than one pattern group in a step description.  
+  
+ 
+@Then( "A {must |has to |is to |} be $x unless {it's|it is} {part of|contained in} {list |}$y" )
+ 
+  
+ In this example writing this with aliases would result in 31 aliased variants (4*2*2*2 permutations).  
+
+
+ I will attach a small ZIP file containing a modified Steps class and the permutation builder I have hacked together. As said before, any feedback is welcome.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-379563">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_379563">
+                                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="changehistoryauthor_379563" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ made changes  - <span class="date" title="19/Jan/12 6:20 AM"><time class="livestamp" datetime="2012-01-19T06:20-0600">19/Jan/12 6:20 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_379563" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Attachment
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                                                        <a href="/Old_JBehave_Issues/attachment/58559/jbehave-702-1.zip">jbehave-702-1.zip</a>
+                                                                                                                       <span class="hist-value">[    58559
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288812" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288812&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288812" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288812_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288812_verbose subText"><span class="date user-tz" title="19/Jan/12 6:46 AM"><time class="livestamp" datetime="2012-01-19T06:46-0600">19/Jan/12 6:46 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>I like the general approach, but would perhaps provide the patterns with alternatives via the @Alias annotation, rather than the @Given/When/Then.  Essentially, we'd be enhancing the language of aliases, with each alias (or permutation thereof) translating into a separate step candidate.</p>
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288812_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288812_concise subText"><span class="date user-tz" title="19/Jan/12 6:46 AM"><time class="livestamp" datetime="2012-01-19T06:46-0600">19/Jan/12 6:46 AM</time></span></span>                    I like the general approach, but would perhaps provide the patterns with alternatives via the @Alias annotation, rather than the @Given/When/Then.  Essentially, we'd be enhancing the language of aliases, with each alias (or permutation thereof) translating into a separate step candidate. 
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288852" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288852&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288852" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288852_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288852_verbose subText"><span class="date user-tz" title="19/Jan/12 9:13 AM"><time class="livestamp" datetime="2012-01-19T09:13-0600">19/Jan/12 9:13 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>My modified Steps class in the ZIP works on both. Of course, it could be limited to calling the permutation generator for aliases only. <br>
+However, what would you put into the "canonical" (i. e. @Given, @When, @Then) annotations in that case? Maybe the first option of each variant pattern?</p>
+
+<p>From what I can see, that would bring back the redundancy I was trying to eliminate in the first place, especially with multiple patterns in one line.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@Then(<span class="code-quote">"A must be $x unless it's part of $y"</span>)
+@Alias(<span class="code-quote">"A {must|has to|is to}be $x unless {it's|it is} {part of|contained in} {list |}$y"</span>)
+</pre>
+</div></div>
+
+<p>However, even when only adding the new feature to aliases, I see a problem with backwards compatibility in cases where existing stories contain lines that for some reason already have curly braces and/or pipes in them. Those would break if the expansion were to suddenly take place, not matter if it were in the aliases or the primary annotations.</p>
+
+<p>For that reason I'd say one could add a (default false) boolean attribute to the @Given/@When/@Then annotations that would require a conscious and explicit decision to enable pattern expansion.</p>
+
+<p>Like this:<br>
+<b>Example 1: unchanged behavior for existing story lines</b></p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@Then(<span class="code-quote">"A {must |has to |is to |} be $x unless {it's|it is} {part of|contained in} {list |}$y"</span>)
+</pre>
+</div></div>
+<p>Would not be expanded, but used verbatim, just like it is today.</p>
+
+<p><b>Example 2: explicitly enabled expansion</b></p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">@Then(value=<span class="code-quote">"A {must |has to |is to |} be $x unless {it's|it is} {part of|contained in} {list |}$y"</span>,
+      permutate=<span class="code-keyword">true</span>)
+</pre>
+</div></div>
+<p>Would work as described above.</p>
+
+<p>The same would go for Alias/es as well to maximize backwards compatibility.<br>
+Maybe, depending on feature adoption, one could argue to change the default to be true in some distant future version, however I think it would would not really be necessary.</p>
+
+
+
+ </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_288852_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_288852_concise subText"><span class="date user-tz" title="19/Jan/12 9:13 AM"><time class="livestamp" datetime="2012-01-19T09:13-0600">19/Jan/12 9:13 AM</time></span></span>                    My modified Steps class in the ZIP works on both. Of course, it could be limited to calling the permutation generator for aliases only.  
+However, what would you put into the "canonical" (i. e. @Given, @When, @Then) annotations in that case? Maybe the first option of each variant pattern? 
+
+ From what I can see, that would bring back the redundancy I was trying to eliminate in the first place, especially with multiple patterns in one line. 
+
+  
+ 
+@Then( "A must be $x unless it's part of $y" )
+@Alias( "A {must|has to|is to}be $x unless {it's|it is} {part of|contained in} {list |}$y" )
+ 
+  
+
+ However, even when only adding the new feature to aliases, I see a problem with backwards compatibility in cases where existing stories contain lines that for some reason already have curly braces and/or pipes in them. Those would break if the expansion were to suddenly take place, not matter if it were in the aliases or the primary annotations. 
+
+ For that reason I'd say one could add a (default false) boolean attribute to the @Given/@When/@Then annotations that would require a conscious and explicit decision to enable pattern expansion. 
+
+ Like this: 
+ Example 1: unchanged behavior for existing story lines  
+  
+ 
+@Then( "A {must |has to |is to |} be $x unless {it's|it is} {part of|contained in} {list |}$y" )
+ 
+  
+ Would not be expanded, but used verbatim, just like it is today. 
+
+  Example 2: explicitly enabled expansion  
+  
+ 
+@Then(value= "A {must |has to |is to |} be $x unless {it's|it is} {part of|contained in} {list |}$y" ,
+      permutate= true )
+ 
+  
+ Would work as described above. 
+
+ The same would go for Alias/es as well to maximize backwards compatibility. 
+Maybe, depending on feature adoption, one could argue to change the default to be true in some distant future version, however I think it would would not really be necessary. 
+
+
+
+             </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288854" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288854&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288854" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="brianrepko" id="commentauthor_288854_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=brianrepko"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Brian Repko</a>
+ added a comment  - <span class="commentdate_288854_verbose subText"><span class="date user-tz" title="19/Jan/12 10:02 AM"><time class="livestamp" datetime="2012-01-19T10:02-0600">19/Jan/12 10:02 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Been sort of watching this issue go by - thought I'd jump in. At first I thought that perhaps this points to variant <b>keyword</b> expression but now see that that isn't the case.</p>
+
+<p>If we go the route of permutable @Given/@When/@Then, then we could introduce a regex escape character - allowing the author to specify the explicit regex for that part of the value.  In Daniel's examples, the '</p>
+{' and '}
+<p>' characters do that.  But it could look a bit like JAX-RS @Path regex escapes as well - if you are looking for a syntax that is already in use in the java world.  JAX-RS does this around variables but perhaps we could introduce the variable as optional.</p>
+
+<p>@Then(value="A {:must|has to|is to} be </p>
+{x}
+<p> unless {:it's|it is} {:part of|contained in} {:list?}</p>
+{y}
+<p>")<br>
+@Then(value="A $:must|has to|is to be $x unless $:it's|it is $:part of|contained in $:list?$y")</p>
+
+<p>Problem as you can tell is that we have variable prefix but not suffix (variable ends at whitespace).<br>
+It may be that if you want to use regex, then you have to have prefix AND suffix.</p>
+
+<p>Just my thought from another space (JAX-RS) that is somewhat similar.</p>
+
+<p>Also be careful with your spaces - matching on your examples requires 2 spaces - "A must  be $x unless it's..."</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="brianrepko" id="commentauthor_288854_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=brianrepko"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Brian Repko</a>
+ added a comment  - <span class="commentdate_288854_concise subText"><span class="date user-tz" title="19/Jan/12 10:02 AM"><time class="livestamp" datetime="2012-01-19T10:02-0600">19/Jan/12 10:02 AM</time></span></span>                    Been sort of watching this issue go by - thought I'd jump in. At first I thought that perhaps this points to variant  keyword  expression but now see that that isn't the case. 
+
+ If we go the route of permutable @Given/@When/@Then, then we could introduce a regex escape character - allowing the author to specify the explicit regex for that part of the value.  In Daniel's examples, the ' 
+{' and '}
+ ' characters do that.  But it could look a bit like JAX-RS @Path regex escapes as well - if you are looking for a syntax that is already in use in the java world.  JAX-RS does this around variables but perhaps we could introduce the variable as optional. 
+
+ @Then(value="A {:must|has to|is to} be  
+{x}
+  unless {:it's|it is} {:part of|contained in} {:list?} 
+{y}
+ ") 
+@Then(value="A $:must|has to|is to be $x unless $:it's|it is $:part of|contained in $:list?$y") 
+
+ Problem as you can tell is that we have variable prefix but not suffix (variable ends at whitespace). 
+It may be that if you want to use regex, then you have to have prefix AND suffix. 
+
+ Just my thought from another space (JAX-RS) that is somewhat similar. 
+
+ Also be careful with your spaces - matching on your examples requires 2 spaces - "A must  be $x unless it's..."              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-288863" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=288863&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-288863" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288863_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288863_verbose subText"><span class="date user-tz" title="19/Jan/12 11:28 AM"><time class="livestamp" datetime="2012-01-19T11:28-0600">19/Jan/12 11:28 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Daniel, nice work.  I've applied and pushed patch (slightly modified wrt names).</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_288863_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_288863_concise subText"><span class="date user-tz" title="19/Jan/12 11:28 AM"><time class="livestamp" datetime="2012-01-19T11:28-0600">19/Jan/12 11:28 AM</time></span></span>                    Hi Daniel, nice work.  I've applied and pushed patch (slightly modified wrt names).              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-379621">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_379621">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_379621" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="19/Jan/12 11:30 AM"><time class="livestamp" datetime="2012-01-19T11:30-0600">19/Jan/12 11:30 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_379621" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Summary
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Allow injection of the "Steps" class to customize its behavior
+                                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Allow directives to support multiple step pattern variant
+                                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Issue Type
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Improvement
+                                                                                                <span class="hist-value">[    4
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               New Feature
+                                                                                               <span class="hist-value">[    2
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Fix Version/s
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               3.6
+                                                                                               <span class="hist-value">[    17721
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-380383">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_380383">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_380383" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="25/Jan/12 12:03 PM"><time class="livestamp" datetime="2012-01-25T12:03-0600">25/Jan/12 12:03 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_380383" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Assignee
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Mauro Talevi
+                                                                                               <span class="hist-value">[    maurotalevi
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-380384">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_380384">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_380384" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="25/Jan/12 12:03 PM"><time class="livestamp" datetime="2012-01-25T12:03-0600">25/Jan/12 12:03 PM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_380384" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                Open
+                                                                                                <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               In Progress
+                                                                                               <span class="hist-value">[    3
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-291404" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=291404&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-291404" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_291404_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_291404_verbose subText"><span class="date user-tz" title="11/Feb/12 11:04 AM"><time class="livestamp" datetime="2012-02-11T11:04-0600">11/Feb/12 11:04 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi Daniel, can you confirm if this issue can be reseolved?  Does the current master satisfy your usecase?</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="commentauthor_291404_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ added a comment  - <span class="commentdate_291404_concise subText"><span class="date user-tz" title="11/Feb/12 11:04 AM"><time class="livestamp" datetime="2012-02-11T11:04-0600">11/Feb/12 11:04 AM</time></span></span>                    Hi Daniel, can you confirm if this issue can be reseolved?  Does the current master satisfy your usecase?              </div>
+        </div>
+    </div>
+</div>
+                             
+
+<div class="issue-data-block" id="changehistory-381991">
+    <div class="actionContainer">
+        <div class="action-details" id="changehistorydetails_381991">
+                                
+
+    <a class="user-hover user-avatar" rel="maurotalevi" id="changehistoryauthor_381991" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=maurotalevi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Mauro Talevi</a>
+ made changes  - <span class="date" title="13/Feb/12 3:12 AM"><time class="livestamp" datetime="2012-02-13T03:12-0600">13/Feb/12 3:12 AM</time></span>
+        </div>
+        <div class="changehistory action-body">
+            <table id="changehistory_381991" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tbody>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Status
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                                In Progress
+                                                                                                <span class="hist-value">[    3
+]</span>
+                                                    </td>
+                <td class="activity-new-val" width="40%">
+                                                               Resolved
+                                                                                               <span class="hist-value">[    5
+]</span>
+                                                    </td>
+                </tr>
+                            <tr>
+                <td class="activity-name" width="20%">
+                                    Resolution
+                                </td>
+                <td class="activity-old-val" width="40%">
+                                                </td>
+                <td class="activity-new-val" width="40%">
+                                                               Fixed
+                                                                                               <span class="hist-value">[    1
+]</span>
+                                                    </td>
+                </tr>
+                            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-295763" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=295763&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-295763" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="rautarekhi" id="commentauthor_295763_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=rautarekhi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Ivan Verdezoto</a>
+ added a comment  - <span class="commentdate_295763_verbose subText"><span class="date user-tz" title="04/Apr/12 9:26 AM"><time class="livestamp" datetime="2012-04-04T09:26-0500">04/Apr/12 9:26 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Hi, <br>
+I updated to jbehave-core 3.6 and I am not able to use the pattern variant.<br>
+All steps had matched perfect before with this configuration, <br>
+But after I changed some steps (in the steps class) with the variant notation, Jbehave marks thess steps as pending. Do I miss something? Should I change something in the configuration class?</p>
+
+<p>Here is a dumb tested example of what I got:</p>
+
+<ul class="alternate" type="square">
+	<li>Story file:</li>
+</ul>
+
+
+<p>Scenario: Test</p>
+
+<p>Given A x B 10.0<br>
+And A y B 1.0</p>
+
+
+<ul class="alternate" type="square">
+	<li>Steps class:</li>
+</ul>
+
+
+<p>   @Given("A </p>
+{x|y}
+<p> B $quantity")<br>
+    public void theItemPriceIs(String q) </p>
+{
+        // ...
+    }
+
+
+<ul class="alternate" type="square">
+	<li>Configuration:</li>
+</ul>
+
+
+<p>MostUsefulConfiguration()<br>
+                .useStoryControls(new StoryControls().doSkipScenariosAfterFailure(false))<br>
+                .useStoryLoader(new LoadFromClasspath(embeddableClass.getClassLoader()))<br>
+                .usePathCalculator(new RelativePathCalculator())<br>
+                .useStoryReporterBuilder(reporterBuilder);</p>
+
+
+<ul class="alternate" type="square">
+	<li>Eclipse console output:</li>
+</ul>
+
+
+<p>Processing system properties {}<br>
+Using controls EmbedderControls<span class="error">[batch=false,skip=false,generateViewAfterStories=true,ignoreFailureInStories=true,ignoreFailureInView=true,verboseFailures=false,verboseFiltering=false,storyTimeoutInSecs=300,threads=1]</span><br>
+Using 1 threads</p>
+
+<p>(BeforeStories)</p>
+
+<p>Running story jbehave/tmp_stories/123.story</p>
+
+<p>(jbehave/tmp_stories/123.story)<br>
+Scenario: Test<br>
+Given A x B 10.0 (PENDING)<br>
+And A y B 1.0 (PENDING)<br>
+@Given("A x B 10.0")<br>
+@Pending<br>
+public void givenAXB100()</p>
+{
+  // PENDING
+}<br>
+<br>
+@Given("A y B 1.0")<br>
+@Pending<br>
+public void givenAYB10(){
+  // PENDING
+}
+<p>.<br>
+.<br>
+.</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="rautarekhi" id="commentauthor_295763_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=rautarekhi"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Ivan Verdezoto</a>
+ added a comment  - <span class="commentdate_295763_concise subText"><span class="date user-tz" title="04/Apr/12 9:26 AM"><time class="livestamp" datetime="2012-04-04T09:26-0500">04/Apr/12 9:26 AM</time></span></span>                    Hi,  
+I updated to jbehave-core 3.6 and I am not able to use the pattern variant. 
+All steps had matched perfect before with this configuration,  
+But after I changed some steps (in the steps class) with the variant notation, Jbehave marks thess steps as pending. Do I miss something? Should I change something in the configuration class? 
+
+ Here is a dumb tested example of what I got: 
+
+ 
+	 Story file: 
+ 
+
+
+ Scenario: Test 
+
+ Given A x B 10.0 
+And A y B 1.0 
+
+
+ 
+	 Steps class: 
+ 
+
+
+    @Given("A  
+{x|y}
+  B $quantity") 
+    public void theItemPriceIs(String q)  
+{
+        // ...
+    }
+
+
+ 
+	 Configuration: 
+ 
+
+
+ MostUsefulConfiguration() 
+                .useStoryControls(new StoryControls().doSkipScenariosAfterFailure(false)) 
+                .useStoryLoader(new LoadFromClasspath(embeddableClass.getClassLoader())) 
+                .usePathCalculator(new RelativePathCalculator()) 
+                .useStoryReporterBuilder(reporterBuilder); 
+
+
+ 
+	 Eclipse console output: 
+ 
+
+
+ Processing system properties {} 
+Using controls EmbedderControls [batch=false,skip=false,generateViewAfterStories=true,ignoreFailureInStories=true,ignoreFailureInView=true,verboseFailures=false,verboseFiltering=false,storyTimeoutInSecs=300,threads=1]  
+Using 1 threads 
+
+ (BeforeStories) 
+
+ Running story jbehave/tmp_stories/123.story 
+
+ (jbehave/tmp_stories/123.story) 
+Scenario: Test 
+Given A x B 10.0 (PENDING) 
+And A y B 1.0 (PENDING) 
+@Given("A x B 10.0") 
+@Pending 
+public void givenAXB100() 
+{
+  // PENDING
+} 
+ 
+@Given("A y B 1.0") 
+@Pending 
+public void givenAYB10(){
+  // PENDING
+}
+ . 
+. 
+.              </div>
+        </div>
+    </div>
+</div>
+                             
+
+
+<div id="comment-295770" class="issue-data-block activity-comment twixi-block  expanded">
+    <div class="twixi-wrap verbose actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-opened"><span>Hide</span></span></a>
+            <div class="action-links">
+                <a href="/Old_JBehave_Issues/702?focusedCommentId=295770&amp;page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-295770" title="A permanent link to this comment." class="icon icon-perma activitymodule-link"><span>Permalink</span></a>
+                                            </div>
+            <div class="action-details">        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_295770_verbose" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_295770_verbose subText"><span class="date user-tz" title="04/Apr/12 10:21 AM"><time class="livestamp" datetime="2012-04-04T10:21-0500">04/Apr/12 10:21 AM</time></span></span>  </div>
+        </div>
+        <div class="action-body flooded"><p>Should not be anything special you need to do. I tried your method with the annotations (copy and pasted them), and it worked ok. I suspect you might not have switched to 3.6 after all. Maybe double check (if need be with a debugger), which JAR is being loaded at runtime. However, I think further bug hunting is not for JIRA, but would better happen on a mailing list? (<a href="http://jbehave.org/mailing-lists.html" class="external-link" rel="nofollow">http://jbehave.org/mailing-lists.html</a>)</p> </div>
+    </div>
+    <div class="twixi-wrap concise actionContainer">
+        <div class="action-head">
+            <a href="#" class="twixi"><span class="icon twixi-closed"><span>Show</span></span></a>
+            <div class="action-details flooded">
+                        
+    
+    
+    
+                
+
+    <a class="user-hover user-avatar" rel="dschneller" id="commentauthor_295770_concise" href="https://jira.codehaus.org/secure/ViewProfile.jspa?name=dschneller"><span class="aui-avatar aui-avatar-xsmall"><span class="aui-avatar-inner"><img src="index_files/useravatar.png"></span></span> Daniel Schneller</a>
+ added a comment  - <span class="commentdate_295770_concise subText"><span class="date user-tz" title="04/Apr/12 10:21 AM"><time class="livestamp" datetime="2012-04-04T10:21-0500">04/Apr/12 10:21 AM</time></span></span>                    Should not be anything special you need to do. I tried your method with the annotations (copy and pasted them), and it worked ok. I suspect you might not have switched to 3.6 after all. Maybe double check (if need be with a debugger), which JAR is being loaded at runtime. However, I think further bug hunting is not for JIRA, but would better happen on a mailing list? ( http://jbehave.org/mailing-lists.html )              </div>
+        </div>
+    </div>
+</div>
+                             </div>
+    </div>
+</div></div></div><div id="viewissuesidebar" class="aui-item issue-side-column"><div id="peoplemodule" class="module toggle-wrap"><div id="peoplemodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">People</h2></div><div class="mod-content"><ul class="item-details" id="peopledetails">
+    <li class="people-details">
+                <dl>
+            <dt>Assignee:</dt>
+            <dd>
+                <span id="assignee-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_assignee_maurotalevi" rel="maurotalevi">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span>
+            Mauro Talevi
+        </span>
+    </span>
+                            </dd>
+        </dl>
+                        <dl>
+            <dt>Reporter:</dt>
+            <dd>
+                <span id="reporter-val" class="view-issue-field">
+
+            <span class="user-hover" id="issue_summary_reporter_dschneller" rel="dschneller">
+            <span class="aui-avatar aui-avatar-small"><span class="aui-avatar-inner"><img src="index_files/useravatar-1.png"></span></span>
+            Daniel Schneller
+        </span>
+    </span>
+            </dd>
+        </dl>
+                    </li>
+</ul>
+    <ul class="item-details">
+        <li>
+                            <dl>
+                    <dt>Votes:</dt>
+                    <dd>
+                                                                            <span id="vote-data" class="aui-badge vote-state-off">0</span>
+                        
+                                                                                                        <span id="vote-label" title="You have to be logged in to vote for an issue.">Vote for this issue</span>
+                                            </dd>
+                </dl>
+                                        <dl>
+                    <dt>Watchers:</dt>
+                    <dd>
+                                                                        
+                                                                            <span id="watcher-data" class="aui-badge watch-state-off">1</span>
+                        
+                                                                                <span id="watch-label" title="You have to be logged in to watch an issue.">Start watching this issue</span>
+                                            </dd>
+                </dl>
+                    </li>
+    </ul>
+</div></div><div id="datesmodule" class="module toggle-wrap"><div id="datesmodule_heading" class="mod-header"><ul class="ops"></ul><h2 class="toggle-title">Dates</h2></div><div class="mod-content"><ul class="item-details">
+    <li>
+            <dl class="dates">
+            <dt>Created:</dt>
+            <dd class="date user-tz" title="11/Jan/12 3:06 AM">
+
+                <span data-name="Created" id="create-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-01-11T03:06-0600">11/Jan/12 3:06 AM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Updated:</dt>
+            <dd class="date user-tz" title="04/Apr/12 10:21 AM">
+
+                <span data-name="Updated" id="updated-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-04-04T10:21-0500">04/Apr/12 10:21 AM</time>                                                             </span>
+            </dd>
+        </dl>
+            <dl class="dates">
+            <dt>Resolved:</dt>
+            <dd class="date user-tz" title="13/Feb/12 3:12 AM">
+
+                <span data-name="Resolved" id="resolved-date" data-fieldtype="datetime">
+                                                                        <time class="livestamp" datetime="2012-02-13T03:12-0600">13/Feb/12 3:12 AM</time>                                                             </span>
+            </dd>
+        </dl>
+        </li>
+</ul>
+</div></div></div></div>
+                    </div>
+                </div>
+                        </div>
+
+    <fieldset class="hidden parameters">
+        <input title="autocompleteEnabled" value="true" type="hidden">
+    </fieldset>
+    
+    </section>
+    <footer id="footer" role="contentinfo">
+        
+        
+
+
+
+<div class="footer-body">
+    <ul>
+        <li>
+                        <a href="http://www.atlassian.com/software/jira">Atlassian JIRA</a>
+
+                                                    
+                        
+            <span id="footer-build-information">(v6.1.6#6162-<span title="7af547ce7c84dbb7c1e345a65437ed7b85efffa2" data-commit-id="7af547ce7c84dbb7c1e345a65437ed7b85efffa2}">sha1:7af547c</span>)</span>
+        </li>
+        <li>
+            <a id="about-link" href="https://jira.codehaus.org/secure/AboutPage.jspa">About JIRA</a>
+        </li>
+        <li>
+                                    <a id="footer-report-problem-link" href="https://jira.codehaus.org/secure/CreateIssue%21default.jspa">Report a problem</a>
+        </li>
+    </ul>
+            <ul>
+            <li class="licensemessage">
+                                    Powered by a free Atlassian <a href="http://www.atlassian.com/software/jira">JIRA</a> open source license for Codehaus. Try JIRA - <a href="http://www.atlassian.com/software/jira">bug tracking software</a> for <i>your</i> team.
+
+                            </li>
+        </ul>
+    </div>
+
+<form id="jira_request_timing_info" class="dont-default-focus">
+	<fieldset class="parameters hidden">
+
+
+
+
+		<input title="jira.session.expiry.in.mins" value="299" type="hidden">
+
+	</fieldset>
+</form>
+<!--
+	                 
+	          
+	               
+	                 
+	        CONCURRENT REQUESTS : 1
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+<fieldset class="hidden parameters">
+    <input title="loggedInUser" value="" type="hidden">
+    <input title="ajaxTimeout" value="The call to the JIRA server did not complete within the timeout period.  We are unsure of the result of this operation." type="hidden">
+    <input title="JiraVersion" value="6.1.6" type="hidden">
+    <input title="ajaxUnauthorised" value="You are not authorised to perform this operation.  Please log in." type="hidden">
+    <input title="baseURL" value="https://jira.codehaus.org:443" type="hidden">
+    <input title="ajaxCommsError" value="The JIRA server could not be contacted.  This may be a temporary glitch or the server may be down." type="hidden">
+    <input title="ajaxServerError" value="The JIRA server was contacted but has returned an error response. We are unsure of the result of this operation." type="hidden">
+    <input title="ajaxErrorCloseDialog" value="Close this dialog and press refresh in your browser" type="hidden">
+    <input title="ajaxErrorDialogHeading" value="Communications Breakdown" type="hidden">
+
+    <input title="dirtyMessage" value="You have entered new data on this page. If you navigate away from this page without first saving your data, the changes will be lost." type="hidden">
+    <input title="dirtyDialogMessage" value="You have entered new data in this dialog. If you navigate away from this dialog without first saving your data, the changes will be lost. Click cancel to return to the dialog." type="hidden">
+    <input title="keyType" value="Type" type="hidden">
+    <input title="keyThen" value="then" type="hidden">
+    <input title="dblClickToExpand" value="Double click to expand" type="hidden">
+    <input title="actions" value="Actions" type="hidden">
+    <input title="removeItem" value="Remove" type="hidden">
+    <input title="workflow" value="Workflow" type="hidden">
+    <input title="labelNew" value="New Label" type="hidden">
+    <input title="issueActionsHint" value="Begin typing for available operations or press down to see all" type="hidden">
+    <input title="closelink" value="Close" type="hidden">
+    <input title="dotOperations" value="Operations" type="hidden">
+    <input title="dotLoading" value="Loading..." type="hidden">
+    <input title="frotherSuggestions" value="Suggestions" type="hidden">
+    <input title="frotherNomatches" value="No Matches" type="hidden">
+    <input title="multiselectVersionsError" value="{0} is not a valid version." type="hidden">
+    <input title="multiselectComponentsError" value="{0} is not a valid component." type="hidden">
+    <input title="multiselectGenericError" value="The value {0} is invalid." type="hidden">
+</fieldset>
+
+    </footer>
+</div>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:void(0);" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:void(0);" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><div class="navigator-sidebar collapsed ui-popout ui-popout-detached ui-popout-collapsed" id="navigator-sidebar"><a class="toggle-filter-panel" href="#" title="Dock the filters panel ([)"></a></div><div style="display: none;" class="jira-dialog box-shadow" id="edit-issue-dialog"><div class="jira-dialog-content"></div></div><div style="display: none;" class="jira-dialog box-shadow" id="create-subtask-dialog"><div class="jira-dialog-content"></div></div></body></html>

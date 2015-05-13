@@ -1,0 +1,36 @@
+ERROR: Publisher org.jenkinsci.plugins.xunit.XUnitPublisher aborted due to exception
+hudson.util.IOException2: There are some problems during the conversion into JUnit reports: 
+	at com.thalesgroup.hudson.plugins.xunit.service.XUnitTransformer.invoke(XUnitTransformer.java:164)
+	at com.thalesgroup.hudson.plugins.xunit.service.XUnitTransformer.invoke(XUnitTransformer.java:37)
+	at hudson.FilePath.act(FilePath.java:758)
+	at hudson.FilePath.act(FilePath.java:740)
+	at org.jenkinsci.plugins.xunit.XUnitPublisher.performTests(XUnitPublisher.java:156)
+	at org.jenkinsci.plugins.xunit.XUnitPublisher.performXUnit(XUnitPublisher.java:101)
+	at org.jenkinsci.plugins.xunit.XUnitPublisher.perform(XUnitPublisher.java:78)
+	at hudson.tasks.BuildStepMonitor$1.perform(BuildStepMonitor.java:19)
+	at hudson.model.AbstractBuild$AbstractRunner.perform(AbstractBuild.java:630)
+	at hudson.model.AbstractBuild$AbstractRunner.performAllBuildSteps(AbstractBuild.java:608)
+	at hudson.model.AbstractBuild$AbstractRunner.performAllBuildSteps(AbstractBuild.java:584)
+	at hudson.model.Build$RunnerImpl.post2(Build.java:159)
+	at hudson.model.AbstractBuild$AbstractRunner.post(AbstractBuild.java:553)
+	at hudson.model.Run.run(Run.java:1390)
+	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:46)
+	at hudson.model.ResourceController.execute(ResourceController.java:88)
+	at hudson.model.Executor.run(Executor.java:145)
+Caused by: com.thalesgroup.hudson.plugins.xunit.exception.XUnitException: Conversion error Error to convert - A file not found
+	at com.thalesgroup.hudson.plugins.xunit.service.XUnitConversionService.convert(XUnitConversionService.java:89)
+	at com.thalesgroup.hudson.plugins.xunit.service.XUnitTransformer.invoke(XUnitTransformer.java:135)
+	... 16 more
+Caused by: com.thalesgroup.dtkit.util.converter.ConversionException: Error to convert - A file not found
+	at com.thalesgroup.dtkit.util.converter.ConversionService.convert(ConversionService.java:369)
+	at com.thalesgroup.dtkit.util.converter.ConversionService.convert(ConversionService.java:177)
+	at com.thalesgroup.dtkit.metrics.model.InputMetricXSL.convert(InputMetricXSL.java:194)
+	at com.thalesgroup.dtkit.metrics.model.InputMetricXSL.convert(InputMetricXSL.java:202)
+	at com.thalesgroup.hudson.plugins.xunit.service.XUnitConversionService.convertInputMetricXSL(XUnitConversionService.java:124)
+	at com.thalesgroup.hudson.plugins.xunit.service.XUnitConversionService.convert(XUnitConversionService.java:82)
+	... 17 more
+Caused by: org.xml.sax.SAXParseException: Attribute name "keyword" associated with an element type "givenStories" must be followed by the ' = ' character.
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:249)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:284)
+	at com.thalesgroup.dtkit.util.converter.ConversionService.convert(ConversionService.java:324)
+	... 22 more
